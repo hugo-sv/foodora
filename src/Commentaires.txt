@@ -1,5 +1,7 @@
 Item : Starter, main-dish et dessert sont des extend de l'abstarct class item car ça permettra
-		de faire des listes et d'acceder facilement au type d'item
+		de faire des listes et d'acceder facilement au type d'item7
+		
+		Test à faire : is Standart
 		
 Meal : pareil
 

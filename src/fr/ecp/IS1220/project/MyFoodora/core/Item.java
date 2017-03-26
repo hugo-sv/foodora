@@ -4,14 +4,14 @@ public abstract class Item {
 	private String name;
 	private double price;
 	private boolean vegetarian;
-	private boolean gluten_free;
+	private boolean glutenFree;
 
-	public Item(String name, double price, boolean vegetarian, boolean gluten_free) {
+	public Item(String name, double price, boolean vegetarian, boolean glutenFree) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.vegetarian = vegetarian;
-		this.gluten_free = gluten_free;
+		this.glutenFree = glutenFree;
 	}
 
 	public String getName() {
@@ -42,17 +42,11 @@ public abstract class Item {
 		this.vegetarian = vegetarian;
 	}
 
-	public boolean isGluten_free() {
-		return gluten_free;
+	public boolean isGlutenFree() {
+		return glutenFree;
 	}
 
-	public void setGluten_free(boolean gluten_free) {
-		this.gluten_free = gluten_free;
+	public void setGluten_free(boolean glutenFree) {
+		this.glutenFree = glutenFree;
 	}
-
-	@Override
-	public String toString() {
-		return "Item [Price=" + price + ", vegetarian=" + vegetarian + ", gluten_free=" + gluten_free + "]";
-	}
-
 }

@@ -1,8 +1,8 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
-public class Starter extends Item{
+public class MainDish extends Item{
 
-	public Starter(String name, double price, boolean vegetarian, boolean glutenFree) {
+	public MainDish(String name, double price, boolean vegetarian, boolean glutenFree) {
 		super(name, price, vegetarian, glutenFree);
 		// TODO Auto-generated constructor stub
 	}}

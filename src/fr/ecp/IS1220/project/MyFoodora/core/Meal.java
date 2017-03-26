@@ -4,7 +4,7 @@ public abstract class Meal {
 	private String name;
 	private Dessert dessert;
 	private Starter entry;
-	private Main_dish main;
+	private MainDish main;
 	private boolean mealOfTheWeek;
 	
 	public Meal(String name, boolean mealOfTheWeek) {
@@ -39,11 +39,11 @@ public abstract class Meal {
 		this.entry = entry;
 	}
 
-	public Main_dish getMain() {
+	public MainDish getMain() {
 		return main;
 	}
 
-	public void setMain(Main_dish main) {
+	public void setMain(MainDish main) {
 		this.main = main;
 	}
 
@@ -55,7 +55,7 @@ public abstract class Meal {
 		this.mealOfTheWeek = mealOfTheWeek;
 	}
 
-	double getPrice() {
+	public double getPrice() {
 		double price = 0;
 		if (entry != null) {
 			price += entry.getPrice();
@@ -74,7 +74,7 @@ public abstract class Meal {
 		return price;
 	}
 	
-	double getPrice(double discountFactor) {
+	public double getPrice(double discountFactor) {
 		double price = 0;
 		if (entry != null) {
 			price += entry.getPrice();
@@ -93,7 +93,7 @@ public abstract class Meal {
 		return price;
 	}
 	
-	boolean isVegetarian() {
+	public boolean isVegetarian() {
 		boolean v = true;
 		if (entry != null) {
 			v = v && entry.isVegetarian();
@@ -107,16 +107,16 @@ public abstract class Meal {
 		return v;
 	}
 	
-	boolean isGlutenFree() {
+	public boolean isGlutenFree() {
 		boolean g = true;
 		if (entry != null) {
-			g = g && entry.isGluten_free();
+			g = g && entry.isGlutenFree();
 		}
 		if (main != null) {
-			g = g && main.isGluten_free();
+			g = g && main.isGlutenFree();
 		}
 		if (dessert != null) {
-			g = g && dessert.isGluten_free();
+			g = g && dessert.isGlutenFree();
 		}
 		return g;
 	}

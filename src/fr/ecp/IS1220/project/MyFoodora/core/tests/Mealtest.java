@@ -1,17 +1,23 @@
-package fr.ecp.IS1220.project.MyFoodora.core;
+package fr.ecp.IS1220.project.MyFoodora.core.tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class Full_meal_test {
+import fr.ecp.IS1220.project.MyFoodora.core.Dessert;
+import fr.ecp.IS1220.project.MyFoodora.core.FullMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.HalfMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.MainDish;
+import fr.ecp.IS1220.project.MyFoodora.core.Starter;
+
+public class Mealtest {
 	Dessert chocolat = new Dessert("Chocolat", 2, true, false);
-	Main_dish pates = new Main_dish("pates", 3, true, true);
+	MainDish pates = new MainDish("pates", 3, true, true);
 	Starter saucisson = new Starter("saucisson", 5, false, true);
 
-	Full_meal plat1 = new Full_meal("plat1",saucisson, pates, chocolat, true);
-	Half_meal plat2 = new Half_meal("plat2",pates, chocolat, false);
-	Half_meal plat3 = new Half_meal("plat3",saucisson, pates, true);
+	FullMeal plat1 = new FullMeal("plat1",saucisson, pates, chocolat, true);
+	HalfMeal plat2 = new HalfMeal("plat2",pates, chocolat, false);
+	HalfMeal plat3 = new HalfMeal("plat3",saucisson, pates, true);
 
 	@Test
 	public void testIsMealOfTheWeek() {

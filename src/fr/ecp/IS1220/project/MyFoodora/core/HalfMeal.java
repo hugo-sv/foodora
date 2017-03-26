@@ -1,16 +1,16 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
-public class Half_meal extends Meal{
+public class HalfMeal extends Meal{
 	
 	
-	public Half_meal(String name, Starter entry, Main_dish main, boolean mealOfTheWeek ) {
+	public HalfMeal(String name, Starter entry, MainDish main, boolean mealOfTheWeek ) {
 		super(name, mealOfTheWeek);
 		this.setEntry(entry);
 		this.setMain(main);
 		
 	}
 	
-	public Half_meal(String name, Main_dish main, Dessert dessert, boolean mealOfTheWeek ) {
+	public HalfMeal(String name, MainDish main, Dessert dessert, boolean mealOfTheWeek ) {
 		super(name, mealOfTheWeek);
 		this.setDessert(dessert);
 		this.setMain(main);

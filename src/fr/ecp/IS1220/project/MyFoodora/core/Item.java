@@ -33,6 +33,10 @@ public abstract class Item {
 	public boolean isVegetarian() {
 		return vegetarian;
 	}
+	
+	public boolean isStandard() {
+		return ! vegetarian;
+	}
 
 	public void setVegetarian(boolean vegetarian) {
 		this.vegetarian = vegetarian;

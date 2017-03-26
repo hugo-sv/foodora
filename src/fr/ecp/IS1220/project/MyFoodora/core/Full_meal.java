@@ -11,16 +11,5 @@ public class Full_meal extends Meal{
 		
 	}
 
-	@Override
-	double get_price() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	boolean is_vegie() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

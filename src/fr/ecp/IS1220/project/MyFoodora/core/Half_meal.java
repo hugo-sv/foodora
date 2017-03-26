@@ -16,16 +16,5 @@ public class Half_meal extends Meal{
 		this.setMain(main);
 		
 	}
-	@Override
-	double get_price() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	boolean is_vegie() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

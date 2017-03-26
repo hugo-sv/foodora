@@ -45,8 +45,70 @@ public abstract class Meal {
 		this.mealOfTheWeek = mealOfTheWeek;
 	}
 
-	abstract double get_price();
+	double getPrice() {
+		double price = 0;
+		if (entry != null) {
+			price += entry.getPrice();
+		}
+		if (main != null) {
+			price += main.getPrice();
+		}
+		if (dessert != null) {
+			price += dessert.getPrice();
+		}
+		if (mealOfTheWeek) {
+			price = 0.9 * price;
+		} else {
+			price = 0.95 * price;
+		}
+		return price;
+	}
 	
-	abstract boolean is_vegie();
+	double getPrice(double discountFactor) {
+		double price = 0;
+		if (entry != null) {
+			price += entry.getPrice();
+		}
+		if (main != null) {
+			price += main.getPrice();
+		}
+		if (dessert != null) {
+			price += dessert.getPrice();
+		}
+		if (mealOfTheWeek) {
+			price = discountFactor * price;
+		} else {
+			price = 0.95 * price;
+		}
+		return price;
+	}
+	
+	boolean isVegetarian() {
+		boolean v = true;
+		if (entry != null) {
+			v = v && entry.isVegetarian();
+		}
+		if (main != null) {
+			v = v && main.isVegetarian();
+		}
+		if (dessert != null) {
+			v = v && dessert.isVegetarian();
+		}
+		return v;
+	}
+	
+	boolean isGlutenFree() {
+		boolean g = true;
+		if (entry != null) {
+			g = g && entry.isGluten_free();
+		}
+		if (main != null) {
+			g = g && main.isGluten_free();
+		}
+		if (dessert != null) {
+			g = g && dessert.isGluten_free();
+		}
+		return g;
+	}
 			
 }

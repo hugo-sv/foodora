@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fr.ecp.IS1220.project.MyFoodora.core.Dessert;
-import fr.ecp.IS1220.project.MyFoodora.core.FullMeal;
-import fr.ecp.IS1220.project.MyFoodora.core.HalfMeal;
-import fr.ecp.IS1220.project.MyFoodora.core.MainDish;
-import fr.ecp.IS1220.project.MyFoodora.core.Starter;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 
 public class Mealtest {
 	Dessert chocolat = new Dessert("Chocolat", 2, true, false);

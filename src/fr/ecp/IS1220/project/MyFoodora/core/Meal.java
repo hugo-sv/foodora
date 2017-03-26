@@ -1,18 +1,28 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
 public abstract class Meal {
+	private String name;
 	private Dessert dessert;
 	private Starter entry;
 	private Main_dish main;
 	private boolean mealOfTheWeek;
 	
-	public Meal(boolean mealOfTheWeek) {
+	public Meal(String name, boolean mealOfTheWeek) {
+		this.name = name;
 		this.mealOfTheWeek = mealOfTheWeek;
 		dessert = null;
 		entry = null;
 		main = null;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Dessert getDessert() {
 		return dessert;
 	}

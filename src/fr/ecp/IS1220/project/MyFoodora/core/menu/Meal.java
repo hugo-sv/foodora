@@ -1,12 +1,14 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
 
+import java.util.ArrayList;
+
 public abstract class Meal {
 	private String name;
 	private Dessert dessert;
 	private Starter entry;
 	private MainDish main;
 	private boolean mealOfTheWeek;
-	
+
 	public Meal(String name, boolean mealOfTheWeek) {
 		this.name = name;
 		this.mealOfTheWeek = mealOfTheWeek;
@@ -14,7 +16,7 @@ public abstract class Meal {
 		entry = null;
 		main = null;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -73,7 +75,7 @@ public abstract class Meal {
 		}
 		return price;
 	}
-	
+
 	public double getPrice(double discountFactor) {
 		double price = 0;
 		if (entry != null) {
@@ -92,7 +94,7 @@ public abstract class Meal {
 		}
 		return price;
 	}
-	
+
 	public boolean isVegetarian() {
 		boolean v = true;
 		if (entry != null) {
@@ -106,7 +108,7 @@ public abstract class Meal {
 		}
 		return v;
 	}
-	
+
 	public boolean isGlutenFree() {
 		boolean g = true;
 		if (entry != null) {
@@ -120,5 +122,20 @@ public abstract class Meal {
 		}
 		return g;
 	}
-			
+
+	public ArrayList<Item> getItems() {
+		// Return a list of meal's items
+		ArrayList<Item> items = new ArrayList<Item>();
+		if (entry != null) {
+			items.add(entry);
+		}
+		if (main != null) {
+			items.add(entry);
+		}
+		if (dessert != null) {
+			items.add(entry);
+		}
+		return items;
+	}
+
 }

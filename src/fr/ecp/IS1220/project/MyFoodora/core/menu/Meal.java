@@ -1,8 +1,9 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
-
+import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import java.util.ArrayList;
 
-public abstract class Meal {
+
+public abstract class Meal implements Visitable{
 	private String name;
 	private Dessert dessert;
 	private Starter entry;
@@ -136,6 +137,10 @@ public abstract class Meal {
 			items.add(entry);
 		}
 		return items;
+	}
+	
+	public void accept(Customer u) {
+		u.visit(this);
 	}
 
 }

@@ -1,6 +1,8 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
 
-public abstract class Item {
+import fr.ecp.IS1220.project.MyFoodora.core.Customer;
+
+public abstract class Item implements Visitable{
 	private String name;
 	private double price;
 	private boolean vegetarian;
@@ -48,5 +50,9 @@ public abstract class Item {
 
 	public void setGluten_free(boolean glutenFree) {
 		this.glutenFree = glutenFree;
+	}
+	@Override
+	public void accept(Customer u){
+		u.visit(this);
 	}
 }

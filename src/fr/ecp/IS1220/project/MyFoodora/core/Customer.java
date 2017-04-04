@@ -28,6 +28,15 @@ public class Customer implements User{
 		shoppingCart.add(v);
 		shoppingCartPrice=shoppingCartPrice+v.getPrice();
 		}
-
+	
+	public  double getPrice(){
+		double Price =0;
+		for (Visitable v:shoppingCart){
+			Price=Price+v.getPrice();
+		}
+		return Price;
+	}
+	
+	
 	
 }

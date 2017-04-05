@@ -3,6 +3,8 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
+
 public class MyFoodora {
 	private HashMap<Long,Manager> managerList;
 	private HashMap<Long,Customer> customerList;
@@ -12,6 +14,8 @@ public class MyFoodora {
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
+	private TargetPolicy targetPolicy;
+	
 	public MyFoodora(double serviceFee, double markupPourcentage, double deliveryCost) {
 		super();
 		this.serviceFee = serviceFee;

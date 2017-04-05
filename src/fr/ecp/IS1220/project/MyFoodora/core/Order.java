@@ -6,16 +6,24 @@ public class Order {
 	private Customer customer;
 	private Restaurant restaurant;
 	private Courier courier;
-	private int price;
-	public Order(Customer customer, Restaurant restaurant, Courier courier, int price) {
+	private double price;
+	private double serviceFee;
+	private double markupPourcentage;
+	private double deliveryCost;
+	
+
+	public Order(Customer customer, Restaurant restaurant, Courier courier, double price, double serviceFee,
+			double markupPourcentage, double deliveryCost) {
 		super();
-		this.ID = genID;
-		genID++;
 		this.customer = customer;
 		this.restaurant = restaurant;
 		this.courier = courier;
 		this.price = price;
+		this.serviceFee = serviceFee;
+		this.markupPourcentage = markupPourcentage;
+		this.deliveryCost = deliveryCost;
 	}
+	
 	public int getID() {
 		return ID;
 	}
@@ -28,8 +36,20 @@ public class Order {
 	public Courier getCourier() {
 		return courier;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
+	}
+
+	public double getServiceFee() {
+		return serviceFee;
+	}
+
+	public double getMarkupPourcentage() {
+		return markupPourcentage;
+	}
+
+	public double getDeliveryCost() {
+		return deliveryCost;
 	}
 	
 	

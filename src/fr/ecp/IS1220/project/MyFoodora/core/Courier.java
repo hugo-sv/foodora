@@ -2,7 +2,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 public class Courier implements User{
 	private static long genID = 0;
-	private long ID;
+	private long iD;
 	private String name;
 	private String surname;
 	private String username;
@@ -10,11 +10,12 @@ public class Courier implements User{
 	private double y;
 	private int phoneNumber;
 	private int deliveredOrders;
-	private boolean state;
+	private boolean onDuty;
+	
 	
 	public Courier(String name, String surname, String username, double x, double y, int phoneNumber) {
 		super();
-		this.ID = genID;
+		this.iD = genID;
 		genID++;
 		this.name = name;
 		this.surname = surname;
@@ -23,10 +24,15 @@ public class Courier implements User{
 		this.y = y;
 		this.phoneNumber = phoneNumber;
 		deliveredOrders = 0;
+		onDuty = true;
 	}
 	
 	public void register(MyFoodora myFoodora) {
-		
+		myFoodora.addCourier(this);
+	}
+	
+	public void unregister(MyFoodora myFoodora) {
+		myFoodora.removeCourier(this);
 	}
 
 	public String getName() {
@@ -77,12 +83,19 @@ public class Courier implements User{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public long getID() {
-		return ID;
+	public long getiD() {
+		return iD;
 	}
+
+	public boolean isOnDuty() {
+		return onDuty;
+	}
+
+	public void setOnDuty(boolean onDuty) {
+		this.onDuty = onDuty;
+	}
+
+
 	
-	
-	
-	
-	
+		 
 }

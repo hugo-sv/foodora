@@ -4,12 +4,54 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
 
 public class Restaurant implements User {
 	private static long genID = 0;
-	private long ID;
-	private String Name;
-	private String Username;
-	private double AddressX;
-	private double AddressY;
-	private Menu RestaurantMenu;
+	private long iD;
+	private String name;
+	private String username;
+	private double addressX;
+	private double addressY;
+	private Menu restaurantMenu;
+	public Restaurant(String name, String username, double addressX, double addressY) {
+		super();
+		this.iD = genID;
+		genID++;
+		this.name = name;
+		this.username = username;
+		this.addressX = addressX;
+		this.addressY = addressY;
+		this.restaurantMenu = new Menu();
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public double getAddressX() {
+		return addressX;
+	}
+	public void setAddressX(double addressX) {
+		this.addressX = addressX;
+	}
+	public double getAddressY() {
+		return addressY;
+	}
+	public void setAddressY(double addressY) {
+		this.addressY = addressY;
+	}
+	public long getiD() {
+		return iD;
+	}
+	public Menu getRestaurantMenu() {
+		return restaurantMenu;
+	}
+	
+	
 	
 	
 }

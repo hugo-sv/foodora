@@ -2,7 +2,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 public class Manager implements User {
 	private static long genID = 0;
-	private long ID;
+	private long iD;
 	private String Name;
 	private String Surname;
 	private String Username;
@@ -10,7 +10,7 @@ public class Manager implements User {
 	
 	public Manager(long iD, String name, String surname, String username) {
 		super();
-		ID = genID;
+		iD = genID;
 		genID++;
 		Name = name;
 		Surname = surname;
@@ -48,8 +48,8 @@ public class Manager implements User {
 	}
 
 
-	public long getID() {
-		return ID;
+	public long getiD() {
+		return iD;
 	}
 
 	

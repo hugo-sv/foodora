@@ -39,6 +39,54 @@ public class Customer implements User{
 		}
 		return Price;
 	}
+
+	public long getiD() {
+		return iD;
+	}
+
+	public void setiD(long iD) {
+		this.iD = iD;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public boolean isFidelityCard() {
+		return fidelityCard;
+	}
+
+	public void setFidelityCard(boolean fidelityCard) {
+		this.fidelityCard = fidelityCard;
+	}
+
+	public ArrayList<Visitable> getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public double getShoppingCartPrice() {
+		return shoppingCartPrice;
+	}
 	
 	
 	

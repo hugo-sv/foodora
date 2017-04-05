@@ -1,11 +1,11 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
 public class Manager implements User {
-	static long genID = 0;
-	long ID;
-	String Name;
-	String Surname;
-	String Username;
+	private static long genID = 0;
+	private long ID;
+	private String Name;
+	private String Surname;
+	private String Username;
 	
 	
 	public Manager(long iD, String name, String surname, String username) {

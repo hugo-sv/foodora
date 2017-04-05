@@ -15,6 +15,9 @@ public class Customer implements User{
 	private String name;
 	private String surname;
 	private String username;
+	private ArrayList<Double> address;
+	private String eamil;
+	private String phoneNumber;
 	private boolean fidelityCard=false;
 	
 	

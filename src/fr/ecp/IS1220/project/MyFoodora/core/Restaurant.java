@@ -68,4 +68,20 @@ public class Restaurant extends User {
 		this.mealOfTheWeek = mealOfTheWeek;
 	}
 
+	public float getGenericDiscountFactor() {
+		return genericDiscountFactor;
+	}
+
+	public void setGenericDiscountFactor(float genericDiscountFactor) {
+		this.genericDiscountFactor = genericDiscountFactor;
+	}
+
+	public float getSpecialDiscountFactor() {
+		return specialDiscountFactor;
+	}
+
+	public void setSpecialDiscountFactor(float specialDiscountFactor) {
+		this.specialDiscountFactor = specialDiscountFactor;
+	}
+
 }

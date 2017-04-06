@@ -15,25 +15,16 @@ public class Mealtest {
 	MainDish pates = new MainDish("pates", 3, true, true);
 	Starter saucisson = new Starter("saucisson", 5, false, true);
 
-	FullMeal plat1 = new FullMeal("plat1",saucisson, pates, chocolat, true);
-	HalfMeal plat2 = new HalfMeal("plat2",pates, chocolat, false);
-	HalfMeal plat3 = new HalfMeal("plat3",saucisson, pates, true);
+	FullMeal plat1 = new FullMeal("plat1",saucisson, pates, chocolat);
+	HalfMeal plat2 = new HalfMeal("plat2",pates, chocolat);
+	HalfMeal plat3 = new HalfMeal("plat3",saucisson, pates);
 
-	@Test
-	public void testIsMealOfTheWeek() {
-		assertTrue(plat1.isMealOfTheWeek());
-		assertFalse(plat2.isMealOfTheWeek());
-		assertTrue(plat3.isMealOfTheWeek());
-	}
 
 	@Test
 	public void testGetPrice() {
 		assertEquals(plat1.getPrice(), 9,0.001);
-		assertEquals(plat1.getPrice(0.5), 5,0.001);
 		assertEquals(plat2.getPrice(),4.75,0.001);
-		assertEquals(plat2.getPrice(0.5), 4.75,0.001);
 		assertEquals(plat3.getPrice(), 7.2,0.001);
-		assertEquals(plat3.getPrice(0.5), 4,0.001);
 	}
 
 	@Test

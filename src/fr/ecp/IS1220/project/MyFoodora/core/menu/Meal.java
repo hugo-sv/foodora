@@ -1,7 +1,7 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
 import java.util.ArrayList;
 
-public abstract class Meal implements Visitable {
+public abstract class Meal implements Orderable {
 	private String name;
 	private Dessert dessert;
 	private Starter entry;

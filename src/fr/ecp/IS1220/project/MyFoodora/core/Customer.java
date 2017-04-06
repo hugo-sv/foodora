@@ -2,14 +2,12 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
 
-import fr.ecp.IS1220.project.MyFoodora.core.menu.Visitable;
-
 public class Customer implements User {
 	// have a name, a surname, a unique ID, an address (expressed as a two
 	// dimensional co-ordinate), an email address, a phone number and a
 	// username, the
 	// latter used for logging in the system.
-	private ArrayList<Visitable> shoppingCart = new ArrayList<Visitable>();
+	private ArrayList<Order> orders = new ArrayList<Order>();
 	private static long genID = 0;
 	private long iD;
 	private String name;
@@ -44,7 +42,7 @@ public class Customer implements User {
 
 	public double getPrice() {
 		double Price = 0;
-		for (Visitable v : shoppingCart) {
+		for (Order v : orders) {
 			Price = Price + v.getPrice();
 		}
 		return Price;
@@ -90,8 +88,8 @@ public class Customer implements User {
 		this.fidelityCard = fidelityCard;
 	}
 
-	public ArrayList<Visitable> getShoppingCart() {
-		return shoppingCart;
+	public ArrayList<Order> getOrders() {
+		return orders;
 	}
 
 }

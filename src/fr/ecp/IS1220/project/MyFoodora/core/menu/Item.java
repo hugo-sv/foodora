@@ -1,8 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
 
-import fr.ecp.IS1220.project.MyFoodora.core.Customer;
-
-public abstract class Item implements Visitable{
+public abstract class Item implements Orderable{
 	private String name;
 	private double price;
 	private boolean vegetarian;

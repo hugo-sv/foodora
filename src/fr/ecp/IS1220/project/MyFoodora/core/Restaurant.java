@@ -10,6 +10,7 @@ public class Restaurant extends User {
 	private double addressX;
 	private double addressY;
 	private Menu restaurantMenu;
+	
 	public Restaurant(String name, String username, double addressX, double addressY) {
 		super();
 		this.name = name;

@@ -8,9 +8,8 @@ public abstract class Meal implements Orderable {
 	private MainDish main;
 	private boolean mealOfTheWeek;
 
-	public Meal(String name, boolean mealOfTheWeek) {
+	public Meal(String name) {
 		this.name = name;
-		this.mealOfTheWeek = mealOfTheWeek;
 		dessert = null;
 		entry = null;
 		main = null;
@@ -48,14 +47,6 @@ public abstract class Meal implements Orderable {
 		this.main = main;
 	}
 
-	public boolean isMealOfTheWeek() {
-		return mealOfTheWeek;
-	}
-
-	public void setMealOfTheWeek(boolean mealOfTheWeek) {
-		this.mealOfTheWeek = mealOfTheWeek;
-	}
-
 	public double getPrice() {
 		double price = 0;
 		if (entry != null) {
@@ -67,31 +58,8 @@ public abstract class Meal implements Orderable {
 		if (dessert != null) {
 			price += dessert.getPrice();
 		}
-		if (mealOfTheWeek) {
-			price = 0.9 * price;
-		} else {
-			price = 0.95 * price;
-		}
-		return price;
-	}
-
-	public double getPrice(double discountFactor) {
-		double price = 0;
-		if (entry != null) {
-			price += entry.getPrice();
-		}
-		if (main != null) {
-			price += main.getPrice();
-		}
-		if (dessert != null) {
-			price += dessert.getPrice();
-		}
-		if (mealOfTheWeek) {
-			price = discountFactor * price;
-		} else {
-			price = 0.95 * price;
-		}
-		return price;
+		//Meal : 5% reduction
+		return 0.95*price;
 	}
 
 	public boolean isVegetarian() {

@@ -10,38 +10,25 @@ public class Order {
 	private Customer customer;
 	private Restaurant restaurant;
 	private Courier courier;
+	private double price;
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
 	private ArrayList<Orderable> orderables;
 	private Time orderDate;
 	private Time deliverDate;
-	
-	public Time getOrderDate() {
-		return orderDate;
-	}
 
-	public void setOrderDate(Time orderDate) {
-		this.orderDate = orderDate;
-	}
-
-	public Time getDeliverDate() {
-		return deliverDate;
-	}
-
-	public void setDeliverDate(Time deliverDate) {
-		this.deliverDate = deliverDate;
-	}
-
-	public Order(Customer customer, Restaurant restaurant, Courier courier, double serviceFee,
+	public Order(Customer customer, Restaurant restaurant, Courier courier, double price, double serviceFee,
 			double markupPourcentage, double deliveryCost) {
 		super();
 		this.customer = customer;
 		this.restaurant = restaurant;
 		this.courier = courier;
+		this.price = price;
 		this.serviceFee = serviceFee;
 		this.markupPourcentage = markupPourcentage;
 		this.deliveryCost = deliveryCost;
+		this.orderDate = Time.getTime();
 	}
 	
 	public int getID() {
@@ -57,9 +44,6 @@ public class Order {
 		return courier;
 	}
 	public double getPrice() {
-		double price=0;
-		
-		
 		return price;
 	}
 
@@ -75,5 +59,17 @@ public class Order {
 		return deliveryCost;
 	}
 	
+	public Time getOrderDate() {
+		return orderDate;
+	}
+
+	public Time getDeliverDate() {
+		return deliverDate;
+	}
+
+	public void setDeliverDate() {
+		this.deliverDate = Time.getTime();
+	}
+
 	
 }

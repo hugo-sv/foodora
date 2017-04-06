@@ -24,25 +24,21 @@ public class MyFoodora {
 		this.currentOrder_List = new ArrayList<Order>();
 	}
 
-	public void addUser(Manager manager, User user) {
-		if (userList.containsKey(manager.getiD())) {
+	public void addUser(User user) {
 			userList.put(user.getiD(), user);
-		}
 	}
 	
-	public void removeUser(Manager manager, User user) {
-		if (userList.containsKey(manager.getiD())) {
+	public void removeUser(User user) {
 			userList.remove(user.getiD());
-		}
 	}
-	public void activateUser(Manager manager, User user) {
-		if (userList.containsKey(manager.getiD()) && userList.containsKey(user.getiD())) {
+	public void activateUser(User user) {
+		if (userList.containsKey(user.getiD())) {
 			user.setActivated(true);
 		}
 	}
 	
-	public void disactivateUser(Manager manager, User user) {
-		if (userList.containsKey(manager.getiD()) && userList.containsKey(user.getiD())) {
+	public void disactivateUser(User user) {
+		if (userList.containsKey(user.getiD())) {
 			user.setActivated(false);
 		}
 	}
@@ -53,6 +49,39 @@ public class MyFoodora {
 	public void removeCourier(Courier courier) {
 		userList.remove(courier.getiD());
 	}
+
+	public double getServiceFee() {
+		return serviceFee;
+	}
+
+	public void setServiceFee(double serviceFee) {
+		this.serviceFee = serviceFee;
+	}
+
+	public double getMarkupPourcentage() {
+		return markupPourcentage;
+	}
+
+	public void setMarkupPourcentage(double markupPourcentage) {
+		this.markupPourcentage = markupPourcentage;
+	}
+
+	public double getDeliveryCost() {
+		return deliveryCost;
+	}
+
+	public void setDeliveryCost(double deliveryCost) {
+		this.deliveryCost = deliveryCost;
+	}
+
+	public ArrayList<Order> getCompletedOrder_List() {
+		return completedOrder_List;
+	}
+
+	public ArrayList<Order> getCurrentOrder_List() {
+		return currentOrder_List;
+	}
+	
 	
 	
 }

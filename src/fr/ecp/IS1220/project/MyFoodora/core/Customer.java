@@ -14,7 +14,7 @@ public class Customer extends User {
 	private ArrayList<Double> address;
 	private String email;
 	private String phoneNumber;
-	private boolean fidelityCard = false;
+	private FidelityCard fidelityCard;
 
 	public Customer(String name, String surname, String username, ArrayList<Double> address, String email,
 			String phoneNumber) {
@@ -34,7 +34,6 @@ public class Customer extends User {
 	public void setAddress(ArrayList<Double> address) {
 		this.address = address;
 	}
-
 
 	public double getPrice() {
 		double Price = 0;
@@ -68,16 +67,16 @@ public class Customer extends User {
 		this.username = username;
 	}
 
-	public boolean isFidelityCard() {
+	public ArrayList<Order> getOrders() {
+		return orders;
+	}
+
+	public FidelityCard getFidelityCard() {
 		return fidelityCard;
 	}
 
-	public void setFidelityCard(boolean fidelityCard) {
+	public void setFidelityCard(FidelityCard fidelityCard) {
 		this.fidelityCard = fidelityCard;
-	}
-
-	public ArrayList<Order> getOrders() {
-		return orders;
 	}
 
 }

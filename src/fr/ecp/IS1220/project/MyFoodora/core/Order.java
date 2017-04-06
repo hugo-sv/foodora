@@ -2,6 +2,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
 
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
 
 public class Order {
@@ -10,7 +11,6 @@ public class Order {
 	private Customer customer;
 	private Restaurant restaurant;
 	private Courier courier;
-	private double price;
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
@@ -24,27 +24,46 @@ public class Order {
 		this.customer = customer;
 		this.restaurant = restaurant;
 		this.courier = courier;
-		this.price = price;
 		this.serviceFee = serviceFee;
 		this.markupPourcentage = markupPourcentage;
 		this.deliveryCost = deliveryCost;
 		this.orderDate = Time.getTime();
+
 	}
-	
+
 	public int getID() {
 		return ID;
 	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
+
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
+
 	public Courier getCourier() {
 		return courier;
 	}
+
 	public double getPrice() {
-		return price;
+		double mealPrice = 0;
+		double itemPrice = 0;
+		double mealOfTheWeekPrice = 0;
+		for (Orderable o : orderables) {
+			if (o instanceof Meal) {
+				if (o.equals(restaurant.getMealOfTheWeek())) {
+					mealOfTheWeekPrice += o.getPrice();
+				} else {
+					mealPrice = mealPrice + o.getPrice();
+				}
+			} else {
+				itemPrice += o.getPrice();
+			}
+		}
+		return customer.getFidelityCard().getOffer(itemPrice, mealPrice, mealOfTheWeekPrice,
+				restaurant.getGenericDiscountFactor(), restaurant.getSpecialDiscountFactor());
 	}
 
 	public double getServiceFee() {
@@ -58,7 +77,7 @@ public class Order {
 	public double getDeliveryCost() {
 		return deliveryCost;
 	}
-	
+
 	public Time getOrderDate() {
 		return orderDate;
 	}
@@ -71,5 +90,4 @@ public class Order {
 		this.deliverDate = Time.getTime();
 	}
 
-	
 }

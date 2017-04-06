@@ -59,9 +59,6 @@ public class Order {
 	public double getPrice() {
 		double price=0;
 		
-		for orderables
-		
-		
 		
 		return price;
 	}

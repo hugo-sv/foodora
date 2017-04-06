@@ -1,17 +1,16 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
-public class Manager implements User {
+public class Manager extends User {
 	private static long genID = 0;
 	private long iD;
 	private String Name;
 	private String Surname;
 	private String Username;
+	private MyFoodora myFoodora;
 	
 	
 	public Manager(long iD, String name, String surname, String username) {
 		super();
-		iD = genID;
-		genID++;
 		Name = name;
 		Surname = surname;
 		Username = username;
@@ -45,11 +44,6 @@ public class Manager implements User {
 
 	public void setUsername(String username) {
 		Username = username;
-	}
-
-
-	public long getiD() {
-		return iD;
 	}
 
 	

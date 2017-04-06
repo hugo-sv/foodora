@@ -5,6 +5,6 @@ Item : Starter, main-dish et dessert sont des extend de l'abstarct class item ca
 		
 Meal : pareil
 
-User : chaque implémentation de User possède un générateur d'id différent
+User : chaque implémentation de User possède un générateur d'id différent, User est une classe car on a besoin de stocker le MyFoodora pour tous les users
 
 Rapport : https://www.overleaf.com/8890867cdyknbfxxqfh

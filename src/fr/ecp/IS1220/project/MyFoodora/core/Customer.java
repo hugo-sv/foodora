@@ -2,14 +2,12 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
 
-public class Customer implements User {
+public class Customer extends User {
 	// have a name, a surname, a unique ID, an address (expressed as a two
 	// dimensional co-ordinate), an email address, a phone number and a
 	// username, the
 	// latter used for logging in the system.
 	private ArrayList<Order> orders = new ArrayList<Order>();
-	private static long genID = 0;
-	private long iD;
 	private String name;
 	private String surname;
 	private String username;
@@ -21,8 +19,6 @@ public class Customer implements User {
 	public Customer(String name, String surname, String username, ArrayList<Double> address, String email,
 			String phoneNumber) {
 		super();
-		this.iD = genID;
-		genID++;
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
@@ -46,14 +42,6 @@ public class Customer implements User {
 			Price = Price + v.getPrice();
 		}
 		return Price;
-	}
-
-	public long getiD() {
-		return iD;
-	}
-
-	public void setiD(long iD) {
-		this.iD = iD;
 	}
 
 	public String getName() {

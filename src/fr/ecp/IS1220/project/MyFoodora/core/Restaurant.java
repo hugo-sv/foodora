@@ -2,7 +2,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
 
-public class Restaurant implements User {
+public class Restaurant extends User {
 	private static long genID = 0;
 	private long iD;
 	private String name;
@@ -12,8 +12,6 @@ public class Restaurant implements User {
 	private Menu restaurantMenu;
 	public Restaurant(String name, String username, double addressX, double addressY) {
 		super();
-		this.iD = genID;
-		genID++;
 		this.name = name;
 		this.username = username;
 		this.addressX = addressX;
@@ -43,9 +41,6 @@ public class Restaurant implements User {
 	}
 	public void setAddressY(double addressY) {
 		this.addressY = addressY;
-	}
-	public long getiD() {
-		return iD;
 	}
 	public Menu getRestaurantMenu() {
 		return restaurantMenu;

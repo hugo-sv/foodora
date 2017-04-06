@@ -1,6 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
-public class Courier implements User{
+public class Courier extends User{
 	private static long genID = 0;
 	private long iD;
 	private String name;
@@ -15,8 +15,6 @@ public class Courier implements User{
 	
 	public Courier(String name, String surname, String username, double x, double y, int phoneNumber) {
 		super();
-		this.iD = genID;
-		genID++;
 		this.name = name;
 		this.surname = surname;
 		this.username = username;

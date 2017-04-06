@@ -1,5 +1,9 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
+import java.util.ArrayList;
+
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
+
 public class Order {
 	private static int genID = 0;
 	private int ID;
@@ -10,8 +14,10 @@ public class Order {
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
+	private ArrayList<Orderable> orderables;
+	private Time orderDate;
+	private Time deliverDate;
 	
-
 	public Order(Customer customer, Restaurant restaurant, Courier courier, double price, double serviceFee,
 			double markupPourcentage, double deliveryCost) {
 		super();

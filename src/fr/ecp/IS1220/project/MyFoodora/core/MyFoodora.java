@@ -82,6 +82,29 @@ public class MyFoodora {
 		return currentOrder_List;
 	}
 	
+	public double computeTotalIncome(Time begin, Time end) {
+		double income = 0;
+		for ( Order order : completedOrder_List) {
+			income += order.getPrice()*order.getMarkupPourcentage()+order.getServiceFee();
+		}
+		return income;
+	}
+	
+	public double computeTotalProfit(Time begin, Time end) {
+		double profit = 0;
+		for ( Order order : completedOrder_List) {
+			profit += order.getPrice()*order.getMarkupPourcentage()+order.getServiceFee()-order.getDeliveryCost();
+		}
+		return profit;
+	}
+
+	public void setTargetPolicy(TargetPolicy targetPolicy) {
+		this.targetPolicy = targetPolicy;
+	}
+
+	public TargetPolicy getTargetPolicy() {
+		return targetPolicy;
+	}
 	
 	
 }

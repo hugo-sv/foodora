@@ -22,4 +22,8 @@ public class Time {
 	public int compareTo(Time time) {
 		return this.getSeconds().compareTo(time.getSeconds());
 	}
+	
+	public boolean isLessThanOneMonth() {
+		return currentTime.getSeconds() - seconds < 2592000;
+	}
 }

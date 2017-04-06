@@ -1,5 +1,7 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
+import java.util.ArrayList;
+
 public class Manager extends User {
 	private static long genID = 0;
 	private long iD;
@@ -95,5 +97,35 @@ public class Manager extends User {
 		}
 		return profit;
 	}
+	public double computeAverageIncome(Time begin, Time end) {
+		double income = 0;
+		ArrayList<Long> customerList = new ArrayList<Long>();
+		for ( Order order : myFoodora.getCompletedOrder_List()) {
+			if (order.getOrderDate().compareTo(begin)>0 && order.getOrderDate().compareTo(end)<0) {
+				income += order.getPrice()*order.getMarkupPourcentage()+order.getServiceFee();
+				if (!customerList.contains(order.getCustomer().getiD())) {
+					customerList.add(order.getCustomer().getiD());
+				}
+			}
+		}
+		return income/customerList.size();
+	}
 	
+	public double computeAverageProfit(Time begin, Time end) {
+		double profit = 0;
+		ArrayList<Long> customerList = new ArrayList<Long>();
+		for ( Order order : myFoodora.getCompletedOrder_List()) {
+			if (order.getOrderDate().compareTo(begin)>0 && order.getOrderDate().compareTo(end)<0) {
+				profit += order.getPrice()*order.getMarkupPourcentage()+order.getServiceFee()-order.getDeliveryCost();
+				if (!customerList.contains(order.getCustomer().getiD())) {
+					customerList.add(order.getCustomer().getiD());
+				}
+			}
+		}
+		return profit/customerList.size();
+	}
+	
+	public void targetProfit(double profit) {
+		myFoodora.getTargetPolicy().setParameters(myFoodora, profit);
+	}
 }

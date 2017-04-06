@@ -18,6 +18,22 @@ public class Order {
 	private Time orderDate;
 	private Time deliverDate;
 	
+	public Time getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Time orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public Time getDeliverDate() {
+		return deliverDate;
+	}
+
+	public void setDeliverDate(Time deliverDate) {
+		this.deliverDate = deliverDate;
+	}
+
 	public Order(Customer customer, Restaurant restaurant, Courier courier, double price, double serviceFee,
 			double markupPourcentage, double deliveryCost) {
 		super();

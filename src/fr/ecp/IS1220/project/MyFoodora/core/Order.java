@@ -10,7 +10,6 @@ public class Order {
 	private Customer customer;
 	private Restaurant restaurant;
 	private Courier courier;
-	private double price;
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
@@ -34,13 +33,12 @@ public class Order {
 		this.deliverDate = deliverDate;
 	}
 
-	public Order(Customer customer, Restaurant restaurant, Courier courier, double price, double serviceFee,
+	public Order(Customer customer, Restaurant restaurant, Courier courier, double serviceFee,
 			double markupPourcentage, double deliveryCost) {
 		super();
 		this.customer = customer;
 		this.restaurant = restaurant;
 		this.courier = courier;
-		this.price = price;
 		this.serviceFee = serviceFee;
 		this.markupPourcentage = markupPourcentage;
 		this.deliveryCost = deliveryCost;
@@ -59,6 +57,12 @@ public class Order {
 		return courier;
 	}
 	public double getPrice() {
+		double price=0;
+		
+		for orderables
+		
+		
+		
 		return price;
 	}
 

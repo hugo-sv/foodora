@@ -51,8 +51,4 @@ public abstract class Item implements Visitable{
 	public void setGluten_free(boolean glutenFree) {
 		this.glutenFree = glutenFree;
 	}
-	@Override
-	public void accept(Customer u){
-		u.visit(this);
-	}
 }

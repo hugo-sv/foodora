@@ -41,9 +41,6 @@ public class Customer implements User {
 		this.address = address;
 	}
 
-	public void visit(Visitable v) {
-		shoppingCart.add(v);
-	}
 
 	public double getPrice() {
 		double Price = 0;

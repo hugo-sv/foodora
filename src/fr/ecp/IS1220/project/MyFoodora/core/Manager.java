@@ -45,6 +45,25 @@ public class Manager extends User {
 	public void setUsername(String username) {
 		Username = username;
 	}
+	
+	public void addUser(User user) {
+		myFoodora.addUser(this, user);
+		user.myFoodora = myFoodora;
+	}
+	
+	public void removeUser(User user) {
+		myFoodora.removeUser(this, user);
+		user.myFoodora = null;
+	}
+	
+	public void activate(User user) {
+		
+	}
+	
+	public void disactivate(User user) {
+		
+	}
+	
 
 	
 }

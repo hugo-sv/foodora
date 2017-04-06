@@ -35,7 +35,17 @@ public class MyFoodora {
 			userList.remove(user.getiD());
 		}
 	}
+	public void activateUser(Manager manager, User user) {
+		if (userList.containsKey(manager.getiD()) && userList.containsKey(user.getiD())) {
+			user.setActivated(true);
+		}
+	}
 	
+	public void disactivateUser(Manager manager, User user) {
+		if (userList.containsKey(manager.getiD()) && userList.containsKey(user.getiD())) {
+			user.setActivated(false);
+		}
+	}
 	public void addCourier(Courier courier) {
 		userList.put(courier.getiD(), courier);
 	}

@@ -1,4 +1,5 @@
-	package fr.ecp.IS1220.project.MyFoodora.core.menu;
+package fr.ecp.IS1220.project.MyFoodora.core.menu;
+
 import java.util.ArrayList;
 
 public abstract class Meal implements Orderable {
@@ -6,12 +7,21 @@ public abstract class Meal implements Orderable {
 	private Dessert dessert;
 	private Starter entry;
 	private MainDish main;
+	private Menu menu;
 
 	public Meal(String name) {
 		this.name = name;
 		dessert = null;
 		entry = null;
 		main = null;
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 
 	public String getName() {
@@ -57,7 +67,7 @@ public abstract class Meal implements Orderable {
 		if (dessert != null) {
 			price += dessert.getPrice();
 		}
-		return price;
+		return price * menu.getRestaurant().getGenericDiscountFactor();
 	}
 
 	public boolean isVegetarian() {
@@ -107,7 +117,5 @@ public abstract class Meal implements Orderable {
 	public String toString() {
 		return "Meal [name=" + name + "]";
 	}
-	
-	
 
 }

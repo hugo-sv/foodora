@@ -83,7 +83,7 @@ public class Order {
 	public void setDeliverDate() {
 		this.deliverDate = Time.getTime();
 	}
-	
+
 	public void addOrderabe(Orderable orderable) {
 		orderables.add(orderable);
 	}
@@ -91,7 +91,5 @@ public class Order {
 	public ArrayList<Orderable> getOrderables() {
 		return orderables;
 	}
-	
-	
 
 }

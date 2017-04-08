@@ -5,6 +5,7 @@ public abstract class Item implements Orderable{
 	private double price;
 	private boolean vegetarian;
 	private boolean glutenFree;
+	private Menu menu;
 
 	public Item(String name, double price, boolean vegetarian, boolean glutenFree) {
 		super();
@@ -53,6 +54,14 @@ public abstract class Item implements Orderable{
 	@Override
 	public String toString() {
 		return "Item [name=" + name + "]";
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 	
 	

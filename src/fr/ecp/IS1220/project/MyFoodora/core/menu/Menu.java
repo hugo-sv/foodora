@@ -18,14 +18,17 @@ public class Menu {
 	}
 
 	public void addItem(Item item) {
+		item.setMenu(this);
 		items.add(item);
 	}
 
 	public void addMeal(Meal meal) {
 		// Add Meal's items to the item list
 		for (Item item : meal.getItems()) {
+			item.setMenu(this);
 			items.add(item);
 		}
+		meal.setMenu(this);
 		meals.add(meal);
 	}
 

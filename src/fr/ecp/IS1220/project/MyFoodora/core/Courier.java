@@ -1,8 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
 public class Courier extends User{
-	private static long genID = 0;
-	private long iD;
 	private String name;
 	private String surname;
 	private String username;
@@ -81,9 +79,6 @@ public class Courier extends User{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public long getiD() {
-		return iD;
-	}
 
 	public boolean isOnDuty() {
 		return onDuty;

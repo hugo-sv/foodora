@@ -57,8 +57,7 @@ public abstract class Meal implements Orderable {
 		if (dessert != null) {
 			price += dessert.getPrice();
 		}
-		//Meal : 5% reduction
-		return 0.95*price;
+		return price;
 	}
 
 	public boolean isVegetarian() {

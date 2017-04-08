@@ -17,7 +17,7 @@ public class MéhineMocheAsupprimerSiInutile {
 		System.out.println(jeanne.getPrice());
 		Dessert chocobon = new Dessert("Chocobon", 15, true, false);
 		//jeanne.visit(chocobon);
-		System.out.println(jeanne.getPrice());
+		System.out.println(chocobon.getMenu());
 
 	}
 }

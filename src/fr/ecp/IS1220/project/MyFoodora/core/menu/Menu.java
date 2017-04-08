@@ -9,7 +9,7 @@ public class Menu {
 	// Set lists avoid doubles
 	private Set<Item> items = new HashSet<Item>();
 	private Set<Meal> meals = new HashSet<Meal>();
-	//Restaurant of the Menu
+	// Restaurant of the Menu
 	private Restaurant restaurant;
 
 	public Menu(Restaurant restaurant) {
@@ -25,8 +25,7 @@ public class Menu {
 	public void addMeal(Meal meal) {
 		// Add Meal's items to the item list
 		for (Item item : meal.getItems()) {
-			item.setMenu(this);
-			items.add(item);
+			this.addItem(item);
 		}
 		meal.setMenu(this);
 		meals.add(meal);
@@ -42,6 +41,7 @@ public class Menu {
 		}
 		if (items.contains(item)) {
 			items.remove(item);
+			item.setMenu(null);
 		}
 	}
 
@@ -49,6 +49,16 @@ public class Menu {
 		// Remove the meal from the meal set
 		if (meals.contains(meal)) {
 			meals.remove(meal);
+			meal.setMenu(null);
+		}
+		// Meal's item are not removed
+	}
+
+	public void removeMealAndItems(Meal meal) {
+		// Remove the meal from the meal set
+		this.removeMeal(meal);
+		for (Item item : meal.getItems()) {
+			this.removeItem(item);
 		}
 		// Meal's item are not removed
 	}

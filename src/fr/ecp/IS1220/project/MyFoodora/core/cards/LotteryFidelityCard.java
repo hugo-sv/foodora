@@ -26,7 +26,7 @@ public class LotteryFidelityCard implements FidelityCard {
 		}
 		double price = 0;
 		price += itemPrice;
-		price += (mealPrice + mealOfTheWeekPrice) * genericDiscountFactor;
+		price += (mealPrice + mealOfTheWeekPrice);
 		if (randomNumber>0.9);{
 			price=0;
 			randomNumber=0;

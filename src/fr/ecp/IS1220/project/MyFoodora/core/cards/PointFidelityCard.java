@@ -14,7 +14,7 @@ public class PointFidelityCard implements FidelityCard {
 			Float specialDiscountFactor) {
 		double price = 0;
 		price += itemPrice;
-		price += (mealPrice + mealOfTheWeekPrice) * genericDiscountFactor;
+		price += (mealPrice + mealOfTheWeekPrice);
 		if (points>100);{
 			price*=0.9;
 			points=0;

@@ -1,6 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
 
-public abstract class Item implements Orderable{
+public abstract class Item implements Orderable {
 	private String name;
 	private double price;
 	private boolean vegetarian;
@@ -34,9 +34,9 @@ public abstract class Item implements Orderable{
 	public boolean isVegetarian() {
 		return vegetarian;
 	}
-	
+
 	public boolean isStandard() {
-		return ! vegetarian;
+		return !vegetarian;
 	}
 
 	public void setVegetarian(boolean vegetarian) {
@@ -61,8 +61,13 @@ public abstract class Item implements Orderable{
 	}
 
 	public void setMenu(Menu menu) {
+		// Removing item if it passes from a menu to one other
+		if (this.menu != null && menu != null) {
+			this.menu.removeItem(this);
+		}
+		this.menu = menu;
+
 		this.menu = menu;
 	}
-	
-	
+
 }

@@ -7,8 +7,8 @@ public class BasicFidelityCard implements FidelityCard {
 			Float specialDiscountFactor) {
 		double price = 0;
 		price += itemPrice;
-		price += mealPrice * genericDiscountFactor;
-		price += mealOfTheWeekPrice*specialDiscountFactor;
+		price += mealPrice;//already mutiplied by genericDiscountFactor
+		price += mealOfTheWeekPrice*specialDiscountFactor/genericDiscountFactor;
 		return price;
 	}
 

@@ -21,6 +21,10 @@ public abstract class Meal implements Orderable {
 	}
 
 	public void setMenu(Menu menu) {
+		//Removing meal if it passes from a menu to one other
+		if (this.menu != null && menu !=null){
+			this.menu.removeMeal(this);
+		}
 		this.menu = menu;
 	}
 

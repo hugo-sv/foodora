@@ -6,7 +6,6 @@ public abstract class Meal implements Orderable {
 	private Dessert dessert;
 	private Starter entry;
 	private MainDish main;
-	private boolean mealOfTheWeek;
 
 	public Meal(String name) {
 		this.name = name;

@@ -2,6 +2,8 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
 
+import fr.ecp.IS1220.project.MyFoodora.core.cards.FidelityCard;
+
 public class Customer extends User {
 	// have a name, a surname, a unique ID, an address (expressed as a two
 	// dimensional co-ordinate), an email address, a phone number and a

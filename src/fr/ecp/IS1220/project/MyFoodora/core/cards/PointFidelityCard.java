@@ -1,4 +1,4 @@
-package fr.ecp.IS1220.project.MyFoodora.core;
+package fr.ecp.IS1220.project.MyFoodora.core.cards;
 
 public class PointFidelityCard implements FidelityCard {
 	// A client can select to have this fidelity card. Instead of having

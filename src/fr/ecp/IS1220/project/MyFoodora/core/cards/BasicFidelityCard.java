@@ -1,4 +1,4 @@
-package fr.ecp.IS1220.project.MyFoodora.core;
+package fr.ecp.IS1220.project.MyFoodora.core.cards;
 
 public class BasicFidelityCard implements FidelityCard {
 

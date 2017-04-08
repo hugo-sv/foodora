@@ -18,9 +18,13 @@ public class Time {
 	private void setSeconds(Long seconds) {
 		this.seconds=seconds;
 	}
-	
+	//Je ne comprends pas cette fonction ^^
 	public int compareTo(Time time) {
 		return this.getSeconds().compareTo(time.getSeconds());
+	}
+	
+	public boolean isLessThanOneDay() {
+		return currentTime.getSeconds() - seconds < 2592000/30;
 	}
 	
 	public boolean isLessThanOneMonth() {

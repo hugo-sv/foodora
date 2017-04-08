@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 
-public class Item_test {
+public class ItemTest {
 	static Dessert dessert = new Dessert("Tarte à la rubarbe", 23, true, false);
 	@Test
 	public void testIsVegetarian() {

@@ -1,5 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
 
@@ -21,7 +22,15 @@ public class Restaurant extends User {
 		this.username = username;
 		this.addressX = addressX;
 		this.addressY = addressY;
-		this.restaurantMenu = new Menu();
+		this.restaurantMenu = new Menu(this);
+	}
+	
+	public void addItem(Item item) {
+		restaurantMenu.addItem(item);
+	}
+
+	public void addMeal(Meal meal) {
+		restaurantMenu.addMeal(meal);
 	}
 
 	public String getName() {

@@ -3,10 +3,19 @@ package fr.ecp.IS1220.project.MyFoodora.core.menu;
 import java.util.HashSet;
 import java.util.Set;
 
+import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
+
 public class Menu {
 	// Set lists avoid doubles
-	Set<Item> items = new HashSet<Item>();
-	Set<Meal> meals = new HashSet<Meal>();
+	private Set<Item> items = new HashSet<Item>();
+	private Set<Meal> meals = new HashSet<Meal>();
+	//Restaurant of the Menu
+	private Restaurant restaurant;
+
+	public Menu(Restaurant restaurant) {
+		super();
+		this.setRestaurant(restaurant);
+	}
 
 	public void addItem(Item item) {
 		items.add(item);
@@ -39,6 +48,14 @@ public class Menu {
 			meals.remove(meal);
 		}
 		// Meal's item are not removed
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 
 }

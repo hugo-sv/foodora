@@ -4,6 +4,12 @@ import fr.ecp.IS1220.project.MyFoodora.core.Courier;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 import fr.ecp.IS1220.project.MyFoodora.core.Order;
 
-public interface DeliveryPolicy {
-	public Courier chooseCourier(MyFoodora myFoodora, Order order);
+public class FairOccupationPolicy implements DeliveryPolicy {
+
+	@Override
+	public Courier chooseCourier(MyFoodora myFoodora, Order order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

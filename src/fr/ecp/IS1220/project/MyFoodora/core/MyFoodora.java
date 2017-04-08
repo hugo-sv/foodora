@@ -106,5 +106,14 @@ public class MyFoodora {
 		return targetPolicy;
 	}
 	
+	public ArrayList<Courier> getCourierList() {
+		ArrayList<Courier> courierList = new ArrayList<Courier>();
+		for (User user : userList.values()) {
+			if (user instanceof Courier) {
+				courierList.add((Courier) user);
+			}
+		}
+		return courierList;
+	}
 	
 }

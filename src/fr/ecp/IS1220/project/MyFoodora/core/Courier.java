@@ -4,19 +4,15 @@ public class Courier extends User{
 	private String name;
 	private String surname;
 	private String username;
-	private double x;
-	private double y;
 	private int phoneNumber;
 	private boolean onDuty;
 	
 	
-	public Courier(String name, String surname, String username, double x, double y, int phoneNumber) {
-		super();
+	public Courier(String name, String surname, String username, double addressX, double addressY, int phoneNumber) {
+		super(addressX, addressY);
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
-		this.x = x;
-		this.y = y;
 		this.phoneNumber = phoneNumber;
 		onDuty = true;
 	}
@@ -51,22 +47,6 @@ public class Courier extends User{
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public double getX() {
-		return x;
-	}
-
-	public void setX(double x) {
-		this.x = x;
-	}
-
-	public double getY() {
-		return y;
-	}
-
-	public void setY(double y) {
-		this.y = y;
 	}
 
 	public int getPhoneNumber() {

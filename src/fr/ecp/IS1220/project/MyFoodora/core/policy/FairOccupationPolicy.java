@@ -8,8 +8,7 @@ public class FairOccupationPolicy implements DeliveryPolicy {
 
 	@Override
 	public Courier chooseCourier(MyFoodora myFoodora, Order order) {
-		// TODO Auto-generated method stub
-		return null;
+		return myFoodora.leastActiveCourier();
 	}
 
 }

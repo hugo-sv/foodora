@@ -3,6 +3,8 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
+
 public class Manager extends User {
 	private String Name;
 	private String Surname;
@@ -169,43 +171,15 @@ public class Manager extends User {
 	}
 	
 	public long mostActiveCourier() {
-		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
-		for (Order order : myFoodora.getCompletedOrder_List()) {
-			long id = order.getCourier().getiD();
-			if (activeCourier.containsKey(id)) {
-				activeCourier.put(id, activeCourier.get(id)+1);
-			}
-			activeCourier.put(id, 1);
-		}
-		long idm = -1;
-		double m = -1;
-		for (Long id : activeCourier.keySet()) {
-			if (idm <0 || activeCourier.get(id) > m) {
-				m = activeCourier.get(id);
-				idm = id;
-			}
-		}
-		return idm;
+		return myFoodora.mostActiveCourier().getiD();
 	}
 	
 	public long leastActiveCourier() {
-		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
-		for (Order order : myFoodora.getCompletedOrder_List()) {
-			long id = order.getCourier().getiD();
-			if (activeCourier.containsKey(id)) {
-				activeCourier.put(id, activeCourier.get(id)+1);
-			}
-			activeCourier.put(id, 1);
-		}
-		long idm = -1;
-		double m = -1;
-		for (Long id : activeCourier.keySet()) {
-			if (idm <0 || activeCourier.get(id) < m) {
-				m = activeCourier.get(id);
-				idm = id;
-			}
-		}
-		return idm;
+		return myFoodora.leastActiveCourier().getiD();
+	}
+	
+	public void setDeliveryPolicy(DeliveryPolicy deliveryPolicy) {
+		myFoodora.setDeliveryPolicy(deliveryPolicy);
 	}
 
 

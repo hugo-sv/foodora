@@ -3,6 +3,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
 
 public class MyFoodora {
@@ -13,6 +14,7 @@ public class MyFoodora {
 	private double markupPourcentage;
 	private double deliveryCost;
 	private TargetPolicy targetPolicy;
+	private DeliveryPolicy deliveryPolicy;
 	
 	public MyFoodora(double serviceFee, double markupPourcentage, double deliveryCost) {
 		super();
@@ -115,5 +117,61 @@ public class MyFoodora {
 		}
 		return courierList;
 	}
+	
+	public Courier mostActiveCourier() {
+		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
+		for (Courier courier : getCourierList()) {
+			activeCourier.put(courier.getiD(), 0);
+		}
+		for (Order order : getCompletedOrder_List()) {
+			long id = order.getCourier().getiD();
+			if (activeCourier.containsKey(id)) {
+				activeCourier.put(id, activeCourier.get(id)+1);
+			}
+			activeCourier.put(id, 1);
+		}
+		long idm = -1;
+		double m = -1;
+		for (Long id : activeCourier.keySet()) {
+			if (idm <0 || activeCourier.get(id) > m) {
+				m = activeCourier.get(id);
+				idm = id;
+			}
+		}
+		return (Courier) userList.get(idm);
+	}
+	
+	public Courier leastActiveCourier() {	
+		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
+		for (Courier courier : getCourierList()) {
+			activeCourier.put(courier.getiD(), 0);
+		}
+		for (Order order : getCompletedOrder_List()) {
+			long id = order.getCourier().getiD();
+			if (activeCourier.containsKey(id)) {
+				activeCourier.put(id, activeCourier.get(id)+1);
+			}
+			activeCourier.put(id, 1);
+		}
+		long idm = -1;
+		double m = -1;
+		for (Long id : activeCourier.keySet()) {
+			if (idm <0 || activeCourier.get(id) < m) {
+				m = activeCourier.get(id);
+				idm = id;
+			}
+		}
+		return (Courier) userList.get(idm);
+	}
+
+	public DeliveryPolicy getDeliveryPolicy() {
+		return deliveryPolicy;
+	}
+
+	public void setDeliveryPolicy(DeliveryPolicy deliveryPolicy) {
+		this.deliveryPolicy = deliveryPolicy;
+	}
+	
+	
 	
 }

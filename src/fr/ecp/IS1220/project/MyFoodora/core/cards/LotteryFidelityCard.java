@@ -19,7 +19,7 @@ public class LotteryFidelityCard implements FidelityCard {
 		if(lastTime.isLessThanOneDay()){
 			lastTime=Time.getTime();
 			//Change to a random number
-			randomNumber=(float) 0.9;
+			randomNumber=(float) Math.random();
 		}
 		else{
 			randomNumber=0;

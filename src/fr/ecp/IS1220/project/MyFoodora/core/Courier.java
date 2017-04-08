@@ -7,7 +7,6 @@ public class Courier extends User{
 	private double x;
 	private double y;
 	private int phoneNumber;
-	private int deliveredOrders;
 	private boolean onDuty;
 	
 	
@@ -19,7 +18,6 @@ public class Courier extends User{
 		this.x = x;
 		this.y = y;
 		this.phoneNumber = phoneNumber;
-		deliveredOrders = 0;
 		onDuty = true;
 	}
 	

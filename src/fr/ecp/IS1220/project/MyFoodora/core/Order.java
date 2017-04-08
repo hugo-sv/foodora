@@ -6,8 +6,6 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
 
 public class Order {
-	private static int genID = 0;
-	private int ID;
 	private Customer customer;
 	private Restaurant restaurant;
 	private Courier courier;
@@ -29,10 +27,6 @@ public class Order {
 		this.deliveryCost = deliveryCost;
 		this.orderDate = Time.getTime();
 
-	}
-
-	public int getID() {
-		return ID;
 	}
 
 	public Customer getCustomer() {

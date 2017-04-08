@@ -4,8 +4,6 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
 
 public class Restaurant extends User {
-	private static long genID = 0;
-	private long iD;
 	private String name;
 	private String username;
 	private double addressX;

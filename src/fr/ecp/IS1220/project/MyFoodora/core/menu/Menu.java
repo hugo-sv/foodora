@@ -58,4 +58,12 @@ public class Menu {
 		this.restaurant = restaurant;
 	}
 
+	public Set<Item> getItems() {
+		return items;
+	}
+
+	public Set<Meal> getMeals() {
+		return meals;
+	}
+
 }

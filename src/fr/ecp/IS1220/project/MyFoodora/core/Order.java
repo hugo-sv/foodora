@@ -83,5 +83,15 @@ public class Order {
 	public void setDeliverDate() {
 		this.deliverDate = Time.getTime();
 	}
+	
+	public void addOrderabe(Orderable orderable) {
+		orderables.add(orderable);
+	}
+
+	public ArrayList<Orderable> getOrderables() {
+		return orderables;
+	}
+	
+	
 
 }

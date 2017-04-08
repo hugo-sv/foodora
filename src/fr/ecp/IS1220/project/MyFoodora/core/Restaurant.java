@@ -7,7 +7,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
 public class Restaurant extends User {
 	private String name;
 	private String username;
-	private Menu restaurantMenu;
+	private Menu menu;
 	private Meal mealOfTheWeek;
 	private float genericDiscountFactor;
 	private float specialDiscountFactor;
@@ -18,16 +18,16 @@ public class Restaurant extends User {
 		this.username = username;
 		this.setAddressX(addressX);
 		this.setAddressY(addressY);
-		this.restaurantMenu = new Menu(this);
+		this.menu = new Menu(this);
 	}
 	
 	public void addItem(Item item) {
-		restaurantMenu.addItem(item);
+		menu.addItem(item);
 	}
 
 	public void addMeal(Meal meal) {
-		restaurantMenu.addMeal(meal);
-		//this.restaurantMenu = new Menu();
+		menu.addMeal(meal);
+		//this.menu = new Menu();
 	}
 
 	public String getName() {
@@ -46,8 +46,8 @@ public class Restaurant extends User {
 		this.username = username;
 	}
 
-	public Menu getRestaurantMenu() {
-		return restaurantMenu;
+	public Menu getMenu() {
+		return menu;
 	}
 
 	public Meal getMealOfTheWeek() {

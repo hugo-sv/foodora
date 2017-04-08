@@ -49,4 +49,11 @@ public abstract class Item implements Orderable{
 	public void setGluten_free(boolean glutenFree) {
 		this.glutenFree = glutenFree;
 	}
+
+	@Override
+	public String toString() {
+		return "Item [name=" + name + "]";
+	}
+	
+	
 }

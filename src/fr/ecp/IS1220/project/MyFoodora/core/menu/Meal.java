@@ -1,4 +1,4 @@
-package fr.ecp.IS1220.project.MyFoodora.core.menu;
+	package fr.ecp.IS1220.project.MyFoodora.core.menu;
 import java.util.ArrayList;
 
 public abstract class Meal implements Orderable {
@@ -103,5 +103,12 @@ public abstract class Meal implements Orderable {
 		}
 		return items;
 	}
+
+	@Override
+	public String toString() {
+		return "Meal [name=" + name + "]";
+	}
+	
+	
 
 }

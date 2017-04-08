@@ -1,27 +1,19 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
 public class Courier extends User{
-	private static long genID = 0;
-	private long iD;
 	private String name;
 	private String surname;
 	private String username;
-	private double x;
-	private double y;
 	private int phoneNumber;
-	private int deliveredOrders;
 	private boolean onDuty;
 	
 	
-	public Courier(String name, String surname, String username, double x, double y, int phoneNumber) {
-		super();
+	public Courier(String name, String surname, String username, double addressX, double addressY, int phoneNumber) {
+		super(addressX, addressY);
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
-		this.x = x;
-		this.y = y;
 		this.phoneNumber = phoneNumber;
-		deliveredOrders = 0;
 		onDuty = true;
 	}
 	
@@ -57,22 +49,6 @@ public class Courier extends User{
 		this.username = username;
 	}
 
-	public double getX() {
-		return x;
-	}
-
-	public void setX(double x) {
-		this.x = x;
-	}
-
-	public double getY() {
-		return y;
-	}
-
-	public void setY(double y) {
-		this.y = y;
-	}
-
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -81,9 +57,6 @@ public class Courier extends User{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public long getiD() {
-		return iD;
-	}
 
 	public boolean isOnDuty() {
 		return onDuty;

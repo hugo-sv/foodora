@@ -13,28 +13,18 @@ public class Customer extends User {
 	private String name;
 	private String surname;
 	private String username;
-	private ArrayList<Double> address;
 	private String email;
 	private String phoneNumber;
 	private FidelityCard fidelityCard;
 
-	public Customer(String name, String surname, String username, ArrayList<Double> address, String email,
+	public Customer(String name, String surname, String username, double addressX, double addressY, String email,
 			String phoneNumber) {
-		super();
+		super(addressX, addressY);
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
-		this.address = address;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-	}
-
-	public ArrayList<Double> getAddress() {
-		return address;
-	}
-
-	public void setAddress(ArrayList<Double> address) {
-		this.address = address;
 	}
 
 	public double getPrice() {
@@ -80,5 +70,23 @@ public class Customer extends User {
 	public void setFidelityCard(FidelityCard fidelityCard) {
 		this.fidelityCard = fidelityCard;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	
 
 }

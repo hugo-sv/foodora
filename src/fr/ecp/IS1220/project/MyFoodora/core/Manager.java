@@ -1,10 +1,9 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Manager extends User {
-	private static long genID = 0;
-	private long iD;
 	private String Name;
 	private String Surname;
 	private String Username;
@@ -128,4 +127,86 @@ public class Manager extends User {
 	public void targetProfit(double profit) {
 		myFoodora.getTargetPolicy().setParameters(myFoodora, profit);
 	}
+	
+	public long mostSellingRestaurant() {
+		HashMap<Long, Double> restaurantSell = new HashMap<Long, Double>();
+		for (Order order : myFoodora.getCompletedOrder_List()) {
+			long id = order.getRestaurant().getiD();
+			if (restaurantSell.containsKey(id)) {
+				restaurantSell.put(id, restaurantSell.get(id)+order.getPrice());
+			}
+			restaurantSell.put(id, order.getPrice());
+		}
+		long idm = -1;
+		double m = -1;
+		for (Long id : restaurantSell.keySet()) {
+			if (idm <0 || restaurantSell.get(id) > m) {
+				m = restaurantSell.get(id);
+				idm = id;
+			}
+		}
+		return idm;
+	}
+	
+	public long leastSellingRestaurant() {
+		HashMap<Long, Double> restaurantSell = new HashMap<Long, Double>();
+		for (Order order : myFoodora.getCompletedOrder_List()) {
+			long id = order.getRestaurant().getiD();
+			if (restaurantSell.containsKey(id)) {
+				restaurantSell.put(id, restaurantSell.get(id)+order.getPrice());
+			}
+			restaurantSell.put(id, order.getPrice());
+		}
+		long idm = -1;
+		double m = -1;
+		for (Long id : restaurantSell.keySet()) {
+			if (idm < 0 || restaurantSell.get(id) < m) {
+				m = restaurantSell.get(id);
+				idm = id;
+			}
+		}
+		return idm;
+	}
+	
+	public long mostActiveCourier() {
+		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
+		for (Order order : myFoodora.getCompletedOrder_List()) {
+			long id = order.getCourier().getiD();
+			if (activeCourier.containsKey(id)) {
+				activeCourier.put(id, activeCourier.get(id)+1);
+			}
+			activeCourier.put(id, 1);
+		}
+		long idm = -1;
+		double m = -1;
+		for (Long id : activeCourier.keySet()) {
+			if (idm <0 || activeCourier.get(id) > m) {
+				m = activeCourier.get(id);
+				idm = id;
+			}
+		}
+		return idm;
+	}
+	
+	public long leastActiveCourier() {
+		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
+		for (Order order : myFoodora.getCompletedOrder_List()) {
+			long id = order.getCourier().getiD();
+			if (activeCourier.containsKey(id)) {
+				activeCourier.put(id, activeCourier.get(id)+1);
+			}
+			activeCourier.put(id, 1);
+		}
+		long idm = -1;
+		double m = -1;
+		for (Long id : activeCourier.keySet()) {
+			if (idm <0 || activeCourier.get(id) < m) {
+				m = activeCourier.get(id);
+				idm = id;
+			}
+		}
+		return idm;
+	}
+
+
 }

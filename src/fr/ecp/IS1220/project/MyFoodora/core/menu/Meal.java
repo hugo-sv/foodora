@@ -21,8 +21,8 @@ public abstract class Meal implements Orderable {
 	}
 
 	public void setMenu(Menu menu) {
-		//Removing meal if it passes from a menu to one other
-		if (this.menu != null && menu !=null){
+		// Removing meal if it passes from a menu to one other
+		if (this.menu != null && menu != null) {
 			this.menu.removeMeal(this);
 		}
 		this.menu = menu;
@@ -71,7 +71,7 @@ public abstract class Meal implements Orderable {
 		if (dessert != null) {
 			price += dessert.getPrice();
 		}
-		return price * menu.getRestaurant().getGenericDiscountFactor();
+		return price * (1 - menu.getRestaurant().getGenericDiscountFactor());
 	}
 
 	public boolean isVegetarian() {

@@ -44,8 +44,7 @@ public class MyFoodora {
 		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
 		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
 		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
-		// Il faut aussi leur associer my foodora a chacun
-		G.setMyFoodora(foodora);
+		foodora.addUser(A);
 		
 
 		// 2. the system sends alerts to the customers that agreed to be
@@ -189,6 +188,7 @@ public class MyFoodora {
 	}
 
 	public void removeUser(User user) {
+		user.setMyFoodora(null);
 		userList.remove(user.getiD());
 	}
 
@@ -205,10 +205,12 @@ public class MyFoodora {
 	}
 
 	public void addCourier(Courier courier) {
+		courier.setMyFoodora(this);
 		userList.put(courier.getiD(), courier);
 	}
 
 	public void removeCourier(Courier courier) {
+		courier.setMyFoodora(null);
 		userList.remove(courier.getiD());
 	}
 

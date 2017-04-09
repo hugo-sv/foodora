@@ -17,6 +17,7 @@ public class MyFoodora {
 	private TargetPolicy targetPolicy;
 	private DeliveryPolicy deliveryPolicy;
 	private ArrayList<Customer> observers;
+	private double money = 0;
 
 	// Use Case scenario
 	public static void main(String[] args) {
@@ -344,5 +345,15 @@ public class MyFoodora {
 	public HashMap<Long, User> getUserList() {
 		return userList;
 	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+	
+	
 
 }

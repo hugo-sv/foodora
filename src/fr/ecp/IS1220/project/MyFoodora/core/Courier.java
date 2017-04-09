@@ -4,11 +4,11 @@ public class Courier extends User{
 	private String name;
 	private String surname;
 	private String username;
-	private int phoneNumber;
+	private String phoneNumber;
 	private boolean onDuty;
 	
 	
-	public Courier(String name, String surname, String username, double addressX, double addressY, int phoneNumber) {
+	public Courier(String name, String surname, String username, double addressX, double addressY, String phoneNumber) {
 		super(addressX, addressY);
 		this.name = name;
 		this.surname = surname;
@@ -49,11 +49,11 @@ public class Courier extends User{
 		this.username = username;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

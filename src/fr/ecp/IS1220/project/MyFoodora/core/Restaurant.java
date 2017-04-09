@@ -1,5 +1,7 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
+import java.util.ArrayList;
+
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
@@ -8,7 +10,9 @@ public class Restaurant extends User {
 	private String name;
 	private String username;
 	private Menu menu;
-	private Meal mealOfTheWeek;
+	// At least one meal amongst those offered by a restaurant is offered as a
+	// meal-of-the-week special offer
+	private ArrayList<Meal> mealsOfTheWeek;
 	private float genericDiscountFactor;
 	private float specialDiscountFactor;
 
@@ -20,14 +24,14 @@ public class Restaurant extends User {
 		this.setAddressY(addressY);
 		this.menu = new Menu(this);
 	}
-	
+
 	public void addItem(Item item) {
 		menu.addItem(item);
 	}
 
 	public void addMeal(Meal meal) {
 		menu.addMeal(meal);
-		//this.menu = new Menu();
+		// this.menu = new Menu();
 	}
 
 	public String getName() {
@@ -50,12 +54,25 @@ public class Restaurant extends User {
 		return menu;
 	}
 
-	public Meal getMealOfTheWeek() {
-		return mealOfTheWeek;
+	public ArrayList<Meal> getMealsOfTheWeek() {
+		return mealsOfTheWeek;
 	}
 
-	public void setMealOfTheWeek(Meal mealOfTheWeek) {
-		this.mealOfTheWeek = mealOfTheWeek;
+	public void addMealOfTheWeek(Meal meal) {
+		if (!mealsOfTheWeek.contains(meal)) {
+			mealsOfTheWeek.add(meal);
+			String message = new String("");
+			message += "The restaurant " + this.getName() + " set a new offer : The " + meal.getName() + " gets a "
+					+ this.getSpecialDiscountFactor() + " discount !";
+			myFoodora.notifyObservers(message);
+		}
+	}
+	
+	public void removeMealOfTheWeek(Meal meal) {
+		if (mealsOfTheWeek.contains(meal)) {
+			mealsOfTheWeek.remove(meal);
+			//Don't notify users
+		}
 	}
 
 	public float getGenericDiscountFactor() {

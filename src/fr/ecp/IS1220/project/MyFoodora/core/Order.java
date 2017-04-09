@@ -45,9 +45,10 @@ public class Order {
 		double mealPrice = 0;
 		double itemPrice = 0;
 		double mealOfTheWeekPrice = 0;
+		ArrayList<Meal> mealsOfTheWeek=restaurant.getMealsOfTheWeek();
 		for (Orderable o : orderables) {
 			if (o instanceof Meal) {
-				if (o.equals(restaurant.getMealOfTheWeek())) {
+				if (mealsOfTheWeek.contains(o)){
 					mealOfTheWeekPrice += o.getPrice();
 				} else {
 					mealPrice = mealPrice + o.getPrice();

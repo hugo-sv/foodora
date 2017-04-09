@@ -31,4 +31,10 @@ public class PointFidelityCard implements FidelityCard {
 	public void setPoints(double points) {
 		this.points = points;
 	}
+	
+	@Override
+	public String toString() {
+		return "Point fidelity card with "+getPoints()+" points.";
+	}
+	
 }

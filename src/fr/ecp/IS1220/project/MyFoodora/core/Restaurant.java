@@ -14,7 +14,7 @@ public class Restaurant extends User {
 	// meal-of-the-week special offer
 	private ArrayList<Meal> mealsOfTheWeek;
 	private float genericDiscountFactor=(float) 0.05;
-	private float specialDiscountFactor=(float) 0.95;
+	private float specialDiscountFactor=(float) 0.1;
 
 	public Restaurant(String name, String username, double addressX, double addressY) {
 		super(addressX, addressY);

@@ -11,5 +11,10 @@ public class BasicFidelityCard implements FidelityCard {
 		price += mealOfTheWeekPrice*(1-specialDiscountFactor)/(1-genericDiscountFactor);
 		return price;
 	}
+	
+	@Override
+	public String toString() {
+		return "Basic fidelity card";
+	}
 
 }

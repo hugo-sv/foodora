@@ -25,6 +25,17 @@ public class Customer extends User {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public String getAccountInfo() {
+		String info = new String();
+		info += "Name : " + name + "/nSurname : " + surname + "/nEmail : " + email + "/nPhone number : " + phoneNumber
+				+ "/nFidelity card : " + fidelityCard.toString() + "/nOrders :/n";
+		for (Order o : orders) {
+			info += o.toString();
+			info += "/n";
+		}
+		return info;
+	}
+
 	public void notify(String message) {
 		// Sending Email
 		System.out.println("Email sent to " + email + " :");

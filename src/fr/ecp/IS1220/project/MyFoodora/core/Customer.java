@@ -27,12 +27,8 @@ public class Customer extends User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public double getPrice() {
-		double Price = 0;
-		for (Order v : orders) {
-			Price = Price + v.getPrice();
-		}
-		return Price;
+	public void addOrder(Order order){
+		orders.add(order);
 	}
 
 	public String getName() {

@@ -44,11 +44,14 @@ public class MyFoodora {
 		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
 		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
 		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
-		//Il faut aussi leur associer my foodora a chacun
+		// Il faut aussi leur associer my foodora a chacun
 		G.setMyFoodora(foodora);
+		
 
 		// 2. the system sends alerts to the customers that agreed to be
 		// notified of special offers
+		foodora.notifyObservers("You agreed to be notified.");
+
 		// Register a user
 		// 1. a user start using the system because she wants to register
 		// 2. the user inserts his first-name, his last-name, his username, his
@@ -181,6 +184,7 @@ public class MyFoodora {
 	}
 
 	public void addUser(User user) {
+		user.setMyFoodora(this);
 		userList.put(user.getiD(), user);
 	}
 

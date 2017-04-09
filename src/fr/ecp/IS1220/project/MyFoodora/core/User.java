@@ -14,6 +14,10 @@ abstract public class User {
 		activated = true;
 	}
 	
+	public void setMyFoodora(MyFoodora myFoodora) {
+		this.myFoodora = myFoodora;
+	}
+
 	public User(double addressX, double addressY) {
 		this.iD = genID;
 		genID++;

@@ -3,6 +3,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
 
@@ -16,6 +17,116 @@ public class MyFoodora {
 	private TargetPolicy targetPolicy;
 	private DeliveryPolicy deliveryPolicy;
 	private ArrayList<Customer> observers;
+
+	// Use Case scenario
+	public static void main(String[] args) {
+		// The following use case scenario describe examples of how the
+		// MyFoodora should function.
+		// Startup scenario
+		// 1. the system loads all registered users: at least 2 manager (the CEO
+		// and his deputy
+		// i.e. ajoint), 5 restaurants and 2 couriers, 7 customers, 4 full-meals
+		// per restaurant...
+		MyFoodora foodora = new MyFoodora(0.5, 0.05, 1);
+		Manager CEO = new Manager("Mary", "mary", "boss47");
+		Manager Deputy = new Manager("John", "john", "jojojo");
+		Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
+		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
+		Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
+		Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
+		Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
+		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
+		Courier Carole = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
+		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
+		Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
+		Customer C = new Customer("C", "C", "c", 52, -14, "0654312456", "C@laposte.net");
+		Customer D = new Customer("D", "D", "d", -22, 42, "0658318456", "D@laposte.net");
+		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
+		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
+		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
+		//Il faut aussi leur associer my foodora a chacun
+		G.setMyFoodora(foodora);
+
+		// 2. the system sends alerts to the customers that agreed to be
+		// notified of special offers
+		// Register a user
+		// 1. a user start using the system because she wants to register
+		// 2. the user inserts his first-name, his last-name, his username, his
+		// address, his birth-
+		// date...
+		// Page 7IS1220 - Object Oriented Software Design
+		// Project March-April 2017
+		// 3. the user starts inserting a contact info with the type and the
+		// value (e.g. email, phone)
+		// • the user repeats step 3 since he ends to inserts his contact info
+		// 4. if the user is a customer she sets the agreement about the special
+		// offer contact (by
+		// default it is no)
+		// 5. the user is a customer selects the contact to be used to send the
+		// offers (by default it
+		// is the e-mail if exists)
+		// 6. if the user is a courier he sets his current duty status (default
+		// off-duty)
+		// 7. the user specify to save the account
+		// Login user
+		// 1. a user wants to login
+		// 2. the user inserts username and password
+		// 3. the system handles the login and presents to the user the
+		// available operations ac-
+		// cording to his role
+		// Ordering a meal
+		// 1. a client start using the system because she wants to order a meal
+		// 2. the client inserts his credentials (username and password)
+		// 3. the system recognizes the client and proposes the available
+		// restaurants
+		// 4. the client select a restaurant and compose an order either by
+		// selecting dishes à la
+		// carte or by selecting meals from the restaurant menu. For each item
+		// in the order the
+		// client specifies the quantity.
+		// 5. Once the order is completed the client selects the end
+		// 6. the system shows the summary of the ordered dishes and the total
+		// price of the order
+		// taking into account the pricing rules
+		// Inserting a meal or dish in a restaurant menu
+		// 1. a restaurant person start using the system because she wants to
+		// insert a new meal
+		// 2. she inserts the restaurant credentials (username and password)
+		// Page 8IS1220 - Object Oriented Software Design
+		// Project March-April 2017
+		// 3. the system recognizes the restaurant and shows the list of dishes
+		// and meals in the
+		// menu
+		// 4. the restaurant selects the insert new meal (or dish) operations
+		// 5. the restaurant inserts the name of the new meal (or dish) to be
+		// added and specify
+		// whether it is an half-meal or a full-meal or a meal-of-the-week
+		// 6. in case of a dish the restaurant specify the unit price and the
+		// category its category
+		// (starter, main dish, dessert)
+		// 7. in case of meal
+		// • the restaurant inserts the dishes of the meal
+		// • the restaurant compute and save the price of the meal
+		// 8. the restaurant saves the new created meal (or dish) in the menu
+		// Adding a meal of the week special offer
+		// 1. a restaurant staff starts using the system and inserts the
+		// restaurant credentials
+		// 2. the system shows all restaurant’s available meals
+		// 3. the restaurant selects the meal to be set as meal of the week
+		// 4. the system automatically updates the price of selected meal of the
+		// week, by application
+		// of special discount factor
+		// 5. the system notifies the users (that agreed to be notified of
+		// special offers) about the
+		// new offer
+		// Removing a meal of the week special offer
+		// 1. a restaurant staff starts using the system and inserts the
+		// restaurant credentials
+		// 2. the system shows all restaurant’s available meals
+		// 3. the restaurant selects a meal in the meal of the week list and
+		// selects the remove from
+		// its special offer state.
+	}
 
 	// Constructor
 	public MyFoodora(double serviceFee, double markupPourcentage, double deliveryCost) {
@@ -62,7 +173,7 @@ public class MyFoodora {
 			c.notify("You have already refused to be notified whenever a new special offer is set by any restaurant");
 		}
 	}
-	
+
 	public void notifyObservers(String message) {
 		for (Customer c : observers) {
 			c.notify(message);

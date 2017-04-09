@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.OrderSortingPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
 
 public class MyFoodora {
@@ -16,6 +17,7 @@ public class MyFoodora {
 	private double deliveryCost;
 	private TargetPolicy targetPolicy;
 	private DeliveryPolicy deliveryPolicy;
+	private OrderSortingPolicy orderSortingPolicy;
 	private ArrayList<Customer> observers;
 	private double money = 0;
 
@@ -140,6 +142,7 @@ public class MyFoodora {
 		this.userList = new HashMap<Long, User>();
 		this.completedOrder_List = new ArrayList<Order>();
 		this.currentOrder_List = new ArrayList<Order>();
+		this.observers = new ArrayList<Customer>();
 	}
 
 	public void give(Order order) {

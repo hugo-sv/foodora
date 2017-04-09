@@ -7,6 +7,7 @@ abstract public class User {
 	private boolean activated;
 	private double addressX = 0;
 	private double addressY = 0;
+	private double money = 0;
 	
 	public User() {
 		this.iD = genID;
@@ -57,6 +58,14 @@ abstract public class User {
 
 	public void setAddressY(double addressY) {
 		this.addressY = addressY;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
 	}
 	
 }

@@ -141,7 +141,7 @@ public class MyFoodora {
 		this.currentOrder_List = new ArrayList<Order>();
 	}
 
-	public void give(double price) {
+	public void give(Order order) {
 		// Registered customers make their own selection and they are charged a
 		// total fee which is cashed by MyFoodora and that includes also the
 		// cost of delivery. The total fee is broken down into: 1) the price of
@@ -156,6 +156,13 @@ public class MyFoodora {
 		// is placed (and payed for) the system is in charge for managing the
 		// delivery of the order, that is, the system will find an available
 		// deliverer amongst a fleet of available couriers.
+		if (!currentOrder_List.contains(order)) {
+			currentOrder_List.add(order);
+		}
+		Courier courier = deliveryPolicy.chooseCourier(this, order);
+		courier.propose(order);
+		
+		
 	}
 
 	public void registerObserver(Customer c) {
@@ -332,6 +339,10 @@ public class MyFoodora {
 
 	public void setDeliveryPolicy(DeliveryPolicy deliveryPolicy) {
 		this.deliveryPolicy = deliveryPolicy;
+	}
+
+	public HashMap<Long, User> getUserList() {
+		return userList;
 	}
 
 }

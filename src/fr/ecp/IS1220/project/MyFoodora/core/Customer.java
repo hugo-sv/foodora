@@ -51,7 +51,9 @@ public class Customer extends User {
 	}
 
 	public void payOrder(Order order) {
-		myFoodora.give(order.getPrice());
+		double price = order.getPrice()*(1+order.getMarkupPourcentage())+order.getServiceFee();
+		System.out.println(order.getCustomer()+" : paid"+price);
+		myFoodora.give(order);
 		// Once the order is paid
 		orders.add(order);
 	}

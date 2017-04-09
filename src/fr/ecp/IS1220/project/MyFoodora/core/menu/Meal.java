@@ -109,10 +109,10 @@ public abstract class Meal implements Orderable {
 			items.add(entry);
 		}
 		if (main != null) {
-			items.add(entry);
+			items.add(main);
 		}
 		if (dessert != null) {
-			items.add(entry);
+			items.add(dessert);
 		}
 		return items;
 	}

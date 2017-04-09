@@ -6,6 +6,7 @@ public class Courier extends User{
 	private String username;
 	private String phoneNumber;
 	private boolean onDuty;
+	private Order currentOrder;
 	
 	
 	public Courier(String name, String surname, String username, double addressX, double addressY, String phoneNumber) {
@@ -14,7 +15,7 @@ public class Courier extends User{
 		this.surname = surname;
 		this.username = username;
 		this.phoneNumber = phoneNumber;
-		onDuty = true;
+		onDuty = false;
 	}
 	
 	public void register(MyFoodora myFoodora) {
@@ -65,7 +66,30 @@ public class Courier extends User{
 	public void setOnDuty(boolean onDuty) {
 		this.onDuty = onDuty;
 	}
-
+	
+	public void propose(Order order) {
+		this.currentOrder = order;
+	}
+	
+	public void accept() {
+		if (currentOrder != null) {
+			myFoodora.getCurrentOrder_List().remove(currentOrder);
+			setAddress(currentOrder.getCustomer().getAddressX(), currentOrder.getCustomer().getAddressY());
+			currentOrder = null;
+		} else {
+			System.out.println("No current order proposed");
+		}
+	}
+	
+	public void refuse() {
+		if (currentOrder != null) {
+			currentOrder = null;
+			myFoodora.give(currentOrder);
+		} else {
+			System.out.println("No current order proposed");
+		}
+	}
+	
 
 	
 		 

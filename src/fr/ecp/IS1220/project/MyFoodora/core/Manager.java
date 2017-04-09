@@ -12,7 +12,7 @@ public class Manager extends User {
 	private MyFoodora myFoodora;
 	
 	
-	public Manager(long iD, String name, String surname, String username) {
+	public Manager(String name, String surname, String username) {
 		super();
 		Name = name;
 		Surname = surname;

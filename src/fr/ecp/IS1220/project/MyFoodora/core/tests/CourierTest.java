@@ -44,20 +44,4 @@ public class CourierTest {
 		Fred.setOnDuty(true);
 		assertTrue(Fred.isOnDuty());
 	}
-
-	@Test
-	public void testPropose() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAccept() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRefuse() {
-		fail("Not yet implemented");
-	}
-
 }

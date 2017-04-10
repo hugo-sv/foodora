@@ -9,26 +9,27 @@ import fr.ecp.IS1220.project.MyFoodora.core.Courier;
 import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
-import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryCostPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.MarkupPolicy;
 
-public class ManagerTest {
+public class MarkupPolicyTest {
 	static MyFoodora foodora = new MyFoodora(0.1, 0.1, 0.1);
-	
+
 	static Manager Johna = new Manager("John", "jo", "john");
 	static Manager CEO = new Manager("Mary", "mary", "boss47");
 	static Manager Deputy = new Manager("John", "john", "jojojo");
-	
+
 	static Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
 	static Courier Fredi = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
 	static Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10, "Carole@laposte.net",
 			"0612345678");
-	
+
 	static Customer A1 = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 	static Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 	static Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
@@ -37,21 +38,21 @@ public class ManagerTest {
 	static Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
 	static Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
 	static Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
-	
+
 	static Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
 	static Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
 	static Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
 	static Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
 
 	static Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
-	
+
 	static MainDish Drink = new MainDish("Drink", 0.5, true, true);
 	static MainDish BigMac = new MainDish("BigMac", 5, false, false);
 	static Starter Salad = new Starter("Salad", 1, true, true);
 	static Dessert MacFlurry = new Dessert("McFlurry", 2, true, false);
 	static FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
 	static HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
-	
+
 	static FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true),
 			new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
 	static HalfMeal F10 = new HalfMeal("F10", new MainDish("Chicken2Bio", 4, false, true),
@@ -68,7 +69,7 @@ public class ManagerTest {
 			new Dessert("Donut", 2, true, false));
 	static HalfMeal F4 = new HalfMeal("F4", new MainDish("Nuggets", 4, false, true),
 			new Dessert("Donut", 2, true, false));
-	
+
 	@Before
 	public void testManager() {
 		foodora.addUser(Johna);
@@ -100,61 +101,12 @@ public class ManagerTest {
 		foodora.addUser(E);
 		foodora.addUser(F);
 		foodora.addUser(G);
-		System.out.println("ManagerTest.testManager()");
-	}
 
-	@Test
-	public void testGetSurname() {
-		System.out.println("Mansghgdsdfghgfdst.main()");
-		assertEquals("jo", Johna.getSurname());
 	}
-
-	@Test
-	public void testSetSurname() {
-		Johna.setSurname("jojo");
-		assertEquals("jojo", Johna.getSurname());
-		Johna.setSurname("jo");
-	}
-
-	@Test
-	public void testAddUser() {
-		Johna.addUser(Fredi);
-		assertTrue(foodora.getUserList().containsValue(Fredi));
-		Johna.addUser(A1);
-		assertTrue(foodora.getUserList().containsValue(A1));
-	}
-
-	@Test
-	public void testRemoveUser() {
-		Johna.addUser(Fredi);
-		assertTrue(foodora.getUserList().containsValue(Fredi));
-		Johna.removeUser(Fredi);
-		assertTrue(!foodora.getUserList().containsValue(Fredi));
-		Johna.addUser(Fredi);
-	}
-
-	@Test
-	public void testActivate() {
-		Johna.disactivate(A1);
-		Johna.activate(A1);
-		assertTrue(A1.isActivated());
-	}
-
-	@Test
-	public void testDisactivate() {
-		Johna.activate(A1);
-		Johna.disactivate(A1);
-		assertTrue(!A1.isActivated());
-	}
-
 	@Test
 	public void testSetParameters() {
-		Johna.setServiceFee(0.5);
-		Johna.setMarkupPourcentage(0.6);
-		Johna.setDeliveryCost(0.8);
-		assertTrue(foodora.getServiceFee() == 0.5);
-		assertTrue(foodora.getMarkupPourcentage() == 0.6);
-		assertTrue(foodora.getDeliveryCost() == 0.8);
+		foodora.setTargetPolicy(new MarkupPolicy());
+		foodora.getTargetPolicy().setParameters(foodora, 5);
 	}
 
 }

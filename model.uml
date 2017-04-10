@@ -1430,8 +1430,6 @@
                         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
                       </ownedParameter>
                     </ownedOperation>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_fcqU0B4eEeeCTKr98N2j2g" name="getTime()"/>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_gxgA0B4eEeeCTKr98N2j2g" name="addTime"/>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_9GZ6gR4WEeeCTKr98N2j2g" name="Restaurant" visibility="public">
                     <generalization xmi:type="uml:Generalization" xmi:id="_9JfDsB4WEeeCTKr98N2j2g" general="_9GAR4B4WEeeCTKr98N2j2g"/>
@@ -2271,7 +2269,6 @@
                       <ownedOperation xmi:type="uml:Operation" xmi:id="_9wL3UB4WEeeCTKr98N2j2g" name="toString" visibility="public">
                         <ownedParameter xmi:type="uml:Parameter" xmi:id="_9wPhsB4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
                       </ownedOperation>
-                      <ownedOperation xmi:type="uml:Operation" xmi:id="__GuvUB4dEeeCTKr98N2j2g" name="getOffer()"/>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_9vZNIR4WEeeCTKr98N2j2g" name="BasicFidelityCard" visibility="public">
                       <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_9vZ0MB4WEeeCTKr98N2j2g" name="BasicFidelityCard implements FidelityCard" client="_9vZNIR4WEeeCTKr98N2j2g" supplier="_9vSfcB4WEeeCTKr98N2j2g" contract="_9vSfcB4WEeeCTKr98N2j2g"/>
@@ -2561,7 +2558,6 @@
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-KRLQB4WEeeCTKr98N2j2g" value="1"/>
                         </ownedParameter>
                       </ownedOperation>
-                      <ownedOperation xmi:type="uml:Operation" xmi:id="_Z_PC0B4eEeeCTKr98N2j2g" name="getPrice()"/>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_-JQeoh4WEeeCTKr98N2j2g" name="Menu" visibility="public">
                       <ownedAttribute xmi:type="uml:Property" xmi:id="_-JiLcB4WEeeCTKr98N2j2g" name="items" visibility="private" type="_-JgWQB4WEeeCTKr98N2j2g" isUnique="false">
@@ -2932,7 +2928,6 @@
                       <ownedOperation xmi:type="uml:Operation" xmi:id="_-KNg4R4WEeeCTKr98N2j2g" name="toString" visibility="public" method="_-KOH8B4WEeeCTKr98N2j2g">
                         <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KNg4h4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
                       </ownedOperation>
-                      <ownedOperation xmi:type="uml:Operation" xmi:id="_bOu70B4eEeeCTKr98N2j2g" name="getPrice()"/>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_-J9CMB4WEeeCTKr98N2j2g" name="MainDish" visibility="public">
                       <generalization xmi:type="uml:Generalization" xmi:id="_-J9pQB4WEeeCTKr98N2j2g" general="_-JPQgB4WEeeCTKr98N2j2g"/>

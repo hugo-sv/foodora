@@ -141,7 +141,7 @@ public class ManagerTest {
 	public void testDisactivate() {
 		Johna.activate(A1);
 		Johna.disactivate(A1);
-		assertTrue(!A1.isActivated());
+		assertFalse(!A1.isActivated());
 	}
 
 	@Test

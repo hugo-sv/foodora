@@ -67,18 +67,13 @@ public class ManagerTest {
 	}
 
 	@Test
-	public void testSetServiceFee() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetMarkupPourcentage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetDeliveryCost() {
-		fail("Not yet implemented");
+	public void testSetParameters() {
+		John.setServiceFee(0.5);
+		John.setMarkupPourcentage(0.6);
+		John.setDeliveryCost(0.8);
+		assertTrue(foodora.getServiceFee()==0.5);
+		assertTrue(foodora.getMarkupPourcentage()==0.6);
+		assertTrue(foodora.getDeliveryCost()==0.8);
 	}
 
 	@Test
@@ -135,105 +130,4 @@ public class ManagerTest {
 	public void testUserStringString() {
 		fail("Not yet implemented");
 	}
-
-	@Test
-	public void testSetMyFoodora() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUserStringStringDoubleDouble() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetiD() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testIsActivated() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetActivated() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAddressX() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAddressY() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetAddress() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetAddressX() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetAddressY() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetMoney() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetMoney() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetName() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetName() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetUsername() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetUsername() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetEmail() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetEmail() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetPhoneNumber() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetPhoneNumber() {
-		fail("Not yet implemented");
-	}
-
 }

@@ -520,6 +520,9 @@
                     </ownedAttribute>
                     <ownedAttribute xmi:type="uml:Property" xmi:id="_9GsOYh4WEeeCTKr98N2j2g" name="orderDate" visibility="private" type="_9GW3MB4WEeeCTKr98N2j2g" isUnique="false"/>
                     <ownedAttribute xmi:type="uml:Property" xmi:id="_9Gs1cB4WEeeCTKr98N2j2g" name="deliverDate" visibility="private" type="_9GW3MB4WEeeCTKr98N2j2g" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_97iEUh4ZEeeCTKr98N2j2g" name="customer" type="_9FpskB4WEeeCTKr98N2j2g" association="_97hdQB4ZEeeCTKr98N2j2g"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_-onz0h4ZEeeCTKr98N2j2g" name="restaurant" type="_9GZ6gR4WEeeCTKr98N2j2g" association="_-onMwB4ZEeeCTKr98N2j2g"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_ky8Z0h4aEeeCTKr98N2j2g" name="courier" type="_9GJb0B4WEeeCTKr98N2j2g" association="_ky7ywB4aEeeCTKr98N2j2g"/>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_9Gy8EB4WEeeCTKr98N2j2g" name="Order" specification="_9Gs1cR4WEeeCTKr98N2j2g">
                       <language>JAVA</language>
                       <body>
@@ -714,6 +717,16 @@
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_9HI6UB4WEeeCTKr98N2j2g" name="setCourier" visibility="public" method="_9HJhYR4WEeeCTKr98N2j2g">
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_9HJhYB4WEeeCTKr98N2j2g" name="courier" type="_9GJb0B4WEeeCTKr98N2j2g"/>
                     </ownedOperation>
+                    <nestedClassifier xmi:type="uml:Interface" xmi:id="_-JPQgR4WEeeCTKr98N2j2g" name="Orderable" visibility="public">
+                      <ownedOperation xmi:type="uml:Operation" xmi:id="_-KOH8R4WEeeCTKr98N2j2g" name="getPrice" visibility="private">
+                        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KP9IB4WEeeCTKr98N2j2g" direction="return">
+                          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+                        </ownedParameter>
+                      </ownedOperation>
+                      <ownedOperation xmi:type="uml:Operation" xmi:id="_-KWq0B4WEeeCTKr98N2j2g" name="getName" visibility="private">
+                        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KXR4B4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
+                      </ownedOperation>
+                    </nestedClassifier>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_9FpskB4WEeeCTKr98N2j2g" name="Customer" visibility="public">
                     <generalization xmi:type="uml:Generalization" xmi:id="_9I9fQB4WEeeCTKr98N2j2g" general="_9GAR4B4WEeeCTKr98N2j2g"/>
@@ -733,6 +746,7 @@
                       </defaultValue>
                     </ownedAttribute>
                     <ownedAttribute xmi:type="uml:Property" xmi:id="_9JCXwB4WEeeCTKr98N2j2g" name="notifyMean" visibility="private" type="_9F7ZYB4WEeeCTKr98N2j2g" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_G0OG0h4bEeeCTKr98N2j2g" name="fidelitycard" type="_9vSfcB4WEeeCTKr98N2j2g" association="_G0NfwB4bEeeCTKr98N2j2g"/>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_9JJFcR4WEeeCTKr98N2j2g" name="Customer" specification="_9JDl4B4WEeeCTKr98N2j2g">
                       <language>JAVA</language>
                       <body>
@@ -941,6 +955,7 @@
                         <body>0</body>
                       </defaultValue>
                     </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_hPNNUh4aEeeCTKr98N2j2g" name="myfoodora" type="_9CayYB4WEeeCTKr98N2j2g" association="_hPMmQB4aEeeCTKr98N2j2g"/>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_9HuJIB4WEeeCTKr98N2j2g" name="User" specification="_9HopkB4WEeeCTKr98N2j2g">
                       <language>JAVA</language>
                       <body>
@@ -1415,6 +1430,8 @@
                         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
                       </ownedParameter>
                     </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_fcqU0B4eEeeCTKr98N2j2g" name="getTime()"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_gxgA0B4eEeeCTKr98N2j2g" name="addTime"/>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_9GZ6gR4WEeeCTKr98N2j2g" name="Restaurant" visibility="public">
                     <generalization xmi:type="uml:Generalization" xmi:id="_9JfDsB4WEeeCTKr98N2j2g" general="_9GAR4B4WEeeCTKr98N2j2g"/>
@@ -1441,6 +1458,7 @@
                         <body>(float) 0.1</body>
                       </defaultValue>
                     </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_6dIq0h4ZEeeCTKr98N2j2g" name="menu" type="_-JQeoh4WEeeCTKr98N2j2g" association="_6dIDwB4ZEeeCTKr98N2j2g"/>
                     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_9JtGIB4WEeeCTKr98N2j2g" name="Restaurant" specification="_9Jo0sB4WEeeCTKr98N2j2g">
                       <language>JAVA</language>
                       <body>
@@ -1580,379 +1598,6 @@
                     </ownedOperation>
                     <ownedOperation xmi:type="uml:Operation" xmi:id="_9KGuwB4WEeeCTKr98N2j2g" name="toString" visibility="public" method="_9KHV0R4WEeeCTKr98N2j2g">
                       <ownedParameter xmi:type="uml:Parameter" xmi:id="_9KHV0B4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
-                    </ownedOperation>
-                  </packagedElement>
-                  <packagedElement xmi:type="uml:Class" xmi:id="_9IT_AB4WEeeCTKr98N2j2g" name="UseCase" visibility="public">
-                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_9IWbQB4WEeeCTKr98N2j2g" name="main" specification="_9IT_AR4WEeeCTKr98N2j2g">
-                      <language>JAVA</language>
-                      <body>
-    // The following use case scenario describe examples of how the
-    // MyFoodora should function.
-    // Startup scenario
-    // 1. the system loads all registered users: at least 2 manager (the CEO
-    // and his deputy
-    // i.e. ajoint), 5 restaurants and 2 couriers, 7 customers, 4 full-meals
-    // per restaurant...
-    MyFoodora foodora = new MyFoodora(0.5, 0.05, 1);
-    Manager CEO = new Manager(&quot;Mary&quot;, &quot;mary&quot;, &quot;boss47&quot;);
-    foodora.addUser(CEO);
-    Manager Deputy = new Manager(&quot;John&quot;, &quot;john&quot;, &quot;jojojo&quot;);
-    foodora.addUser(Deputy);
-    Restaurant Macdo = new Restaurant(&quot;MacDonald&quot;, &quot;macdonald&quot;, 15, -20);
-    foodora.addUser(Macdo);
-    MainDish Drink = new MainDish(&quot;Drink&quot;, 0.5, true, true);
-    MainDish BigMac = new MainDish(&quot;BigMac&quot;, 5, false, false);
-    Starter Salad = new Starter(&quot;Salad&quot;, 1, true, true);
-    Dessert MacFlurry = new Dessert(&quot;McFlurry&quot;, 2, true, false);
-    FullMeal F1 = new FullMeal(&quot;F1&quot;, Salad, BigMac, MacFlurry);
-    HalfMeal F2 = new HalfMeal(&quot;F2&quot;, Salad, Drink);
-    Macdo.addMeal(F1);
-    Macdo.addMeal(F2);
-    Restaurant Quick = new Restaurant(&quot;Quick&quot;, &quot;quick&quot;, 105, 74);
-    foodora.addUser(Quick);
-    FullMeal F3 = new FullMeal(&quot;F3&quot;, Salad, new MainDish(&quot;Nuggets&quot;, 4, false, true), new Dessert(&quot;Donut&quot;, 2, true, false));
-    HalfMeal F4 = new HalfMeal(&quot;F4&quot;, new MainDish(&quot;Nuggets&quot;, 4, false, true), new Dessert(&quot;Donut&quot;, 2, true, false));
-    Quick.addMeal(F3);
-    Quick.addMeal(F4);
-    Restaurant Sushi = new Restaurant(&quot;SushiWorld&quot;, &quot;sushi&quot;, 5, -50);
-    foodora.addUser(Sushi);
-    FullMeal F5 = new FullMeal(&quot;F5&quot;, new Starter(&quot;Sushi2&quot;, 4, false, true), new MainDish(&quot;Sushi1&quot;, 4, false, true), new Dessert(&quot;Dessert&quot;, 2, true, false));
-    HalfMeal F6 = new HalfMeal(&quot;F6&quot;, new MainDish(&quot;Sushi3&quot;, 4, false, true), new Dessert(&quot;Dessert2&quot;, 2, true, false));
-    Sushi.addMeal(F5);
-    Sushi.addMeal(F6);
-    Restaurant KFC = new Restaurant(&quot;KFC&quot;, &quot;kfc&quot;, 40, 10);
-    foodora.addUser(KFC);
-    FullMeal F7 = new FullMeal(&quot;F7&quot;, new Starter(&quot;Saucisson&quot;, 4, false, true), new MainDish(&quot;Chicken&quot;, 4, false, true), new Dessert(&quot;IceCream&quot;, 2, true, false));
-    HalfMeal F8 = new HalfMeal(&quot;F8&quot;, new MainDish(&quot;Chicken2&quot;, 4, false, true), new Dessert(&quot;BetterIceCream&quot;, 2, true, false));
-    KFC.addMeal(F7);
-    KFC.addMeal(F8);
-    Restaurant Bio = new Restaurant(&quot;BioFast&quot;, &quot;biofast&quot;, -40, -10);
-    foodora.addUser(Bio);
-    FullMeal F9 = new FullMeal(&quot;F9&quot;, new Starter(&quot;SaucissonBio&quot;, 4, false, true), new MainDish(&quot;ChickenBio&quot;, 4, false, true), new Dessert(&quot;IceCreamBio&quot;, 2, true, false));
-    HalfMeal F10 = new HalfMeal(&quot;F10&quot;, new MainDish(&quot;Chicken2Bio&quot;, 4, false, true), new Dessert(&quot;BetterIceCreamBio&quot;, 2, true, false));
-    Bio.addMeal(F9);
-    Bio.addMeal(F10);
-    Courier Fred = new Courier(&quot;Fred&quot;, &quot;fredo&quot;, &quot;fred&quot;, 0, 10, &quot;Fred@laposte.net&quot;, &quot;0612345678&quot;);
-    foodora.addUser(Fred);
-    Courier Carole = new Courier(&quot;Carole&quot;, &quot;Coco&quot;, &quot;~Xxcaroledu58xX~&quot;, 0, 10, &quot;Carole@laposte.net&quot;, &quot;0612345678&quot;);
-    foodora.addUser(Carole);
-    Customer A = new Customer(&quot;A&quot;, &quot;A&quot;, &quot;a&quot;, 22, -24, &quot;0654312456&quot;, &quot;A@laposte.net&quot;);
-    foodora.addUser(A);
-    Customer B = new Customer(&quot;B&quot;, &quot;B&quot;, &quot;b&quot;, 42, 14, &quot;0654617456&quot;, &quot;B@laposte.net&quot;);
-    foodora.addUser(B);
-    Customer C = new Customer(&quot;C&quot;, &quot;C&quot;, &quot;c&quot;, 52, -14, &quot;0654312456&quot;, &quot;C@laposte.net&quot;);
-    foodora.addUser(C);
-    Customer D = new Customer(&quot;D&quot;, &quot;D&quot;, &quot;d&quot;, -22, 42, &quot;0658318456&quot;, &quot;D@laposte.net&quot;);
-    foodora.addUser(D);
-    Customer E = new Customer(&quot;E&quot;, &quot;E&quot;, &quot;e&quot;, -12, 64, &quot;0654312956&quot;, &quot;E@laposte.net&quot;);
-    foodora.addUser(E);
-    Customer F = new Customer(&quot;F&quot;, &quot;F&quot;, &quot;f&quot;, -2, -4, &quot;0614372456&quot;, &quot;F@laposte.net&quot;);
-    foodora.addUser(F);
-    Customer G = new Customer(&quot;G&quot;, &quot;G&quot;, &quot;g&quot;, 0, 47, &quot;0654312456&quot;, &quot;G@laposte.net&quot;);
-    foodora.addUser(G);
-    // 2. the system sends alerts to the customers that agreed to be
-    // notified of special offers
-    foodora.notifyObservers(&quot;You agreed to be notified.&quot;);
-    // Register a user
-    // 1. a user start using the system because she wants to register
-    Scanner sc = new Scanner(System.in);
-    int action;
-    do {
-        System.out.println(&quot;What would you like to do :&quot;);
-        System.out.println(&quot;1 - Register&quot;);
-        System.out.println(&quot;2 - Connect&quot;);
-        System.out.println(&quot;3 - Ordering a meal&quot;);
-        System.out.println(&quot;4 - Inserting a meal or dish in a restaurant menu&quot;);
-        System.out.println(&quot;5 - Adding a meal of the week special offer&quot;);
-        System.out.println(&quot;6 - Removing a meal of the week special offer&quot;);
-        action = Integer.parseInt(sc.nextLine());
-    } while (action != 1 &amp;&amp; action != 2 &amp;&amp; action != 3 &amp;&amp; action != 4 &amp;&amp; action != 5 &amp;&amp; action != 6);
-    if (action == 1) {
-        // 2. the user inserts his first-name, his last-name, his username,
-        // his
-        // address, his birth-
-        // date...
-        System.out.println(&quot;Registering process...&quot;);
-        String name;
-        String surname;
-        String username;
-        double addressX;
-        double addressY;
-        System.out.println(&quot;Enter name :&quot;);
-        name = sc.nextLine();
-        System.out.println(&quot;Enter surname :&quot;);
-        surname = sc.nextLine();
-        System.out.println(&quot;Enter username :&quot;);
-        username = sc.nextLine();
-        System.out.println(&quot;Enter address :&quot;);
-        addressX = Double.parseDouble(sc.nextLine());
-        addressY = Double.parseDouble(sc.nextLine());
-        int type;
-        User c;
-        do {
-            System.out.println(&quot;Enter type of user :&quot;);
-            System.out.println(&quot;1 - Customer&quot;);
-            System.out.println(&quot;2 - Courier&quot;);
-            type = Integer.parseInt(sc.nextLine());
-        } while (type != 1 &amp;&amp; type != 2);
-        if (type == 1) {
-            c = (Customer) new Customer(name, surname, username, addressX, addressY);
-        } else {
-            c = (Courier) new Courier(name, surname, username, addressX, addressY);
-        }
-        foodora.addUser(c);
-        // 3. the user starts inserting a contact info with the type and the
-        // value (e.g. email, phone)
-        // • the user repeats step 3 since he ends to inserts his contact
-        // info
-        int contact;
-        do {
-            System.out.println(&quot;Inserting contact info : &quot;);
-            System.out.println(&quot;1 - email&quot;);
-            System.out.println(&quot;2 - phone&quot;);
-            System.out.println(&quot;3 - stop&quot;);
-            contact = Integer.parseInt(sc.nextLine());
-            if (contact == 1) {
-                System.out.println(&quot;Adding email address&quot;);
-                c.setEmail(sc.nextLine());
-            }
-            if (contact == 2) {
-                System.out.println(&quot;Adding phone number&quot;);
-                c.setPhoneNumber(sc.nextLine());
-            }
-        } while (contact != 3);
-        if (c instanceof Customer) {
-            String answer;
-            do {
-                System.out.println(&quot;Do you want to be informed of special offers ? (y/N)&quot;);
-                answer = sc.nextLine();
-            } while (!answer.equalsIgnoreCase(&quot;y&quot;) &amp;&amp; !answer.equalsIgnoreCase(&quot;n&quot;) &amp;&amp; !answer.isEmpty());
-            if (answer.equalsIgnoreCase(&quot;y&quot;)) {
-                ((Customer) c).register();
-            }
-        }
-        // is the e-mail if exists)
-        if (c instanceof Customer) {
-            int answer;
-            do {
-                System.out.println(&quot;Select contact method for offers :&quot;);
-                System.out.println(&quot;1 - email (default)&quot;);
-                System.out.println(&quot;2 - phone number&quot;);
-                answer = Integer.parseInt(sc.nextLine());
-            } while (answer != 1 &amp;&amp; answer != 2 &amp;&amp; answer != 0);
-            if (answer == 2) {
-                ((Customer) c).setNotifyMean(c.getPhoneNumber());
-            } else {
-                ((Customer) c).setNotifyMean(c.getEmail());
-            }
-        }
-        if (c instanceof Courier) {
-            String answer;
-            do {
-                System.out.println(&quot;Do you want to be seen as on-duty ? (y/N)&quot;);
-                answer = sc.nextLine();
-            } while (!answer.equalsIgnoreCase(&quot;y&quot;) &amp;&amp; !answer.equalsIgnoreCase(&quot;n&quot;) &amp;&amp; !answer.isEmpty());
-            if (answer.equalsIgnoreCase(&quot;y&quot;)) {
-                ((Courier) c).setOnDuty(true);
-            } else {
-                ((Courier) c).setOnDuty(false);
-            }
-        }
-        // 7. the user specify to save the account
-        String answer;
-        do {
-            System.out.println(&quot;Do you wish to save your account ? (Y/n)&quot;);
-            answer = sc.nextLine();
-        } while (!answer.equalsIgnoreCase(&quot;y&quot;) &amp;&amp; !answer.equalsIgnoreCase(&quot;n&quot;) &amp;&amp; !answer.isEmpty());
-        if (answer.equalsIgnoreCase(&quot;n&quot;)) {
-            foodora.removeUser(c);
-        }
-    } else // 1. a user wants to login
-    if (action == 2) {
-        User user = null;
-        do {
-            // 2. the user inserts username (and password : not implemented)
-            System.out.println(&quot;Enter Username:&quot;);
-            String username = sc.nextLine();
-            for (User u : foodora.getUserList().values()) {
-                if (username.equals(u.getUsername())) {
-                    user = u;
-                }
-            }
-        } while (user == null);
-        // 3. the system handles the login and presents to the user the
-        // available operations according to his role
-        System.out.println(&quot;Voilà ce que tu peux faire :&quot;);
-        System.out.println(&quot;Ordering a meal&quot;);
-        System.out.println(&quot;Inserting a meal or dish in a restaurant menu&quot;);
-        System.out.println(&quot;Adding a meal of the week special offer&quot;);
-        System.out.println(&quot;Removing a meal of the week special offer&quot;);
-    // Ordering a meal
-    // 1. a client start using the system because she wants to order a meal
-    } else if (action == 3) {
-        Customer user = null;
-        do {
-            // 2. the client inserts his credentials (username and password)
-            System.out.println(&quot;Enter Username:&quot;);
-            String username = sc.nextLine();
-            for (User u : foodora.getUserList().values()) {
-                if (u instanceof Customer &amp;&amp; username.equals(u.getUsername())) {
-                    user = (Customer) u;
-                }
-            }
-        } while (user == null);
-        // 3. the system recognizes the client and proposes the available
-        // restaurants
-        ArrayList&lt;Restaurant> restaurantList = foodora.getRestaurantList();
-        int i = 1;
-        for (Restaurant restaurant : restaurantList) {
-            System.out.println(i + &quot; - &quot; + restaurant.toString());
-            i++;
-        }
-        // client specifies the quantity.
-        do {
-            System.out.println(&quot;Choose a restaurant :&quot;);
-            i = Integer.parseInt(sc.nextLine());
-        } while (i &lt; 1 || i >= restaurantList.size());
-        Restaurant restaurant = restaurantList.get(i);
-        ArrayList&lt;Item> itemList = new ArrayList&lt;Item>();
-        ArrayList&lt;Meal> mealList = new ArrayList&lt;Meal>();
-        i = 1;
-        for (Meal meal : restaurant.getMenu().getMeals()) {
-            mealList.add(meal);
-            System.out.println(i + &quot; - &quot; + meal.toString());
-            i++;
-        }
-        i = 1;
-        for (Item item : restaurant.getMenu().getItems()) {
-            itemList.add(item);
-            System.out.println(i + &quot; - &quot; + item.toString());
-            i++;
-        }
-        int answer = 0;
-        Order order = new Order(user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
-        do {
-            System.out.println(&quot;What do you want to add to the order ?&quot;);
-            System.out.println(&quot;1 - Item&quot;);
-            System.out.println(&quot;2 - Meal&quot;);
-            System.out.println(&quot;3 - Stop&quot;);
-            answer = Integer.parseInt(sc.nextLine());
-            if (answer == 1) {
-                System.out.println(&quot;Select item&quot;);
-                answer = Integer.parseInt(sc.nextLine());
-                order.addOrderabe(itemList.get(answer - 1));
-            } else if (answer == 2) {
-                System.out.println(&quot;Select meal&quot;);
-                answer = Integer.parseInt(sc.nextLine());
-                order.addOrderabe(mealList.get(answer - 1));
-            }
-        } while (!(answer == 3));
-        // taking into account the pricing rules
-        for (Orderable orderable : order.getOrderables()) {
-            System.out.println(&quot; - &quot; + (orderable).getName() + &quot; &quot; + (orderable).getPrice() + &quot; €&quot;);
-        }
-        System.out.println(&quot;Total price : &quot; + order.getPrice());
-    // Inserting a meal or dish in a restaurant menu
-    // 1. a restaurant person start using the system because she wants to
-    // insert a new meal
-    } else if (action == 4) {
-        Restaurant user = null;
-        do {
-            // 2. the client inserts his credentials (username and password)
-            System.out.println(&quot;Enter Username:&quot;);
-            String username = sc.nextLine();
-            for (User u : foodora.getUserList().values()) {
-                if (u instanceof Restaurant &amp;&amp; username.equals(u.getUsername())) {
-                    user = (Restaurant) u;
-                }
-            }
-        } while (user == null);
-        // 3. the system recognizes the restaurant and shows the list of dishes
-        // and meals in the
-        // menu
-        ArrayList&lt;Item> itemList = new ArrayList&lt;Item>();
-        ArrayList&lt;Meal> mealList = new ArrayList&lt;Meal>();
-        int i = 1;
-        for (Meal meal : user.getMenu().getMeals()) {
-            mealList.add(meal);
-            System.out.println(i + &quot; - &quot; + meal.toString());
-            i++;
-        }
-        i = 1;
-        for (Item item : user.getMenu().getItems()) {
-            itemList.add(item);
-            System.out.println(i + &quot; - &quot; + item.toString());
-            i++;
-        }
-        // 4. the restaurant selects the insert new meal (or dish) operations
-        System.out.println(&quot;Inserting new meal...&quot;);
-        // 5. the restaurant inserts the name of the new meal (or dish) to be
-        // added and specify
-        // whether it is an half-meal or a full-meal or a meal-of-the-week
-        String name;
-        System.out.println(&quot;Give the name of the new meal or dish&quot;);
-        name = sc.nextLine();
-        int answer = 0;
-        do {
-            System.out.println(&quot;What type of food ?&quot;);
-            System.out.println(&quot;1 - Dish&quot;);
-            System.out.println(&quot;2 - Meal&quot;);
-            answer = Integer.parseInt(sc.nextLine());
-        } while (answer != 1 &amp;&amp; answer != 2);
-        if (answer == 1) {
-            // (starter, main dish, dessert)
-            do {
-                System.out.println(&quot;What type of dish ?&quot;);
-                System.out.println(&quot;1 - Starter&quot;);
-                System.out.println(&quot;2 - Main&quot;);
-                System.out.println(&quot;3 - Dessert&quot;);
-                answer = Integer.parseInt(sc.nextLine());
-            } while (answer != 1 &amp;&amp; answer != 2 &amp;&amp; answer != 3);
-            System.out.println(&quot;Price ?&quot;);
-            double price = Double.parseDouble(sc.nextLine());
-            if (answer == 1) {
-                user.getMenu().addItem(new Starter(name, price, false, false));
-            }
-            if (answer == 2) {
-                user.getMenu().addItem(new MainDish(name, price, false, false));
-            }
-            if (answer == 3) {
-                user.getMenu().addItem(new Dessert(name, price, false, false));
-            }
-        } else {
-            System.out.println(&quot;Boring stuff...&quot;);
-        // 7. in case of meal
-        // • the restaurant inserts the dishes of the meal
-        // • the restaurant compute and save the price of the meal
-        // 8. the restaurant saves the new created meal (or dish) in the menu
-        }
-    // Adding a meal of the week special offer
-    // 1. a restaurant staff starts using the system and inserts the
-    // restaurant credentials
-    }
-    // 2. the system shows all restaurant’s available meals
-    // 3. the restaurant selects the meal to be set as meal of the week
-    // 4. the system automatically updates the price of selected meal of the
-    // week, by application
-    // of special discount factor
-    // 5. the system notifies the users (that agreed to be notified of
-    // special offers) about the
-    // new offer
-    // Removing a meal of the week special offer
-    // 1. a restaurant staff starts using the system and inserts the
-    // restaurant credentials
-    // 2. the system shows all restaurant’s available meals
-    // 3. the restaurant selects a meal in the meal of the week list and
-    // selects the remove from
-    // its special offer state.
-    sc.close();
-</body>
-                    </ownedBehavior>
-                    <ownedOperation xmi:type="uml:Operation" xmi:id="_9IT_AR4WEeeCTKr98N2j2g" name="main" visibility="public" isStatic="true" method="_9IWbQB4WEeeCTKr98N2j2g">
-                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_9IUmEB4WEeeCTKr98N2j2g" name="args" type="_9F7ZYB4WEeeCTKr98N2j2g">
-                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9IUmER4WEeeCTKr98N2j2g"/>
-                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9IUmEh4WEeeCTKr98N2j2g" value="*"/>
-                      </ownedParameter>
                     </ownedOperation>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Class" xmi:id="_9IYQcB4WEeeCTKr98N2j2g" name="Manager" visibility="public">
@@ -2626,6 +2271,7 @@
                       <ownedOperation xmi:type="uml:Operation" xmi:id="_9wL3UB4WEeeCTKr98N2j2g" name="toString" visibility="public">
                         <ownedParameter xmi:type="uml:Parameter" xmi:id="_9wPhsB4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
                       </ownedOperation>
+                      <ownedOperation xmi:type="uml:Operation" xmi:id="__GuvUB4dEeeCTKr98N2j2g" name="getOffer()"/>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_9vZNIR4WEeeCTKr98N2j2g" name="BasicFidelityCard" visibility="public">
                       <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_9vZ0MB4WEeeCTKr98N2j2g" name="BasicFidelityCard implements FidelityCard" client="_9vZNIR4WEeeCTKr98N2j2g" supplier="_9vSfcB4WEeeCTKr98N2j2g" contract="_9vSfcB4WEeeCTKr98N2j2g"/>
@@ -2743,6 +2389,7 @@
                         <ownedParameter xmi:type="uml:Parameter" xmi:id="_9wVBQh4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
                       </ownedOperation>
                     </packagedElement>
+                    <packagedElement xmi:type="uml:Usage" xmi:id="_vvx60B4aEeeCTKr98N2j2g" client="_9vR4YR4WEeeCTKr98N2j2g" supplier="_9GW3MB4WEeeCTKr98N2j2g"/>
                   </packagedElement>
                   <packagedElement xmi:type="uml:Package" xmi:id="_-JOpcB4WEeeCTKr98N2j2g" name="menu">
                     <packagedElement xmi:type="uml:Class" xmi:id="_-JPQgB4WEeeCTKr98N2j2g" name="Item" visibility="public" isAbstract="true">
@@ -2914,16 +2561,7 @@
                           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-KRLQB4WEeeCTKr98N2j2g" value="1"/>
                         </ownedParameter>
                       </ownedOperation>
-                    </packagedElement>
-                    <packagedElement xmi:type="uml:Interface" xmi:id="_-JPQgR4WEeeCTKr98N2j2g" name="Orderable" visibility="public">
-                      <ownedOperation xmi:type="uml:Operation" xmi:id="_-KOH8R4WEeeCTKr98N2j2g" name="getPrice" visibility="private">
-                        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KP9IB4WEeeCTKr98N2j2g" direction="return">
-                          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
-                        </ownedParameter>
-                      </ownedOperation>
-                      <ownedOperation xmi:type="uml:Operation" xmi:id="_-KWq0B4WEeeCTKr98N2j2g" name="getName" visibility="private">
-                        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KXR4B4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
-                      </ownedOperation>
+                      <ownedOperation xmi:type="uml:Operation" xmi:id="_Z_PC0B4eEeeCTKr98N2j2g" name="getPrice()"/>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_-JQeoh4WEeeCTKr98N2j2g" name="Menu" visibility="public">
                       <ownedAttribute xmi:type="uml:Property" xmi:id="_-JiLcB4WEeeCTKr98N2j2g" name="items" visibility="private" type="_-JgWQB4WEeeCTKr98N2j2g" isUnique="false">
@@ -2939,6 +2577,7 @@
                         </defaultValue>
                       </ownedAttribute>
                       <ownedAttribute xmi:type="uml:Property" xmi:id="_-JnD8R4WEeeCTKr98N2j2g" name="restaurant" visibility="private" type="_9GZ6gR4WEeeCTKr98N2j2g" isUnique="false"/>
+                      <ownedAttribute xmi:type="uml:Property" xmi:id="_2q_O4B4ZEeeCTKr98N2j2g" name="meal" type="_-JtKkR4WEeeCTKr98N2j2g" association="_2q-n0B4ZEeeCTKr98N2j2g"/>
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_-Jr8cR4WEeeCTKr98N2j2g" name="Menu" specification="_-JnrAB4WEeeCTKr98N2j2g">
                         <language>JAVA</language>
                         <body>
@@ -3089,6 +2728,8 @@
                       <ownedAttribute xmi:type="uml:Property" xmi:id="_-KChwx4WEeeCTKr98N2j2g" name="entry" visibility="private" type="_-Ja2sB4WEeeCTKr98N2j2g" isUnique="false"/>
                       <ownedAttribute xmi:type="uml:Property" xmi:id="_-KDI0B4WEeeCTKr98N2j2g" name="main" visibility="private" type="_-J9CMB4WEeeCTKr98N2j2g" isUnique="false"/>
                       <ownedAttribute xmi:type="uml:Property" xmi:id="_-KDI0R4WEeeCTKr98N2j2g" name="menu" visibility="private" type="_-JQeoh4WEeeCTKr98N2j2g" isUnique="false"/>
+                      <ownedAttribute xmi:type="uml:Property" xmi:id="_lUZzAB4YEeeCTKr98N2j2g" name="item" type="_-JPQgB4WEeeCTKr98N2j2g"/>
+                      <ownedAttribute xmi:type="uml:Property" xmi:id="_HRI24B4cEeeCTKr98N2j2g" name="item" type="_-JPQgB4WEeeCTKr98N2j2g" association="_HRIP0B4cEeeCTKr98N2j2g"/>
                       <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_-KB6sB4WEeeCTKr98N2j2g" name="Meal implements Orderable" client="_-JtKkR4WEeeCTKr98N2j2g" supplier="_-JPQgR4WEeeCTKr98N2j2g" contract="_-JPQgR4WEeeCTKr98N2j2g"/>
                       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_-KGMIR4WEeeCTKr98N2j2g" name="Meal" specification="_-KDv4B4WEeeCTKr98N2j2g">
                         <language>JAVA</language>
@@ -3291,6 +2932,7 @@
                       <ownedOperation xmi:type="uml:Operation" xmi:id="_-KNg4R4WEeeCTKr98N2j2g" name="toString" visibility="public" method="_-KOH8B4WEeeCTKr98N2j2g">
                         <ownedParameter xmi:type="uml:Parameter" xmi:id="_-KNg4h4WEeeCTKr98N2j2g" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
                       </ownedOperation>
+                      <ownedOperation xmi:type="uml:Operation" xmi:id="_bOu70B4eEeeCTKr98N2j2g" name="getPrice()"/>
                     </packagedElement>
                     <packagedElement xmi:type="uml:Class" xmi:id="_-J9CMB4WEeeCTKr98N2j2g" name="MainDish" visibility="public">
                       <generalization xmi:type="uml:Generalization" xmi:id="_-J9pQB4WEeeCTKr98N2j2g" general="_-JPQgB4WEeeCTKr98N2j2g"/>
@@ -3841,6 +3483,7 @@
                       </ownedOperation>
                     </packagedElement>
                   </packagedElement>
+                  <packagedElement xmi:type="uml:Usage" xmi:id="_n2zMYB4aEeeCTKr98N2j2g" client="_9E7T0B4WEeeCTKr98N2j2g" supplier="_9GW3MB4WEeeCTKr98N2j2g"/>
                 </packagedElement>
               </packagedElement>
             </packagedElement>
@@ -3888,6 +3531,54 @@
         </packagedElement>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2q-n0B4ZEeeCTKr98N2j2g" memberEnd="_2q_O4B4ZEeeCTKr98N2j2g _2q_O4R4ZEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2q-n0R4ZEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2q-n0h4ZEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_2q_O4R4ZEeeCTKr98N2j2g" name="menu" type="_-JQeoh4WEeeCTKr98N2j2g" association="_2q-n0B4ZEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_6dIDwB4ZEeeCTKr98N2j2g" memberEnd="_6dIq0h4ZEeeCTKr98N2j2g _6dJR4B4ZEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6dIq0B4ZEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6dIq0R4ZEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_6dJR4B4ZEeeCTKr98N2j2g" name="restaurant" type="_9GZ6gR4WEeeCTKr98N2j2g" association="_6dIDwB4ZEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_97hdQB4ZEeeCTKr98N2j2g" memberEnd="_97iEUh4ZEeeCTKr98N2j2g _97irYB4ZEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_97iEUB4ZEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_97iEUR4ZEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_97irYB4ZEeeCTKr98N2j2g" name="order" type="_9E7T0B4WEeeCTKr98N2j2g" association="_97hdQB4ZEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_-onMwB4ZEeeCTKr98N2j2g" memberEnd="_-onz0h4ZEeeCTKr98N2j2g _-onz0x4ZEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-onz0B4ZEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-onz0R4ZEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_-onz0x4ZEeeCTKr98N2j2g" name="order" type="_9E7T0B4WEeeCTKr98N2j2g" association="_-onMwB4ZEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hPMmQB4aEeeCTKr98N2j2g" memberEnd="_hPNNUh4aEeeCTKr98N2j2g _hPNNUx4aEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hPNNUB4aEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hPNNUR4aEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_hPNNUx4aEeeCTKr98N2j2g" name="user" type="_9GAR4B4WEeeCTKr98N2j2g" association="_hPMmQB4aEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ky7ywB4aEeeCTKr98N2j2g" memberEnd="_ky8Z0h4aEeeCTKr98N2j2g _ky8Z0x4aEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ky8Z0B4aEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ky8Z0R4aEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ky8Z0x4aEeeCTKr98N2j2g" name="order" type="_9E7T0B4WEeeCTKr98N2j2g" association="_ky7ywB4aEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_G0NfwB4bEeeCTKr98N2j2g" memberEnd="_G0OG0h4bEeeCTKr98N2j2g _G0OG0x4bEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_G0OG0B4bEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_G0OG0R4bEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_G0OG0x4bEeeCTKr98N2j2g" name="customer" type="_9FpskB4WEeeCTKr98N2j2g" association="_G0NfwB4bEeeCTKr98N2j2g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_HRIP0B4cEeeCTKr98N2j2g" memberEnd="_HRI24B4cEeeCTKr98N2j2g _HRI24R4cEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HRIP0R4cEeeCTKr98N2j2g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HRIP0h4cEeeCTKr98N2j2g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_HRI24R4cEeeCTKr98N2j2g" name="meal" type="_-JtKkR4WEeeCTKr98N2j2g" association="_HRIP0B4cEeeCTKr98N2j2g"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_9B-tgB4WEeeCTKr98N2j2g">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9B_UkB4WEeeCTKr98N2j2g" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
@@ -3905,6 +3596,12 @@
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_FGw_IB4eEeeCTKr98N2j2g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FGxmMB4eEeeCTKr98N2j2g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
     </profileApplication>
   </uml:Model>
   <PapyrusJava:External xmi:id="_9E5eoB4WEeeCTKr98N2j2g" name="java.util.HashMap" base_Classifier="_9CcnkR4WEeeCTKr98N2j2g"/>

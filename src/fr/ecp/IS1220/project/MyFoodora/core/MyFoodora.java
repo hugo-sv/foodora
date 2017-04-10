@@ -2,6 +2,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
@@ -35,32 +36,59 @@ public class MyFoodora {
 		// i.e. ajoint), 5 restaurants and 2 couriers, 7 customers, 4 full-meals
 		// per restaurant...
 		MyFoodora foodora = new MyFoodora(0.5, 0.05, 1);
+		
 		Manager CEO = new Manager("Mary", "mary", "boss47");
 		foodora.addUser(CEO);
+		
 		Manager Deputy = new Manager("John", "john", "jojojo");
 		foodora.addUser(Deputy);
+		
 		Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
 		foodora.addUser(Macdo);
+		
 		MainDish Drink=new MainDish("Drink",0.5,true,true);
 		MainDish BigMac=new MainDish("BigMac", 5, false, false);
 		Starter Salad=new Starter("Salad", 1, true, true);
 		Dessert MacFlurry=new Dessert("McFlurry",2,true,false);
+		
 		FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
 		HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
+		
 		Macdo.addMeal(F1);
 		Macdo.addMeal(F2);
+		
 		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
 		foodora.addUser(Quick);
-		FullMeal F1 = new FullMeal("F1", null, null, null);
+		FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
+		HalfMeal F4 = new HalfMeal("F4",new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
+		Quick.addMeal(F3);
+		Quick.addMeal(F4);
+		
 		Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
 		foodora.addUser(Sushi);
+		FullMeal F5 = new FullMeal("F5", new Starter("Sushi2", 4, false, true), new MainDish("Sushi1", 4, false, true), new Dessert("Dessert", 2, true, false));
+		HalfMeal F6 = new HalfMeal("F6",new MainDish("Sushi3", 4, false, true), new Dessert("Dessert2", 2, true, false));
+		Sushi.addMeal(F5);
+		Sushi.addMeal(F6);
+		
 		Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
 		foodora.addUser(KFC);
+		FullMeal F7 = new FullMeal("F7", new Starter("Saucisson", 4, false, true), new MainDish("Chicken", 4, false, true), new Dessert("IceCream", 2, true, false));
+		HalfMeal F8 = new HalfMeal("F8",new MainDish("Chicken2", 4, false, true), new Dessert("BetterIceCream", 2, true, false));
+		KFC.addMeal(F7);
+		KFC.addMeal(F8);
+		
 		Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
 		foodora.addUser(Bio);
-		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
+		FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true), new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
+		HalfMeal F10 = new HalfMeal("F10",new MainDish("Chicken2Bio", 4, false, true), new Dessert("BetterIceCreamBio", 2, true, false));
+		Bio.addMeal(F9);
+		Bio.addMeal(F10);
+		
+		
+		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10,"Fred@laposte.net" ,"0612345678");
 		foodora.addUser(Fred);
-		Courier Carole = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
+		Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10,"Carole@laposte.net" ,"0612345678");
 		foodora.addUser(Carole);
 		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 		foodora.addUser(A);
@@ -94,12 +122,70 @@ public class MyFoodora {
 		// date...
 		// Page 7IS1220 - Object Oriented Software Design
 		// Project March-April 2017
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Registering process...");
+		String name;
+		String surname;
+		String username;
+		double addressX;
+		double addressY;
+		System.out.println("Enter name :");
+		name = sc.nextLine();
+		System.out.println("Enter surname :");
+		surname = sc.nextLine();
+		System.out.println("Enter username :");
+		username = sc.nextLine();
+		System.out.println("Enter address :");
+		addressX = Double.parseDouble(sc.nextLine());
+		addressY = Double.parseDouble(sc.nextLine());
+		int type;
+		User c;
+		do {
+			System.out.println("Enter type of user :");
+			System.out.println("1 - Customer");
+			System.out.println("2 - Courier");
+			type = Integer.parseInt(sc.nextLine());
+		} while (type != 1 && type != 2);
+		if (type ==1) {
+			
+			c = (Customer) new Customer(name, surname, username, addressX, addressY);
+		} else {
+			c = (Courier) new Courier(name, surname, username, addressX, addressY);
+		}
+			
+		
+		
+		 
 		// 3. the user starts inserting a contact info with the type and the
 		// value (e.g. email, phone)
 		// • the user repeats step 3 since he ends to inserts his contact info
+		int contact;
+		do {
+			System.out.println("Inserting contact info : ");
+			System.out.println("1 - email");
+			System.out.println("2 - phone");
+			System.out.println("3 - stop");
+			contact = Integer.parseInt(sc.nextLine());
+			if (contact == 1) {
+				System.out.println("Adding email address");
+				c.setEmail(sc.nextLine());
+			}
+			if (contact == 2) {
+				System.out.println("Adding phone number");
+				c.setPhoneNumber(sc.nextLine());
+			}
+			
+		} while (contact != 3);
+
+		
+		
 		// 4. if the user is a customer she sets the agreement about the special
 		// offer contact (by
 		// default it is no)
+		
+		if (c instanceof Customer) {
+			
+		}
 		// 5. the user is a customer selects the contact to be used to send the
 		// offers (by default it
 		// is the e-mail if exists)

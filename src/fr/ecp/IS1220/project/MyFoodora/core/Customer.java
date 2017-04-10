@@ -6,28 +6,26 @@ import fr.ecp.IS1220.project.MyFoodora.core.cards.BasicFidelityCard;
 import fr.ecp.IS1220.project.MyFoodora.core.cards.FidelityCard;
 
 public class Customer extends User {
-	private String name;
 	private String surname;
-	private String username;
-	private String email;
-	private String phoneNumber;
 	private FidelityCard fidelityCard = new BasicFidelityCard();
 	private ArrayList<Order> orders = new ArrayList<Order>();
 
 	// Constructor
 	public Customer(String name, String surname, String username, double addressX, double addressY, String email,
 			String phoneNumber) {
-		super(addressX, addressY);
-		this.name = name;
+		super(name, surname, addressX, addressY);
 		this.surname = surname;
-		this.username = username;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
+		setEmail(email);
+		setPhoneNumber(phoneNumber);
+	}
+	public Customer(String name, String surname, String username, double addressX, double addressY) {
+		super(name, surname, addressX, addressY);
+		this.surname = surname;
 	}
 
 	public String getAccountInfo() {
 		String info = new String();
-		info += "Name : " + name + "/nSurname : " + surname + "/nEmail : " + email + "/nPhone number : " + phoneNumber
+		info += "Name : " + getName() + "/nSurname : " + surname + "/nEmail : " + getEmail() + "/nPhone number : " + getPhoneNumber()
 				+ "/nFidelity card : " + fidelityCard.toString() + "/nOrders :/n";
 		for (Order o : orders) {
 			info += o.toString();
@@ -38,7 +36,7 @@ public class Customer extends User {
 
 	public void notify(String message) {
 		// Sending Email
-		System.out.println("Email sent to " + email + " :");
+		System.out.println("Email sent to " + getEmail() + " :");
 		System.out.println(message);
 	}
 
@@ -60,13 +58,6 @@ public class Customer extends User {
 
 	// Getters an setters
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getSurname() {
 		return surname;
@@ -74,14 +65,6 @@ public class Customer extends User {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public ArrayList<Order> getOrders() {
@@ -94,22 +77,6 @@ public class Customer extends User {
 
 	public void setFidelityCard(FidelityCard fidelityCard) {
 		this.fidelityCard = fidelityCard;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 }

@@ -4,14 +4,20 @@ abstract public class User {
 	protected MyFoodora myFoodora = null;
 	private static long genID = 0;
 	private long iD;
+	private String name;
+	private String username;
+	private String email;
+	private String phoneNumber;
 	private boolean activated;
 	private double addressX = 0;
 	private double addressY = 0;
 	private double money = 0;
 	
-	public User() {
+	public User(String name, String username) {
 		this.iD = genID;
 		genID++;
+		this.name = name;
+		this.username = username;
 		activated = true;
 	}
 	
@@ -19,9 +25,11 @@ abstract public class User {
 		this.myFoodora = myFoodora;
 	}
 
-	public User(double addressX, double addressY) {
+	public User(String name, String username, double addressX, double addressY) {
 		this.iD = genID;
 		genID++;
+		this.name = name;
+		this.username = username;
 		activated = true;
 		this.setAddressX(addressX);
 		this.setAddressY(addressY);
@@ -67,5 +75,38 @@ abstract public class User {
 	public void setMoney(double money) {
 		this.money = money;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 	
 }

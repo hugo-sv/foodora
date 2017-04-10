@@ -6,47 +6,22 @@ import java.util.HashMap;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
 
 public class Manager extends User {
-	private String Name;
-	private String Surname;
-	private String Username;
-	private MyFoodora myFoodora;
+	private String surname;
 	
 	
 	public Manager(String name, String surname, String username) {
-		super();
-		Name = name;
-		Surname = surname;
-		Username = username;
-	}
-
-
-	public String getName() {
-		return Name;
-	}
-
-
-	public void setName(String name) {
-		Name = name;
+		super(name,username);
+		this.surname = surname;
 	}
 
 
 	public String getSurname() {
-		return Surname;
+		return surname;
 	}
 
 
 	public void setSurname(String surname) {
-		Surname = surname;
-	}
-
-
-	public String getUsername() {
-		return Username;
-	}
-
-
-	public void setUsername(String username) {
-		Username = username;
+		this.surname = surname;
 	}
 	
 	public void addUser(User user) {

@@ -1,20 +1,22 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
 public class Courier extends User{
-	private String name;
 	private String surname;
-	private String username;
-	private String phoneNumber;
 	private boolean onDuty;
 	private Order currentOrder;
 	
 	
-	public Courier(String name, String surname, String username, double addressX, double addressY, String phoneNumber) {
-		super(addressX, addressY);
-		this.name = name;
+	public Courier(String name, String surname, String username, double addressX, double addressY, String email, String phoneNumber) {
+		super(name, surname, addressX, addressY);
 		this.surname = surname;
-		this.username = username;
-		this.phoneNumber = phoneNumber;
+		setEmail(email);
+		setPhoneNumber(phoneNumber);
+		onDuty = false;
+	}
+	
+	public Courier(String name, String surname, String username, double addressX, double addressY) {
+		super(name, surname, addressX, addressY);
+		this.surname = surname;
 		onDuty = false;
 	}
 	
@@ -26,36 +28,12 @@ public class Courier extends User{
 		myFoodora.removeCourier(this);
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getSurname() {
 		return surname;
 	}
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 

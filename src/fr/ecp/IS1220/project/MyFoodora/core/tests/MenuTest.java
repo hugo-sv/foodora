@@ -3,7 +3,6 @@ package fr.ecp.IS1220.project.MyFoodora.core.tests;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.junit.Test;
 

@@ -17,7 +17,7 @@ public class Restaurant extends User {
 	private float specialDiscountFactor=(float) 0.1;
 
 	public Restaurant(String name, String username, double addressX, double addressY) {
-		super(addressX, addressY);
+		super(name, username, addressX, addressY);
 		this.name = name;
 		this.username = username;
 		this.setAddressX(addressX);

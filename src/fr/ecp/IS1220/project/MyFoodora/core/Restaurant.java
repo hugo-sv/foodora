@@ -73,4 +73,9 @@ public class Restaurant extends User {
 		this.specialDiscountFactor = specialDiscountFactor;
 	}
 
+	@Override
+	public String toString() {
+		return "Restaurant " + getName();
+	}
+
 }

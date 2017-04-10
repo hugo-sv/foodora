@@ -1,11 +1,14 @@
 package fr.ecp.IS1220.project.MyFoodora.core;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 
 public class UseCase {
@@ -257,26 +260,51 @@ public class UseCase {
 		// Ordering a meal
 		// 1. a client start using the system because she wants to order a meal
 		} else if (action == 3) {
-			User user=null;
+			Customer user=null;
 			do {
 				// 2. the client inserts his credentials (username and password)
 				System.out.println("Enter Username:");
 				String username = sc.nextLine();
 				for (User u : foodora.getUserList().values()){
-					if (username.equals(u.getUsername())){
-						user=u;
+					if (u instanceof Customer && username.equals(u.getUsername())){
+						user= (Customer) u;
 					}
 				}
-			} while (!(user==null) || !(user instanceof Customer));
+			} while (!(user==null));
 		
 		// 3. the system recognizes the client and proposes the available
 		// restaurants
-		
+		ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
+		int i = 1;
+		for (Restaurant restaurant : restaurantList) {
+			System.out.println(i+" - "+restaurant.toString());
+			i++;
+		}
 		// 4. the client select a restaurant and compose an order either by
 		// selecting dishes à la
 		// carte or by selecting meals from the restaurant menu. For each item
 		// in the order the
 		// client specifies the quantity.
+		do {
+			System.out.println("Choose a restaurant :");
+			i = Integer.parseInt(sc.nextLine());
+		} while (i<1 || i>=restaurantList.size());
+		Restaurant restaurant = restaurantList.get(i);
+		ArrayList<Item> itemList = new ArrayList<Item>();
+		ArrayList<Meal> mealList = new ArrayList<Meal>();
+		i = 1;
+		for (Meal meal : restaurant.getMenu().getMeals()) {
+			mealList.add(meal);
+			System.out.println(i+" - "+meal.toString());
+			i++;
+		}
+		i = 1;
+		for (Item item : restaurant.getMenu().getItems()) {
+			itemList.add(item);
+			System.out.println(i+" - "+item.toString());
+			i++;
+		}
+		int response;
 		// 5. Once the order is completed the client selects the end
 		// 6. the system shows the summary of the ordered dishes and the total
 		// price of the order

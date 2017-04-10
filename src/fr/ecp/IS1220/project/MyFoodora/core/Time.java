@@ -12,7 +12,7 @@ public class Time {
 	public Long getSeconds(){
 		return this.seconds;
 	}
-	public void addTime(Long seconds){
+	static public void addTime(Long seconds){
 		currentTime.setSeconds(seconds+currentTime.getSeconds());
 	}
 	private void setSeconds(Long seconds) {

@@ -3,6 +3,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.OrderSortingPolicy;
@@ -41,13 +42,24 @@ public class MyFoodora {
 		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
 		Courier Carole = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
 		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
-		Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
-		Customer C = new Customer("C", "C", "c", 52, -14, "0654312456", "C@laposte.net");
-		Customer D = new Customer("D", "D", "d", -22, 42, "0658318456", "D@laposte.net");
-		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
-		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
-		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
 		foodora.addUser(A);
+		Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
+		foodora.addUser(B);
+		Customer C = new Customer("C", "C", "c", 52, -14, "0654312456", "C@laposte.net");
+		foodora.addUser(C);
+		Customer D = new Customer("D", "D", "d", -22, 42, "0658318456", "D@laposte.net");
+		foodora.addUser(D);
+		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
+		foodora.addUser(E);
+		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
+		foodora.addUser(F);
+		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
+		foodora.addUser(G);
+		
+		
+		
+		
+		FullMeal F1 = new FullMeal("F1", null, null, null);
 		
 
 		// 2. the system sends alerts to the customers that agreed to be
@@ -165,8 +177,7 @@ public class MyFoodora {
 		}
 		Courier courier = deliveryPolicy.chooseCourier(this, order);
 		courier.propose(order);
-		
-		
+
 	}
 
 	public void registerObserver(Customer c) {
@@ -356,7 +367,5 @@ public class MyFoodora {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-	
-	
 
 }

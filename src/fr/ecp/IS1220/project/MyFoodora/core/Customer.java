@@ -27,11 +27,11 @@ public class Customer extends User {
 
 	public String getAccountInfo() {
 		String info = new String();
-		info += "Name : " + getName() + "/nSurname : " + surname + "/nEmail : " + getEmail() + "/nPhone number : " + getPhoneNumber()
-				+ "/nFidelity card : " + fidelityCard.toString() + "/nOrders :/n";
+		info += "Name : " + getName() + "\nSurname : " + surname + "\nEmail : " + getEmail() + "\nPhone number : " + getPhoneNumber()
+				+ "\nFidelity card : " + fidelityCard.toString() + "\nOrders :\n";
 		for (Order o : orders) {
 			info += o.toString();
-			info += "/n";
+			info += "\n";
 		}
 		return info;
 	}

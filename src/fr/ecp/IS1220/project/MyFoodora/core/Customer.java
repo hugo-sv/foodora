@@ -9,6 +9,7 @@ public class Customer extends User {
 	private String surname;
 	private FidelityCard fidelityCard = new BasicFidelityCard();
 	private ArrayList<Order> orders = new ArrayList<Order>();
+	private String notifyMean;
 
 	// Constructor
 	public Customer(String name, String surname, String username, double addressX, double addressY, String email,
@@ -17,6 +18,7 @@ public class Customer extends User {
 		this.surname = surname;
 		setEmail(email);
 		setPhoneNumber(phoneNumber);
+		notifyMean = email;
 	}
 	public Customer(String name, String surname, String username, double addressX, double addressY) {
 		super(name, surname, addressX, addressY);
@@ -35,8 +37,8 @@ public class Customer extends User {
 	}
 
 	public void notify(String message) {
-		// Sending Email
-		System.out.println("Email sent to " + getEmail() + " :");
+		// Sending Offer
+		System.out.println("Offer sent to " + getNotifyMean() + " :");
 		System.out.println(message);
 	}
 
@@ -78,5 +80,13 @@ public class Customer extends User {
 	public void setFidelityCard(FidelityCard fidelityCard) {
 		this.fidelityCard = fidelityCard;
 	}
+	public String getNotifyMean() {
+		return notifyMean;
+	}
+	public void setNotifyMean(String notifyMean) {
+		this.notifyMean = notifyMean;
+	}
+	
+	
 
 }

@@ -152,6 +152,7 @@ public class MyFoodora {
 		} else {
 			c = (Courier) new Courier(name, surname, username, addressX, addressY);
 		}
+		foodora.addUser(c);
 			
 		
 		
@@ -184,11 +185,24 @@ public class MyFoodora {
 		// default it is no)
 		
 		if (c instanceof Customer) {
-			
+			String response;
+			do {
+				System.out.println("Do you want to be informed of special offers ? (y/N)");
+				response = sc.nextLine();
+			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
+			if (response.equalsIgnoreCase("y")) {
+				((Customer) c).register();
+			}
 		}
 		// 5. the user is a customer selects the contact to be used to send the
 		// offers (by default it
 		// is the e-mail if exists)
+		if (c instanceof Customer) {
+			int response;
+			do {
+				System.out.println("Do you want to be informed of special offers ? (y/N)");
+			} while (true);
+		
 		// 6. if the user is a courier he sets his current duty status (default
 		// off-duty)
 		// 7. the user specify to save the account

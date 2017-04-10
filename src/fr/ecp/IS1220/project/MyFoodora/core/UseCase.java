@@ -9,6 +9,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 
 public class UseCase {
@@ -179,12 +180,12 @@ public class UseCase {
 			// default it is no)
 
 			if (c instanceof Customer) {
-				String response;
+				String answer;
 				do {
 					System.out.println("Do you want to be informed of special offers ? (y/N)");
-					response = sc.nextLine();
-				} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
-				if (response.equalsIgnoreCase("y")) {
+					answer = sc.nextLine();
+				} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+				if (answer.equalsIgnoreCase("y")) {
 					((Customer) c).register();
 				}
 			}
@@ -193,14 +194,14 @@ public class UseCase {
 			// offers (by default it
 			// is the e-mail if exists)
 			if (c instanceof Customer) {
-				int response;
+				int answer;
 				do {
 					System.out.println("Select contact method for offers :");
 					System.out.println("1 - email (default)");
 					System.out.println("2 - phone number");
-					response = Integer.parseInt(sc.nextLine());
-				} while (response != 1 && response != 2 && response != 0);
-				if (response == 2) {
+					answer = Integer.parseInt(sc.nextLine());
+				} while (answer != 1 && answer != 2 && answer != 0);
+				if (answer == 2) {
 					((Customer) c).setNotifyMean(c.getPhoneNumber());
 				} else {
 					((Customer) c).setNotifyMean(c.getEmail());
@@ -212,12 +213,12 @@ public class UseCase {
 			// off-duty)
 
 			if (c instanceof Courier) {
-				String response;
+				String answer;
 				do {
 					System.out.println("Do you want to be seen as on-duty ? (y/N)");
-					response = sc.nextLine();
-				} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
-				if (response.equalsIgnoreCase("y")) {
+					answer = sc.nextLine();
+				} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+				if (answer.equalsIgnoreCase("y")) {
 					((Courier) c).setOnDuty(true);
 				} else {
 					((Courier) c).setOnDuty(false);
@@ -226,12 +227,12 @@ public class UseCase {
 
 			// 7. the user specify to save the account
 
-			String response;
+			String answer;
 			do {
 				System.out.println("Do you wish to save your account ? (Y/n)");
-				response = sc.nextLine();
-			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
-			if (response.equalsIgnoreCase("n")) {
+				answer = sc.nextLine();
+			} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+			if (answer.equalsIgnoreCase("n")) {
 				foodora.removeUser(c);
 			}
 		}
@@ -304,11 +305,32 @@ public class UseCase {
 			System.out.println(i+" - "+item.toString());
 			i++;
 		}
-		int response;
+		int answer = 0;
+		Order order = new Order(user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
+		do {
+			System.out.println("What do you want to add to the order ?");
+			System.out.println("1 - Item");
+			System.out.println("2 - Meal");
+			System.out.println("3 - Stop");
+			answer = Integer.parseInt(sc.nextLine());
+			if (answer==1) {
+				System.out.println("Select item");
+				answer = Integer.parseInt(sc.nextLine());
+				order.addOrderabe(itemList.get(answer));
+				
+			} else if (answer == 2) {
+				System.out.println("Select meal");
+				answer = Integer.parseInt(sc.nextLine());
+				order.addOrderabe(mealList.get(answer));
+			}
+		} while (!(answer==3));
 		// 5. Once the order is completed the client selects the end
 		// 6. the system shows the summary of the ordered dishes and the total
 		// price of the order
 		// taking into account the pricing rules
+		for (Orderable orderable : order.getOrderables()) {
+				System.out.println(" - "+(orderable).getName()+" "+(orderable).getPrice()+" €");
+		}
 		}
 		// Inserting a meal or dish in a restaurant menu
 		// 1. a restaurant person start using the system because she wants to

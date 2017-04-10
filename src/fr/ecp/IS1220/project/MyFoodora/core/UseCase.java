@@ -298,5 +298,6 @@ public class UseCase {
 		// 3. the restaurant selects a meal in the meal of the week list and
 		// selects the remove from
 		// its special offer state.
+		sc.close();
 	}
 }

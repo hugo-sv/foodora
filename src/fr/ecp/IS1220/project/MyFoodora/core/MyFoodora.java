@@ -2,13 +2,6 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
-
-import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
-import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
-import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
-import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
-import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryCostPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.FastestPolicy;
@@ -254,5 +247,14 @@ public class MyFoodora {
 	public void setMoney(double money) {
 		this.money = money;
 	}
+
+	public OrderSortingPolicy getOrderSortingPolicy() {
+		return orderSortingPolicy;
+	}
+
+	public void setOrderSortingPolicy(OrderSortingPolicy orderSortingPolicy) {
+		this.orderSortingPolicy = orderSortingPolicy;
+	}
+	
 
 }

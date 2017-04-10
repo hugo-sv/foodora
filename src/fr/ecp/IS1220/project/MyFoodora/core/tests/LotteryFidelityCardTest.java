@@ -9,11 +9,15 @@ import fr.ecp.IS1220.project.MyFoodora.core.Courier;
 import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
+import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
+import fr.ecp.IS1220.project.MyFoodora.core.cards.LotteryFidelityCard;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.FastestPolicy;
 
@@ -104,7 +108,31 @@ public class LotteryFidelityCardTest {
 	}
 	@Test
 	public void testGetOffer() {
-		fail("Not yet implemented");
+		A.setFidelityCard(new LotteryFidelityCard());
+		Order order = new Order(A, Macdo, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
+		Courier courier = foodora.getDeliveryPolicy().chooseCourier(foodora, order);
+		order.setCourier(courier);
+		int i = 0;
+		Meal chosenmeal = null;
+		for (Meal meal : Macdo.getMenu().getMeals()) {
+			if (i==0) {
+				order.addOrderabe(meal);
+				
+				chosenmeal = meal;
+				i++;
+				
+			}
+		assertFalse(chosenmeal==null);
+			
+		}
+		
+		double totalprice = 0;
+		for (Item item : chosenmeal.getItems()) {
+			totalprice += item.getPrice();
+		}
+		
+		assertEquals(0.95*totalprice, order.getPrice(), 1e-5);
+		
 	}
 
 }

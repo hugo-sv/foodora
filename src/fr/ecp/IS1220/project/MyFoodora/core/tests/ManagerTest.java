@@ -9,8 +9,9 @@ import fr.ecp.IS1220.project.MyFoodora.core.Courier;
 import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
+import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
-import fr.ecp.IS1220.project.MyFoodora.core.UseCase;
+import fr.ecp.IS1220.project.MyFoodora.core.Time;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
@@ -41,6 +42,16 @@ public class ManagerTest {
 	static Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
 	static Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
 	static Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
+	static Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
+
+	static Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
+	
+	static MainDish Drink = new MainDish("Drink", 0.5, true, true);
+	static MainDish BigMac = new MainDish("BigMac", 5, false, false);
+	static Starter Salad = new Starter("Salad", 1, true, true);
+	static Dessert MacFlurry = new Dessert("McFlurry", 2, true, false);
+	static FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
+	static HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
 	
 	static FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true),
 			new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
@@ -58,14 +69,6 @@ public class ManagerTest {
 			new Dessert("Donut", 2, true, false));
 	static HalfMeal F4 = new HalfMeal("F4", new MainDish("Nuggets", 4, false, true),
 			new Dessert("Donut", 2, true, false));
-	static MainDish Drink = new MainDish("Drink", 0.5, true, true);
-	static MainDish BigMac = new MainDish("BigMac", 5, false, false);
-	static Starter Salad = new Starter("Salad", 1, true, true);
-	static Dessert MacFlurry = new Dessert("McFlurry", 2, true, false);
-	static Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
-	static FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
-	static HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
-	static Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
 	
 	@Before
 	public void testManager() {
@@ -157,18 +160,23 @@ public class ManagerTest {
 		// Order(Customer customer, Restaurant restaurant, Courier courier,
 		// double serviceFee, double markupPourcentage, double
 		// deliveryCost)
-		Order order = new Order(A, Macdo,Fred,);
+		Order order = new Order(A, Macdo,Fred,0.1,0.1,0.1);
 		A.payOrder(order);
+		System.out.println("aa");//Johna.computeIncome(Time.getTime(), Time.getTime()));
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testComputeProfit() {
+		Order order = new Order(A, Macdo,Fred,0.1,0.1,0.1);
+		A.payOrder(order);
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testComputeAverageIncome() {
+		Order order = new Order(A, Macdo,Fred,0.1,0.1,0.1);
+		A.payOrder(order);
 		fail("Not yet implemented");
 	}
 

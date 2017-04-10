@@ -19,7 +19,73 @@ public class UseCase {
 		// i.e. ajoint), 5 restaurants and 2 couriers, 7 customers, 4 full-meals
 		// per restaurant...
 		MyFoodora foodora = new MyFoodora(0.5, 0.05, 1);
-		UseCase.setEnvironementForTest(foodora);
+		Manager CEO = new Manager("Mary", "mary", "boss47");
+		foodora.addUser(CEO);
+		
+		Manager Deputy = new Manager("John", "john", "jojojo");
+		foodora.addUser(Deputy);
+		
+		Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
+		foodora.addUser(Macdo);
+		
+		MainDish Drink=new MainDish("Drink",0.5,true,true);
+		MainDish BigMac=new MainDish("BigMac", 5, false, false);
+		Starter Salad=new Starter("Salad", 1, true, true);
+		Dessert MacFlurry=new Dessert("McFlurry",2,true,false);
+		
+		FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
+		HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
+		
+		Macdo.addMeal(F1);
+		Macdo.addMeal(F2);
+		
+		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
+		foodora.addUser(Quick);
+		FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
+		HalfMeal F4 = new HalfMeal("F4",new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
+		Quick.addMeal(F3);
+		Quick.addMeal(F4);
+		
+		Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
+		foodora.addUser(Sushi);
+		FullMeal F5 = new FullMeal("F5", new Starter("Sushi2", 4, false, true), new MainDish("Sushi1", 4, false, true), new Dessert("Dessert", 2, true, false));
+		HalfMeal F6 = new HalfMeal("F6",new MainDish("Sushi3", 4, false, true), new Dessert("Dessert2", 2, true, false));
+		Sushi.addMeal(F5);
+		Sushi.addMeal(F6);
+		
+		Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
+		foodora.addUser(KFC);
+		FullMeal F7 = new FullMeal("F7", new Starter("Saucisson", 4, false, true), new MainDish("Chicken", 4, false, true), new Dessert("IceCream", 2, true, false));
+		HalfMeal F8 = new HalfMeal("F8",new MainDish("Chicken2", 4, false, true), new Dessert("BetterIceCream", 2, true, false));
+		KFC.addMeal(F7);
+		KFC.addMeal(F8);
+		
+		Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
+		foodora.addUser(Bio);
+		FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true), new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
+		HalfMeal F10 = new HalfMeal("F10",new MainDish("Chicken2Bio", 4, false, true), new Dessert("BetterIceCreamBio", 2, true, false));
+		Bio.addMeal(F9);
+		Bio.addMeal(F10);
+		
+		
+		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10,"Fred@laposte.net" ,"0612345678");
+		foodora.addUser(Fred);
+		Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10,"Carole@laposte.net" ,"0612345678");
+		foodora.addUser(Carole);
+		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
+		foodora.addUser(A);
+		Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
+		foodora.addUser(B);
+		Customer C = new Customer("C", "C", "c", 52, -14, "0654312456", "C@laposte.net");
+		foodora.addUser(C);
+		Customer D = new Customer("D", "D", "d", -22, 42, "0658318456", "D@laposte.net");
+		foodora.addUser(D);
+		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
+		foodora.addUser(E);
+		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
+		foodora.addUser(F);
+		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
+		foodora.addUser(G);
 
 		// 2. the system sends alerts to the customers that agreed to be
 		// notified of special offers
@@ -207,75 +273,6 @@ public class UseCase {
 		// 3. the restaurant selects a meal in the meal of the week list and
 		// selects the remove from
 		// its special offer state.
-	}
-	public static void setEnvironementForTest(MyFoodora foodora){
-		Manager CEO = new Manager("Mary", "mary", "boss47");
-		foodora.addUser(CEO);
-		
-		Manager Deputy = new Manager("John", "john", "jojojo");
-		foodora.addUser(Deputy);
-		
-		Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
-		foodora.addUser(Macdo);
-		
-		MainDish Drink=new MainDish("Drink",0.5,true,true);
-		MainDish BigMac=new MainDish("BigMac", 5, false, false);
-		Starter Salad=new Starter("Salad", 1, true, true);
-		Dessert MacFlurry=new Dessert("McFlurry",2,true,false);
-		
-		FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
-		HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
-		
-		Macdo.addMeal(F1);
-		Macdo.addMeal(F2);
-		
-		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
-		foodora.addUser(Quick);
-		FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
-		HalfMeal F4 = new HalfMeal("F4",new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
-		Quick.addMeal(F3);
-		Quick.addMeal(F4);
-		
-		Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
-		foodora.addUser(Sushi);
-		FullMeal F5 = new FullMeal("F5", new Starter("Sushi2", 4, false, true), new MainDish("Sushi1", 4, false, true), new Dessert("Dessert", 2, true, false));
-		HalfMeal F6 = new HalfMeal("F6",new MainDish("Sushi3", 4, false, true), new Dessert("Dessert2", 2, true, false));
-		Sushi.addMeal(F5);
-		Sushi.addMeal(F6);
-		
-		Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
-		foodora.addUser(KFC);
-		FullMeal F7 = new FullMeal("F7", new Starter("Saucisson", 4, false, true), new MainDish("Chicken", 4, false, true), new Dessert("IceCream", 2, true, false));
-		HalfMeal F8 = new HalfMeal("F8",new MainDish("Chicken2", 4, false, true), new Dessert("BetterIceCream", 2, true, false));
-		KFC.addMeal(F7);
-		KFC.addMeal(F8);
-		
-		Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
-		foodora.addUser(Bio);
-		FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true), new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
-		HalfMeal F10 = new HalfMeal("F10",new MainDish("Chicken2Bio", 4, false, true), new Dessert("BetterIceCreamBio", 2, true, false));
-		Bio.addMeal(F9);
-		Bio.addMeal(F10);
-		
-		
-		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10,"Fred@laposte.net" ,"0612345678");
-		foodora.addUser(Fred);
-		Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10,"Carole@laposte.net" ,"0612345678");
-		foodora.addUser(Carole);
-		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
-		foodora.addUser(A);
-		Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
-		foodora.addUser(B);
-		Customer C = new Customer("C", "C", "c", 52, -14, "0654312456", "C@laposte.net");
-		foodora.addUser(C);
-		Customer D = new Customer("D", "D", "d", -22, 42, "0658318456", "D@laposte.net");
-		foodora.addUser(D);
-		Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
-		foodora.addUser(E);
-		Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
-		foodora.addUser(F);
-		Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
-		foodora.addUser(G);
 	}
 }
 

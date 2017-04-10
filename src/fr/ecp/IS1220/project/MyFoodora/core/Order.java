@@ -16,7 +16,7 @@ public class Order {
 	private Time orderDate;
 	private Time deliverDate;
 
-	public Order(Customer customer, Restaurant restaurant, Courier courier, double price, double serviceFee,
+	public Order(Customer customer, Restaurant restaurant, Courier courier, double serviceFee,
 			double markupPourcentage, double deliveryCost) {
 		super();
 		this.customer = customer;

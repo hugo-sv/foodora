@@ -20,6 +20,7 @@ public class Customer extends User {
 		setPhoneNumber(phoneNumber);
 		notifyMean = email;
 	}
+
 	public Customer(String name, String surname, String username, double addressX, double addressY) {
 		super(name, surname, addressX, addressY);
 		this.surname = surname;
@@ -27,8 +28,8 @@ public class Customer extends User {
 
 	public String getAccountInfo() {
 		String info = new String();
-		info += "Name : " + getName() + "\nSurname : " + surname + "\nEmail : " + getEmail() + "\nPhone number : " + getPhoneNumber()
-				+ "\nFidelity card : " + fidelityCard.toString() + "\nOrders :\n";
+		info += "Name : " + getName() + "\nSurname : " + surname + "\nEmail : " + getEmail() + "\nPhone number : "
+				+ getPhoneNumber() + "\nFidelity card : " + fidelityCard.toString() + "\nOrders :\n";
 		for (Order o : orders) {
 			info += o.toString();
 			info += "\n";
@@ -54,15 +55,14 @@ public class Customer extends User {
 	}
 
 	public void payOrder(Order order) {
-		double price = order.getPrice()*(1+order.getMarkupPourcentage())+order.getServiceFee();
-		System.out.println(order.getCustomer()+" : paid"+price);
+		double price = order.getPrice() * (1 + order.getMarkupPourcentage()) + order.getServiceFee();
+		System.out.println(order.getCustomer() + " : paid" + price);
 		myFoodora.give(order);
 		// Once the order is paid
 		orders.add(order);
 	}
 
 	// Getters an setters
-
 
 	public String getSurname() {
 		return surname;
@@ -83,13 +83,13 @@ public class Customer extends User {
 	public void setFidelityCard(FidelityCard fidelityCard) {
 		this.fidelityCard = fidelityCard;
 	}
+
 	public String getNotifyMean() {
 		return notifyMean;
 	}
+
 	public void setNotifyMean(String notifyMean) {
 		this.notifyMean = notifyMean;
 	}
-	
-	
 
 }

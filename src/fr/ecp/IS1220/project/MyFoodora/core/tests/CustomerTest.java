@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 import fr.ecp.IS1220.project.MyFoodora.core.cards.BasicFidelityCard;
@@ -14,7 +13,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.cards.LotteryFidelityCard;
 public class CustomerTest {
 	static MyFoodora foodora = new MyFoodora(0.1, 0.1, 0.1);
 	static Customer Michel = new Customer("Michel", "Michou", "michmich", 0, 10, "michel@laposte.net", "0612345678");
-	
+
 	@Before
 	public void testCustomer() {
 		foodora.addUser(Michel);
@@ -56,13 +55,13 @@ public class CustomerTest {
 
 	@Test
 	public void testGetFidelityCard() {
-		assertTrue(Michel.getFidelityCard()instanceof BasicFidelityCard);
+		assertTrue(Michel.getFidelityCard() instanceof BasicFidelityCard);
 	}
 
 	@Test
 	public void testSetFidelityCard() {
 		Michel.setFidelityCard(new LotteryFidelityCard());
-		assertTrue(Michel.getFidelityCard()instanceof LotteryFidelityCard);
+		assertTrue(Michel.getFidelityCard() instanceof LotteryFidelityCard);
 
 	}
 

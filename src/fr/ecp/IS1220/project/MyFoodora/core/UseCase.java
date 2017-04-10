@@ -45,7 +45,7 @@ public class UseCase {
 
 		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
 		foodora.addUser(Quick);
-		FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true),
+		FullMeal F3 = new FullMeal("F3", new Starter("Salad", 1, true, true), new MainDish("Nuggets", 4, false, true),
 				new Dessert("Donut", 2, true, false));
 		HalfMeal F4 = new HalfMeal("F4", new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
 		Quick.addMeal(F3);
@@ -403,31 +403,86 @@ public class UseCase {
 					user.getMenu().addItem(new Dessert(name, price, false, false));
 				}
 			} else {
-			System.out.println("Boring stuff...");
-			// 7. in case of meal
-			// • the restaurant inserts the dishes of the meal
-			// • the restaurant compute and save the price of the meal
-			// 8. the restaurant saves the new created meal (or dish) in the menu
+				System.out.println("Boring stuff...");
+				// 7. in case of meal
+				// • the restaurant inserts the dishes of the meal
+				// • the restaurant compute and save the price of the meal
+				// 8. the restaurant saves the new created meal (or dish) in the menu
 			}
 			// Adding a meal of the week special offer
 			// 1. a restaurant staff starts using the system and inserts the
 			// restaurant credentials
+		} else if (action == 5) {
+			Restaurant user=null;
+			do {
+				// 2. the client inserts his credentials (username and password)
+				System.out.println("Enter Username:");
+				String username = sc.nextLine();
+				for (User u : foodora.getUserList().values()){
+					if (u instanceof Restaurant && username.equals(u.getUsername())){
+						user= (Restaurant) u;
+					}
+				}
+			} while (user==null);
+			// 3. the restaurant selects the meal to be set as meal of the week
+			ArrayList<Meal> mealList = new ArrayList<Meal>();
+			int i = 1;
+			for (Meal meal : user.getMenu().getMeals()) {
+				mealList.add(meal);
+				System.out.println(i+" - "+meal.toString());
+				i++;
+			}
+			int answer = 0;
+			do {
+				
+				System.out.println("Select meal :");
+				answer = Integer.parseInt(sc.nextLine());
+			} while (answer <1 || answer > mealList.size());
+			Meal meal = mealList.get(answer-1);
+			user.addMealOfTheWeek(meal);
+			// 4. the system automatically updates the price of selected meal of the
+			// week, by application
+			// of special discount factor
+			// 5. the system notifies the users (that agreed to be notified of
+			// special offers) about the
+			// new offer
+			foodora.notifyObservers(meal.toString()+" was added to the meals of the week of "+user.toString());
+			System.out.println(meal.toString()+" added to the meals of the week");
+			// Removing a meal of the week special offer
+			// 1. a restaurant staff starts using the system and inserts the
+			// restaurant credentials
+		} else if (action == 6) {
+			Restaurant user=null;
+			do {
+				// 2. the client inserts his credentials (username and password)
+				System.out.println("Enter Username:");
+				String username = sc.nextLine();
+				for (User u : foodora.getUserList().values()){
+					if (u instanceof Restaurant && username.equals(u.getUsername())){
+						user= (Restaurant) u;
+					}
+				}
+			} while (user==null);
+			
+			// 3. the restaurant selects a meal in the meal of the week list and
+			// selects the remove from
+			// its special offer state.
+			ArrayList<Meal> mealList = user.getMealsOfTheWeek();
+			int i = 1;
+			for (Meal meal : mealList) {
+				mealList.add(meal);
+				System.out.println(i+" - "+meal.toString());
+				i++;
+			}
+			int answer = 0;
+			do {
+				
+				System.out.println("Select meal :");
+				answer = Integer.parseInt(sc.nextLine());
+			} while (answer <1 || answer > mealList.size());
+			Meal meal = mealList.get(answer-1);
+			user.removeMealOfTheWeek(meal);
 		}
-		// 2. the system shows all restaurant’s available meals
-		// 3. the restaurant selects the meal to be set as meal of the week
-		// 4. the system automatically updates the price of selected meal of the
-		// week, by application
-		// of special discount factor
-		// 5. the system notifies the users (that agreed to be notified of
-		// special offers) about the
-		// new offer
-		// Removing a meal of the week special offer
-		// 1. a restaurant staff starts using the system and inserts the
-		// restaurant credentials
-		// 2. the system shows all restaurant’s available meals
-		// 3. the restaurant selects a meal in the meal of the week list and
-		// selects the remove from
-		// its special offer state.
 		sc.close();
 	}
 }

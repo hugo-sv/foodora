@@ -31,7 +31,6 @@ public class Restaurant extends User {
 
 	public void addMeal(Meal meal) {
 		menu.addMeal(meal);
-		// this.menu = new Menu();
 	}
 
 	public String getName() {
@@ -61,6 +60,8 @@ public class Restaurant extends User {
 	public void addMealOfTheWeek(Meal meal) {
 		if (!mealsOfTheWeek.contains(meal)) {
 			mealsOfTheWeek.add(meal);
+			//Add meal to the list of meals
+			this.addMeal(meal);
 			String message = new String("");
 			message += "The restaurant " + this.getName() + " set a new offer : The " + meal.getName() + " gets a "
 					+ this.getSpecialDiscountFactor() + " discount !";
@@ -72,6 +73,7 @@ public class Restaurant extends User {
 		if (mealsOfTheWeek.contains(meal)) {
 			mealsOfTheWeek.remove(meal);
 			//Don't notify users
+			//not removed from the meal list
 		}
 	}
 

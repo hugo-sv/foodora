@@ -28,6 +28,19 @@ public class Order {
 		this.orderDate = Time.getTime();
 
 	}
+	
+	public Order(Customer customer, Restaurant restaurant, double serviceFee,
+			double markupPourcentage, double deliveryCost) {
+		super();
+		this.customer = customer;
+		this.restaurant = restaurant;
+		this.courier = null;
+		this.serviceFee = serviceFee;
+		this.markupPourcentage = markupPourcentage;
+		this.deliveryCost = deliveryCost;
+		this.orderDate = Time.getTime();
+
+	}
 
 	public Customer getCustomer() {
 		return customer;
@@ -91,6 +104,10 @@ public class Order {
 
 	public ArrayList<Orderable> getOrderables() {
 		return orderables;
+	}
+
+	public void setCourier(Courier courier) {
+		this.courier = courier;
 	}
 
 }

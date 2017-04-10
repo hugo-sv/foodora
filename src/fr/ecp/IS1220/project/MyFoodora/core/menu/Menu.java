@@ -34,14 +34,14 @@ public class Menu {
 
 	public void removeItem(Item item) {
 		// Remove the item from the items set
-		ArrayList<Meal> mealToRemove=new ArrayList<Meal>();
+		ArrayList<Meal> mealToRemove = new ArrayList<Meal>();
 		for (Meal meal : meals) {
 			if (meal.getItems().contains(item)) {
 				// The removed Item is used in a meal
 				mealToRemove.add(meal);
 			}
 		}
-		for (Meal meal : mealToRemove){
+		for (Meal meal : mealToRemove) {
 			this.removeMeal(meal);
 		}
 		if (items.contains(item)) {

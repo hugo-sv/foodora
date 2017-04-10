@@ -2,6 +2,7 @@ package fr.ecp.IS1220.project.MyFoodora.core.tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
@@ -19,20 +20,20 @@ public class Mealtest {
 	public static FullMeal plat1 = new FullMeal("plat1", saucisson, pates, chocolat);
 	public static HalfMeal plat2 = new HalfMeal("plat2", pates, chocolat);
 	public static HalfMeal plat3 = new HalfMeal("plat3", saucisson, pates);
-
-	@Test
-	public void testGetPrice() {
+	
+	
+	@Before
+	public void testMeal() {
 		restaurant.addMeal(plat1);
 		restaurant.addMeal(plat2);
 		restaurant.addMeal(plat3);
-		
-		System.out.println(plat1.getMenu());
-		System.out.println(restaurant.getMenu());
-		
-		System.out.println(plat1.getPrice());
+	}
+	
+	@Test
+	public void testGetPrice() {
 		assertEquals(plat1.getPrice(), 9.5, 0.001);
 		assertEquals(plat2.getPrice(), 4.75, 0.001);
-		assertEquals(plat3.getPrice(), 7.2, 0.001);
+		assertEquals(plat3.getPrice(), 7.6, 0.001);
 	}
 
 	@Test

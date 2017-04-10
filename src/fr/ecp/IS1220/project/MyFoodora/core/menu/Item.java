@@ -62,7 +62,7 @@ public abstract class Item implements Orderable {
 
 	public void setMenu(Menu menu) {
 		// Removing item if it passes from a menu to one other
-		if (this.menu != null && menu != null) {
+		if (this.menu != null && menu != null && this.menu!=menu) {
 			this.menu.removeItem(this);
 		}
 		this.menu = menu;

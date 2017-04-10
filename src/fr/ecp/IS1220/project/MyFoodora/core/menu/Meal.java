@@ -7,7 +7,7 @@ public abstract class Meal implements Orderable {
 	private Dessert dessert;
 	private Starter entry;
 	private MainDish main;
-	private Menu menu=null;
+	private Menu menu;
 
 	public Meal(String name) {
 		this.name = name;
@@ -67,6 +67,7 @@ public abstract class Meal implements Orderable {
 		if (dessert != null) {
 			price += dessert.getPrice();
 		}
+		menu.getRestaurant();
 		return price * (1 - menu.getRestaurant().getGenericDiscountFactor());
 	}
 

@@ -7,8 +7,6 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Menu;
 
 public class Restaurant extends User {
-	private String name;
-	private String username;
 	private Menu menu;
 	// At least one meal amongst those offered by a restaurant is offered as a
 	// meal-of-the-week special offer
@@ -18,8 +16,6 @@ public class Restaurant extends User {
 
 	public Restaurant(String name, String username, double addressX, double addressY) {
 		super(name, username, addressX, addressY);
-		this.name = name;
-		this.username = username;
 		this.setAddressX(addressX);
 		this.setAddressY(addressY);
 		this.menu = new Menu(this);
@@ -31,22 +27,6 @@ public class Restaurant extends User {
 
 	public void addMeal(Meal meal) {
 		menu.addMeal(meal);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public Menu getMenu() {

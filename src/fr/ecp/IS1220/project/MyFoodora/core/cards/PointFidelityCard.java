@@ -15,11 +15,13 @@ public class PointFidelityCard implements FidelityCard {
 		double price = 0;
 		price += itemPrice;
 		price += (mealPrice + mealOfTheWeekPrice);
-		if (points>100);{
-			price*=0.9;
-			points=0;
+		if (points > 100)
+			;
+		{
+			price *= 0.9;
+			points = 0;
 		}
-		points+=price/10;
+		points += price / 10;
 		return price;
 
 	}
@@ -31,10 +33,10 @@ public class PointFidelityCard implements FidelityCard {
 	public void setPoints(double points) {
 		this.points = points;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Point fidelity card with "+getPoints()+" points.";
+		return "Point fidelity card with " + getPoints() + " points.";
 	}
-	
+
 }

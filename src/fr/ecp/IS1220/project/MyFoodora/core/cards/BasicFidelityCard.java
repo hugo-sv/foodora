@@ -7,11 +7,11 @@ public class BasicFidelityCard implements FidelityCard {
 			Float specialDiscountFactor) {
 		double price = 0;
 		price += itemPrice;
-		price += mealPrice;//already mutiplied by genericDiscountFactor
-		price += mealOfTheWeekPrice*(1-specialDiscountFactor)/(1-genericDiscountFactor);
+		price += mealPrice;// already mutiplied by genericDiscountFactor
+		price += mealOfTheWeekPrice * (1 - specialDiscountFactor) / (1 - genericDiscountFactor);
 		return price;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Basic fidelity card";

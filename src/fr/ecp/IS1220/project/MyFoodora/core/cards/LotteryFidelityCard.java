@@ -13,9 +13,8 @@ public class LotteryFidelityCard implements FidelityCard {
 	@Override
 	public double getOffer(Double itemPrice, Double mealPrice, Double mealOfTheWeekPrice, Float genericDiscountFactor,
 			Float specialDiscountFactor) {
-		// si difference de plus d'un jour ou None
-		//// tirer un random
-		if (lastTime==null || !lastTime.isLessThanOneDay()) {
+		// If difference is greater than one day or none, chose a random number
+		if (lastTime == null || !lastTime.isLessThanOneDay()) {
 			lastTime = Time.getTime();
 			// Change to a random number
 			randomNumber = (float) Math.random();
@@ -37,8 +36,7 @@ public class LotteryFidelityCard implements FidelityCard {
 	public String toString() {
 		if (lastTime.isLessThanOneDay()) {
 			return "Lottery fidelity card already used today";
-		}
-		else {
+		} else {
 			return "Lottery fidelity card, not used today";
 		}
 	}

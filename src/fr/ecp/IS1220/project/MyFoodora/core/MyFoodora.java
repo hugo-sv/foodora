@@ -3,8 +3,11 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.OrderSortingPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
@@ -33,14 +36,32 @@ public class MyFoodora {
 		// per restaurant...
 		MyFoodora foodora = new MyFoodora(0.5, 0.05, 1);
 		Manager CEO = new Manager("Mary", "mary", "boss47");
+		foodora.addUser(CEO);
 		Manager Deputy = new Manager("John", "john", "jojojo");
+		foodora.addUser(Deputy);
 		Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
+		foodora.addUser(Macdo);
+		MainDish Drink=new MainDish("Drink",0.5,true,true);
+		MainDish BigMac=new MainDish("BigMac", 5, false, false);
+		Starter Salad=new Starter("Salad", 1, true, true);
+		Dessert MacFlurry=new Dessert("McFlurry",2,true,false);
+		FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
+		HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
+		Macdo.addMeal(F1);
+		Macdo.addMeal(F2);
 		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
+		foodora.addUser(Quick);
+		FullMeal F1 = new FullMeal("F1", null, null, null);
 		Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
+		foodora.addUser(Sushi);
 		Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
+		foodora.addUser(KFC);
 		Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
+		foodora.addUser(Bio);
 		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
+		foodora.addUser(Fred);
 		Courier Carole = new Courier("Fred", "fredo", "fred", 0, 10, "0612345678");
+		foodora.addUser(Carole);
 		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 		foodora.addUser(A);
 		Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
@@ -59,7 +80,7 @@ public class MyFoodora {
 		
 		
 		
-		FullMeal F1 = new FullMeal("F1", null, null, null);
+		
 		
 
 		// 2. the system sends alerts to the customers that agreed to be

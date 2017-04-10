@@ -1,5 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core.menu;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,11 +34,15 @@ public class Menu {
 
 	public void removeItem(Item item) {
 		// Remove the item from the items set
+		ArrayList<Meal> mealToRemove=new ArrayList<Meal>();
 		for (Meal meal : meals) {
 			if (meal.getItems().contains(item)) {
 				// The removed Item is used in a meal
-				this.removeMeal(meal);
+				mealToRemove.add(meal);
 			}
+		}
+		for (Meal meal : mealToRemove){
+			this.removeMeal(meal);
 		}
 		if (items.contains(item)) {
 			items.remove(item);

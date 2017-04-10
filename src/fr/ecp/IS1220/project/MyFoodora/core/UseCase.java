@@ -229,21 +229,22 @@ public class UseCase {
 			}
 		}
 		// Login user
+		// 1. a user wants to login
 		else {
-			String response;
+			User user=null;
 			do {
-				System.out.println("Enter Username and password :");
+				// 2. the user inserts username (and password : not implemented)
+				System.out.println("Enter Username:");
 				String username = sc.nextLine();
-				String password = sc.nextLine();
-			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
-			if (response.equalsIgnoreCase("y")) {
-				((Customer) c).register();
-			}
-			// 1. a user wants to login
-			// 2. the user inserts username and password
+				for (User u : foodora.getUserList().values()){
+					if (username.equals(u.getUsername())){
+						user=u;
+					}
+				}
+			} while (!(user==null));
 			// 3. the system handles the login and presents to the user the
-			// available operations ac-
-			// cording to his role
+			// available operations according to his role
+			System.out.println("Voilà ce que tu peux faire :");
 		}
 		// Ordering a meal
 		// 1. a client start using the system because she wants to order a meal

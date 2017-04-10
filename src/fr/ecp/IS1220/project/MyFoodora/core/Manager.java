@@ -26,12 +26,10 @@ public class Manager extends User {
 	
 	public void addUser(User user) {
 		myFoodora.addUser(user);
-		user.myFoodora = myFoodora;
 	}
 	
 	public void removeUser(User user) {
 		myFoodora.removeUser(user);
-		user.myFoodora = null;
 	}
 	
 	public void activate(User user) {

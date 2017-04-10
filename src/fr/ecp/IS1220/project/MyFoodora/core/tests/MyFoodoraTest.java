@@ -1,5 +1,6 @@
 
 package fr.ecp.IS1220.project.MyFoodora.core.tests;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -19,16 +20,16 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 
 public class MyFoodoraTest {
 	static MyFoodora foodora = new MyFoodora(0.1, 0.1, 0.1);
-	
+
 	static Manager Johna = new Manager("John", "jo", "john");
 	static Manager CEO = new Manager("Mary", "mary", "boss47");
 	static Manager Deputy = new Manager("John", "john", "jojojo");
-	
+
 	static Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
 	static Courier Fredi = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
 	static Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10, "Carole@laposte.net",
 			"0612345678");
-	
+
 	static Customer A1 = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 	static Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 	static Customer B = new Customer("B", "B", "b", 42, 14, "0654617456", "B@laposte.net");
@@ -37,21 +38,21 @@ public class MyFoodoraTest {
 	static Customer E = new Customer("E", "E", "e", -12, 64, "0654312956", "E@laposte.net");
 	static Customer F = new Customer("F", "F", "f", -2, -4, "0614372456", "F@laposte.net");
 	static Customer G = new Customer("G", "G", "g", 0, 47, "0654312456", "G@laposte.net");
-	
+
 	static Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
 	static Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
 	static Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
 	static Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
 
 	static Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
-	
+
 	static MainDish Drink = new MainDish("Drink", 0.5, true, true);
 	static MainDish BigMac = new MainDish("BigMac", 5, false, false);
 	static Starter Salad = new Starter("Salad", 1, true, true);
 	static Dessert MacFlurry = new Dessert("McFlurry", 2, true, false);
 	static FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
 	static HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
-	
+
 	static FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true),
 			new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
 	static HalfMeal F10 = new HalfMeal("F10", new MainDish("Chicken2Bio", 4, false, true),
@@ -64,11 +65,11 @@ public class MyFoodoraTest {
 			new MainDish("Sushi1", 4, false, true), new Dessert("Dessert", 2, true, false));
 	static HalfMeal F6 = new HalfMeal("F6", new MainDish("Sushi3", 4, false, true),
 			new Dessert("Dessert2", 2, true, false));
-	static FullMeal F3 = new FullMeal("F3", new Starter("Salad", 1, true, true), new MainDish("Nuggets", 4, false, true),
-			new Dessert("Donut", 2, true, false));
+	static FullMeal F3 = new FullMeal("F3", new Starter("Salad", 1, true, true),
+			new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
 	static HalfMeal F4 = new HalfMeal("F4", new MainDish("Nuggets", 4, false, true),
 			new Dessert("Donut", 2, true, false));
-	
+
 	@Before
 	public void testMyFoodora() {
 		foodora.addUser(Johna);
@@ -104,7 +105,7 @@ public class MyFoodoraTest {
 
 	@Test
 	public void testGive() {
-		Order order = new Order(A, Macdo,Fred,0.1,0.1,0.1);
+		Order order = new Order(A, Macdo, Fred, 0.1, 0.1, 0.1);
 		foodora.give(order);
 		assertTrue(foodora.getCurrentOrder_List().contains(order));
 	}
@@ -127,77 +128,73 @@ public class MyFoodoraTest {
 	public void testNotifyObservers() {
 		foodora.registerObserver(A);
 		assertTrue(foodora.getObservers().contains(A));
-		foodora.notifyObservers("This is a test);
+		foodora.notifyObservers("This is a test");
 	}
 
 	@Test
 	public void testAddUser() {
-		fail("Not yet implemented");
+		foodora.removeUser(A);
+		assertTrue(!foodora.getUserList().values().contains(A));
+		foodora.addUser(A);
+		assertTrue(foodora.getUserList().values().contains(A));
 	}
 
 	@Test
 	public void testRemoveUser() {
-		fail("Not yet implemented");
+		foodora.addUser(A);
+		assertTrue(foodora.getUserList().values().contains(A));
+		foodora.removeUser(A);
+		assertTrue(!foodora.getUserList().values().contains(A));
 	}
 
 	@Test
 	public void testActivateUser() {
-		fail("Not yet implemented");
+		foodora.disactivateUser(A);
+		assertTrue(!A.isActivated());
+		foodora.activateUser(A);
+		assertTrue(A.isActivated());
 	}
 
 	@Test
 	public void testDisactivateUser() {
-		fail("Not yet implemented");
+		foodora.activateUser(A);
+		assertTrue(A.isActivated());
+		foodora.disactivateUser(A);
+		assertTrue(!A.isActivated());
 	}
 
 	@Test
 	public void testAddCourier() {
-		fail("Not yet implemented");
+		foodora.addCourier(Fred);
+		assertTrue(foodora.getUserList().values().contains(Fred));
+		foodora.removeCourier(Fred);
+		assertTrue(!foodora.getUserList().values().contains(Fred));
 	}
 
 	@Test
 	public void testRemoveCourier() {
-		fail("Not yet implemented");
+		foodora.removeCourier(Fred);
+		assertTrue(!foodora.getUserList().values().contains(Fred));
+		foodora.addCourier(Fred);
+		assertTrue(foodora.getUserList().values().contains(Fred));
 	}
 
 	@Test
-	public void testGetServiceFee() {
-		fail("Not yet implemented");
+	public void testServiceFee() {
+		foodora.setServiceFee(15);
+		assertTrue(foodora.getServiceFee()==15);
 	}
 
 	@Test
-	public void testSetServiceFee() {
-		fail("Not yet implemented");
+	public void testMarkupPourcentage() {
+		foodora.setMarkupPourcentage(15);
+		assertTrue(foodora.getMarkupPourcentage()==15);
 	}
 
 	@Test
-	public void testGetMarkupPourcentage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetMarkupPourcentage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDeliveryCost() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetDeliveryCost() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCompletedOrder_List() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCurrentOrder_List() {
-		fail("Not yet implemented");
+	public void testDeliveryCost() {
+		foodora.setDeliveryCost(15);
+		assertTrue(foodora.getDeliveryCost()==15);
 	}
 
 	@Test
@@ -210,20 +207,6 @@ public class MyFoodoraTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testSetTargetPolicy() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTargetPolicy() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCourierList() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testMostActiveCourier() {
@@ -234,30 +217,4 @@ public class MyFoodoraTest {
 	public void testLeastActiveCourier() {
 		fail("Not yet implemented");
 	}
-
-	@Test
-	public void testGetDeliveryPolicy() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetDeliveryPolicy() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetUserList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetMoney() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetMoney() {
-		fail("Not yet implemented");
-	}
-
 }

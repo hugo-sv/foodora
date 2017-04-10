@@ -196,25 +196,4 @@ public class MyFoodoraTest {
 		foodora.setDeliveryCost(15);
 		assertTrue(foodora.getDeliveryCost()==15);
 	}
-
-	@Test
-	public void testComputeTotalIncome() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testComputeTotalProfit() {
-		fail("Not yet implemented");
-	}
-
-
-	@Test
-	public void testMostActiveCourier() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLeastActiveCourier() {
-		fail("Not yet implemented");
-	}
 }

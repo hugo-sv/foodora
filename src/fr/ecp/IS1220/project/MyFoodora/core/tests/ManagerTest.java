@@ -2,33 +2,53 @@ package fr.ecp.IS1220.project.MyFoodora.core.tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
-public class ManagerTest {
+import fr.ecp.IS1220.project.MyFoodora.core.Courier;
+import fr.ecp.IS1220.project.MyFoodora.core.Customer;
+import fr.ecp.IS1220.project.MyFoodora.core.Manager;
+import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 
-	@Test
+public class ManagerTest {
+	static MyFoodora foodora = new MyFoodora(0.1, 0.1, 0.1);
+	static Manager John = new Manager("John", "jo", "john");
+	static Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
+	static Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
+
+	@Before
 	public void testManager() {
-		fail("Not yet implemented");
+		foodora.addUser(John);
 	}
 
 	@Test
 	public void testGetSurname() {
-		fail("Not yet implemented");
+		System.out.println("Mansghgdsdfghgfdst.main()");
+		assertEquals("jo", John.getSurname());
 	}
 
 	@Test
 	public void testSetSurname() {
-		fail("Not yet implemented");
+		John.setSurname("jojo");
+		assertEquals("jojo", John.getSurname());
+		John.setSurname("jo");
 	}
 
 	@Test
 	public void testAddUser() {
-		fail("Not yet implemented");
+		John.addUser(Fred);
+		assertTrue(foodora.getUserList().containsValue(Fred));
+		John.addUser(A);
+		assertTrue(foodora.getUserList().containsValue(A));
 	}
 
 	@Test
 	public void testRemoveUser() {
-		fail("Not yet implemented");
+		John.addUser(Fred);
+		assertTrue(foodora.getUserList().containsValue(Fred));
+		John.removeUser(Fred);
+		assertTrue(!foodora.getUserList().containsValue(Fred));
 	}
 
 	@Test

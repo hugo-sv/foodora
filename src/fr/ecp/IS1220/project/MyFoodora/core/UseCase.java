@@ -426,7 +426,7 @@ public class UseCase {
 						user.getMenu().addItem(new Dessert(name, price, false, false));
 					}
 				} else {
-					System.out.println("Boring stuff...");
+					System.out.println("Can be done...");
 					// 7. in case of meal
 					// • the restaurant inserts the dishes of the meal
 					// • the restaurant compute and save the price of the meal

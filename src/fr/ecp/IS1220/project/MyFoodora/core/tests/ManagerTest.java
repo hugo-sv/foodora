@@ -91,6 +91,8 @@ public class ManagerTest {
 		Bio.addMeal(F9);
 		Bio.addMeal(F10);
 		foodora.addUser(Fred);
+		foodora.addUser(Fredi);
+		foodora.addUser(A1);
 		foodora.addUser(Carole);
 		foodora.addUser(A);
 		foodora.addUser(B);
@@ -99,6 +101,7 @@ public class ManagerTest {
 		foodora.addUser(E);
 		foodora.addUser(F);
 		foodora.addUser(G);
+		System.out.println("ManagerTest.testManager()");
 	}
 
 	@Test

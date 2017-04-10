@@ -9,7 +9,10 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryCostPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.FastestPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.ItemPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.OrderSortingPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
 
@@ -20,9 +23,9 @@ public class MyFoodora {
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
-	private TargetPolicy targetPolicy;
-	private DeliveryPolicy deliveryPolicy;
-	private OrderSortingPolicy orderSortingPolicy;
+	private TargetPolicy targetPolicy = new DeliveryCostPolicy();
+	private DeliveryPolicy deliveryPolicy = new FastestPolicy();
+	private OrderSortingPolicy orderSortingPolicy = new ItemPolicy();
 	private ArrayList<Customer> observers;
 	private double money = 0;
 

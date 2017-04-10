@@ -1,6 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.core.tests;
 
-import static org.junit.Assert.*;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,6 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
-import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryCostPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.MarkupPolicy;
 
 public class MarkupPolicyTest {

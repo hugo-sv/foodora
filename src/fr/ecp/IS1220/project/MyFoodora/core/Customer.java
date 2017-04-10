@@ -38,8 +38,11 @@ public class Customer extends User {
 
 	public void notify(String message) {
 		// Sending Offer
-		System.out.println("Offer sent to " + getNotifyMean() + " :");
-		System.out.println(message);
+		if (getNotifyMean() != null) {
+			System.out.println("Offer sent to " + getNotifyMean() + " :");
+			System.out.println(message);
+		}
+
 	}
 
 	public void register() {

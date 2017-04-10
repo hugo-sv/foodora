@@ -200,13 +200,46 @@ public class MyFoodora {
 		if (c instanceof Customer) {
 			int response;
 			do {
-				System.out.println("Do you want to be informed of special offers ? (y/N)");
-			} while (true);
+				System.out.println("Select contact method for offers :");
+				System.out.println("1 - email (default)");
+				System.out.println("2 - phone number");
+				response = Integer.parseInt(sc.nextLine());
+			} while (response!=1 && response!=2 && response!=0);
+			if (response == 2) {
+				((Customer) c).setNotifyMean(c.getPhoneNumber());
+			} else {
+				((Customer) c).setNotifyMean(c.getEmail());
+			}
+		}
 		
 		// 6. if the user is a courier he sets his current duty status (default
 		// off-duty)
+		
+		if (c instanceof Courier) {
+			String response;
+			do {
+				System.out.println("Do you want to be seen as on-duty ? (y/N)");
+				response = sc.nextLine();
+			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
+			if (response.equalsIgnoreCase("y")) {
+				((Courier) c).setOnDuty(true);
+			} else {
+				((Courier) c).setOnDuty(false);
+			}
+		}
+		
 		// 7. the user specify to save the account
 		// Login user
+		String response;
+		do  {
+			System.out.println("Do you wish to save your accoun ? (Y/n)");
+			response = sc.nextLine();
+		} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
+		if (response.equalsIgnoreCase("n")) {
+			foodora.removeUser(c);
+		}
+		
+		
 		// 1. a user wants to login
 		// 2. the user inserts username and password
 		// 3. the system handles the login and presents to the user the

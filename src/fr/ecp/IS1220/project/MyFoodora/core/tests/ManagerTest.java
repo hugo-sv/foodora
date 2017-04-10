@@ -9,68 +9,69 @@ import fr.ecp.IS1220.project.MyFoodora.core.Courier;
 import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
+import fr.ecp.IS1220.project.MyFoodora.core.UseCase;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 
 public class ManagerTest {
 	static MyFoodora foodora = new MyFoodora(0.1, 0.1, 0.1);
-	static Manager John = new Manager("John", "jo", "john");
-	static Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
-	static Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
+	static Manager Johna = new Manager("John", "jo", "john");
+	static Courier Fredi = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
+	static Customer A1 = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 
 	@Before
 	public void testManager() {
-		foodora.addUser(John);
+		foodora.addUser(Johna);
 	}
 
 	@Test
 	public void testGetSurname() {
 		System.out.println("Mansghgdsdfghgfdst.main()");
-		assertEquals("jo", John.getSurname());
+		assertEquals("jo", Johna.getSurname());
 	}
 
 	@Test
 	public void testSetSurname() {
-		John.setSurname("jojo");
-		assertEquals("jojo", John.getSurname());
-		John.setSurname("jo");
+		Johna.setSurname("jojo");
+		assertEquals("jojo", Johna.getSurname());
+		Johna.setSurname("jo");
 	}
 
 	@Test
 	public void testAddUser() {
-		John.addUser(Fred);
-		assertTrue(foodora.getUserList().containsValue(Fred));
-		John.addUser(A);
-		assertTrue(foodora.getUserList().containsValue(A));
+		Johna.addUser(Fredi);
+		assertTrue(foodora.getUserList().containsValue(Fredi));
+		Johna.addUser(A1);
+		assertTrue(foodora.getUserList().containsValue(A1));
 	}
 
 	@Test
 	public void testRemoveUser() {
-		John.addUser(Fred);
-		assertTrue(foodora.getUserList().containsValue(Fred));
-		John.removeUser(Fred);
-		assertTrue(!foodora.getUserList().containsValue(Fred));
-		John.addUser(Fred);
+		Johna.addUser(Fredi);
+		assertTrue(foodora.getUserList().containsValue(Fredi));
+		Johna.removeUser(Fredi);
+		assertTrue(!foodora.getUserList().containsValue(Fredi));
+		Johna.addUser(Fredi);
 	}
 
 	@Test
 	public void testActivate() {
-		John.disactivate(A);
-		John.activate(A);
-		assertTrue(A.isActivated());
+		Johna.disactivate(A1);
+		Johna.activate(A1);
+		assertTrue(A1.isActivated());
 	}
 
 	@Test
 	public void testDisactivate() {
-		John.activate(A);
-		John.disactivate(A);
-		assertTrue(!A.isActivated());
+		Johna.activate(A1);
+		Johna.disactivate(A1);
+		assertTrue(!A1.isActivated());
 	}
 
 	@Test
 	public void testSetParameters() {
-		John.setServiceFee(0.5);
-		John.setMarkupPourcentage(0.6);
-		John.setDeliveryCost(0.8);
+		Johna.setServiceFee(0.5);
+		Johna.setMarkupPourcentage(0.6);
+		Johna.setDeliveryCost(0.8);
 		assertTrue(foodora.getServiceFee()==0.5);
 		assertTrue(foodora.getMarkupPourcentage()==0.6);
 		assertTrue(foodora.getDeliveryCost()==0.8);
@@ -78,6 +79,8 @@ public class ManagerTest {
 
 	@Test
 	public void testComputeIncome() {
+		UseCase.setEnvironementForTest(foodora);
+		
 		fail("Not yet implemented");
 	}
 

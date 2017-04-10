@@ -60,6 +60,10 @@ public class MyFoodora {
 
 	}
 
+	public ArrayList<Customer> getObservers() {
+		return observers;
+	}
+
 	public void registerObserver(Customer c) {
 		if (observers.contains(c)) {
 			c.notify("You have already accepted to be notified whenever a new special offer is set by any restaurant");

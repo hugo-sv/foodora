@@ -47,6 +47,9 @@ public class Courier extends User{
 	
 	public void propose(Order order) {
 		this.currentOrder = order;
+		//to prevent him from receiving other orders while accepting or refusing
+		setOnDuty(false);
+		
 	}
 	
 	public void accept() {
@@ -57,6 +60,7 @@ public class Courier extends User{
 			currentOrder.getRestaurant().setMoney(currentOrder.getRestaurant().getMoney()+currentOrder.getPrice()*(1-currentOrder.getMarkupPourcentage()));
 			setMoney(getMoney()+currentOrder.getDeliveryCost());
 			currentOrder = null;
+			setOnDuty(true);
 		} else {
 			System.out.println("No current order proposed");
 		}
@@ -65,6 +69,8 @@ public class Courier extends User{
 	public void refuse() {
 		if (currentOrder != null) {
 			currentOrder = null;
+			//The courrier doesn't to receive other order
+			setOnDuty(false);
 			myFoodora.give(currentOrder);
 		} else {
 			System.out.println("No current order proposed");

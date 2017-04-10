@@ -100,12 +100,10 @@ public class ManagerTest {
 		foodora.addUser(E);
 		foodora.addUser(F);
 		foodora.addUser(G);
-		System.out.println("ManagerTest.testManager()");
 	}
 
 	@Test
 	public void testGetSurname() {
-		System.out.println("Mansghgdsdfghgfdst.main()");
 		assertEquals("jo", Johna.getSurname());
 	}
 

@@ -104,384 +104,416 @@ public class UseCase {
 		// Register a user
 		// 1. a user start using the system because she wants to register
 		Scanner sc = new Scanner(System.in);
-		int action;
-		do {
-			System.out.println("What would you like to do :");
-			System.out.println("1 - Register");
-			System.out.println("2 - Connect");
-			System.out.println("3 - Ordering a meal");
-			System.out.println("4 - Inserting a meal or dish in a restaurant menu");
-			System.out.println("5 - Adding a meal of the week special offer");
-			System.out.println("6 - Removing a meal of the week special offer");
-			action = Integer.parseInt(sc.nextLine());
-		} while (action != 1 && action != 2 && action != 3 && action != 4 && action != 5 && action != 6);
+		int action = 0;
+		while (action != 7) {
 
-		if (action == 1) {
-			// 2. the user inserts his first-name, his last-name, his username,
-			// his
-			// address, his birth-
-			// date...
-			System.out.println("Registering process...");
-			String name;
-			String surname;
-			String username;
-			double addressX;
-			double addressY;
-			System.out.println("Enter name :");
-			name = sc.nextLine();
-			System.out.println("Enter surname :");
-			surname = sc.nextLine();
-			System.out.println("Enter username :");
-			username = sc.nextLine();
-			System.out.println("Enter address :");
-			addressX = Double.parseDouble(sc.nextLine());
-			addressY = Double.parseDouble(sc.nextLine());
-			int type;
-			User c;
 			do {
-				System.out.println("Enter type of user :");
-				System.out.println("1 - Customer");
-				System.out.println("2 - Courier");
-				type = Integer.parseInt(sc.nextLine());
-			} while (type != 1 && type != 2);
-			if (type == 1) {
+				System.out.println("What would you like to do :");
+				System.out.println("1 - Register");
+				System.out.println("2 - Connect");
+				System.out.println("3 - Ordering a meal");
+				System.out.println("4 - Inserting a meal or dish in a restaurant menu");
+				System.out.println("5 - Adding a meal of the week special offer");
+				System.out.println("6 - Removing a meal of the week special offer");
+				System.out.println("7 - Exit");
+				action = Integer.parseInt(sc.nextLine());
+			} while (action != 1 && action != 2 && action != 3 && action != 4 && action != 5 && action != 6
+					&& action != 7);
 
-				c = (Customer) new Customer(name, surname, username, addressX, addressY);
-			} else {
-				c = (Courier) new Courier(name, surname, username, addressX, addressY);
-			}
-			foodora.addUser(c);
+			if (action == 1) {
+				// 2. the user inserts his first-name, his last-name, his
+				// username,
+				// his
+				// address, his birth-
+				// date...
+				System.out.println("Registering process...");
+				String name;
+				String surname;
+				String username;
+				double addressX;
+				double addressY;
+				System.out.println("Enter name :");
+				name = sc.nextLine();
+				System.out.println("Enter surname :");
+				surname = sc.nextLine();
+				System.out.println("Enter username :");
+				username = sc.nextLine();
+				System.out.println("Enter address :");
+				addressX = Double.parseDouble(sc.nextLine());
+				addressY = Double.parseDouble(sc.nextLine());
+				int type;
+				User c;
+				do {
+					System.out.println("Enter type of user :");
+					System.out.println("1 - Customer");
+					System.out.println("2 - Courier");
+					type = Integer.parseInt(sc.nextLine());
+				} while (type != 1 && type != 2);
+				if (type == 1) {
 
-			// 3. the user starts inserting a contact info with the type and the
-			// value (e.g. email, phone)
-			// • the user repeats step 3 since he ends to inserts his contact
-			// info
-			int contact;
-			do {
-				System.out.println("Inserting contact info : ");
-				System.out.println("1 - email");
-				System.out.println("2 - phone");
-				System.out.println("3 - stop");
-				contact = Integer.parseInt(sc.nextLine());
-				if (contact == 1) {
-					System.out.println("Adding email address");
-					c.setEmail(sc.nextLine());
+					c = (Customer) new Customer(name, surname, username, addressX, addressY);
+				} else {
+					c = (Courier) new Courier(name, surname, username, addressX, addressY);
 				}
-				if (contact == 2) {
-					System.out.println("Adding phone number");
-					c.setPhoneNumber(sc.nextLine());
+				foodora.addUser(c);
+
+				// 3. the user starts inserting a contact info with the type and
+				// the
+				// value (e.g. email, phone)
+				// • the user repeats step 3 since he ends to inserts his
+				// contact
+				// info
+				int contact;
+				do {
+					System.out.println("Inserting contact info : ");
+					System.out.println("1 - email");
+					System.out.println("2 - phone");
+					System.out.println("3 - stop");
+					contact = Integer.parseInt(sc.nextLine());
+					if (contact == 1) {
+						System.out.println("Adding email address");
+						c.setEmail(sc.nextLine());
+					}
+					if (contact == 2) {
+						System.out.println("Adding phone number");
+						c.setPhoneNumber(sc.nextLine());
+					}
+
+				} while (contact != 3);
+
+				// 4. if the user is a customer she sets the agreement about the
+				// special
+				// offer contact (by
+				// default it is no)
+
+				if (c instanceof Customer) {
+					String answer;
+					do {
+						System.out.println("Do you want to be informed of special offers ? (y/N)");
+						answer = sc.nextLine();
+					} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+					if (answer.equalsIgnoreCase("y")) {
+						((Customer) c).register();
+					}
+				}
+				// 5. the user is a customer selects the contact to be used to
+				// send
+				// the
+				// offers (by default it
+				// is the e-mail if exists)
+				if (c instanceof Customer) {
+					int answer;
+					do {
+						System.out.println("Select contact method for offers :");
+						System.out.println("1 - email (default)");
+						System.out.println("2 - phone number");
+						answer = Integer.parseInt(sc.nextLine());
+					} while (answer != 1 && answer != 2 && answer != 0);
+					if (answer == 2) {
+						((Customer) c).setNotifyMean(c.getPhoneNumber());
+					} else {
+						((Customer) c).setNotifyMean(c.getEmail());
+					}
 				}
 
-			} while (contact != 3);
+				// 6. if the user is a courier he sets his current duty status
+				// (default
+				// off-duty)
 
-			// 4. if the user is a customer she sets the agreement about the
-			// special
-			// offer contact (by
-			// default it is no)
+				if (c instanceof Courier) {
+					String answer;
+					do {
+						System.out.println("Do you want to be seen as on-duty ? (y/N)");
+						answer = sc.nextLine();
+					} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+					if (answer.equalsIgnoreCase("y")) {
+						((Courier) c).setOnDuty(true);
+					} else {
+						((Courier) c).setOnDuty(false);
+					}
+				}
 
-			if (c instanceof Customer) {
+				// 7. the user specify to save the account
+
 				String answer;
 				do {
-					System.out.println("Do you want to be informed of special offers ? (y/N)");
+					System.out.println("Do you wish to save your account ? (Y/n)");
 					answer = sc.nextLine();
 				} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
-				if (answer.equalsIgnoreCase("y")) {
-					((Customer) c).register();
+				if (answer.equalsIgnoreCase("n")) {
+					foodora.removeUser(c);
 				}
 			}
-			// 5. the user is a customer selects the contact to be used to send
-			// the
-			// offers (by default it
-			// is the e-mail if exists)
-			if (c instanceof Customer) {
-				int answer;
+			// Login user
+			// 1. a user wants to login
+			else if (action == 2) {
+				User user = null;
 				do {
-					System.out.println("Select contact method for offers :");
-					System.out.println("1 - email (default)");
-					System.out.println("2 - phone number");
-					answer = Integer.parseInt(sc.nextLine());
-				} while (answer != 1 && answer != 2 && answer != 0);
-				if (answer == 2) {
-					((Customer) c).setNotifyMean(c.getPhoneNumber());
-				} else {
-					((Customer) c).setNotifyMean(c.getEmail());
-				}
-			}
+					// 2. the user inserts username (and password : not
+					// implemented)
+					System.out.println("Enter Username:");
+					String username = sc.nextLine();
+					for (User u : foodora.getUserList().values()) {
+						if (username.equals(u.getUsername())) {
+							user = u;
+						}
+					}
+				} while (user == null);
+				// 3. the system handles the login and presents to the user the
+				// available operations according to his role
+				System.out.println("Voilà ce que tu peux faire :");
+				System.out.println("Ordering a meal");
+				System.out.println("Inserting a meal or dish in a restaurant menu");
+				System.out.println("Adding a meal of the week special offer");
+				System.out.println("Removing a meal of the week special offer");
 
-			// 6. if the user is a courier he sets his current duty status
-			// (default
-			// off-duty)
-
-			if (c instanceof Courier) {
-				String answer;
+				// Ordering a meal
+				// 1. a client start using the system because she wants to order
+				// a meal
+			} else if (action == 3) {
+				Customer user = null;
 				do {
-					System.out.println("Do you want to be seen as on-duty ? (y/N)");
-					answer = sc.nextLine();
-				} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
-				if (answer.equalsIgnoreCase("y")) {
-					((Courier) c).setOnDuty(true);
-				} else {
-					((Courier) c).setOnDuty(false);
-				}
-			}
-
-			// 7. the user specify to save the account
-
-			String answer;
-			do {
-				System.out.println("Do you wish to save your account ? (Y/n)");
-				answer = sc.nextLine();
-			} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
-			if (answer.equalsIgnoreCase("n")) {
-				foodora.removeUser(c);
-			}
-		}
-		// Login user
-		// 1. a user wants to login
-		else if (action == 2) {
-			User user=null;
-			do {
-				// 2. the user inserts username (and password : not implemented)
-				System.out.println("Enter Username:");
-				String username = sc.nextLine();
-				for (User u : foodora.getUserList().values()){
-					if (username.equals(u.getUsername())){
-						user=u;
+					// 2. the client inserts his credentials (username and
+					// password)
+					System.out.println("Enter Username:");
+					String username = sc.nextLine();
+					for (User u : foodora.getUserList().values()) {
+						if (u instanceof Customer && username.equals(u.getUsername())) {
+							user = (Customer) u;
+						}
 					}
+				} while (user == null);
+				// 3. the system recognizes the client and proposes the
+				// available
+				// restaurants
+				ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
+				int i = 1;
+				for (Restaurant restaurant : restaurantList) {
+					System.out.println(i + " - " + restaurant.toString());
+					i++;
 				}
-			} while (user==null);
-			// 3. the system handles the login and presents to the user the
-			// available operations according to his role
-			System.out.println("Voilà ce que tu peux faire :");
-			System.out.println("Ordering a meal");
-			System.out.println("Inserting a meal or dish in a restaurant menu");
-			System.out.println("Adding a meal of the week special offer");
-			System.out.println("Removing a meal of the week special offer");
-
-			// Ordering a meal
-			// 1. a client start using the system because she wants to order a meal
-		} else if (action == 3) {
-			Customer user=null;
-			do {
-				// 2. the client inserts his credentials (username and password)
-				System.out.println("Enter Username:");
-				String username = sc.nextLine();
-				for (User u : foodora.getUserList().values()){
-					if (u instanceof Customer && username.equals(u.getUsername())){
-						user= (Customer) u;
-					}
-				}
-			} while (user==null);
-			// 3. the system recognizes the client and proposes the available
-			// restaurants
-			ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
-			int i = 1;
-			for (Restaurant restaurant : restaurantList) {
-				System.out.println(i+" - "+restaurant.toString());
-				i++;
-			}
-			// 4. the client select a restaurant and compose an order either by
-			// selecting dishes à la
-			// carte or by selecting meals from the restaurant menu. For each item
-			// in the order the
-			// client specifies the quantity.
-			do {
-				System.out.println("Choose a restaurant :");
-				i = Integer.parseInt(sc.nextLine());
-			} while (i<1 || i>=restaurantList.size());
-			Restaurant restaurant = restaurantList.get(i);
-			ArrayList<Item> itemList = new ArrayList<Item>();
-			ArrayList<Meal> mealList = new ArrayList<Meal>();
-			i = 1;
-			for (Meal meal : restaurant.getMenu().getMeals()) {
-				mealList.add(meal);
-				System.out.println(i+" - "+meal.toString());
-				i++;
-			}
-			i = 1;
-			for (Item item : restaurant.getMenu().getItems()) {
-				itemList.add(item);
-				System.out.println(i+" - "+item.toString());
-				i++;
-			}
-			int answer = 0;
-			Order order = new Order(user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
-			do {
-				System.out.println("What do you want to add to the order ?");
-				System.out.println("1 - Item");
-				System.out.println("2 - Meal");
-				System.out.println("3 - Stop");
-				answer = Integer.parseInt(sc.nextLine());
-				if (answer==1) {
-					System.out.println("Select item");
-					answer = Integer.parseInt(sc.nextLine());
-					order.addOrderabe(itemList.get(answer-1));
-
-				} else if (answer == 2) {
-					System.out.println("Select meal");
-					answer = Integer.parseInt(sc.nextLine());
-					order.addOrderabe(mealList.get(answer-1));
-				}
-			} while (!(answer==3));
-			// 5. Once the order is completed the client selects the end
-			// 6. the system shows the summary of the ordered dishes and the total
-			// price of the order
-			// taking into account the pricing rules
-			for (Orderable orderable : order.getOrderables()) {
-				System.out.println(" - "+(orderable).getName()+" "+(orderable).getPrice()+" €");
-			}
-			System.out.println("Total price : "+order.getPrice());
-
-			// Inserting a meal or dish in a restaurant menu
-			// 1. a restaurant person start using the system because she wants to
-			// insert a new meal
-		} else if (action == 4) {
-
-			Restaurant user=null;
-			do {
-				// 2. the client inserts his credentials (username and password)
-				System.out.println("Enter Username:");
-				String username = sc.nextLine();
-				for (User u : foodora.getUserList().values()){
-					if (u instanceof Restaurant && username.equals(u.getUsername())){
-						user= (Restaurant) u;
-					}
-				}
-			} while (user==null);
-			// 3. the system recognizes the restaurant and shows the list of dishes
-			// and meals in the
-			// menu
-			ArrayList<Item> itemList = new ArrayList<Item>();
-			ArrayList<Meal> mealList = new ArrayList<Meal>();
-			int i = 1;
-			for (Meal meal : user.getMenu().getMeals()) {
-				mealList.add(meal);
-				System.out.println(i+" - "+meal.toString());
-				i++;
-			}
-			i = 1;
-			for (Item item : user.getMenu().getItems()) {
-				itemList.add(item);
-				System.out.println(i+" - "+item.toString());
-				i++;
-			}
-			// 4. the restaurant selects the insert new meal (or dish) operations
-			System.out.println("Inserting new meal...");
-			// 5. the restaurant inserts the name of the new meal (or dish) to be
-			// added and specify
-			// whether it is an half-meal or a full-meal or a meal-of-the-week
-			String name;
-			System.out.println("Give the name of the new meal or dish");
-			name = sc.nextLine();
-			int answer = 0;
-			do {
-				System.out.println("What type of food ?");
-				System.out.println("1 - Dish");
-				System.out.println("2 - Meal");
-				answer = Integer.parseInt(sc.nextLine());
-			} while (answer!=1 && answer!=2);
-			if (answer == 1) {
-				// 6. in case of a dish the restaurant specify the unit price and the
-				// category its category
-				// (starter, main dish, dessert)
+				// 4. the client select a restaurant and compose an order either
+				// by
+				// selecting dishes à la
+				// carte or by selecting meals from the restaurant menu. For
+				// each item
+				// in the order the
+				// client specifies the quantity.
 				do {
-					System.out.println("What type of dish ?");
-					System.out.println("1 - Starter");
-					System.out.println("2 - Main");
-					System.out.println("3 - Dessert");
+					System.out.println("Choose a restaurant :");
+					i = Integer.parseInt(sc.nextLine());
+				} while (i < 1 || i >= restaurantList.size());
+				Restaurant restaurant = restaurantList.get(i);
+				ArrayList<Item> itemList = new ArrayList<Item>();
+				ArrayList<Meal> mealList = new ArrayList<Meal>();
+				i = 1;
+				for (Meal meal : restaurant.getMenu().getMeals()) {
+					mealList.add(meal);
+					System.out.println(i + " - " + meal.toString());
+					i++;
+				}
+				i = 1;
+				for (Item item : restaurant.getMenu().getItems()) {
+					itemList.add(item);
+					System.out.println(i + " - " + item.toString());
+					i++;
+				}
+				int answer = 0;
+				Order order = new Order(user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(),
+						foodora.getDeliveryCost());
+				do {
+					System.out.println("What do you want to add to the order ?");
+					System.out.println("1 - Item");
+					System.out.println("2 - Meal");
+					System.out.println("3 - Stop");
 					answer = Integer.parseInt(sc.nextLine());
-				} while (answer!=1 && answer!=2 && answer != 3);
-				System.out.println("Price ?");
-				double price = Double.parseDouble(sc.nextLine());
+					if (answer == 1) {
+						System.out.println("Select item");
+						answer = Integer.parseInt(sc.nextLine());
+						order.addOrderabe(itemList.get(answer - 1));
+
+					} else if (answer == 2) {
+						System.out.println("Select meal");
+						answer = Integer.parseInt(sc.nextLine());
+						order.addOrderabe(mealList.get(answer - 1));
+					}
+				} while (!(answer == 3));
+				// 5. Once the order is completed the client selects the end
+				// 6. the system shows the summary of the ordered dishes and the
+				// total
+				// price of the order
+				// taking into account the pricing rules
+				for (Orderable orderable : order.getOrderables()) {
+					System.out.println(" - " + (orderable).getName() + " " + (orderable).getPrice() + " €");
+				}
+				System.out.println("Total price : " + order.getPrice());
+
+				// Inserting a meal or dish in a restaurant menu
+				// 1. a restaurant person start using the system because she
+				// wants to
+				// insert a new meal
+			} else if (action == 4) {
+
+				Restaurant user = null;
+				do {
+					// 2. the client inserts his credentials (username and
+					// password)
+					System.out.println("Enter Username:");
+					String username = sc.nextLine();
+					for (User u : foodora.getUserList().values()) {
+						if (u instanceof Restaurant && username.equals(u.getUsername())) {
+							user = (Restaurant) u;
+						}
+					}
+				} while (user == null);
+				// 3. the system recognizes the restaurant and shows the list of
+				// dishes
+				// and meals in the
+				// menu
+				ArrayList<Item> itemList = new ArrayList<Item>();
+				ArrayList<Meal> mealList = new ArrayList<Meal>();
+				int i = 1;
+				for (Meal meal : user.getMenu().getMeals()) {
+					mealList.add(meal);
+					System.out.println(i + " - " + meal.toString());
+					i++;
+				}
+				i = 1;
+				for (Item item : user.getMenu().getItems()) {
+					itemList.add(item);
+					System.out.println(i + " - " + item.toString());
+					i++;
+				}
+				// 4. the restaurant selects the insert new meal (or dish)
+				// operations
+				System.out.println("Inserting new meal...");
+				// 5. the restaurant inserts the name of the new meal (or dish)
+				// to be
+				// added and specify
+				// whether it is an half-meal or a full-meal or a
+				// meal-of-the-week
+				String name;
+				System.out.println("Give the name of the new meal or dish");
+				name = sc.nextLine();
+				int answer = 0;
+				do {
+					System.out.println("What type of food ?");
+					System.out.println("1 - Dish");
+					System.out.println("2 - Meal");
+					answer = Integer.parseInt(sc.nextLine());
+				} while (answer != 1 && answer != 2);
 				if (answer == 1) {
-					user.getMenu().addItem(new Starter(name, price, false, false));
-				}
-				if (answer == 2) {
-					user.getMenu().addItem(new MainDish(name, price, false, false));
-				}
-				if (answer == 3) {
-					user.getMenu().addItem(new Dessert(name, price, false, false));
-				}
-			} else {
-				System.out.println("Boring stuff...");
-				// 7. in case of meal
-				// • the restaurant inserts the dishes of the meal
-				// • the restaurant compute and save the price of the meal
-				// 8. the restaurant saves the new created meal (or dish) in the menu
-			}
-			// Adding a meal of the week special offer
-			// 1. a restaurant staff starts using the system and inserts the
-			// restaurant credentials
-		} else if (action == 5) {
-			Restaurant user=null;
-			do {
-				// 2. the client inserts his credentials (username and password)
-				System.out.println("Enter Username:");
-				String username = sc.nextLine();
-				for (User u : foodora.getUserList().values()){
-					if (u instanceof Restaurant && username.equals(u.getUsername())){
-						user= (Restaurant) u;
+					// 6. in case of a dish the restaurant specify the unit
+					// price and the
+					// category its category
+					// (starter, main dish, dessert)
+					do {
+						System.out.println("What type of dish ?");
+						System.out.println("1 - Starter");
+						System.out.println("2 - Main");
+						System.out.println("3 - Dessert");
+						answer = Integer.parseInt(sc.nextLine());
+					} while (answer != 1 && answer != 2 && answer != 3);
+					System.out.println("Price ?");
+					double price = Double.parseDouble(sc.nextLine());
+					if (answer == 1) {
+						user.getMenu().addItem(new Starter(name, price, false, false));
 					}
-				}
-			} while (user==null);
-			// 3. the restaurant selects the meal to be set as meal of the week
-			ArrayList<Meal> mealList = new ArrayList<Meal>();
-			int i = 1;
-			for (Meal meal : user.getMenu().getMeals()) {
-				mealList.add(meal);
-				System.out.println(i+" - "+meal.toString());
-				i++;
-			}
-			int answer = 0;
-			do {
-				
-				System.out.println("Select meal :");
-				answer = Integer.parseInt(sc.nextLine());
-			} while (answer <1 || answer > mealList.size());
-			Meal meal = mealList.get(answer-1);
-			user.addMealOfTheWeek(meal);
-			// 4. the system automatically updates the price of selected meal of the
-			// week, by application
-			// of special discount factor
-			// 5. the system notifies the users (that agreed to be notified of
-			// special offers) about the
-			// new offer
-			foodora.notifyObservers(meal.toString()+" was added to the meals of the week of "+user.toString());
-			System.out.println(meal.toString()+" added to the meals of the week");
-			// Removing a meal of the week special offer
-			// 1. a restaurant staff starts using the system and inserts the
-			// restaurant credentials
-		} else if (action == 6) {
-			Restaurant user=null;
-			do {
-				// 2. the client inserts his credentials (username and password)
-				System.out.println("Enter Username:");
-				String username = sc.nextLine();
-				for (User u : foodora.getUserList().values()){
-					if (u instanceof Restaurant && username.equals(u.getUsername())){
-						user= (Restaurant) u;
+					if (answer == 2) {
+						user.getMenu().addItem(new MainDish(name, price, false, false));
 					}
+					if (answer == 3) {
+						user.getMenu().addItem(new Dessert(name, price, false, false));
+					}
+				} else {
+					System.out.println("Boring stuff...");
+					// 7. in case of meal
+					// • the restaurant inserts the dishes of the meal
+					// • the restaurant compute and save the price of the meal
+					// 8. the restaurant saves the new created meal (or dish) in
+					// the menu
 				}
-			} while (user==null);
-			
-			// 3. the restaurant selects a meal in the meal of the week list and
-			// selects the remove from
-			// its special offer state.
-			ArrayList<Meal> mealList = user.getMealsOfTheWeek();
-			int i = 1;
-			for (Meal meal : mealList) {
-				mealList.add(meal);
-				System.out.println(i+" - "+meal.toString());
-				i++;
+				// Adding a meal of the week special offer
+				// 1. a restaurant staff starts using the system and inserts the
+				// restaurant credentials
+			} else if (action == 5) {
+				Restaurant user = null;
+				do {
+					// 2. the client inserts his credentials (username and
+					// password)
+					System.out.println("Enter Username:");
+					String username = sc.nextLine();
+					for (User u : foodora.getUserList().values()) {
+						if (u instanceof Restaurant && username.equals(u.getUsername())) {
+							user = (Restaurant) u;
+						}
+					}
+				} while (user == null);
+				// 3. the restaurant selects the meal to be set as meal of the
+				// week
+				ArrayList<Meal> mealList = new ArrayList<Meal>();
+				int i = 1;
+				for (Meal meal : user.getMenu().getMeals()) {
+					mealList.add(meal);
+					System.out.println(i + " - " + meal.toString());
+					i++;
+				}
+				int answer = 0;
+				do {
+
+					System.out.println("Select meal :");
+					answer = Integer.parseInt(sc.nextLine());
+				} while (answer < 1 || answer > mealList.size());
+				Meal meal = mealList.get(answer - 1);
+				user.addMealOfTheWeek(meal);
+				// 4. the system automatically updates the price of selected
+				// meal of the
+				// week, by application
+				// of special discount factor
+				// 5. the system notifies the users (that agreed to be notified
+				// of
+				// special offers) about the
+				// new offer
+				foodora.notifyObservers(meal.toString() + " was added to the meals of the week of " + user.toString());
+				System.out.println(meal.toString() + " added to the meals of the week");
+				// Removing a meal of the week special offer
+				// 1. a restaurant staff starts using the system and inserts the
+				// restaurant credentials
+			} else if (action == 6) {
+				Restaurant user = null;
+				do {
+					// 2. the client inserts his credentials (username and
+					// password)
+					System.out.println("Enter Username:");
+					String username = sc.nextLine();
+					for (User u : foodora.getUserList().values()) {
+						if (u instanceof Restaurant && username.equals(u.getUsername())) {
+							user = (Restaurant) u;
+						}
+					}
+				} while (user == null);
+
+				// 3. the restaurant selects a meal in the meal of the week list
+				// and
+				// selects the remove from
+				// its special offer state.
+				ArrayList<Meal> mealList = user.getMealsOfTheWeek();
+				int i = 1;
+				for (Meal meal : mealList) {
+					mealList.add(meal);
+					System.out.println(i + " - " + meal.toString());
+					i++;
+				}
+				int answer = 0;
+				do {
+
+					System.out.println("Select meal :");
+					answer = Integer.parseInt(sc.nextLine());
+				} while (answer < 1 || answer > mealList.size());
+				Meal meal = mealList.get(answer - 1);
+				user.removeMealOfTheWeek(meal);
 			}
-			int answer = 0;
-			do {
-				
-				System.out.println("Select meal :");
-				answer = Integer.parseInt(sc.nextLine());
-			} while (answer <1 || answer > mealList.size());
-			Meal meal = mealList.get(answer-1);
-			user.removeMealOfTheWeek(meal);
+
 		}
 		sc.close();
 	}

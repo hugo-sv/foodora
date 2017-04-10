@@ -68,7 +68,7 @@ public class BasicFidelityCardTest {
 			new MainDish("Sushi1", 4, false, true), new Dessert("Dessert", 2, true, false));
 	static HalfMeal F6 = new HalfMeal("F6", new MainDish("Sushi3", 4, false, true),
 			new Dessert("Dessert2", 2, true, false));
-	static FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true),
+	static FullMeal F3 = new FullMeal("F3", new Starter("Salad", 1, true, true), new MainDish("Nuggets", 4, false, true),
 			new Dessert("Donut", 2, true, false));
 	static HalfMeal F4 = new HalfMeal("F4", new MainDish("Nuggets", 4, false, true),
 			new Dessert("Donut", 2, true, false));
@@ -115,7 +115,6 @@ public class BasicFidelityCardTest {
 		int i = 0;
 		Meal chosenmeal = null;
 		for (Meal meal : Macdo.getMenu().getMeals()) {
-			assertFalse(chosenmeal==null);
 			if (i==0) {
 				order.addOrderabe(meal);
 				
@@ -123,8 +122,10 @@ public class BasicFidelityCardTest {
 				i++;
 				
 			}
+		assertFalse(chosenmeal==null);
 			
 		}
+		
 		double totalprice = 0;
 		//for (Item item : chosenmeal.getItems()) {
 			

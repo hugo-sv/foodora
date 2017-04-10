@@ -12,7 +12,7 @@ public class Order {
 	private double serviceFee;
 	private double markupPourcentage;
 	private double deliveryCost;
-	private ArrayList<Orderable> orderables;
+	private ArrayList<Orderable> orderables = new ArrayList<Orderable>();
 	private Time orderDate;
 	private Time deliverDate;
 

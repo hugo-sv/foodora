@@ -55,6 +55,7 @@ public class Courier extends User{
 			setAddress(currentOrder.getCustomer().getAddressX(), currentOrder.getCustomer().getAddressY());
 			myFoodora.setMoney(myFoodora.getMoney()+currentOrder.getServiceFee()+currentOrder.getMarkupPourcentage()*currentOrder.getPrice());
 			currentOrder.getRestaurant().setMoney(currentOrder.getRestaurant().getMoney()+currentOrder.getPrice()*(1-currentOrder.getMarkupPourcentage()));
+			setMoney(getMoney()+currentOrder.getDeliveryCost());
 			currentOrder = null;
 		} else {
 			System.out.println("No current order proposed");

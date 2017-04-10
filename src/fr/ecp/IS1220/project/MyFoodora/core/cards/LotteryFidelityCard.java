@@ -15,7 +15,7 @@ public class LotteryFidelityCard implements FidelityCard {
 			Float specialDiscountFactor) {
 		// si difference de plus d'un jour ou None
 		//// tirer un random
-		if (!lastTime.isLessThanOneDay()) {
+		if (lastTime==null || !lastTime.isLessThanOneDay()) {
 			lastTime = Time.getTime();
 			// Change to a random number
 			randomNumber = (float) Math.random();

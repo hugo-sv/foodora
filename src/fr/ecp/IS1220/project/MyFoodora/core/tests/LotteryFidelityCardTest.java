@@ -11,6 +11,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
+import fr.ecp.IS1220.project.MyFoodora.core.Time;
 import fr.ecp.IS1220.project.MyFoodora.core.cards.LotteryFidelityCard;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
@@ -131,7 +132,19 @@ public class LotteryFidelityCardTest {
 			totalprice += item.getPrice();
 		}
 		
-		assertEquals(0.95*totalprice, order.getPrice(), 1e-5);
+		boolean DiscountHappened=false;
+		//When Trying only once a day, a discount should appear
+		for (int j=0;j<1000;j++){
+			Time.addTime((long)2592000);
+			if(order.getPrice()==0){
+				DiscountHappened=true;
+			}
+		}
+		assertTrue(DiscountHappened);
+		//When Trying more than once a day, no discount should appear
+		for (int j=0;j<1000;j++){
+			assertEquals(0.95*totalprice, order.getPrice(), 1e-5);
+		}
 		
 	}
 

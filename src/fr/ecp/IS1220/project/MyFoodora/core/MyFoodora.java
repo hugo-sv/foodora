@@ -181,6 +181,16 @@ public class MyFoodora {
 		}
 		return courierList;
 	}
+	
+	public ArrayList<Restaurant> getRestaurantList() {
+		ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
+		for (User user : userList.values()) {
+			if (user instanceof Restaurant) {
+				restaurantList.add((Restaurant) user);
+			}
+		}
+		return restaurantList;
+	}
 
 	public Courier mostActiveCourier() {
 		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();

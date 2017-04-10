@@ -105,8 +105,12 @@ public class UseCase {
 			System.out.println("What would you like to do :");
 			System.out.println("1 - Register");
 			System.out.println("2 - Connect");
+			System.out.println("3 - Ordering a meal");
+			System.out.println("4 - Inserting a meal or dish in a restaurant menu");
+			System.out.println("5 - Adding a meal of the week special offer");
+			System.out.println("6 - Removing a meal of the week special offer");
 			action = Integer.parseInt(sc.nextLine());
-		} while (action != 1 && action != 2);
+		} while (action != 1 && action != 2 && action != 3 && action != 4 && action != 5 && action != 6);
 
 		if (action == 1) {
 			// 2. the user inserts his first-name, his last-name, his username,
@@ -230,7 +234,7 @@ public class UseCase {
 		}
 		// Login user
 		// 1. a user wants to login
-		else {
+		else if (action == 2) {
 			User user=null;
 			do {
 				// 2. the user inserts username (and password : not implemented)
@@ -245,12 +249,29 @@ public class UseCase {
 			// 3. the system handles the login and presents to the user the
 			// available operations according to his role
 			System.out.println("Voilà ce que tu peux faire :");
-		}
+			System.out.println("Ordering a meal");
+			System.out.println("Inserting a meal or dish in a restaurant menu");
+			System.out.println("Adding a meal of the week special offer");
+			System.out.println("Removing a meal of the week special offer");
+			
 		// Ordering a meal
 		// 1. a client start using the system because she wants to order a meal
-		// 2. the client inserts his credentials (username and password)
+		} else if (action == 3) {
+			User user=null;
+			do {
+				// 2. the client inserts his credentials (username and password)
+				System.out.println("Enter Username:");
+				String username = sc.nextLine();
+				for (User u : foodora.getUserList().values()){
+					if (username.equals(u.getUsername())){
+						user=u;
+					}
+				}
+			} while (!(user==null) || !(user instanceof Customer));
+		
 		// 3. the system recognizes the client and proposes the available
 		// restaurants
+		
 		// 4. the client select a restaurant and compose an order either by
 		// selecting dishes à la
 		// carte or by selecting meals from the restaurant menu. For each item
@@ -260,6 +281,7 @@ public class UseCase {
 		// 6. the system shows the summary of the ordered dishes and the total
 		// price of the order
 		// taking into account the pricing rules
+		}
 		// Inserting a meal or dish in a restaurant menu
 		// 1. a restaurant person start using the system because she wants to
 		// insert a new meal

@@ -21,56 +21,62 @@ public class UseCase {
 		MyFoodora foodora = new MyFoodora(0.5, 0.05, 1);
 		Manager CEO = new Manager("Mary", "mary", "boss47");
 		foodora.addUser(CEO);
-		
+
 		Manager Deputy = new Manager("John", "john", "jojojo");
 		foodora.addUser(Deputy);
-		
+
 		Restaurant Macdo = new Restaurant("MacDonald", "macdonald", 15, -20);
 		foodora.addUser(Macdo);
-		
-		MainDish Drink=new MainDish("Drink",0.5,true,true);
-		MainDish BigMac=new MainDish("BigMac", 5, false, false);
-		Starter Salad=new Starter("Salad", 1, true, true);
-		Dessert MacFlurry=new Dessert("McFlurry",2,true,false);
-		
+
+		MainDish Drink = new MainDish("Drink", 0.5, true, true);
+		MainDish BigMac = new MainDish("BigMac", 5, false, false);
+		Starter Salad = new Starter("Salad", 1, true, true);
+		Dessert MacFlurry = new Dessert("McFlurry", 2, true, false);
+
 		FullMeal F1 = new FullMeal("F1", Salad, BigMac, MacFlurry);
 		HalfMeal F2 = new HalfMeal("F2", Salad, Drink);
-		
+
 		Macdo.addMeal(F1);
 		Macdo.addMeal(F2);
-		
+
 		Restaurant Quick = new Restaurant("Quick", "quick", 105, 74);
 		foodora.addUser(Quick);
-		FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
-		HalfMeal F4 = new HalfMeal("F4",new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
+		FullMeal F3 = new FullMeal("F3", Salad, new MainDish("Nuggets", 4, false, true),
+				new Dessert("Donut", 2, true, false));
+		HalfMeal F4 = new HalfMeal("F4", new MainDish("Nuggets", 4, false, true), new Dessert("Donut", 2, true, false));
 		Quick.addMeal(F3);
 		Quick.addMeal(F4);
-		
+
 		Restaurant Sushi = new Restaurant("SushiWorld", "sushi", 5, -50);
 		foodora.addUser(Sushi);
-		FullMeal F5 = new FullMeal("F5", new Starter("Sushi2", 4, false, true), new MainDish("Sushi1", 4, false, true), new Dessert("Dessert", 2, true, false));
-		HalfMeal F6 = new HalfMeal("F6",new MainDish("Sushi3", 4, false, true), new Dessert("Dessert2", 2, true, false));
+		FullMeal F5 = new FullMeal("F5", new Starter("Sushi2", 4, false, true), new MainDish("Sushi1", 4, false, true),
+				new Dessert("Dessert", 2, true, false));
+		HalfMeal F6 = new HalfMeal("F6", new MainDish("Sushi3", 4, false, true),
+				new Dessert("Dessert2", 2, true, false));
 		Sushi.addMeal(F5);
 		Sushi.addMeal(F6);
-		
+
 		Restaurant KFC = new Restaurant("KFC", "kfc", 40, 10);
 		foodora.addUser(KFC);
-		FullMeal F7 = new FullMeal("F7", new Starter("Saucisson", 4, false, true), new MainDish("Chicken", 4, false, true), new Dessert("IceCream", 2, true, false));
-		HalfMeal F8 = new HalfMeal("F8",new MainDish("Chicken2", 4, false, true), new Dessert("BetterIceCream", 2, true, false));
+		FullMeal F7 = new FullMeal("F7", new Starter("Saucisson", 4, false, true),
+				new MainDish("Chicken", 4, false, true), new Dessert("IceCream", 2, true, false));
+		HalfMeal F8 = new HalfMeal("F8", new MainDish("Chicken2", 4, false, true),
+				new Dessert("BetterIceCream", 2, true, false));
 		KFC.addMeal(F7);
 		KFC.addMeal(F8);
-		
+
 		Restaurant Bio = new Restaurant("BioFast", "biofast", -40, -10);
 		foodora.addUser(Bio);
-		FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true), new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
-		HalfMeal F10 = new HalfMeal("F10",new MainDish("Chicken2Bio", 4, false, true), new Dessert("BetterIceCreamBio", 2, true, false));
+		FullMeal F9 = new FullMeal("F9", new Starter("SaucissonBio", 4, false, true),
+				new MainDish("ChickenBio", 4, false, true), new Dessert("IceCreamBio", 2, true, false));
+		HalfMeal F10 = new HalfMeal("F10", new MainDish("Chicken2Bio", 4, false, true),
+				new Dessert("BetterIceCreamBio", 2, true, false));
 		Bio.addMeal(F9);
 		Bio.addMeal(F10);
-		
-		
-		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10,"Fred@laposte.net" ,"0612345678");
+
+		Courier Fred = new Courier("Fred", "fredo", "fred", 0, 10, "Fred@laposte.net", "0612345678");
 		foodora.addUser(Fred);
-		Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10,"Carole@laposte.net" ,"0612345678");
+		Courier Carole = new Courier("Carole", "Coco", "~Xxcaroledu58xX~", 0, 10, "Carole@laposte.net", "0612345678");
 		foodora.addUser(Carole);
 		Customer A = new Customer("A", "A", "a", 22, -24, "0654312456", "A@laposte.net");
 		foodora.addUser(A);
@@ -93,134 +99,152 @@ public class UseCase {
 
 		// Register a user
 		// 1. a user start using the system because she wants to register
-		// 2. the user inserts his first-name, his last-name, his username, his
-		// address, his birth-
-		// date...
-		// Page 7IS1220 - Object Oriented Software Design
-		// Project March-April 2017
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Registering process...");
-		String name;
-		String surname;
-		String username;
-		double addressX;
-		double addressY;
-		System.out.println("Enter name :");
-		name = sc.nextLine();
-		System.out.println("Enter surname :");
-		surname = sc.nextLine();
-		System.out.println("Enter username :");
-		username = sc.nextLine();
-		System.out.println("Enter address :");
-		addressX = Double.parseDouble(sc.nextLine());
-		addressY = Double.parseDouble(sc.nextLine());
-		int type;
-		User c;
+		int action;
 		do {
-			System.out.println("Enter type of user :");
-			System.out.println("1 - Customer");
-			System.out.println("2 - Courier");
-			type = Integer.parseInt(sc.nextLine());
-		} while (type != 1 && type != 2);
-		if (type ==1) {
+			System.out.println("What would you like to do :");
+			System.out.println("1 - Register");
+			System.out.println("2 - Connect");
+			action = Integer.parseInt(sc.nextLine());
+		} while (action != 1 && action != 2);
 
-			c = (Customer) new Customer(name, surname, username, addressX, addressY);
-		} else {
-			c = (Courier) new Courier(name, surname, username, addressX, addressY);
-		}
-		foodora.addUser(c);
+		if (action == 1) {
+			// 2. the user inserts his first-name, his last-name, his username,
+			// his
+			// address, his birth-
+			// date...
+			System.out.println("Registering process...");
+			String name;
+			String surname;
+			String username;
+			double addressX;
+			double addressY;
+			System.out.println("Enter name :");
+			name = sc.nextLine();
+			System.out.println("Enter surname :");
+			surname = sc.nextLine();
+			System.out.println("Enter username :");
+			username = sc.nextLine();
+			System.out.println("Enter address :");
+			addressX = Double.parseDouble(sc.nextLine());
+			addressY = Double.parseDouble(sc.nextLine());
+			int type;
+			User c;
+			do {
+				System.out.println("Enter type of user :");
+				System.out.println("1 - Customer");
+				System.out.println("2 - Courier");
+				type = Integer.parseInt(sc.nextLine());
+			} while (type != 1 && type != 2);
+			if (type == 1) {
 
-
-
-
-		// 3. the user starts inserting a contact info with the type and the
-		// value (e.g. email, phone)
-		// • the user repeats step 3 since he ends to inserts his contact info
-		int contact;
-		do {
-			System.out.println("Inserting contact info : ");
-			System.out.println("1 - email");
-			System.out.println("2 - phone");
-			System.out.println("3 - stop");
-			contact = Integer.parseInt(sc.nextLine());
-			if (contact == 1) {
-				System.out.println("Adding email address");
-				c.setEmail(sc.nextLine());
+				c = (Customer) new Customer(name, surname, username, addressX, addressY);
+			} else {
+				c = (Courier) new Courier(name, surname, username, addressX, addressY);
 			}
-			if (contact == 2) {
-				System.out.println("Adding phone number");
-				c.setPhoneNumber(sc.nextLine());
+			foodora.addUser(c);
+
+			// 3. the user starts inserting a contact info with the type and the
+			// value (e.g. email, phone)
+			// • the user repeats step 3 since he ends to inserts his contact
+			// info
+			int contact;
+			do {
+				System.out.println("Inserting contact info : ");
+				System.out.println("1 - email");
+				System.out.println("2 - phone");
+				System.out.println("3 - stop");
+				contact = Integer.parseInt(sc.nextLine());
+				if (contact == 1) {
+					System.out.println("Adding email address");
+					c.setEmail(sc.nextLine());
+				}
+				if (contact == 2) {
+					System.out.println("Adding phone number");
+					c.setPhoneNumber(sc.nextLine());
+				}
+
+			} while (contact != 3);
+
+			// 4. if the user is a customer she sets the agreement about the
+			// special
+			// offer contact (by
+			// default it is no)
+
+			if (c instanceof Customer) {
+				String response;
+				do {
+					System.out.println("Do you want to be informed of special offers ? (y/N)");
+					response = sc.nextLine();
+				} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
+				if (response.equalsIgnoreCase("y")) {
+					((Customer) c).register();
+				}
+			}
+			// 5. the user is a customer selects the contact to be used to send
+			// the
+			// offers (by default it
+			// is the e-mail if exists)
+			if (c instanceof Customer) {
+				int response;
+				do {
+					System.out.println("Select contact method for offers :");
+					System.out.println("1 - email (default)");
+					System.out.println("2 - phone number");
+					response = Integer.parseInt(sc.nextLine());
+				} while (response != 1 && response != 2 && response != 0);
+				if (response == 2) {
+					((Customer) c).setNotifyMean(c.getPhoneNumber());
+				} else {
+					((Customer) c).setNotifyMean(c.getEmail());
+				}
 			}
 
-		} while (contact != 3);
+			// 6. if the user is a courier he sets his current duty status
+			// (default
+			// off-duty)
 
+			if (c instanceof Courier) {
+				String response;
+				do {
+					System.out.println("Do you want to be seen as on-duty ? (y/N)");
+					response = sc.nextLine();
+				} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
+				if (response.equalsIgnoreCase("y")) {
+					((Courier) c).setOnDuty(true);
+				} else {
+					((Courier) c).setOnDuty(false);
+				}
+			}
 
+			// 7. the user specify to save the account
 
-		// 4. if the user is a customer she sets the agreement about the special
-		// offer contact (by
-		// default it is no)
-
-		if (c instanceof Customer) {
 			String response;
 			do {
-				System.out.println("Do you want to be informed of special offers ? (y/N)");
+				System.out.println("Do you wish to save your account ? (Y/n)");
 				response = sc.nextLine();
+			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
+			if (response.equalsIgnoreCase("n")) {
+				foodora.removeUser(c);
+			}
+		}
+		// Login user
+		else {
+			String response;
+			do {
+				System.out.println("Enter Username and password :");
+				String username = sc.nextLine();
+				String password = sc.nextLine();
 			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
 			if (response.equalsIgnoreCase("y")) {
 				((Customer) c).register();
 			}
+			// 1. a user wants to login
+			// 2. the user inserts username and password
+			// 3. the system handles the login and presents to the user the
+			// available operations ac-
+			// cording to his role
 		}
-		// 5. the user is a customer selects the contact to be used to send the
-		// offers (by default it
-		// is the e-mail if exists)
-		if (c instanceof Customer) {
-			int response;
-			do {
-				System.out.println("Select contact method for offers :");
-				System.out.println("1 - email (default)");
-				System.out.println("2 - phone number");
-				response = Integer.parseInt(sc.nextLine());
-			} while (response!=1 && response!=2 && response!=0);
-			if (response == 2) {
-				((Customer) c).setNotifyMean(c.getPhoneNumber());
-			} else {
-				((Customer) c).setNotifyMean(c.getEmail());
-			}
-		}
-
-		// 6. if the user is a courier he sets his current duty status (default
-		// off-duty)
-
-		if (c instanceof Courier) {
-			String response;
-			do {
-				System.out.println("Do you want to be seen as on-duty ? (y/N)");
-				response = sc.nextLine();
-			} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
-			if (response.equalsIgnoreCase("y")) {
-				((Courier) c).setOnDuty(true);
-			} else {
-				((Courier) c).setOnDuty(false);
-			}
-		}
-
-		// 7. the user specify to save the account
-		// Login user
-		String response;
-		do  {
-			System.out.println("Do you wish to save your accoun ? (Y/n)");
-			response = sc.nextLine();
-		} while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n") && !response.isEmpty());
-		if (response.equalsIgnoreCase("n")) {
-			foodora.removeUser(c);
-		}
-
-
-		// 1. a user wants to login
-		// 2. the user inserts username and password
-		// 3. the system handles the login and presents to the user the
-		// available operations ac-
-		// cording to his role
 		// Ordering a meal
 		// 1. a client start using the system because she wants to order a meal
 		// 2. the client inserts his credentials (username and password)
@@ -275,4 +299,3 @@ public class UseCase {
 		// its special offer state.
 	}
 }
-

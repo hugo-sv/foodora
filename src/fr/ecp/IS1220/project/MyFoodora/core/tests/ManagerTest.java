@@ -49,16 +49,21 @@ public class ManagerTest {
 		assertTrue(foodora.getUserList().containsValue(Fred));
 		John.removeUser(Fred);
 		assertTrue(!foodora.getUserList().containsValue(Fred));
+		John.addUser(Fred);
 	}
 
 	@Test
 	public void testActivate() {
-		fail("Not yet implemented");
+		John.disactivate(A);
+		John.activate(A);
+		assertTrue(A.isActivated());
 	}
 
 	@Test
 	public void testDisactivate() {
-		fail("Not yet implemented");
+		John.activate(A);
+		John.disactivate(A);
+		assertTrue(!A.isActivated());
 	}
 
 	@Test

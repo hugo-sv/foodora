@@ -10,7 +10,7 @@ public class Restaurant extends User {
 	private Menu menu;
 	// At least one meal amongst those offered by a restaurant is offered as a
 	// meal-of-the-week special offer
-	private ArrayList<Meal> mealsOfTheWeek;
+	private ArrayList<Meal> mealsOfTheWeek = new ArrayList<Meal>();
 	private float genericDiscountFactor=(float) 0.05;
 	private float specialDiscountFactor=(float) 0.1;
 

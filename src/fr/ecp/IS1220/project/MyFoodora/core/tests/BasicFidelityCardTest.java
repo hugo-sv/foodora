@@ -127,11 +127,11 @@ public class BasicFidelityCardTest {
 		}
 		
 		double totalprice = 0;
-		//for (Item item : chosenmeal.getItems()) {
-			
-		//}
+		for (Item item : chosenmeal.getItems()) {
+			totalprice += item.getPrice();
+		}
 		
-		//assertTrue(order.getPrice()==0.95*totalprice);
+		assertEquals(0.95*totalprice, order.getPrice(), 1e-5);
 		
 	}
 

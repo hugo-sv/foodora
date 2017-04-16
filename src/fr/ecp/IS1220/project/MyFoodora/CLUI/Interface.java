@@ -9,13 +9,14 @@ public class Interface {
 	private static Scanner sc;
 
 	public static void main(String[] args) {
+		sc = new Scanner(System.in);
 		//The interpreter might ask things
 		Interpreter interpreter = new Interpreter(sc);
 		
 		//Open message
 		interpreter.open();
 		
-		sc = new Scanner(System.in);
+		
 		//Commands are permanently executed
 		while (interpreter.executeCommand(sc.nextLine())){}
 		

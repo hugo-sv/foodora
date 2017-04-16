@@ -1,8 +1,10 @@
 package fr.ecp.IS1220.project.MyFoodora.CLUI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.User;
 
 public class Interpreter {
@@ -30,11 +32,9 @@ public class Interpreter {
 	}
 
 	public boolean executeCommand(String command) {
-
-		// split command for each space ########################
-		String action = command;
-		ArrayList<String> arguments = null;
-		switch (action) {
+		// Split the arguments
+		String[] arguments = command.split(" ");
+		switch (arguments[0]) {
 		case "help":
 			this.help();
 			break;
@@ -58,26 +58,23 @@ public class Interpreter {
 	}
 
 	private void showTotalProfit() {
-		//J'arrive pas a faire ce que je veux, need help :p  #############
-		try{
-			((Manager) user).computeProfit(null, null);
-		}
-		catch{//Erreur parceuqe user n'est pas un manager ###################
-		System.out.println("You can't do that.");	
-		}
-		
+		/*
+		 * try { (Manager)user.computeProfit(null, null);
+		 * 
+		 * } catch (IOException e) {// Erreur parceque user n'est pas un manager
+		 * System.out.println("You can't do that."); }
+		 */
 
 	}
 
-	private void connect(ArrayList<String> arguments) {
+	private void connect(String[] arguments) {
 		// TODO Auto-generated method stub
 		// change user
 	}
 
 	private boolean quit() {
 		System.out.println("Are you sure you want to quit ? [yes]/no]");
-		// Comment on instancie directement un tableau ? ##################
-		String answer = this.askFor(new ArrayList<String>("yes", "no", ""));
+		String answer = this.askFor(new String[] { "yes", "no", "" });
 		if (answer == "no") {
 			return true;
 		}
@@ -91,14 +88,17 @@ public class Interpreter {
 
 	}
 
-	private String askFor(ArrayList<String> asked) {
+	private String askFor(String[] expected) {
 		// Ask to the user for one of the proposed arguments
 		String answer = sc.nextLine();
 		while (true) {
-			if (asked.contains(answer)) {
-				return answer;
+			for (int i = 0; i < expected.length; i++) {
+				if (expected[i].equals(answer)) {
+					return answer;
+				}
 			}
 			System.out.println("Incorrect input, please try again.");
+			answer = sc.nextLine();
 		}
 	}
 }

@@ -1,0 +1,60 @@
+automatically loaded at start-
+ing of the system
+
+An initial configuration file must ensure that, at startup (after loading this file) the
+system contains at least: 2 managers (the CEO, and his deputy), 5 restaurants and, per
+restaurant, 4 full-meals, 2 couriers, 7 customers... This my foodora.ini’s file can be seen
+as a scenario file containing only user registration, meal creation and dishes adding, ...’s’
+commands.
+
+
+A test-scenario file contains a number of CLUI commands whose execution allows for re-
+producing a given test scenario, typically setting up a given configuration of the myFoodora
+system (i.e. creation of some resraurants, each with its one menu and meals offers, cre-
+ation of some customers, as well as some courriers, simulation of some usage of the system
+with creation of orders by customers and delivery of orders, calculation of profits for my-
+Foodora, etc.). You may include several test-scenario files (e.g. testScenario1.txt,
+testScenario2.txt, ...). For each test-scenario file you provide us with you MUST in-
+clude a description of its content (what does it test?) in the report. We are going to run
+each test-scenario file through the runtest command of the CLUI (see CLUI commands
+above):
+runtest testScenario1.txt
+The mandatory testScenario1.txt must test each and every command of the CLUI
+(except obviously runtest). Furthermore it should develop a meaningful scenario like that
+depicted in the following example:
+• logon as manager
+• adding commands to show/print all items (user, meals, ...) in the initial
+configuration
+• register a few restaurants to the system
+• register a few customers
+• register a few couriers
+• display the list of restaurant
+• display the list of customers
+• logout manager
+Page 14IS1220 - Object Oriented Software Design
+Project March-April 2017
+• logon as restaurant (for each new restaurant)
+• add (and populate) a menu to each restaurant (this requires login as restaurant
+manager)
+• add (half and/or full) meal to each restaurant’s menu, setting some special-offer and
+meal-of-the-week meal deal
+• display the menu of each restaurant
+• logout restaurant
+• logon as customer (for few customers)
+• simulate placing of a few orders by few customers (concerning a few restaurants)
+• logout
+• logon as manager
+• compute/display the total profit of the system (since creation and over a given time-
+interval)
+• change the profit policy of the system and re-compute the total profit of the system
+(since creation and over the same time-interval as before)
+• display the list of courriers sorted according to their operativity (num. of completed
+delivery)
+• adding commands to completely simulate special offer and its notification
+for:
+– meal of the day/week
+– birthday celebration
+This scenario requires you to manage explicitly time advancement (day
+change with a dedicated Thread ?)
+• logout
+• ...

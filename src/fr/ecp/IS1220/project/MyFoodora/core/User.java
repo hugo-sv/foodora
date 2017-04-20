@@ -6,6 +6,7 @@ abstract public class User {
 	private long iD;
 	private String name;
 	private String username;
+	private String password;
 	private String email;
 	private String phoneNumber;
 	private boolean activated;
@@ -106,6 +107,14 @@ abstract public class User {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

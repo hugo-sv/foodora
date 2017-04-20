@@ -19,8 +19,10 @@ public class Menu {
 	}
 
 	public void addItem(Item item) {
-		item.setMenu(this);
-		items.add(item);
+		if (item != null) {
+			item.setMenu(this);
+			items.add(item);
+		}
 	}
 
 	public void addMeal(Meal meal) {

@@ -1,8 +1,19 @@
 package fr.ecp.IS1220.project.MyFoodora.CLUI;
 
 import java.util.Scanner;
+
+import fr.ecp.IS1220.project.MyFoodora.core.Courier;
+import fr.ecp.IS1220.project.MyFoodora.core.Customer;
+import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
+import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
 import fr.ecp.IS1220.project.MyFoodora.core.User;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 
 public class Interpreter {
 	/*
@@ -132,6 +143,162 @@ public class Interpreter {
 		// TODO Auto-generated method stub
 
 	}
+	
+	private void login(String[] arguments) {
+		if (arguments.length>3) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<3) {
+			System.out.println("Too few arguments");
+		} else {
+			for (User user : foodora.getUserList().values()) {
+				if (user.getUsername()==arguments[1] && user.getPassword() == arguments[2]) {
+					this.user = user;
+				}
+			}
+			if (this.user == null) {
+				System.out.println("Wrong username or password");
+			}
+		}
+	}
+
+	private void logout() {
+		if (user == null) {
+			System.out.println("Not logged in");
+		} else {
+			System.out.println("Good bye "+user.getUsername());
+			user = null;
+		}
+	}
+
+	private void registerRestaurant(String[] arguments) {
+		if (arguments.length>5) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<5) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				String[] address = arguments[2].split(",");
+				if (address.length != 2) {
+					System.out.println("Wrong address");
+				} else {
+					double addressX = Double.parseDouble(address[0]);
+					double addressY = Double.parseDouble(address[1]);
+					Restaurant restaurant = new Restaurant(arguments[1], arguments[3], addressX, addressY);
+					restaurant.setPassword(arguments[4]);
+					((Manager) user).addUser(restaurant);
+				}
+			}
+		}
+	}
+
+	private void registerCustomer(String[] arguments) {
+		if (arguments.length>6) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<6) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				String[] address = arguments[4].split(",");
+				if (address.length != 2) {
+					System.out.println("Wrong address");
+				} else {
+					double addressX = Double.parseDouble(address[0]);
+					double addressY = Double.parseDouble(address[1]);
+					Customer customer = new Customer(arguments[2], arguments[1], arguments[3], addressX, addressY);
+					customer.setPassword(arguments[5]);
+					((Manager) user).addUser(customer);
+				}
+			}
+		}
+	}
+
+	private void registerCourrier(String[] arguments) {
+		if (arguments.length>6) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<6) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				String[] address = arguments[4].split(",");
+				if (address.length != 2) {
+					System.out.println("Wrong address");
+				} else {
+					double addressX = Double.parseDouble(address[0]);
+					double addressY = Double.parseDouble(address[1]);
+					Courier courier = new Courier(arguments[2], arguments[1], arguments[3], addressX, addressY);
+					courier.setPassword(arguments[5]);
+					courier.setOnDuty(true);
+					((Manager) user).addUser(courier);
+				}
+			}
+		}
+	}
+
+	private void addDishRestaurantMenu(String[] arguments) {
+		if (arguments.length>5) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<5) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				if (!arguments[2].equalsIgnoreCase("starter") && !arguments[2].equalsIgnoreCase("main") && !arguments[2].equalsIgnoreCase("dessert")) {
+					System.out.println("Wrong dish category");
+				} else if (!arguments[3].equalsIgnoreCase("standard") && !arguments[3].equalsIgnoreCase("vegetarian") && !arguments[3].equalsIgnoreCase("gluten-free")) {
+					System.out.println("Wrong food type");
+				} else {
+					Item item = null;
+					if (arguments[2].equalsIgnoreCase("starter")) {
+						item = new Starter(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase("vegetarian"), arguments[3].equalsIgnoreCase("gluten-free"));		
+					} else if (arguments[2].equalsIgnoreCase("main")) {
+						item = new MainDish(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase("vegetarian"), arguments[3].equalsIgnoreCase("gluten-free"));
+					} else {
+						item = new Dessert(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase("vegetarian"), arguments[3].equalsIgnoreCase("gluten-free"));
+					}
+					boolean t = true;
+					for (Item item2 : ((Restaurant) user).getMenu().getItems()) {
+						t = t && !item2.getName().equals(arguments[1]);
+					}
+					if (t) {
+					((Restaurant) user).getMenu().addItem(item);
+					} else {
+						System.out.println("This name is already used");
+					}
+				}
+			}
+		}
+	}
+
+	private void createMeal(String[] arguments) {
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				boolean t = true;
+				for (Meal meal : ((Restaurant) user).getMenu().getMeals()) {
+					t = t && !meal.getName().equals(arguments[1]);
+				}
+				if (t) {
+					HalfMeal halfMeal = new HalfMeal(arguments[1], (Starter) null, null);
+					((Restaurant) user).getMenu().addMeal(halfMeal);
+				} else {
+					System.out.println("This name is already used");
+				}
+
+			}
+		}
+	}
 
 	private void showMeal(String[] arguments) {
 		// TODO Auto-generated method stub
@@ -139,16 +306,6 @@ public class Interpreter {
 	}
 
 	private void addDish2Meal(String[] arguments) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void createMeal(String[] arguments) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void registerRestaurant(String[] arguments) {
 		// TODO Auto-generated method stub
 
 	}
@@ -164,11 +321,6 @@ public class Interpreter {
 	}
 
 	private void logout(String[] arguments) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void login(String[] arguments) {
 		// TODO Auto-generated method stub
 
 	}

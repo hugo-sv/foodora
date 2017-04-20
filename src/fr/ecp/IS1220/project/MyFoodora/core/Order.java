@@ -13,6 +13,7 @@ public class Order {
 	private double markupPourcentage;
 	private double deliveryCost;
 	private ArrayList<Orderable> orderables = new ArrayList<Orderable>();
+	private String name;
 	private Time orderDate;
 	private Time deliverDate;
 
@@ -109,5 +110,14 @@ public class Order {
 	public void setCourier(Courier courier) {
 		this.courier = courier;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 
 }

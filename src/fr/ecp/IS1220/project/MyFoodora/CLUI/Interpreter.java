@@ -9,6 +9,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
 import fr.ecp.IS1220.project.MyFoodora.core.User;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
@@ -135,13 +136,55 @@ public class Interpreter {
 	}
 
 	private void removeFromSpecialOffer(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				Meal meal = null;
+				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+					if (mealiter.getName().equals(arguments[1])) {
+						meal = mealiter;
+					}
+				}
+				if (meal == null) {
+					System.out.println("No meal named "+arguments[1]);
+				} else {
+					if (((Restaurant) user).getMealsOfTheWeek().contains(meal)) {
+						((Restaurant) user).removeMealOfTheWeek(meal);
+					} else {
+						System.out.println("This is not a meal of the week");
+					}
+				}
+			}
+		}
 	}
 
 	private void setSpecialOffer(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				Meal meal = null;
+				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+					if (mealiter.getName().equals(arguments[1])) {
+						meal = mealiter;
+					}
+				}
+				if (meal == null) {
+					System.out.println("No meal named "+arguments[1]);
+				} else {
+					((Restaurant) user).addMealOfTheWeek(meal);
+				}
+			}
+		}
 	}
 	
 	private void login(String[] arguments) {
@@ -301,12 +344,93 @@ public class Interpreter {
 	}
 
 	private void showMeal(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				Meal meal = null;
+				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+					if (mealiter.getName().equals(arguments[1])) {
+						meal = mealiter;
+					}
+				}
+				if (meal == null) {
+					System.out.println("No meal named "+arguments[1]);
+				} else {
+					System.out.println(meal.toString());
+				}
+			}
+		}
 	}
 
 	private void addDish2Meal(String[] arguments) {
-		// TODO Auto-generated method stub
+		if (arguments.length>3) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<3) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				Meal meal = null;
+				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+					if (mealiter.getName().equals(arguments[2])) {
+						meal = mealiter;
+					}
+				}
+				if (meal == null) {
+					System.out.println("No meal named "+arguments[2]);
+				} else {
+					Item item = null;
+					for (Item itemiter : ((Restaurant) user).getMenu().getItems()) {
+						if (itemiter.getName().equals(arguments[1])) {
+							item = itemiter;
+						}
+					}
+					if (item == null) {
+						System.out.println("No dish named "+arguments[1]);
+					} else {
+						if (item instanceof Starter) {
+							if (meal.getEntry() != null) {
+								System.out.println("This meal already contains a starter");
+							} else {
+								meal.setEntry((Starter) item);
+							}
+						} else if (item instanceof MainDish) {
+							if (meal.getMain() != null) {
+								System.out.println("This meal already contains a main dish");
+							} else {
+								meal.setMain((MainDish) item);
+							}
+						} else {
+							if (meal.getDessert() != null) {
+								System.out.println("This meal already contains a dessert");
+							} else {
+								meal.setDessert((Dessert) item);
+							}
+						}
+						int dishNumber = 0;
+						if (meal.getEntry() != null) {
+							dishNumber++;
+						}
+						if (meal.getMain() != null) {
+							dishNumber++;
+						}
+						if (meal.getDessert() != null) {
+							dishNumber++;
+						}
+						if (dishNumber == 3) {
+							meal = (FullMeal) meal;
+						}
+					}
+				}
+
+			}
+		}
 
 	}
 

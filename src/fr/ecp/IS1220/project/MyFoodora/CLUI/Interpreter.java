@@ -6,6 +6,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.Courier;
 import fr.ecp.IS1220.project.MyFoodora.core.Customer;
 import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
+import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
 import fr.ecp.IS1220.project.MyFoodora.core.User;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
@@ -14,6 +15,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Item;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
+import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 
 public class Interpreter {
@@ -111,28 +113,143 @@ public class Interpreter {
 	}
 
 	private void offDuty(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Courier)) {
+				System.out.println("Permission denied");
+			} else {
+				if (!user.getUsername().equals(arguments[1])) {
+					System.out.println("Wrong username");
+				} else {
+					((Courier) user).setOnDuty(false);
+				}
+			}
+		}
 	}
 
 	private void endOrder(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>3) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<3) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Customer)) {
+				System.out.println("Permission denied");
+			} else {
+				Order order = null;
+				for (Order orderiter : ((Customer) user).getCurrentOrders()) {
+					if (orderiter.equals(arguments[1])) {
+						order = orderiter;
+					}
+				}
+				if (order == null) {
+					System.out.println("No order named "+arguments[1]);
+				} else {
+					((Customer) user).payOrder(order);
+					// TODO implement time
+				}
+			}
+		}
 	}
 
 	private void onDuty(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Courier)) {
+				System.out.println("Permission denied");
+			} else {
+				if (!user.getUsername().equals(arguments[1])) {
+					System.out.println("Wrong username");
+				} else {
+					((Courier) user).setOnDuty(true);
+				}
+			}
+		}
 	}
 
 	private void addItem2Order(String[] arguments) {
-		// TODO Auto-generated method stub
+		if (arguments.length>3) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<3) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Customer)) {
+				System.out.println("Permission denied");
+			} else {
+				Order order = null;
+				for (Order orderiter : ((Customer) user).getCurrentOrders()) {
+					if (orderiter.equals(arguments[1])) {
+						order = orderiter;
+					}
+				}
+				if (order == null) {
+					System.out.println("No order named "+arguments[1]);
+				} else {
+					Item item = null;
+					Meal meal = null;
+					for (Item itemiter : order.getRestaurant().getMenu().getItems()) {
+						if (itemiter.equals(arguments[2])) {
+							item = itemiter;
+						}
+					}
+					for (Meal mealiter : order.getRestaurant().getMenu().getMeals()) {
+						if (mealiter.equals(arguments[2])) {
+							meal = mealiter;
+						}
+					}
+					if (meal == null && item == null ) {
+						System.out.println("Nothing found");
+					} else {
+						if (item != null) {
+							order.addOrderable((Orderable) item); 
+						} else {
+							order.addOrderable((Orderable) meal);
+						}
+					}
 
+				}
+			}
+		}
 	}
 
 	private void createOrder(String[] arguments) {
-		// TODO Auto-generated method stub
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Customer)) {
+				System.out.println("Permission denied");
+			} else {
+				boolean t = true;
+				for (Order order : ((Customer) user).getOrders()) {
+					t = t && !order.getName().equals(arguments[1]);
+				}
+				if (t) {
+					Restaurant restaurant = null;
+					for (Restaurant restaurantiter : foodora.getRestaurantList()) {
+						if (restaurantiter.getName().equals(arguments[1])) {
+							restaurant = restaurantiter;
+						}
+					}
+					if (restaurant == null) {
+						System.out.println("No restaurant named "+arguments[1]);
+					} else {
+						Order order = new Order((Customer) user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
+						((Customer) user).getOrders().add(order);
+					}
+				} else {
+					System.out.println("This name is already used");
+				}
 
+			}
+		}
 	}
 
 	private void removeFromSpecialOffer(String[] arguments) {
@@ -186,7 +303,7 @@ public class Interpreter {
 			}
 		}
 	}
-	
+
 	private void login(String[] arguments) {
 		if (arguments.length>3) {
 			System.out.println("Too many arguments");
@@ -310,7 +427,7 @@ public class Interpreter {
 						t = t && !item2.getName().equals(arguments[1]);
 					}
 					if (t) {
-					((Restaurant) user).getMenu().addItem(item);
+						((Restaurant) user).getMenu().addItem(item);
 					} else {
 						System.out.println("This name is already used");
 					}

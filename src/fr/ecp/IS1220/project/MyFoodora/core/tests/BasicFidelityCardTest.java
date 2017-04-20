@@ -116,7 +116,7 @@ public class BasicFidelityCardTest {
 		Meal chosenmeal = null;
 		for (Meal meal : Macdo.getMenu().getMeals()) {
 			if (i==0) {
-				order.addOrderabe(meal);
+				order.addOrderable(meal);
 				
 				chosenmeal = meal;
 				i++;

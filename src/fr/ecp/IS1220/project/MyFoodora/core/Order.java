@@ -99,7 +99,7 @@ public class Order {
 		this.deliverDate = Time.getTime();
 	}
 
-	public void addOrderabe(Orderable orderable) {
+	public void addOrderable(Orderable orderable) {
 		orderables.add(orderable);
 	}
 

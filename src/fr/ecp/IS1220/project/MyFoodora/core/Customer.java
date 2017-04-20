@@ -8,8 +8,10 @@ import fr.ecp.IS1220.project.MyFoodora.core.cards.FidelityCard;
 public class Customer extends User {
 	private String surname;
 	private FidelityCard fidelityCard = new BasicFidelityCard();
-	private ArrayList<Order> orders = new ArrayList<Order>();
+	private ArrayList<Order> completedOrders = new ArrayList<Order>();
+	private ArrayList<Order> currentOrders = new ArrayList<Order>();
 	private String notifyMean;
+	
 
 	// Constructor
 	public Customer(String name, String surname, String username, double addressX, double addressY, String email,
@@ -30,7 +32,7 @@ public class Customer extends User {
 		String info = new String();
 		info += "Name : " + getName() + "\nSurname : " + surname + "\nEmail : " + getEmail() + "\nPhone number : "
 				+ getPhoneNumber() + "\nFidelity card : " + fidelityCard.toString() + "\nOrders :\n";
-		for (Order o : orders) {
+		for (Order o : completedOrders) {
 			info += o.toString();
 			info += "\n";
 		}
@@ -43,7 +45,6 @@ public class Customer extends User {
 			System.out.println("Message sent to " + getNotifyMean() + " :");
 			System.out.println(message);
 		}
-
 	}
 
 	public void register() {
@@ -59,7 +60,8 @@ public class Customer extends User {
 		System.out.println(order.getCustomer() + " : paid" + price);
 		myFoodora.give(order);
 		// Once the order is paid
-		orders.add(order);
+		completedOrders.add(order);
+		currentOrders.remove(order);
 	}
 
 	// Getters an setters
@@ -73,7 +75,7 @@ public class Customer extends User {
 	}
 
 	public ArrayList<Order> getOrders() {
-		return orders;
+		return completedOrders;
 	}
 
 	public FidelityCard getFidelityCard() {
@@ -90,6 +92,14 @@ public class Customer extends User {
 
 	public void setNotifyMean(String notifyMean) {
 		this.notifyMean = notifyMean;
+	}
+	
+	public void addOrder(Order order) {
+		currentOrders.add(order);
+	}
+
+	public ArrayList<Order> getCurrentOrders() {
+		return currentOrders;
 	}
 
 }

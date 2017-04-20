@@ -330,12 +330,12 @@ public class UseCase {
 					if (answer == 1) {
 						System.out.println("Select item");
 						answer = Integer.parseInt(sc.nextLine());
-						order.addOrderabe(itemList.get(answer - 1));
+						order.addOrderable(itemList.get(answer - 1));
 
 					} else if (answer == 2) {
 						System.out.println("Select meal");
 						answer = Integer.parseInt(sc.nextLine());
-						order.addOrderabe(mealList.get(answer - 1));
+						order.addOrderable(mealList.get(answer - 1));
 					}
 				} while (!(answer == 3));
 				// 5. Once the order is completed the client selects the end

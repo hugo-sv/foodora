@@ -17,6 +17,8 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.FairOccupationPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.FastestPolicy;
 
 public class Interpreter {
 	/*
@@ -103,13 +105,49 @@ public class Interpreter {
 	}
 
 	private void setProfitPolicy(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				if (!arguments[1].equalsIgnoreCase("fastest") && !arguments[1].equalsIgnoreCase("fair-occupation")) {
+					System.out.println("Wrong policy name");
+				} else {
+					if (arguments[1].equalsIgnoreCase("fastest")) {
+						((Manager) user).setDeliveryPolicy(new FastestPolicy());
+					} else {
+						((Manager) user).setDeliveryPolicy(new FairOccupationPolicy());
+					}
+				}
+			}
+		}
 	}
 
 	private void findDeliverer(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Restaurant)) {
+				System.out.println("Permission denied");
+			} else {
+				Order order = null;
+				for (Order orderiter : foodora.getCurrentOrder_List()) {
+					if (orderiter.equals(arguments[1])) {
+						order = orderiter;
+					}
+				}
+				if (order == null) {
+					System.out.println("No order named "+arguments[1]);
+				} else {
+					foodora.getDeliveryPolicy().chooseCourier(foodora, order).propose(order);
+				}
+			}
+		}
 	}
 
 	private void offDuty(String[] arguments) {
@@ -321,7 +359,7 @@ public class Interpreter {
 		}
 	}
 
-	private void logout() {
+	private void logout(String[] arguments) {
 		if (user == null) {
 			System.out.println("Not logged in");
 		} else {
@@ -376,7 +414,7 @@ public class Interpreter {
 		}
 	}
 
-	private void registerCourrier(String[] arguments) {
+	private void registerCourier(String[] arguments) {
 		if (arguments.length>6) {
 			System.out.println("Too many arguments");
 		} else if (arguments.length<6) {
@@ -551,21 +589,6 @@ public class Interpreter {
 
 	}
 
-	private void addDishRestauarantMenu(String[] arguments) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void registerCourier(String[] arguments) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void logout(String[] arguments) {
-		// TODO Auto-generated method stub
-
-	}
-
 	private void showTotalProfit(String[] arguments) {
 		/*
 		 * try { (Manager)user.computeProfit(null, null);
@@ -584,7 +607,7 @@ public class Interpreter {
 			System.out.println("suscribe <> : to suscribe");
 			System.out.println("help <> : For help");
 		}
-		if (false) {
+		if (true) {
 			// Si l'utilisateur est manager...
 		}
 	}
@@ -620,13 +643,13 @@ public class Interpreter {
 			this.registerRestaurant(arguments);
 			break;
 		case "registerCustomer":
-			this.registerCourier(arguments);
+			this.registerCustomer(arguments);
 			break;
 		case "registerCourier":
 			this.registerCourier(arguments);
 			break;
-		case "addDishRestauarantMenu":
-			this.addDishRestauarantMenu(arguments);
+		case "addDishRestaurantMenu":
+			this.addDishRestaurantMenu(arguments);
 			break;
 		case "createMeal":
 			this.createMeal(arguments);

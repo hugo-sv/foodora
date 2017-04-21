@@ -17,8 +17,10 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.MainDish;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Meal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Orderable;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryCostPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.FairOccupationPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.FastestPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.ServiceFeePolicy;
 
 public class Interpreter {
 	/*
@@ -103,8 +105,8 @@ public class Interpreter {
 		// TODO Auto-generated method stub
 
 	}
-
-	private void setProfitPolicy(String[] arguments) {
+	
+	private void setDeliveryPolicy(String[] arguments) {
 		if (arguments.length>2) {
 			System.out.println("Too many arguments");
 		} else if (arguments.length<2) {
@@ -115,11 +117,37 @@ public class Interpreter {
 			} else {
 				if (!arguments[1].equalsIgnoreCase("fastest") && !arguments[1].equalsIgnoreCase("fair-occupation")) {
 					System.out.println("Wrong policy name");
+					System.out.println("Policy is either fastest or fair-occupation");
 				} else {
 					if (arguments[1].equalsIgnoreCase("fastest")) {
 						((Manager) user).setDeliveryPolicy(new FastestPolicy());
 					} else {
 						((Manager) user).setDeliveryPolicy(new FairOccupationPolicy());
+					}
+				}
+			}
+		}
+	}
+
+	private void setProfitPolicy(String[] arguments) {
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				if (!arguments[1].equalsIgnoreCase("deliverycost") && !arguments[1].equalsIgnoreCase("servicefee") && !arguments[1].equalsIgnoreCase("markup")) {
+					System.out.println("Wrong policy name");
+					System.out.println("Policy is either deliveryCost, serviceFee or markup");
+				} else {
+					if (arguments[1].equalsIgnoreCase("deliverycost")) {
+						((Manager) user).setTargetPolicy(new DeliveryCostPolicy());
+					} else if (arguments[1].equalsIgnoreCase("servicefee")){
+						((Manager) user).setTargetPolicy(new ServiceFeePolicy());
+					} else {
+						((Manager) user).setTargetPolicy(new ServiceFeePolicy());
 					}
 				}
 			}
@@ -688,7 +716,7 @@ public class Interpreter {
 			this.findDeliverer(arguments);
 			break;
 		case "setDeliveryPolicy":
-			this.logout(arguments);
+			this.setDeliveryPolicy(arguments);
 			break;
 		case "setProfitPolicy":
 			this.setProfitPolicy(arguments);

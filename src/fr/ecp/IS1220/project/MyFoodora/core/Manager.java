@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.TargetPolicy;
 
 public class Manager extends User {
 	private String surname;
@@ -153,6 +154,10 @@ public class Manager extends User {
 	
 	public void setDeliveryPolicy(DeliveryPolicy deliveryPolicy) {
 		myFoodora.setDeliveryPolicy(deliveryPolicy);
+	}
+	
+	public void setTargetPolicy(TargetPolicy targetPolicy) {
+		myFoodora.setTargetPolicy(targetPolicy);
 	}
 
 

@@ -1,5 +1,6 @@
 package fr.ecp.IS1220.project.MyFoodora.CLUI;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import fr.ecp.IS1220.project.MyFoodora.core.Courier;
@@ -9,6 +10,9 @@ import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
 import fr.ecp.IS1220.project.MyFoodora.core.User;
+import fr.ecp.IS1220.project.MyFoodora.core.cards.BasicFidelityCard;
+import fr.ecp.IS1220.project.MyFoodora.core.cards.LotteryFidelityCard;
+import fr.ecp.IS1220.project.MyFoodora.core.cards.PointFidelityCard;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
@@ -87,25 +91,74 @@ public class Interpreter {
 	}
 
 	private void showCourierDeliveries() {
-		// TODO Auto-generated method stub
-
+		if (!(user instanceof Manager)) {
+			System.out.println("Permission denied");
+		} else {
+			ArrayList<Courier> courierList = foodora.getCourierList();
+			courierList.sort(new CourierComparator(foodora, true));
+			for (Courier courier : courierList) {
+				System.out.println("id : "+courier.getiD()+", username : "+courier.getUsername());
+			}
+		}
 	}
 
 	private void showRestaurantTop() {
-		// TODO Auto-generated method stub
-
+		if (!(user instanceof Manager)) {
+			System.out.println("Permission denied");
+		} else {
+			ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
+			restaurantList.sort(new RestaurantComparator(foodora, true));
+			for (Restaurant restaurant : restaurantList) {
+				System.out.println("id : "+restaurant.getiD()+", username : "+restaurant.getUsername());
+			}
+		}
 	}
 
 	private void showCustomers() {
-		// TODO Auto-generated method stub
-
+		if (!(user instanceof Manager)) {
+			System.out.println("Permission denied");
+		} else {
+			for (Customer customer : foodora.getCustomerList()) {
+				System.out.println("id : "+customer.getiD()+", username : "+customer.getUsername());
+			}
+		}
 	}
 
 	private void associateCard(String[] arguments) {
-		// TODO Auto-generated method stub
-
+		if (arguments.length>3) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<3) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				Customer customer = null;
+				for (Customer customeriter : foodora.getCustomerList()) {
+					if (customeriter.getName().equals(arguments[1])) {
+						customer = customeriter;
+					}
+				}
+				if (customer == null) {
+					System.out.println("No customer named "+arguments[1]);
+				} else {
+					if (!arguments[1].equalsIgnoreCase("basic") && !arguments[1].equalsIgnoreCase("point") && !arguments[1].equalsIgnoreCase("lottery")) {
+						System.out.println("Wrong policy name");
+						System.out.println("Policy is either basic, point or lottery");
+					} else {
+						if (arguments[1].equalsIgnoreCase("basic")) {
+							customer.setFidelityCard(new BasicFidelityCard());
+						} else if (arguments[1].equalsIgnoreCase("point")){
+							customer.setFidelityCard(new PointFidelityCard());
+						} else {
+							customer.setFidelityCard(new LotteryFidelityCard());
+						}
+					}
+				}
+			}
+		}
 	}
-	
+
 	private void setDeliveryPolicy(String[] arguments) {
 		if (arguments.length>2) {
 			System.out.println("Too many arguments");
@@ -616,15 +669,57 @@ public class Interpreter {
 		}
 
 	}
+	
+	private void showMenuItem(String[] arguments) {
+		if (arguments.length>2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length<2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				Restaurant restaurant = null;
+				for (Restaurant restaurantiter : foodora.getRestaurantList()) {
+					if (restaurantiter.getName().equals(arguments[1])) {
+						restaurant = restaurantiter;
+					}
+				}
+				if (restaurant == null) {
+					System.out.println("No restaurant named "+arguments[1]);
+				} else {
+					for (Meal meal : restaurant.getMenu().getMeals()) {
+						System.out.println(meal.toString());
+					}
+					for (Item item : restaurant.getMenu().getItems()) {
+						System.out.println(item.toString());
+					}
+				}
+			}
+		}
+	}
 
 	private void showTotalProfit(String[] arguments) {
-		/*
-		 * try { (Manager)user.computeProfit(null, null);
-		 * 
-		 * } catch (IOException e) {// Erreur parceque user n'est pas un manager
-		 * System.out.println("You can't do that."); }
-		 */
-
+		if (arguments.length>3) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length == 2) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(user instanceof Manager)) {
+				System.out.println("Permission denied");
+			} else {
+				if (arguments.length == 1) {
+					System.out.println("Total profit : "+foodora.computeTotalProfit()+" €");
+				} else {
+					//TODO gérer le temps
+				}
+			}
+		}
+	}
+	
+	private void runTest(String[] arguments) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void help() {
@@ -734,13 +829,13 @@ public class Interpreter {
 			this.showCustomers();
 			break;
 		case "showMenuItem":
-			this.showMeal(arguments);
+			this.showMenuItem(arguments);
 			break;
 		case "showTotalProfit":
 			this.showTotalProfit(arguments);
 			break;
 		case "runTest":
-			this.offDuty(arguments);
+			this.runTest(arguments);
 			break;
 		case "help":
 			this.help();
@@ -756,5 +851,9 @@ public class Interpreter {
 		System.out.println("");
 		return true;
 	}
+
+
+
+
 
 }

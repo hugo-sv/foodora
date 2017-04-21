@@ -22,7 +22,7 @@ public class MyFoodora {
 	private ArrayList<Customer> observers;
 	private double money = 0;
 
-	
+
 
 
 	// Constructor
@@ -155,12 +155,32 @@ public class MyFoodora {
 	public double computeTotalIncome(Time begin, Time end) {
 		double income = 0;
 		for (Order order : completedOrder_List) {
+			if (order.getDeliverDate().compareTo(begin)>=0 && order.getDeliverDate().compareTo(end)<=0) {
+				income += order.getPrice() * order.getMarkupPourcentage() + order.getServiceFee();
+			}
+		}
+		return income;
+	}
+
+	public double computeTotalIncome() {
+		double income = 0;
+		for (Order order : completedOrder_List) {
 			income += order.getPrice() * order.getMarkupPourcentage() + order.getServiceFee();
 		}
 		return income;
 	}
 
 	public double computeTotalProfit(Time begin, Time end) {
+		double profit = 0;
+		for (Order order : completedOrder_List) {
+			if (order.getDeliverDate().compareTo(begin)>=0 && order.getDeliverDate().compareTo(end)<=0) {
+				profit += order.getPrice() * order.getMarkupPourcentage() + order.getServiceFee() - order.getDeliveryCost();
+			}
+		}
+		return profit;
+	}
+
+	public double computeTotalProfit() {
 		double profit = 0;
 		for (Order order : completedOrder_List) {
 			profit += order.getPrice() * order.getMarkupPourcentage() + order.getServiceFee() - order.getDeliveryCost();
@@ -185,7 +205,7 @@ public class MyFoodora {
 		}
 		return courierList;
 	}
-	
+
 	public ArrayList<Restaurant> getRestaurantList() {
 		ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
 		for (User user : userList.values()) {
@@ -194,6 +214,16 @@ public class MyFoodora {
 			}
 		}
 		return restaurantList;
+	}
+
+	public ArrayList<Customer> getCustomerList() {
+		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		for (User user : userList.values()) {
+			if (user instanceof Customer) {
+				customerList.add((Customer) user);
+			}
+		}
+		return customerList;
 	}
 
 	public Courier mostActiveCourier() {
@@ -269,6 +299,6 @@ public class MyFoodora {
 	public void setOrderSortingPolicy(OrderSortingPolicy orderSortingPolicy) {
 		this.orderSortingPolicy = orderSortingPolicy;
 	}
-	
+
 
 }

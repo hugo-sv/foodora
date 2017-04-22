@@ -83,13 +83,6 @@ public class Interpreter {
 		}
 	}
 
-	private boolean canUse(String command) {
-		// Check if the User can execute the command. If not, return a message
-		// Easier to complete if a user is added
-
-		return false;
-	}
-
 	private void showCourierDeliveries() {
 		if (!(user instanceof Manager)) {
 			System.out.println("Permission denied");

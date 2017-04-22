@@ -46,7 +46,7 @@ public class Interpreter {
 		// Generic message
 		System.out.println("Hello, welcome on MyFoodora.\n");
 		System.out.println("To login, type login <username> <password>");
-		System.out.println("To suscribe, type suscribe");
+		System.out.println("To register, type register");
 		System.out.println("For any help, type help.");
 	}
 
@@ -67,7 +67,7 @@ public class Interpreter {
 
 	static void unknown() {
 		// Generic message
-		System.out.println("Unknow command, use the help command.");
+		System.out.println("Unknow command, please use the help command.");
 	}
 
 	private String askFor(String[] expected) {
@@ -742,7 +742,7 @@ public class Interpreter {
 		if (user == null) {
 			System.out.println("login <username> <password> : to login");
 			System.out.println("quit <> : to quit");
-			System.out.println("suscribe <> : to suscribe");
+			System.out.println("register <> : to register");
 			System.out.println("help <> : For help");
 		}
 		if (true) {
@@ -752,18 +752,172 @@ public class Interpreter {
 
 	private boolean quit() {
 		// To quit the interface
-		System.out.println("Are you sure you want to quit ? [yes]/no]");
-		String answer = this.askFor(new String[] { "yes", "no", "" });
-		if (answer == "no") {
+		System.out.println("Are you sure you want to quit ? (Y/n)");
+		String answer = this.askFor(new String[] { "y", "Y", "n", "" });
+		if (answer == "n") {
 			return true;
 		}
 		return false;
 
 	}
 
-	private void suscribe() {
-		// To suscribe to MyFoodora
-		System.out.println("Interpreter.suscribe()");
+	private void register() {
+		// To register as a courrier or as a customer
+		System.out.println("Registering process...");
+		String name;
+		String surname;
+		String username;
+		double addressX;
+		double addressY;
+		System.out.println("Enter name :");
+		name = sc.nextLine();
+		System.out.println("Enter surname :");
+		surname = sc.nextLine();
+		System.out.println("Enter username :");
+		username = sc.nextLine();
+		System.out.println("Enter address X (double):");
+		String input = sc.nextLine();
+		while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
+			Interpreter.incorrect();
+			input = sc.nextLine();
+		}
+		addressX = Double.parseDouble(input);
+		System.out.println("Enter address Y (double):");
+		input = sc.nextLine();
+		while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
+			Interpreter.incorrect();
+			input = sc.nextLine();
+		}
+		addressY = Double.parseDouble(input);
+		int type;
+		User c;
+		System.out.println("Enter type of user : (1/2)");
+		System.out.println("1 - Customer");
+		System.out.println("2 - Courier");
+		input = sc.nextLine();
+		while (!input.matches("^[1-2]$")) {
+			Interpreter.incorrect();
+			input = sc.nextLine();
+		}
+		type = Integer.parseInt(input);
+		if (type == 1) {
+			c = (Customer) new Customer(name, surname, username, addressX, addressY);
+		} else {
+			c = (Courier) new Courier(name, surname, username, addressX, addressY);
+		}
+		foodora.addUser(c);
+		System.out.println("You have been registered.");
+		// 3. the user starts inserting a contact info with the type and
+		// the
+		// value (e.g. email, phone)
+		// • the user repeats step 3 since he ends to inserts his
+		// contact
+		// info
+		int contact;
+		do {
+			System.out.println("Inserting contact info : (1/2/3)");
+			System.out.println("1 - email");
+			System.out.println("2 - phone");
+			System.out.println("3 - stop");
+			input = sc.nextLine();
+			while (!input.matches("^[1-3]$")) {
+				Interpreter.incorrect();
+				input = sc.nextLine();
+			}
+			contact = Integer.parseInt(input);
+			if (contact == 1) {
+				System.out.println("Adding email address");
+				c.setEmail(sc.nextLine());
+			}
+			if (contact == 2) {
+				System.out.println("Adding phone number");
+				c.setPhoneNumber(sc.nextLine());
+			}
+		} while (contact != 3);
+
+		// 4. if the user is a customer she sets the agreement about the
+		// special
+		// offer contact (by
+		// default it is no)
+
+		if (c instanceof Customer) {
+			String answer;
+			System.out.println("Do you want to be informed of special offers ? (y/N)");
+			input = sc.nextLine();
+			while (!input.matches("^(y|Y|n|N)?$")) {
+				Interpreter.incorrect();
+				input = sc.nextLine();
+			}
+			answer = input;
+			if (answer.equalsIgnoreCase("y")) {
+				System.out.println("You will be informed of special offers");
+				((Customer) c).register();
+			}
+		}
+		// 5. the user is a customer selects the contact to be used to
+		// send
+		// the
+		// offers (by default it
+		// is the e-mail if exists)
+		if (c instanceof Customer) {
+			int answer;
+			System.out.println("Select contact method for offers : (1/2)");
+			System.out.println("1 - email (default)");
+			System.out.println("2 - phone number");
+			input = sc.nextLine();
+			while (!input.matches("^[1-2]?$")) {
+				Interpreter.incorrect();
+				input = sc.nextLine();
+			}
+			answer = Integer.parseInt(input);
+			if (answer == 2) {
+				System.out.println("You will be notified by phone.");
+				((Customer) c).setNotifyMean(c.getPhoneNumber());
+			} else {
+				System.out.println("You will be notified by Email.");
+				((Customer) c).setNotifyMean(c.getEmail());
+			}
+		}
+
+		// 6. if the user is a courier he sets his current duty status
+		// (default
+		// off-duty)
+
+		if (c instanceof Courier) {
+			String answer;
+			System.out.println("Do you want to be seen as on-duty ? (y/N)");
+			input = sc.nextLine();
+			while (!input.matches("^(y|Y|n|N)?$")) {
+				Interpreter.incorrect();
+				input = sc.nextLine();
+			}
+			answer = input;
+			if (answer.equalsIgnoreCase("y")) {
+				System.out.println("You are seen on-duty.");
+				((Courier) c).setOnDuty(true);
+			} else {
+				System.out.println("You are seen off-duty.");
+				((Courier) c).setOnDuty(false);
+			}
+		}
+
+		// 7. the user specify to save the account
+
+		String answer;
+			System.out.println("Do you wish to save your account ? (Y/n)");
+			input = sc.nextLine();
+			while (!input.matches("^(y|Y|n|N)?$")) {
+				Interpreter.incorrect();
+				input = sc.nextLine();
+			}
+			answer = input;
+		if (answer.equalsIgnoreCase("n")) {
+			System.out.println("You have been unregistered");
+			foodora.removeUser(c);
+		}
+		else {
+			System.out.println("You have been registered.");
+		}
 	}
 
 	public boolean executeCommand(String command) {
@@ -855,8 +1009,8 @@ public class Interpreter {
 		case "help":
 			this.help();
 			break;
-		case "suscribe":
-			this.suscribe();
+		case "register":
+			this.register();
 			break;
 		case "quit":
 			return this.quit();

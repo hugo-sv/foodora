@@ -3,6 +3,7 @@ package fr.ecp.IS1220.project.MyFoodora.core;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.ecp.IS1220.project.MyFoodora.CLUI.Interpreter;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.Dessert;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.FullMeal;
 import fr.ecp.IS1220.project.MyFoodora.core.menu.HalfMeal;
@@ -138,25 +139,38 @@ public class UseCase {
 				surname = sc.nextLine();
 				System.out.println("Enter username :");
 				username = sc.nextLine();
-				System.out.println("Enter address :");
-				addressX = Double.parseDouble(sc.nextLine());
-				addressY = Double.parseDouble(sc.nextLine());
+				System.out.println("Enter address X (double):");
+				String input = sc.nextLine();
+				while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
+					System.out.println("Incorrect input, please try again.");
+					input = sc.nextLine();
+				}
+				addressX = Double.parseDouble(input);
+				System.out.println("Enter address Y (double):");
+				input = sc.nextLine();
+				while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
+					System.out.println("Incorrect input, please try again.");
+					input = sc.nextLine();
+				}
+				addressY = Double.parseDouble(input);
 				int type;
 				User c;
-				do {
-					System.out.println("Enter type of user :");
-					System.out.println("1 - Customer");
-					System.out.println("2 - Courier");
-					type = Integer.parseInt(sc.nextLine());
-				} while (type != 1 && type != 2);
+				System.out.println("Enter type of user : (1/2)");
+				System.out.println("1 - Customer");
+				System.out.println("2 - Courier");
+				input = sc.nextLine();
+				while (!input.matches("^[1-2]$")) {
+					System.out.println("Incorrect input, please try again.");
+					input = sc.nextLine();
+				}
+				type = Integer.parseInt(input);
 				if (type == 1) {
-
 					c = (Customer) new Customer(name, surname, username, addressX, addressY);
 				} else {
 					c = (Courier) new Courier(name, surname, username, addressX, addressY);
 				}
 				foodora.addUser(c);
-
+				System.out.println("You have been registered.");
 				// 3. the user starts inserting a contact info with the type and
 				// the
 				// value (e.g. email, phone)
@@ -165,11 +179,16 @@ public class UseCase {
 				// info
 				int contact;
 				do {
-					System.out.println("Inserting contact info : ");
+					System.out.println("Inserting contact info : (1/2/3)");
 					System.out.println("1 - email");
 					System.out.println("2 - phone");
 					System.out.println("3 - stop");
-					contact = Integer.parseInt(sc.nextLine());
+					input = sc.nextLine();
+					while (!input.matches("^[1-3]$")) {
+						System.out.println("Incorrect input, please try again.");
+						input = sc.nextLine();
+					}
+					contact = Integer.parseInt(input);
 					if (contact == 1) {
 						System.out.println("Adding email address");
 						c.setEmail(sc.nextLine());
@@ -178,7 +197,6 @@ public class UseCase {
 						System.out.println("Adding phone number");
 						c.setPhoneNumber(sc.nextLine());
 					}
-
 				} while (contact != 3);
 
 				// 4. if the user is a customer she sets the agreement about the
@@ -188,11 +206,15 @@ public class UseCase {
 
 				if (c instanceof Customer) {
 					String answer;
-					do {
-						System.out.println("Do you want to be informed of special offers ? (y/N)");
-						answer = sc.nextLine();
-					} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+					System.out.println("Do you want to be informed of special offers ? (y/N)");
+					input = sc.nextLine();
+					while (!input.matches("^(y|Y|n|N)?$")) {
+						System.out.println("Incorrect input, please try again.");
+						input = sc.nextLine();
+					}
+					answer = input;
 					if (answer.equalsIgnoreCase("y")) {
+						System.out.println("You will be informed of special offers");
 						((Customer) c).register();
 					}
 				}
@@ -203,15 +225,20 @@ public class UseCase {
 				// is the e-mail if exists)
 				if (c instanceof Customer) {
 					int answer;
-					do {
-						System.out.println("Select contact method for offers :");
-						System.out.println("1 - email (default)");
-						System.out.println("2 - phone number");
-						answer = Integer.parseInt(sc.nextLine());
-					} while (answer != 1 && answer != 2 && answer != 0);
+					System.out.println("Select contact method for offers : (1/2)");
+					System.out.println("1 - email (default)");
+					System.out.println("2 - phone number");
+					input = sc.nextLine();
+					while (!input.matches("^[1-2]?$")) {
+						System.out.println("Incorrect input, please try again.");
+						input = sc.nextLine();
+					}
+					answer = Integer.parseInt(input);
 					if (answer == 2) {
+						System.out.println("You will be notified by phone.");
 						((Customer) c).setNotifyMean(c.getPhoneNumber());
 					} else {
+						System.out.println("You will be notified by Email.");
 						((Customer) c).setNotifyMean(c.getEmail());
 					}
 				}
@@ -222,13 +249,18 @@ public class UseCase {
 
 				if (c instanceof Courier) {
 					String answer;
-					do {
-						System.out.println("Do you want to be seen as on-duty ? (y/N)");
-						answer = sc.nextLine();
-					} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+					System.out.println("Do you want to be seen as on-duty ? (y/N)");
+					input = sc.nextLine();
+					while (!input.matches("^(y|Y|n|N)?$")) {
+						System.out.println("Incorrect input, please try again.");
+						input = sc.nextLine();
+					}
+					answer = input;
 					if (answer.equalsIgnoreCase("y")) {
+						System.out.println("You are seen on-duty.");
 						((Courier) c).setOnDuty(true);
 					} else {
+						System.out.println("You are seen off-duty.");
 						((Courier) c).setOnDuty(false);
 					}
 				}
@@ -236,12 +268,18 @@ public class UseCase {
 				// 7. the user specify to save the account
 
 				String answer;
-				do {
-					System.out.println("Do you wish to save your account ? (Y/n)");
-					answer = sc.nextLine();
-				} while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n") && !answer.isEmpty());
+				System.out.println("Do you wish to save your account ? (Y/n)");
+				input = sc.nextLine();
+				while (!input.matches("^(y|Y|n|N)?$")) {
+					System.out.println("Incorrect input, please try again.");
+					input = sc.nextLine();
+				}
+				answer = input;
 				if (answer.equalsIgnoreCase("n")) {
+					System.out.println("You have been unregistered");
 					foodora.removeUser(c);
+				} else {
+					System.out.println("You have been registered.");
 				}
 			}
 			// Login user

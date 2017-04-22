@@ -9,6 +9,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.Manager;
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 import fr.ecp.IS1220.project.MyFoodora.core.Order;
 import fr.ecp.IS1220.project.MyFoodora.core.Restaurant;
+import fr.ecp.IS1220.project.MyFoodora.core.Time;
 import fr.ecp.IS1220.project.MyFoodora.core.User;
 import fr.ecp.IS1220.project.MyFoodora.core.cards.BasicFidelityCard;
 import fr.ecp.IS1220.project.MyFoodora.core.cards.LotteryFidelityCard;
@@ -90,7 +91,7 @@ public class Interpreter {
 			ArrayList<Courier> courierList = foodora.getCourierList();
 			courierList.sort(new CourierComparator(foodora, true));
 			for (Courier courier : courierList) {
-				System.out.println("id : "+courier.getiD()+", username : "+courier.getUsername());
+				System.out.println("id : " + courier.getiD() + ", username : " + courier.getUsername());
 			}
 		}
 	}
@@ -102,7 +103,7 @@ public class Interpreter {
 			ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
 			restaurantList.sort(new RestaurantComparator(foodora, true));
 			for (Restaurant restaurant : restaurantList) {
-				System.out.println("id : "+restaurant.getiD()+", username : "+restaurant.getUsername());
+				System.out.println("id : " + restaurant.getiD() + ", username : " + restaurant.getUsername());
 			}
 		}
 	}
@@ -112,15 +113,15 @@ public class Interpreter {
 			System.out.println("Permission denied");
 		} else {
 			for (Customer customer : foodora.getCustomerList()) {
-				System.out.println("id : "+customer.getiD()+", username : "+customer.getUsername());
+				System.out.println("id : " + customer.getiD() + ", username : " + customer.getUsername());
 			}
 		}
 	}
 
 	private void associateCard(String[] arguments) {
-		if (arguments.length>3) {
+		if (arguments.length > 3) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<3) {
+		} else if (arguments.length < 3) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
@@ -133,15 +134,16 @@ public class Interpreter {
 					}
 				}
 				if (customer == null) {
-					System.out.println("No customer named "+arguments[1]);
+					System.out.println("No customer named " + arguments[1]);
 				} else {
-					if (!arguments[1].equalsIgnoreCase("basic") && !arguments[1].equalsIgnoreCase("point") && !arguments[1].equalsIgnoreCase("lottery")) {
+					if (!arguments[1].equalsIgnoreCase("basic") && !arguments[1].equalsIgnoreCase("point")
+							&& !arguments[1].equalsIgnoreCase("lottery")) {
 						System.out.println("Wrong policy name");
 						System.out.println("Policy is either basic, point or lottery");
 					} else {
 						if (arguments[1].equalsIgnoreCase("basic")) {
 							customer.setFidelityCard(new BasicFidelityCard());
-						} else if (arguments[1].equalsIgnoreCase("point")){
+						} else if (arguments[1].equalsIgnoreCase("point")) {
 							customer.setFidelityCard(new PointFidelityCard());
 						} else {
 							customer.setFidelityCard(new LotteryFidelityCard());
@@ -153,9 +155,9 @@ public class Interpreter {
 	}
 
 	private void setDeliveryPolicy(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
@@ -176,21 +178,22 @@ public class Interpreter {
 	}
 
 	private void setProfitPolicy(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
 				System.out.println("Permission denied");
 			} else {
-				if (!arguments[1].equalsIgnoreCase("deliverycost") && !arguments[1].equalsIgnoreCase("servicefee") && !arguments[1].equalsIgnoreCase("markup")) {
+				if (!arguments[1].equalsIgnoreCase("deliverycost") && !arguments[1].equalsIgnoreCase("servicefee")
+						&& !arguments[1].equalsIgnoreCase("markup")) {
 					System.out.println("Wrong policy name");
 					System.out.println("Policy is either deliveryCost, serviceFee or markup");
 				} else {
 					if (arguments[1].equalsIgnoreCase("deliverycost")) {
 						((Manager) user).setTargetPolicy(new DeliveryCostPolicy());
-					} else if (arguments[1].equalsIgnoreCase("servicefee")){
+					} else if (arguments[1].equalsIgnoreCase("servicefee")) {
 						((Manager) user).setTargetPolicy(new ServiceFeePolicy());
 					} else {
 						((Manager) user).setTargetPolicy(new ServiceFeePolicy());
@@ -201,9 +204,9 @@ public class Interpreter {
 	}
 
 	private void findDeliverer(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
@@ -216,7 +219,7 @@ public class Interpreter {
 					}
 				}
 				if (order == null) {
-					System.out.println("No order named "+arguments[1]);
+					System.out.println("No order named " + arguments[1]);
 				} else {
 					foodora.getDeliveryPolicy().chooseCourier(foodora, order).propose(order);
 				}
@@ -225,9 +228,9 @@ public class Interpreter {
 	}
 
 	private void offDuty(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Courier)) {
@@ -243,9 +246,9 @@ public class Interpreter {
 	}
 
 	private void endOrder(String[] arguments) {
-		if (arguments.length>3) {
+		if (arguments.length > 3) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<3) {
+		} else if (arguments.length < 3) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Customer)) {
@@ -258,7 +261,7 @@ public class Interpreter {
 					}
 				}
 				if (order == null) {
-					System.out.println("No order named "+arguments[1]);
+					System.out.println("No order named " + arguments[1]);
 				} else {
 					((Customer) user).payOrder(order);
 					// TODO implement time
@@ -268,9 +271,9 @@ public class Interpreter {
 	}
 
 	private void onDuty(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Courier)) {
@@ -286,9 +289,9 @@ public class Interpreter {
 	}
 
 	private void addItem2Order(String[] arguments) {
-		if (arguments.length>3) {
+		if (arguments.length > 3) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<3) {
+		} else if (arguments.length < 3) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Customer)) {
@@ -301,7 +304,7 @@ public class Interpreter {
 					}
 				}
 				if (order == null) {
-					System.out.println("No order named "+arguments[1]);
+					System.out.println("No order named " + arguments[1]);
 				} else {
 					Item item = null;
 					Meal meal = null;
@@ -315,11 +318,11 @@ public class Interpreter {
 							meal = mealiter;
 						}
 					}
-					if (meal == null && item == null ) {
+					if (meal == null && item == null) {
 						System.out.println("Nothing found");
 					} else {
 						if (item != null) {
-							order.addOrderable((Orderable) item); 
+							order.addOrderable((Orderable) item);
 						} else {
 							order.addOrderable((Orderable) meal);
 						}
@@ -331,9 +334,9 @@ public class Interpreter {
 	}
 
 	private void createOrder(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Customer)) {
@@ -351,9 +354,10 @@ public class Interpreter {
 						}
 					}
 					if (restaurant == null) {
-						System.out.println("No restaurant named "+arguments[1]);
+						System.out.println("No restaurant named " + arguments[1]);
 					} else {
-						Order order = new Order((Customer) user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
+						Order order = new Order((Customer) user, restaurant, foodora.getServiceFee(),
+								foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
 						((Customer) user).getOrders().add(order);
 					}
 				} else {
@@ -365,9 +369,9 @@ public class Interpreter {
 	}
 
 	private void removeFromSpecialOffer(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
@@ -380,7 +384,7 @@ public class Interpreter {
 					}
 				}
 				if (meal == null) {
-					System.out.println("No meal named "+arguments[1]);
+					System.out.println("No meal named " + arguments[1]);
 				} else {
 					if (((Restaurant) user).getMealsOfTheWeek().contains(meal)) {
 						((Restaurant) user).removeMealOfTheWeek(meal);
@@ -393,9 +397,9 @@ public class Interpreter {
 	}
 
 	private void setSpecialOffer(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
@@ -408,7 +412,7 @@ public class Interpreter {
 					}
 				}
 				if (meal == null) {
-					System.out.println("No meal named "+arguments[1]);
+					System.out.println("No meal named " + arguments[1]);
 				} else {
 					((Restaurant) user).addMealOfTheWeek(meal);
 				}
@@ -417,13 +421,13 @@ public class Interpreter {
 	}
 
 	private void login(String[] arguments) {
-		if (arguments.length>3) {
+		if (arguments.length > 3) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<3) {
+		} else if (arguments.length < 3) {
 			System.out.println("Too few arguments");
 		} else {
 			for (User user : foodora.getUserList().values()) {
-				if (user.getUsername()==arguments[1] && user.getPassword() == arguments[2]) {
+				if (user.getUsername() == arguments[1] && user.getPassword() == arguments[2]) {
 					this.user = user;
 				}
 			}
@@ -437,15 +441,15 @@ public class Interpreter {
 		if (user == null) {
 			System.out.println("Not logged in");
 		} else {
-			System.out.println("Good bye "+user.getUsername());
+			System.out.println("Good bye " + user.getUsername());
 			user = null;
 		}
 	}
 
 	private void registerRestaurant(String[] arguments) {
-		if (arguments.length>5) {
+		if (arguments.length > 5) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<5) {
+		} else if (arguments.length < 5) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
@@ -466,9 +470,9 @@ public class Interpreter {
 	}
 
 	private void registerCustomer(String[] arguments) {
-		if (arguments.length>6) {
+		if (arguments.length > 6) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<6) {
+		} else if (arguments.length < 6) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
@@ -489,9 +493,9 @@ public class Interpreter {
 	}
 
 	private void registerCourier(String[] arguments) {
-		if (arguments.length>6) {
+		if (arguments.length > 6) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<6) {
+		} else if (arguments.length < 6) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
@@ -513,26 +517,34 @@ public class Interpreter {
 	}
 
 	private void addDishRestaurantMenu(String[] arguments) {
-		if (arguments.length>5) {
+		if (arguments.length > 5) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<5) {
+		} else if (arguments.length < 5) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
 				System.out.println("Permission denied");
 			} else {
-				if (!arguments[2].equalsIgnoreCase("starter") && !arguments[2].equalsIgnoreCase("main") && !arguments[2].equalsIgnoreCase("dessert")) {
+				if (!arguments[2].equalsIgnoreCase("starter") && !arguments[2].equalsIgnoreCase("main")
+						&& !arguments[2].equalsIgnoreCase("dessert")) {
 					System.out.println("Wrong dish category");
-				} else if (!arguments[3].equalsIgnoreCase("standard") && !arguments[3].equalsIgnoreCase("vegetarian") && !arguments[3].equalsIgnoreCase("gluten-free")) {
+				} else if (!arguments[3].equalsIgnoreCase("standard") && !arguments[3].equalsIgnoreCase("vegetarian")
+						&& !arguments[3].equalsIgnoreCase("gluten-free")) {
 					System.out.println("Wrong food type");
 				} else {
 					Item item = null;
 					if (arguments[2].equalsIgnoreCase("starter")) {
-						item = new Starter(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase("vegetarian"), arguments[3].equalsIgnoreCase("gluten-free"));		
+						item = new Starter(arguments[1], Double.parseDouble(arguments[4]),
+								arguments[3].equalsIgnoreCase("vegetarian"),
+								arguments[3].equalsIgnoreCase("gluten-free"));
 					} else if (arguments[2].equalsIgnoreCase("main")) {
-						item = new MainDish(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase("vegetarian"), arguments[3].equalsIgnoreCase("gluten-free"));
+						item = new MainDish(arguments[1], Double.parseDouble(arguments[4]),
+								arguments[3].equalsIgnoreCase("vegetarian"),
+								arguments[3].equalsIgnoreCase("gluten-free"));
 					} else {
-						item = new Dessert(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase("vegetarian"), arguments[3].equalsIgnoreCase("gluten-free"));
+						item = new Dessert(arguments[1], Double.parseDouble(arguments[4]),
+								arguments[3].equalsIgnoreCase("vegetarian"),
+								arguments[3].equalsIgnoreCase("gluten-free"));
 					}
 					boolean t = true;
 					for (Item item2 : ((Restaurant) user).getMenu().getItems()) {
@@ -549,9 +561,9 @@ public class Interpreter {
 	}
 
 	private void createMeal(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
@@ -573,9 +585,9 @@ public class Interpreter {
 	}
 
 	private void showMeal(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
@@ -588,7 +600,7 @@ public class Interpreter {
 					}
 				}
 				if (meal == null) {
-					System.out.println("No meal named "+arguments[1]);
+					System.out.println("No meal named " + arguments[1]);
 				} else {
 					System.out.println(meal.toString());
 				}
@@ -597,9 +609,9 @@ public class Interpreter {
 	}
 
 	private void addDish2Meal(String[] arguments) {
-		if (arguments.length>3) {
+		if (arguments.length > 3) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<3) {
+		} else if (arguments.length < 3) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Restaurant)) {
@@ -612,7 +624,7 @@ public class Interpreter {
 					}
 				}
 				if (meal == null) {
-					System.out.println("No meal named "+arguments[2]);
+					System.out.println("No meal named " + arguments[2]);
 				} else {
 					Item item = null;
 					for (Item itemiter : ((Restaurant) user).getMenu().getItems()) {
@@ -621,7 +633,7 @@ public class Interpreter {
 						}
 					}
 					if (item == null) {
-						System.out.println("No dish named "+arguments[1]);
+						System.out.println("No dish named " + arguments[1]);
 					} else {
 						if (item instanceof Starter) {
 							if (meal.getEntry() != null) {
@@ -662,11 +674,11 @@ public class Interpreter {
 		}
 
 	}
-	
+
 	private void showMenuItem(String[] arguments) {
-		if (arguments.length>2) {
+		if (arguments.length > 2) {
 			System.out.println("Too many arguments");
-		} else if (arguments.length<2) {
+		} else if (arguments.length < 2) {
 			System.out.println("Too few arguments");
 		} else {
 			if (!(user instanceof Manager)) {
@@ -679,7 +691,7 @@ public class Interpreter {
 					}
 				}
 				if (restaurant == null) {
-					System.out.println("No restaurant named "+arguments[1]);
+					System.out.println("No restaurant named " + arguments[1]);
 				} else {
 					for (Meal meal : restaurant.getMenu().getMeals()) {
 						System.out.println(meal.toString());
@@ -693,7 +705,7 @@ public class Interpreter {
 	}
 
 	private void showTotalProfit(String[] arguments) {
-		if (arguments.length>3) {
+		if (arguments.length > 3) {
 			System.out.println("Too many arguments");
 		} else if (arguments.length == 2) {
 			System.out.println("Too few arguments");
@@ -702,17 +714,27 @@ public class Interpreter {
 				System.out.println("Permission denied");
 			} else {
 				if (arguments.length == 1) {
-					System.out.println("Total profit : "+foodora.computeTotalProfit()+" €");
+					System.out.println("Total profit : " + foodora.computeTotalProfit() + " €");
 				} else {
-					//TODO gérer le temps
+					String beginDate = arguments[1];
+					String endDate = arguments[2];
+					// TODO gérer le temps
+					if (beginDate.matches("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$")
+							&& endDate.matches("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$")) {
+						Time begin = new Time(beginDate);
+						Time end = new Time(endDate);
+						System.out.println("Total profit : " + foodora.computeTotalProfit(begin, end) + " €");
+					} else {
+						System.out.println("Incorrect date format, please use day/month/year (example : 08/07/2017)");
+					}
 				}
 			}
 		}
 	}
-	
+
 	private void runTest(String[] arguments) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void help() {
@@ -844,9 +866,5 @@ public class Interpreter {
 		System.out.println("");
 		return true;
 	}
-
-
-
-
 
 }

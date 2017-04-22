@@ -60,5 +60,19 @@ public class TimeTest {
 		Time.addTime((long) 86400*31);
 		assertTrue(!t6.isLessThanOneMonth());
 	}
+	@Test
+	public void testDate() {
+		Time t7 = new Time("01/01/2017");
+		assertTrue(t7.getSeconds()==0);
+		Time t8 = new Time("19/11/2015");
+		assertTrue(!t8.isLessThanOneMonth());
+		Time.addTime(-Time.getTime().getSeconds());
+		assertTrue(Time.getTime().getSeconds()==0);
+		assertTrue(!t8.isLessThanOneMonth());
+		Time t9 = new Time("19/12/2016");
+		assertTrue(t9.isLessThanOneMonth());
+		Time t10 = new Time("23/04/2017");
+		assertTrue(t10.getSeconds()-new Long(30*3*24*3600+22*24*3600)==0);
+	}
 
 }

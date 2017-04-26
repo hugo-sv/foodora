@@ -745,7 +745,16 @@ public class Interpreter {
 			System.out.println("register <> : to register");
 			System.out.println("help <> : For help");
 		}
-		if (true) {
+		if (!(user instanceof Customer)) {
+			// Si l'utilisateur est manager...
+		}
+		if (!(user instanceof Manager)) {
+			// Si l'utilisateur est manager...
+		}
+		if (!(user instanceof Courier)) {
+			// Si l'utilisateur est manager...
+		}
+		if (!(user instanceof Restaurant)) {
 			// Si l'utilisateur est manager...
 		}
 	}

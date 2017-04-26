@@ -437,7 +437,7 @@ public class Interpreter {
 		}
 	}
 
-	private void logout(String[] arguments) {
+	private void logout() {
 		if (user == null) {
 			System.out.println("Not logged in");
 		} else {
@@ -740,23 +740,44 @@ public class Interpreter {
 	private void help() {
 		// Depending on the user, Help propose differents commands
 		if (user == null) {
+			// If user has not logged in
 			System.out.println("login <username> <password> : to login");
-			System.out.println("quit <> : to quit");
-			System.out.println("register <> : to register");
-			System.out.println("help <> : For help");
 		}
+
 		if (!(user instanceof Customer)) {
-			// Si l'utilisateur est manager...
+			// If user is Customer
+			System.out.println("createOrder <restaurantName> <orderName> : to create an order from a given restaurant");
+			System.out.println(
+					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
+			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
 		}
 		if (!(user instanceof Manager)) {
-			// Si l'utilisateur est manager...
+			// If user is Manager
 		}
 		if (!(user instanceof Courier)) {
-			// Si l'utilisateur est manager...
+			// If user is Courier
+			System.out.println("onDuty <username> : to set your state as on-duty");
+			System.out.println("offDuty <username> : to set your state as off-duty");
 		}
 		if (!(user instanceof Restaurant)) {
-			// Si l'utilisateur est manager...
+			// If user is Restaurant
+			System.out.println(
+					"addDishRestauarantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
+
+			System.out.println("createMeal <mealName> : to create a meal with a given name");
+			System.out.println("addDish2Meal <dishName> <mealName> : to add a dish to a meal");
+			System.out.println("showMeal <mealName> : to show the dishes in a meal with given name");
+			System.out.println("saveMeal <mealName> : to save a meal with given name");
+			System.out.println("setSpecialOffer <mealName> : to add a meal in meal-of-the-week special offer");
+			System.out.println("removeFromSpecialOffer <mealName> : to reset a special offer");
+
+			System.out.println(
+					"findDeliverer <orderName> : to allocate an order to a deliverer by application of the current delivery policy");
 		}
+		// For any users
+		System.out.println("logout <> : to logout");
+		System.out.println("quit <> : to quit");
+		System.out.println("help <> : For help");
 	}
 
 	private boolean quit() {
@@ -766,6 +787,7 @@ public class Interpreter {
 		if (answer == "n") {
 			return true;
 		}
+		logout();
 		return false;
 
 	}
@@ -913,18 +935,17 @@ public class Interpreter {
 		// 7. the user specify to save the account
 
 		String answer;
-			System.out.println("Do you wish to save your account ? (Y/n)");
+		System.out.println("Do you wish to save your account ? (Y/n)");
+		input = sc.nextLine();
+		while (!input.matches("^(y|Y|n|N)?$")) {
+			Interpreter.incorrect();
 			input = sc.nextLine();
-			while (!input.matches("^(y|Y|n|N)?$")) {
-				Interpreter.incorrect();
-				input = sc.nextLine();
-			}
-			answer = input;
+		}
+		answer = input;
 		if (answer.equalsIgnoreCase("n")) {
 			System.out.println("You have been unregistered");
 			foodora.removeUser(c);
-		}
-		else {
+		} else {
 			System.out.println("You have been registered.");
 		}
 	}
@@ -938,7 +959,7 @@ public class Interpreter {
 			this.login(arguments);
 			break;
 		case "logout":
-			this.logout(arguments);
+			this.logout();
 			break;
 		case "registerRestaurant":
 			this.registerRestaurant(arguments);

@@ -763,14 +763,12 @@ public class Interpreter {
 			// If user is Restaurant
 			System.out.println(
 					"addDishRestauarantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
-
 			System.out.println("createMeal <mealName> : to create a meal with a given name");
 			System.out.println("addDish2Meal <dishName> <mealName> : to add a dish to a meal");
 			System.out.println("showMeal <mealName> : to show the dishes in a meal with given name");
 			System.out.println("saveMeal <mealName> : to save a meal with given name");
 			System.out.println("setSpecialOffer <mealName> : to add a meal in meal-of-the-week special offer");
 			System.out.println("removeFromSpecialOffer <mealName> : to reset a special offer");
-
 			System.out.println(
 					"findDeliverer <orderName> : to allocate an order to a deliverer by application of the current delivery policy");
 		}

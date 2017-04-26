@@ -431,13 +431,12 @@ public class Interpreter {
 					if (user.getUsername().contentEquals(arguments[1])) {
 						if (user.getPassword().contentEquals(arguments[2])) {
 							this.user = user;
-						} else {
-							System.out.println("Wrong password");
+							System.out.println("Hello " + user.getName() + " !");
 						}
 					}
 				}
 				if (user == null) {
-					System.out.println("Wrong username.");
+					System.out.println("Wrong username or password.");
 				}
 
 			}
@@ -448,7 +447,7 @@ public class Interpreter {
 		if (user == null) {
 			System.out.println("Not logged in");
 		} else {
-			System.out.println("Good bye " + user.getUsername());
+			System.out.println("Good bye " + user.getName());
 			user = null;
 		}
 	}
@@ -746,18 +745,18 @@ public class Interpreter {
 
 	private void help() {
 		// Depending on the user, Help propose differents commands
-		System.out.println("Help menu :");
+		System.out.println("Here are the commands you can make :");
 		if (user == null) {
 			// If user has not logged in
 			System.out.println("login <username> <password> : to login");
 			System.out.println("register <> : to register as a customer or courier");
-		} else if (!(user instanceof Customer)) {
+		} else if (user instanceof Customer) {
 			// If user is Customer
 			System.out.println("createOrder <restaurantName> <orderName> : to create an order from a given restaurant");
 			System.out.println(
 					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
 			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
-		} else if (!(user instanceof Manager)) {
+		} else if (user instanceof Manager) {
 			// If user is Manager
 			System.out.println(
 					"registerRestaurant <name> <address> <username> <password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.");
@@ -780,11 +779,11 @@ public class Interpreter {
 			System.out.println("showTotalProfit<> : to show the total profit of the system since creation");
 			System.out.println(
 					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval");
-		} else if (!(user instanceof Courier)) {
+		} else if (user instanceof Courier) {
 			// If user is Courier
 			System.out.println("onDuty <username> : to set your state as on-duty");
 			System.out.println("offDuty <username> : to set your state as off-duty");
-		} else if (!(user instanceof Restaurant)) {
+		} else if (user instanceof Restaurant) {
 			// If user is Restaurant
 			System.out.println(
 					"addDishRestauarantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");

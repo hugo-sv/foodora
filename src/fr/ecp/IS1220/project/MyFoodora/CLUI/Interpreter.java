@@ -739,27 +739,45 @@ public class Interpreter {
 
 	private void help() {
 		// Depending on the user, Help propose differents commands
+		System.out.println("Help menu :");
 		if (user == null) {
 			// If user has not logged in
 			System.out.println("login <username> <password> : to login");
-		}
-
-		if (!(user instanceof Customer)) {
+			System.out.println("register <> : to register as a customer or courier");
+		} else if (!(user instanceof Customer)) {
 			// If user is Customer
 			System.out.println("createOrder <restaurantName> <orderName> : to create an order from a given restaurant");
 			System.out.println(
 					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
 			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
-		}
-		if (!(user instanceof Manager)) {
+		} else if (!(user instanceof Manager)) {
 			// If user is Manager
-		}
-		if (!(user instanceof Courier)) {
+			System.out.println(
+					"registerRestaurant <name> <address> <username> <password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.");
+			System.out.println(
+					"registerCustomer <firstName> <lastName> <username> <address> <password> : to add a client to the system");
+			System.out.println(
+					"registerCourier <firstName> <lastName> <username> <position> <password> : to add a courier to the system (by default each newly registered courier is on-duty).");
+			System.out.println(
+					"setDeliveryPolicy <delPolicyName> : to set the delivery policy of the system to that passed as argument");
+			System.out.println(
+					"setProfitPolicy <ProfitPolicyName> : to set the profit policy of the system to that passed as argument");
+			System.out.println(
+					"associateCard <userName> <cardType> : to associate a fidelity card to a user with given name");
+			System.out.println(
+					"showCourierDeliveries <> : to display the list of couriers sorted in decreasing order w.r.t. the number of completed deliveries");
+			System.out.println(
+					"showRestaurantTop <> : to display the list of restaurant sorted in decreasing order w.r.t. the number of delivered orders");
+			System.out.println("showCustomers <> : to display the list of customers");
+			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
+			System.out.println("showTotalProfit<> : to show the total profit of the system since creation");
+			System.out.println(
+					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval");
+		} else if (!(user instanceof Courier)) {
 			// If user is Courier
 			System.out.println("onDuty <username> : to set your state as on-duty");
 			System.out.println("offDuty <username> : to set your state as off-duty");
-		}
-		if (!(user instanceof Restaurant)) {
+		} else if (!(user instanceof Restaurant)) {
 			// If user is Restaurant
 			System.out.println(
 					"addDishRestauarantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
@@ -773,6 +791,8 @@ public class Interpreter {
 					"findDeliverer <orderName> : to allocate an order to a deliverer by application of the current delivery policy");
 		}
 		// For any users
+		System.out.println(
+				"runTest <testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument");
 		System.out.println("logout <> : to logout");
 		System.out.println("quit <> : to quit");
 		System.out.println("help <> : For help");
@@ -792,159 +812,161 @@ public class Interpreter {
 
 	private void register() {
 		// To register as a courrier or as a customer
-		System.out.println("Registering process...");
-		String name;
-		String surname;
-		String username;
-		double addressX;
-		double addressY;
-		System.out.println("Enter name :");
-		name = sc.nextLine();
-		System.out.println("Enter surname :");
-		surname = sc.nextLine();
-		System.out.println("Enter username :");
-		username = sc.nextLine();
-		System.out.println("Enter address X (double):");
-		String input = sc.nextLine();
-		while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
-			Interpreter.incorrect();
-			input = sc.nextLine();
-		}
-		addressX = Double.parseDouble(input);
-		System.out.println("Enter address Y (double):");
-		input = sc.nextLine();
-		while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
-			Interpreter.incorrect();
-			input = sc.nextLine();
-		}
-		addressY = Double.parseDouble(input);
-		int type;
-		User c;
-		System.out.println("Enter type of user : (1/2)");
-		System.out.println("1 - Customer");
-		System.out.println("2 - Courier");
-		input = sc.nextLine();
-		while (!input.matches("^[1-2]$")) {
-			Interpreter.incorrect();
-			input = sc.nextLine();
-		}
-		type = Integer.parseInt(input);
-		if (type == 1) {
-			c = (Customer) new Customer(name, surname, username, addressX, addressY);
-		} else {
-			c = (Courier) new Courier(name, surname, username, addressX, addressY);
-		}
-		foodora.addUser(c);
-		System.out.println("You have been registered.");
-		// 3. the user starts inserting a contact info with the type and
-		// the
-		// value (e.g. email, phone)
-		// • the user repeats step 3 since he ends to inserts his
-		// contact
-		// info
-		int contact;
-		do {
-			System.out.println("Inserting contact info : (1/2/3)");
-			System.out.println("1 - email");
-			System.out.println("2 - phone");
-			System.out.println("3 - stop");
-			input = sc.nextLine();
-			while (!input.matches("^[1-3]$")) {
+		if (user == null) {
+			System.out.println("Registering process...");
+			String name;
+			String surname;
+			String username;
+			double addressX;
+			double addressY;
+			System.out.println("Enter name :");
+			name = sc.nextLine();
+			System.out.println("Enter surname :");
+			surname = sc.nextLine();
+			System.out.println("Enter username :");
+			username = sc.nextLine();
+			System.out.println("Enter address X (double):");
+			String input = sc.nextLine();
+			while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
 				Interpreter.incorrect();
 				input = sc.nextLine();
 			}
-			contact = Integer.parseInt(input);
-			if (contact == 1) {
-				System.out.println("Adding email address");
-				c.setEmail(sc.nextLine());
-			}
-			if (contact == 2) {
-				System.out.println("Adding phone number");
-				c.setPhoneNumber(sc.nextLine());
-			}
-		} while (contact != 3);
-
-		// 4. if the user is a customer she sets the agreement about the
-		// special
-		// offer contact (by
-		// default it is no)
-
-		if (c instanceof Customer) {
-			String answer;
-			System.out.println("Do you want to be informed of special offers ? (y/N)");
+			addressX = Double.parseDouble(input);
+			System.out.println("Enter address Y (double):");
 			input = sc.nextLine();
-			while (!input.matches("^(y|Y|n|N)?$")) {
+			while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
 				Interpreter.incorrect();
 				input = sc.nextLine();
 			}
-			answer = input;
-			if (answer.equalsIgnoreCase("y")) {
-				System.out.println("You will be informed of special offers");
-				((Customer) c).register();
-			}
-		}
-		// 5. the user is a customer selects the contact to be used to
-		// send
-		// the
-		// offers (by default it
-		// is the e-mail if exists)
-		if (c instanceof Customer) {
-			int answer;
-			System.out.println("Select contact method for offers : (1/2)");
-			System.out.println("1 - email (default)");
-			System.out.println("2 - phone number");
+			addressY = Double.parseDouble(input);
+			int type;
+			User c;
+			System.out.println("Enter type of user : (1/2)");
+			System.out.println("1 - Customer");
+			System.out.println("2 - Courier");
 			input = sc.nextLine();
-			while (!input.matches("^[1-2]?$")) {
+			while (!input.matches("^[1-2]$")) {
 				Interpreter.incorrect();
 				input = sc.nextLine();
 			}
-			answer = Integer.parseInt(input);
-			if (answer == 2) {
-				System.out.println("You will be notified by phone.");
-				((Customer) c).setNotifyMean(c.getPhoneNumber());
+			type = Integer.parseInt(input);
+			if (type == 1) {
+				c = (Customer) new Customer(name, surname, username, addressX, addressY);
 			} else {
-				System.out.println("You will be notified by Email.");
-				((Customer) c).setNotifyMean(c.getEmail());
+				c = (Courier) new Courier(name, surname, username, addressX, addressY);
 			}
-		}
-
-		// 6. if the user is a courier he sets his current duty status
-		// (default
-		// off-duty)
-
-		if (c instanceof Courier) {
-			String answer;
-			System.out.println("Do you want to be seen as on-duty ? (y/N)");
-			input = sc.nextLine();
-			while (!input.matches("^(y|Y|n|N)?$")) {
-				Interpreter.incorrect();
-				input = sc.nextLine();
-			}
-			answer = input;
-			if (answer.equalsIgnoreCase("y")) {
-				System.out.println("You are seen on-duty.");
-				((Courier) c).setOnDuty(true);
-			} else {
-				System.out.println("You are seen off-duty.");
-				((Courier) c).setOnDuty(false);
-			}
-		}
-
-		// 7. the user specify to save the account
-
-		String answer;
-		System.out.println("Do you wish to save your account ? (Y/n)");
-		input = sc.nextLine();
-		while (!input.matches("^(y|Y|n|N)?$")) {
-			Interpreter.incorrect();
-			input = sc.nextLine();
-		}
-		answer = input;
-		if (answer.equalsIgnoreCase("n")) {
-			System.out.println("You have been unregistered");
-			foodora.removeUser(c);
-		} else {
+			foodora.addUser(c);
 			System.out.println("You have been registered.");
+			// 3. the user starts inserting a contact info with the type and
+			// the
+			// value (e.g. email, phone)
+			// • the user repeats step 3 since he ends to inserts his
+			// contact
+			// info
+			int contact;
+			do {
+				System.out.println("Inserting contact info : (1/2/3)");
+				System.out.println("1 - email");
+				System.out.println("2 - phone");
+				System.out.println("3 - stop");
+				input = sc.nextLine();
+				while (!input.matches("^[1-3]$")) {
+					Interpreter.incorrect();
+					input = sc.nextLine();
+				}
+				contact = Integer.parseInt(input);
+				if (contact == 1) {
+					System.out.println("Adding email address");
+					c.setEmail(sc.nextLine());
+				}
+				if (contact == 2) {
+					System.out.println("Adding phone number");
+					c.setPhoneNumber(sc.nextLine());
+				}
+			} while (contact != 3);
+
+			// 4. if the user is a customer she sets the agreement about the
+			// special
+			// offer contact (by
+			// default it is no)
+
+			if (c instanceof Customer) {
+				String answer;
+				System.out.println("Do you want to be informed of special offers ? (y/N)");
+				input = sc.nextLine();
+				while (!input.matches("^(y|Y|n|N)?$")) {
+					Interpreter.incorrect();
+					input = sc.nextLine();
+				}
+				answer = input;
+				if (answer.equalsIgnoreCase("y")) {
+					System.out.println("You will be informed of special offers");
+					((Customer) c).register();
+				}
+			}
+			// 5. the user is a customer selects the contact to be used to
+			// send
+			// the
+			// offers (by default it
+			// is the e-mail if exists)
+			if (c instanceof Customer) {
+				int answer;
+				System.out.println("Select contact method for offers : (1/2)");
+				System.out.println("1 - email (default)");
+				System.out.println("2 - phone number");
+				input = sc.nextLine();
+				while (!input.matches("^[1-2]?$")) {
+					Interpreter.incorrect();
+					input = sc.nextLine();
+				}
+				answer = Integer.parseInt(input);
+				if (answer == 2) {
+					System.out.println("You will be notified by phone.");
+					((Customer) c).setNotifyMean(c.getPhoneNumber());
+				} else {
+					System.out.println("You will be notified by Email.");
+					((Customer) c).setNotifyMean(c.getEmail());
+				}
+			}
+
+			// 6. if the user is a courier he sets his current duty status
+			// (default
+			// off-duty)
+
+			if (c instanceof Courier) {
+				String answer;
+				System.out.println("Do you want to be seen as on-duty ? (y/N)");
+				input = sc.nextLine();
+				while (!input.matches("^(y|Y|n|N)?$")) {
+					Interpreter.incorrect();
+					input = sc.nextLine();
+				}
+				answer = input;
+				if (answer.equalsIgnoreCase("y")) {
+					System.out.println("You are seen on-duty.");
+					((Courier) c).setOnDuty(true);
+				} else {
+					System.out.println("You are seen off-duty.");
+					((Courier) c).setOnDuty(false);
+				}
+			}
+
+			// 7. the user specify to save the account
+
+			String answer;
+			System.out.println("Do you wish to save your account ? (Y/n)");
+			input = sc.nextLine();
+			while (!input.matches("^(y|Y|n|N)?$")) {
+				Interpreter.incorrect();
+				input = sc.nextLine();
+			}
+			answer = input;
+			if (answer.equalsIgnoreCase("n")) {
+				System.out.println("You have been unregistered");
+				foodora.removeUser(c);
+			} else {
+				System.out.println("You have been registered.");
+			}
 		}
 	}
 

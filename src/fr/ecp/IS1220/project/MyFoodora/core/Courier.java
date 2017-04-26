@@ -7,7 +7,7 @@ public class Courier extends User{
 	
 	
 	public Courier(String name, String surname, String username, double addressX, double addressY, String email, String phoneNumber) {
-		super(name, surname, addressX, addressY);
+		super(name, username, addressX, addressY);
 		this.surname = surname;
 		setEmail(email);
 		setPhoneNumber(phoneNumber);
@@ -15,7 +15,7 @@ public class Courier extends User{
 	}
 	
 	public Courier(String name, String surname, String username, double addressX, double addressY) {
-		super(name, surname, addressX, addressY);
+		super(name, username, addressX, addressY);
 		this.surname = surname;
 		onDuty = false;
 	}

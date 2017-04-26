@@ -34,6 +34,8 @@ abstract public class User {
 		activated = true;
 		this.setAddressX(addressX);
 		this.setAddressY(addressY);
+		//default password
+		this.password = "password";
 	}
 
 	public long getiD() {

@@ -16,7 +16,7 @@ public class Customer extends User {
 	// Constructor
 	public Customer(String name, String surname, String username, double addressX, double addressY, String email,
 			String phoneNumber) {
-		super(name, surname, addressX, addressY);
+		super(name, username, addressX, addressY);
 		this.surname = surname;
 		setEmail(email);
 		setPhoneNumber(phoneNumber);
@@ -24,7 +24,7 @@ public class Customer extends User {
 	}
 
 	public Customer(String name, String surname, String username, double addressX, double addressY) {
-		super(name, surname, addressX, addressY);
+		super(name, username, addressX, addressY);
 		this.surname = surname;
 	}
 

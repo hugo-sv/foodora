@@ -426,13 +426,20 @@ public class Interpreter {
 		} else if (arguments.length < 3) {
 			System.out.println("Too few arguments");
 		} else {
-			for (User user : foodora.getUserList().values()) {
-				if (user.getUsername() == arguments[1] && user.getPassword() == arguments[2]) {
-					this.user = user;
+			if (user == null) {
+				for (User user : foodora.getUserList().values()) {
+					if (user.getUsername().contentEquals(arguments[1])) {
+						if (user.getPassword().contentEquals(arguments[2])) {
+							this.user = user;
+						} else {
+							System.out.println("Wrong password");
+						}
+					}
 				}
-			}
-			if (this.user == null) {
-				System.out.println("Wrong username or password");
+				if (user == null) {
+					System.out.println("Wrong username.");
+				}
+
 			}
 		}
 	}
@@ -817,6 +824,7 @@ public class Interpreter {
 			String name;
 			String surname;
 			String username;
+			String password;
 			double addressX;
 			double addressY;
 			System.out.println("Enter name :");
@@ -825,6 +833,8 @@ public class Interpreter {
 			surname = sc.nextLine();
 			System.out.println("Enter username :");
 			username = sc.nextLine();
+			System.out.println("Enter password :");
+			password = sc.nextLine();
 			System.out.println("Enter address X (double):");
 			String input = sc.nextLine();
 			while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
@@ -855,6 +865,7 @@ public class Interpreter {
 			} else {
 				c = (Courier) new Courier(name, surname, username, addressX, addressY);
 			}
+			c.setPassword(password);
 			foodora.addUser(c);
 			System.out.println("You have been registered.");
 			// 3. the user starts inserting a contact info with the type and

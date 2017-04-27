@@ -744,7 +744,7 @@ public class Interpreter {
 	}
 
 	private void help() {
-		// Depending on the user, Help propose differents commands
+		// Depending on the user, Help propose different commands
 		System.out.println("Here are the commands you can make :");
 		if (user == null) {
 			// If user has not logged in

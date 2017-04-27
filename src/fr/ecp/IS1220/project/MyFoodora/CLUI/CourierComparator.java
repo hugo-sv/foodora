@@ -15,7 +15,7 @@ public class CourierComparator implements Comparator<Courier> {
 	public CourierComparator(MyFoodora foodora) {
 		super();
 		this.foodora = foodora;
-		boolean reverse = false;
+		reverse = false;
 	}
 	public CourierComparator(MyFoodora foodora, boolean reverse) {
 		super();

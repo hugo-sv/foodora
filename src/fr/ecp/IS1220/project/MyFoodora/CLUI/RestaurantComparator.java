@@ -15,7 +15,7 @@ public class RestaurantComparator implements Comparator<Restaurant> {
 	public RestaurantComparator(MyFoodora foodora) {
 		super();
 		this.foodora = foodora;
-		boolean reverse = false;
+		reverse = false;
 	}
 	public RestaurantComparator(MyFoodora foodora, boolean reverse) {
 		super();

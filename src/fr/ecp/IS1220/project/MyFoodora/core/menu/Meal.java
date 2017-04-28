@@ -116,7 +116,19 @@ public abstract class Meal implements Orderable {
 
 	@Override
 	public String toString() {
-		return name+" :\n - "+entry.getName()+"\n - "+main.getName()+"\n - "+dessert.getName();
+		String entryName = "";
+		String mainName = "";
+		String dessertName = "";
+		if (entry != null) {
+			entryName = entry.getName();
+		}
+		if (main != null) {
+			mainName = main.getName();
+		}
+		if (dessert != null) {
+			dessertName = dessert.getName();
+		}
+		return name+" :\n - "+entryName+"\n - "+mainName+"\n - "+dessertName;
 	}
 
 }

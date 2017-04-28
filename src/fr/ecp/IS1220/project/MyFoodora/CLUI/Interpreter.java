@@ -53,32 +53,58 @@ public class Interpreter {
 		this.init = init;
 	}
 
-	static void open() {
+	public void open() {
 		// Generic message
-		System.out.println("Hello, welcome on MyFoodora.\n");
-		System.out.println("To login, type login <username> <password>");
-		System.out.println("To register, type register");
-		System.out.println("For any help, type help.");
+		if (!init) {
+			System.out.println("Hello, welcome on MyFoodora.\n");
+			System.out.println("To login, type login <username> <password>");
+			System.out.println("To register, type register");
+			System.out.println("For any help, type help.");
+			System.out.print(">> ");
+		}
+
 	}
 
-	static void close() {
+	public void close() {
 		// Generic message
-		System.out.println("GoodBye !");
+		if (!init) {
+			System.out.println("GoodBye !");
+		}
+
 	}
 
-	static void incorrect() {
+	private void incorrect() {
 		// Generic message
-		System.out.println("Incorrect input, please try again.");
+		if (!init) {
+			System.out.println("Incorrect input, please try again.");
+		}
+
 	}
 
-	static void forbidden() {
+	private void forbidden() {
 		// Generic message
-		System.out.println("You are not allowed to execute this command");
+		if (!init) {
+			System.out.println("Permission denied");
+		}
+	}
+	
+	private void tooFewArguments() {
+		if (!init) {
+			System.out.println("Too few arguments");
+		}
+	}
+	
+	private void tooManyArguments() {
+		if (!init) {
+			System.out.println("Too many arguments");
+		}
 	}
 
-	static void unknown() {
+	private void unknown() {
 		// Generic message
-		System.out.println("Unknow command, please use the help command.");
+		if (!init) {
+			System.out.println("Unknow command, please use the help command.");
+		}
 	}
 
 	private String askFor(String[] expected) {
@@ -90,14 +116,14 @@ public class Interpreter {
 					return answer;
 				}
 			}
-			Interpreter.incorrect();
+			incorrect();
 			answer = sc.nextLine();
 		}
 	}
 
 	private void showCourierDeliveries() {
 		if (!(user instanceof Manager)) {
-			System.out.println("Permission denied");
+			forbidden();
 		} else {
 			ArrayList<Courier> courierList = foodora.getCourierList();
 			courierList.sort(new CourierComparator(foodora, true));
@@ -109,7 +135,7 @@ public class Interpreter {
 
 	private void showRestaurantTop() {
 		if (!(user instanceof Manager)) {
-			System.out.println("Permission denied");
+			forbidden();
 		} else {
 			ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
 			restaurantList.sort(new RestaurantComparator(foodora, true));
@@ -121,7 +147,7 @@ public class Interpreter {
 
 	private void showCustomers() {
 		if (!(user instanceof Manager)) {
-			System.out.println("Permission denied");
+			forbidden();
 		} else {
 			for (Customer customer : foodora.getCustomerList()) {
 				System.out.println("id : " + customer.getiD() + ", username : " + customer.getUsername());
@@ -131,12 +157,12 @@ public class Interpreter {
 
 	private void associateCard(String[] arguments) {
 		if (arguments.length > 3) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 3) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Customer customer = null;
 				for (Customer customeriter : foodora.getCustomerList()) {
@@ -167,12 +193,12 @@ public class Interpreter {
 
 	private void setDeliveryPolicy(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				if (!arguments[1].equalsIgnoreCase("fastest") && !arguments[1].equalsIgnoreCase("fair-occupation")) {
 					System.out.println("Wrong policy name");
@@ -190,12 +216,12 @@ public class Interpreter {
 
 	private void setProfitPolicy(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				if (!arguments[1].equalsIgnoreCase("deliverycost") && !arguments[1].equalsIgnoreCase("servicefee")
 						&& !arguments[1].equalsIgnoreCase("markup")) {
@@ -216,12 +242,12 @@ public class Interpreter {
 
 	private void findDeliverer(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Order order = null;
 				for (Order orderiter : foodora.getCurrentOrder_List()) {
@@ -240,12 +266,12 @@ public class Interpreter {
 
 	private void offDuty(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Courier)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				if (!user.getUsername().equals(arguments[1])) {
 					System.out.println("Wrong username");
@@ -258,12 +284,12 @@ public class Interpreter {
 
 	private void endOrder(String[] arguments) {
 		if (arguments.length > 3) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 3) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Customer)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Order order = null;
 				for (Order orderiter : ((Customer) user).getCurrentOrders()) {
@@ -283,12 +309,12 @@ public class Interpreter {
 
 	private void onDuty(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Courier)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				if (!user.getUsername().equals(arguments[1])) {
 					System.out.println("Wrong username");
@@ -301,12 +327,12 @@ public class Interpreter {
 
 	private void addItem2Order(String[] arguments) {
 		if (arguments.length > 3) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 3) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Customer)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Order order = null;
 				for (Order orderiter : ((Customer) user).getCurrentOrders()) {
@@ -346,12 +372,12 @@ public class Interpreter {
 
 	private void createOrder(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Customer)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				boolean t = true;
 				for (Order order : ((Customer) user).getOrders()) {
@@ -381,12 +407,12 @@ public class Interpreter {
 
 	private void removeFromSpecialOffer(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Meal meal = null;
 				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
@@ -409,12 +435,12 @@ public class Interpreter {
 
 	private void setSpecialOffer(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Meal meal = null;
 				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
@@ -433,16 +459,18 @@ public class Interpreter {
 
 	private void login(String[] arguments) {
 		if (arguments.length > 3) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 3) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (user == null) {
 				for (User user : foodora.getUserList().values()) {
 					if (user.getUsername().contentEquals(arguments[1])) {
 						if (user.getPassword().contentEquals(arguments[2])) {
 							this.user = user;
-							System.out.println("Hello " + user.getName() + " !");
+							if (!init) {
+								System.out.println("Hello " + user.getName() + " !");
+							}
 						}
 					}
 				}
@@ -458,19 +486,21 @@ public class Interpreter {
 		if (user == null) {
 			System.out.println("Not logged in");
 		} else {
-			System.out.println("Good bye " + user.getName());
+			if (!init) {
+				System.out.println("Good bye " + user.getName());
+			}
 			user = null;
 		}
 	}
 
 	private void registerRestaurant(String[] arguments) {
 		if (arguments.length > 5) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 5) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				String[] address = arguments[2].split(",");
 				if (address.length != 2) {
@@ -487,29 +517,29 @@ public class Interpreter {
 	}
 	
 	private void registerManager(String[] arguments) {
-		if (arguments.length > 6) {
-			System.out.println("Too many arguments");
-		} else if (arguments.length < 6) {
-			System.out.println("Too few arguments");
+		if (arguments.length > 5) {
+			tooManyArguments();
+		} else if (arguments.length < 5) {
+			tooFewArguments();
 		} else {
-			if (!(this.init)) {
-				System.out.println("Permission denied");
+			if (!init) {
+				forbidden();
 			} else {
-					Manager manager = new Manager(arguments[2], arguments[1], arguments[3]);
-					manager.setPassword(arguments[5]);
-					((Manager) user).addUser(manager);
+					Manager manager = new Manager(arguments[1], arguments[2], arguments[3]);
+					manager.setPassword(arguments[4]);
+					foodora.addUser(manager);
 			}
 		}
 	}
 
 	private void registerCustomer(String[] arguments) {
 		if (arguments.length > 6) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 6) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				String[] address = arguments[4].split(",");
 				if (address.length != 2) {
@@ -517,7 +547,7 @@ public class Interpreter {
 				} else {
 					double addressX = Double.parseDouble(address[0]);
 					double addressY = Double.parseDouble(address[1]);
-					Customer customer = new Customer(arguments[2], arguments[1], arguments[3], addressX, addressY);
+					Customer customer = new Customer(arguments[1], arguments[2], arguments[3], addressX, addressY);
 					customer.setPassword(arguments[5]);
 					((Manager) user).addUser(customer);
 				}
@@ -527,12 +557,12 @@ public class Interpreter {
 
 	private void registerCourier(String[] arguments) {
 		if (arguments.length > 6) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 6) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				String[] address = arguments[4].split(",");
 				if (address.length != 2) {
@@ -540,7 +570,7 @@ public class Interpreter {
 				} else {
 					double addressX = Double.parseDouble(address[0]);
 					double addressY = Double.parseDouble(address[1]);
-					Courier courier = new Courier(arguments[2], arguments[1], arguments[3], addressX, addressY);
+					Courier courier = new Courier(arguments[1], arguments[2], arguments[3], addressX, addressY);
 					courier.setPassword(arguments[5]);
 					courier.setOnDuty(true);
 					((Manager) user).addUser(courier);
@@ -551,12 +581,12 @@ public class Interpreter {
 
 	private void addDishRestaurantMenu(String[] arguments) {
 		if (arguments.length > 5) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 5) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				if (!arguments[2].equalsIgnoreCase("starter") && !arguments[2].equalsIgnoreCase("main")
 						&& !arguments[2].equalsIgnoreCase("dessert")) {
@@ -595,12 +625,12 @@ public class Interpreter {
 
 	private void createMeal(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				boolean t = true;
 				for (Meal meal : ((Restaurant) user).getMenu().getMeals()) {
@@ -619,12 +649,12 @@ public class Interpreter {
 
 	private void showMeal(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Meal meal = null;
 				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
@@ -643,12 +673,12 @@ public class Interpreter {
 
 	private void addDish2Meal(String[] arguments) {
 		if (arguments.length > 3) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 3) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Restaurant)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Meal meal = null;
 				for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
@@ -710,12 +740,12 @@ public class Interpreter {
 
 	private void showMenuItem(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				Restaurant restaurant = null;
 				for (Restaurant restaurantiter : foodora.getRestaurantList()) {
@@ -739,12 +769,12 @@ public class Interpreter {
 
 	private void showTotalProfit(String[] arguments) {
 		if (arguments.length > 3) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length == 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
 			if (!(user instanceof Manager)) {
-				System.out.println("Permission denied");
+				forbidden();
 			} else {
 				if (arguments.length == 1) {
 					System.out.println("Total profit : " + foodora.computeTotalProfit() + " €");
@@ -765,15 +795,19 @@ public class Interpreter {
 		}
 	}
 
-	private void runTest(String[] arguments) throws FileNotFoundException {
+	private void runTest(String[] arguments) {
 		if (arguments.length > 2) {
-			System.out.println("Too many arguments");
+			tooManyArguments();
 		} else if (arguments.length < 2) {
-			System.out.println("Too few arguments");
+			tooFewArguments();
 		} else {
-			Scanner fileScanner = new Scanner(new FileInputStream(arguments[1]));
-			Interpreter fileInterpreter = new Interpreter(fileScanner, foodora);
-			while (fileInterpreter.executeCommand(fileScanner.nextLine())){}
+			try {
+				Scanner fileScanner = new Scanner(new FileInputStream("../../../../../../eval/"+arguments[1]));
+				Interpreter fileInterpreter = new Interpreter(fileScanner, foodora);
+				while (fileInterpreter.executeCommand(fileScanner.nextLine())){}
+			} catch (FileNotFoundException e) {
+				System.out.println("file \""+arguments[1]+"\" not found");
+			}
 		}
 
 	}
@@ -821,7 +855,7 @@ public class Interpreter {
 		} else if (user instanceof Restaurant) {
 			// If user is Restaurant
 			System.out.println(
-					"addDishRestauarantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
+					"addDishRestaurantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
 			System.out.println("createMeal <mealName> : to create a meal with a given name");
 			System.out.println("addDish2Meal <dishName> <mealName> : to add a dish to a meal");
 			System.out.println("showMeal <mealName> : to show the dishes in a meal with given name");
@@ -841,12 +875,16 @@ public class Interpreter {
 
 	private boolean quit() {
 		// To quit the interface
-		System.out.println("Are you sure you want to quit ? (Y/n)");
+		if (!init) {
+			System.out.println("Are you sure you want to quit ? (Y/n)");
+		}
 		String answer = this.askFor(new String[] { "y", "Y", "n", "" });
 		if (answer == "n") {
 			return true;
 		}
-		logout();
+		if (user != null) {
+			logout();
+		}
 		return false;
 
 	}
@@ -872,14 +910,14 @@ public class Interpreter {
 			System.out.println("Enter address X (double):");
 			String input = sc.nextLine();
 			while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
-				Interpreter.incorrect();
+				incorrect();
 				input = sc.nextLine();
 			}
 			addressX = Double.parseDouble(input);
 			System.out.println("Enter address Y (double):");
 			input = sc.nextLine();
 			while (!input.matches("^-?[0-9]+(.)?([0-9])*$")) {
-				Interpreter.incorrect();
+				incorrect();
 				input = sc.nextLine();
 			}
 			addressY = Double.parseDouble(input);
@@ -890,7 +928,7 @@ public class Interpreter {
 			System.out.println("2 - Courier");
 			input = sc.nextLine();
 			while (!input.matches("^[1-2]$")) {
-				Interpreter.incorrect();
+				incorrect();
 				input = sc.nextLine();
 			}
 			type = Integer.parseInt(input);
@@ -916,7 +954,7 @@ public class Interpreter {
 				System.out.println("3 - stop");
 				input = sc.nextLine();
 				while (!input.matches("^[1-3]$")) {
-					Interpreter.incorrect();
+					incorrect();
 					input = sc.nextLine();
 				}
 				contact = Integer.parseInt(input);
@@ -940,7 +978,7 @@ public class Interpreter {
 				System.out.println("Do you want to be informed of special offers ? (y/N)");
 				input = sc.nextLine();
 				while (!input.matches("^(y|Y|n|N)?$")) {
-					Interpreter.incorrect();
+					incorrect();
 					input = sc.nextLine();
 				}
 				answer = input;
@@ -961,7 +999,7 @@ public class Interpreter {
 				System.out.println("2 - phone number");
 				input = sc.nextLine();
 				while (!input.matches("^[1-2]?$")) {
-					Interpreter.incorrect();
+					incorrect();
 					input = sc.nextLine();
 				}
 				answer = Integer.parseInt(input);
@@ -983,7 +1021,7 @@ public class Interpreter {
 				System.out.println("Do you want to be seen as on-duty ? (y/N)");
 				input = sc.nextLine();
 				while (!input.matches("^(y|Y|n|N)?$")) {
-					Interpreter.incorrect();
+					incorrect();
 					input = sc.nextLine();
 				}
 				answer = input;
@@ -1002,7 +1040,7 @@ public class Interpreter {
 			System.out.println("Do you wish to save your account ? (Y/n)");
 			input = sc.nextLine();
 			while (!input.matches("^(y|Y|n|N)?$")) {
-				Interpreter.incorrect();
+				incorrect();
 				input = sc.nextLine();
 			}
 			answer = input;
@@ -1015,93 +1053,93 @@ public class Interpreter {
 		}
 	}
 
-	public boolean executeCommand(String command) throws FileNotFoundException {
+	public boolean executeCommand(String command) {
 		// Execute the given command
 		// Split the arguments
 		String[] arguments = command.split(" ");
-		switch (arguments[0]) {
+		switch (arguments[0].toLowerCase()) {
 		case "login":
 			this.login(arguments);
 			break;
 		case "logout":
 			this.logout();
 			break;
-		case "registerRestaurant":
+		case "registerrestaurant":
 			this.registerRestaurant(arguments);
 			break;
-		case "registerManager":
+		case "registermanager":
 			this.registerManager(arguments);
 			break;
-		case "registerCustomer":
+		case "registercustomer":
 			this.registerCustomer(arguments);
 			break;
-		case "registerCourier":
+		case "registercourier":
 			this.registerCourier(arguments);
 			break;
-		case "addDishRestaurantMenu":
+		case "adddishrestaurantmenu":
 			this.addDishRestaurantMenu(arguments);
 			break;
-		case "createMeal":
+		case "createmeal":
 			this.createMeal(arguments);
 			break;
-		case "addDish2Meal":
+		case "adddish2meal":
 			this.addDish2Meal(arguments);
 			break;
-		case "showMeal":
+		case "showmeal":
 			this.showMeal(arguments);
 			break;
-		case "saveMeal":
+		case "savemeal":
 			this.createMeal(arguments);
 			break;
-		case "setSpecialOffer":
+		case "setspecialoffer":
 			this.setSpecialOffer(arguments);
 			break;
-		case "removeFromSpecialOffer":
+		case "removefromspecialoffer":
 			this.removeFromSpecialOffer(arguments);
 			break;
-		case "createOrder":
+		case "createorder":
 			this.createOrder(arguments);
 			break;
-		case "addItem2Order":
+		case "additem2order":
 			this.addItem2Order(arguments);
 			break;
-		case "endOrder":
+		case "endorder":
 			this.endOrder(arguments);
 			break;
-		case "onDuty":
+		case "onduty":
 			this.onDuty(arguments);
 			break;
-		case "offDuty":
+		case "offduty":
 			this.offDuty(arguments);
 			break;
-		case "findDeliverer":
+		case "finddeliverer":
 			this.findDeliverer(arguments);
 			break;
-		case "setDeliveryPolicy":
+		case "setdeliverypolicy":
 			this.setDeliveryPolicy(arguments);
 			break;
 		case "setProfitPolicy":
 			this.setProfitPolicy(arguments);
 			break;
-		case "associateCard":
+		case "associatecard":
 			this.associateCard(arguments);
 			break;
-		case "showCourierDeliveries":
+		case "showcourierdeliveries":
 			this.showCourierDeliveries();
 			break;
-		case "showRestaurantTop":
+		case "showrestauranttop":
 			this.showRestaurantTop();
 			break;
-		case "showCustomers":
+		case "showcustomers":
 			this.showCustomers();
 			break;
 		case "showMenuItem":
 			this.showMenuItem(arguments);
 			break;
-		case "showTotalProfit":
+		case "showtotalprofit":
 			this.showTotalProfit(arguments);
 			break;
-		case "runTest":
+		case "runtest":
 			this.runTest(arguments);
 			break;
 		case "help":
@@ -1113,9 +1151,11 @@ public class Interpreter {
 		case "quit":
 			return this.quit();
 		default:
-			Interpreter.unknown();
+			unknown();
 		}
-		System.out.println("");
+		if (!init) {
+			System.out.print(">> ");
+		}
 		return true;
 	}
 

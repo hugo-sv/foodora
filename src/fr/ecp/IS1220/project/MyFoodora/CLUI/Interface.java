@@ -28,12 +28,16 @@ public class Interface {
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 
 
 
 		//Load .ini file
 		MyFoodora foodora = new MyFoodora(0, 0, 0);
+		FileInputStream initFile = new FileInputStream("foodora.ini");
+		Scanner initsc = new Scanner(initFile);
+		Interpreter initInterpreter = new Interpreter(initsc , foodora, true);
+		while (initInterpreter.executeCommand(initsc.nextLine())){}
 
 
 		//The interpreter might ask things and need Myfoodora environment
@@ -49,5 +53,21 @@ public class Interface {
 		Interpreter.close();
 	}
 
+
+	public String readTextFileLineByLine(String fileName) throws IOException {
+		FileReader file = null;
+		BufferedReader reader = null;
+		try {
+			file = new FileReader(fileName);
+			reader = new BufferedReader(file);
+			while ((reader.readLine()) != null) { // read the file line by line
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+	}
+		reader.close();
+		file.close();
+		return "";
+	}
 }
 

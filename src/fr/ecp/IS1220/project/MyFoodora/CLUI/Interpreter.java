@@ -1,5 +1,7 @@
 package fr.ecp.IS1220.project.MyFoodora.CLUI;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,12 +36,21 @@ public class Interpreter {
 	private Scanner sc;
 	private User user;
 	private MyFoodora foodora;
+	boolean init = false;
 
 	public Interpreter(Scanner sc, MyFoodora foodora) {
 		super();
 		this.sc = sc;
 		this.user = null;
 		this.foodora = foodora;
+	}
+	
+	public Interpreter(Scanner sc, MyFoodora foodora, boolean init) {
+		super();
+		this.sc = sc;
+		this.user = null;
+		this.foodora = foodora;
+		this.init = init;
 	}
 
 	static void open() {
@@ -474,6 +485,22 @@ public class Interpreter {
 			}
 		}
 	}
+	
+	private void registerManager(String[] arguments) {
+		if (arguments.length > 6) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length < 6) {
+			System.out.println("Too few arguments");
+		} else {
+			if (!(this.init)) {
+				System.out.println("Permission denied");
+			} else {
+					Manager manager = new Manager(arguments[2], arguments[1], arguments[3]);
+					manager.setPassword(arguments[5]);
+					((Manager) user).addUser(manager);
+			}
+		}
+	}
 
 	private void registerCustomer(String[] arguments) {
 		if (arguments.length > 6) {
@@ -738,8 +765,16 @@ public class Interpreter {
 		}
 	}
 
-	private void runTest(String[] arguments) {
-		// TODO Auto-generated method stub
+	private void runTest(String[] arguments) throws FileNotFoundException {
+		if (arguments.length > 2) {
+			System.out.println("Too many arguments");
+		} else if (arguments.length < 2) {
+			System.out.println("Too few arguments");
+		} else {
+			Scanner fileScanner = new Scanner(new FileInputStream(arguments[1]));
+			Interpreter fileInterpreter = new Interpreter(fileScanner, foodora);
+			while (fileInterpreter.executeCommand(fileScanner.nextLine())){}
+		}
 
 	}
 
@@ -980,7 +1015,7 @@ public class Interpreter {
 		}
 	}
 
-	public boolean executeCommand(String command) {
+	public boolean executeCommand(String command) throws FileNotFoundException {
 		// Execute the given command
 		// Split the arguments
 		String[] arguments = command.split(" ");
@@ -993,6 +1028,9 @@ public class Interpreter {
 			break;
 		case "registerRestaurant":
 			this.registerRestaurant(arguments);
+			break;
+		case "registerManager":
+			this.registerManager(arguments);
 			break;
 		case "registerCustomer":
 			this.registerCustomer(arguments);

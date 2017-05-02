@@ -728,7 +728,9 @@ public class Interpreter {
 							dishNumber++;
 						}
 						if (dishNumber == 3) {
-							meal = (FullMeal) meal;
+							FullMeal meal0 = new FullMeal(meal.getName(), meal.getEntry(), meal.getMain(), meal.getDessert());
+							meal0.setMenu(meal.getMenu());
+							meal = meal0;
 						}
 					}
 				}

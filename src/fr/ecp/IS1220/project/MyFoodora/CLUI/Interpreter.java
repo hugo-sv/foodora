@@ -804,7 +804,7 @@ public class Interpreter {
 			tooFewArguments();
 		} else {
 			try {
-				Scanner fileScanner = new Scanner(new FileInputStream("../../../../../../eval/"+arguments[1]));
+				Scanner fileScanner = new Scanner(new FileInputStream("eval/"+arguments[1]));
 				Interpreter fileInterpreter = new Interpreter(fileScanner, foodora);
 				while (fileInterpreter.executeCommand(fileScanner.nextLine())){}
 			} catch (FileNotFoundException e) {

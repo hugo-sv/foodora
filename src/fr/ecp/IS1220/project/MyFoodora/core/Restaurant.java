@@ -72,10 +72,10 @@ public class Restaurant extends User {
 	public void setSpecialDiscountFactor(float specialDiscountFactor) {
 		this.specialDiscountFactor = specialDiscountFactor;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Restaurant " + getName();
+		return getName();
 	}
 
 }

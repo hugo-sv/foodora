@@ -101,5 +101,10 @@ public class Customer extends User {
 	public ArrayList<Order> getCurrentOrders() {
 		return currentOrders;
 	}
+	
+	@Override
+	public String toString() {
+		return getName()+" "+getSurname();
+	}
 
 }

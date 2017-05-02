@@ -225,6 +225,16 @@ public class MyFoodora {
 		}
 		return customerList;
 	}
+	
+	public ArrayList<Manager> getManagerList() {
+		ArrayList<Manager> managerList = new ArrayList<Manager>();
+		for (User user : userList.values()) {
+			if (user instanceof Manager) {
+				managerList.add((Manager) user);
+			}
+		}
+		return managerList;
+	}
 
 	public Courier mostActiveCourier() {
 		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();

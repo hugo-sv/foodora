@@ -77,6 +77,11 @@ public class Courier extends User{
 		}
 	}
 	
+	@Override
+	public String toString() {
+		return getName()+" "+getSurname();
+	}
+	
 
 	
 		 

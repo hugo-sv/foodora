@@ -812,6 +812,32 @@ public class Interpreter {
 		}
 	}
 	
+	private void printSystem(String[] arguments) {
+		if (arguments.length > 1) {
+			tooManyArguments();
+		} else if (arguments.length < 1) {
+			tooFewArguments();
+		} else {
+			if (!(user instanceof Manager)) {
+				forbidden();
+			} else {
+				for (Manager manager : foodora.getManagerList()) {
+					System.out.println("Manager : "+manager.toString());
+				}
+				for (Courier courier: foodora.getCourierList()) {
+					System.out.println("Courier : "+courier.toString());
+				}
+				for (Customer customer : foodora.getCustomerList()) {
+					System.out.println("Customer : "+customer.toString());
+				}
+				for (Restaurant restaurant : foodora.getRestaurantList()) {
+					System.out.println("Restaurant : "+restaurant.toString());
+					System.out.println(restaurant.getMenu().toString());
+				}
+			}
+		}
+	}
+	
 	
 
 
@@ -849,6 +875,7 @@ public class Interpreter {
 			System.out.println("listRestaurant <> : to display the restaurants available");
 		} else if (user instanceof Manager) {
 			// If user is Manager
+			System.out.println("printSystem <> : show all the information about the system");
 			System.out.println(
 					"registerRestaurant <name> <address> <username> <password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.");
 			System.out.println(

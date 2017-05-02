@@ -159,6 +159,11 @@ public class Manager extends User {
 	public void setTargetPolicy(TargetPolicy targetPolicy) {
 		myFoodora.setTargetPolicy(targetPolicy);
 	}
+	
+	@Override
+	public String toString() {
+		return getName()+" "+getSurname();
+	}
 
 
 }

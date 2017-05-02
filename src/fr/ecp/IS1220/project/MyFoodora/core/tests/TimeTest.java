@@ -2,6 +2,8 @@ package fr.ecp.IS1220.project.MyFoodora.core.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 
 import fr.ecp.IS1220.project.MyFoodora.core.Time;
@@ -16,6 +18,7 @@ public class TimeTest {
 
 	@Test
 	public void testGetSeconds() {
+		Time.setAuto(false);
 		Time t1 = Time.getTime();
 		Time.addTime((long) 20);
 		Time t2 = Time.getTime();
@@ -25,6 +28,7 @@ public class TimeTest {
 
 	@Test
 	public void testAddTime() {
+		Time.setAuto(false);
 		Time t1 = Time.getTime();
 		Time.addTime((long) 70);
 		Time t2 = Time.getTime();
@@ -34,6 +38,7 @@ public class TimeTest {
 
 	@Test
 	public void testCompareTo() {
+		Time.setAuto(false);
 		Time t3 = Time.getTime();
 		Time.addTime((long) 7000);
 		Time t4 = Time.getTime();
@@ -73,6 +78,15 @@ public class TimeTest {
 		assertTrue(t9.isLessThanOneMonth());
 		Time t10 = new Time("23/04/2017");
 		assertTrue(t10.getSeconds()-new Long(30*3*24*3600+22*24*3600)==0);
+	}
+	
+	@Test
+	public void testAuto() throws InterruptedException {
+		Time.setAuto(true);
+		Time t11 = Time.getTime();
+		TimeUnit.SECONDS.sleep(2);
+		Time t12 = Time.getTime();
+		assertTrue(t12.getSeconds()-t11.getSeconds()>0);
 	}
 
 }

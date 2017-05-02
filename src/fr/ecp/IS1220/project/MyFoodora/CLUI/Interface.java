@@ -17,9 +17,6 @@ public class Interface {
 
 
 	public static void main(String[] args) {
-
-
-
 		//Load .ini file
 		MyFoodora foodora = new MyFoodora(0, 0, 0);
 		try {

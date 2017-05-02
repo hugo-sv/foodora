@@ -58,7 +58,6 @@ public class Interpreter {
 		if (!init) {
 			System.out.println("Hello, welcome on MyFoodora.\n");
 			System.out.println("To login, type login <username> <password>");
-			System.out.println("To register, type register");
 			System.out.println("For any help, type help.");
 			System.out.print(">> ");
 		}
@@ -371,9 +370,9 @@ public class Interpreter {
 	}
 
 	private void createOrder(String[] arguments) {
-		if (arguments.length > 2) {
+		if (arguments.length > 3) {
 			tooManyArguments();
-		} else if (arguments.length < 2) {
+		} else if (arguments.length < 3) {
 			tooFewArguments();
 		} else {
 			if (!(user instanceof Customer)) {
@@ -1059,102 +1058,105 @@ public class Interpreter {
 		// Execute the given command
 		// Split the arguments
 		String[] arguments = command.split(" ");
-		switch (arguments[0].toLowerCase()) {
-		case "login":
-			this.login(arguments);
-			break;
-		case "logout":
-			this.logout();
-			break;
-		case "registerrestaurant":
-			this.registerRestaurant(arguments);
-			break;
-		case "registermanager":
-			this.registerManager(arguments);
-			break;
-		case "registercustomer":
-			this.registerCustomer(arguments);
-			break;
-		case "registercourier":
-			this.registerCourier(arguments);
-			break;
-		case "adddishrestaurantmenu":
-			this.addDishRestaurantMenu(arguments);
-			break;
-		case "createmeal":
-			this.createMeal(arguments);
-			break;
-		case "adddish2meal":
-			this.addDish2Meal(arguments);
-			break;
-		case "showmeal":
-			this.showMeal(arguments);
-			break;
-		case "savemeal":
-			this.createMeal(arguments);
-			break;
-		case "setspecialoffer":
-			this.setSpecialOffer(arguments);
-			break;
-		case "removefromspecialoffer":
-			this.removeFromSpecialOffer(arguments);
-			break;
-		case "createorder":
-			this.createOrder(arguments);
-			break;
-		case "additem2order":
-			this.addItem2Order(arguments);
-			break;
-		case "endorder":
-			this.endOrder(arguments);
-			break;
-		case "onduty":
-			this.onDuty(arguments);
-			break;
-		case "offduty":
-			this.offDuty(arguments);
-			break;
-		case "finddeliverer":
-			this.findDeliverer(arguments);
-			break;
-		case "setdeliverypolicy":
-			this.setDeliveryPolicy(arguments);
-			break;
-		case "setProfitPolicy":
-			this.setProfitPolicy(arguments);
-			break;
-		case "associatecard":
-			this.associateCard(arguments);
-			break;
-		case "showcourierdeliveries":
-			this.showCourierDeliveries();
-			break;
-		case "showrestauranttop":
-			this.showRestaurantTop();
-			break;
-		case "showcustomers":
-			this.showCustomers();
-			break;
-		case "showMenuItem":
-			this.showMenuItem(arguments);
-			break;
-		case "showtotalprofit":
-			this.showTotalProfit(arguments);
-			break;
-		case "runtest":
-			this.runTest(arguments);
-			break;
-		case "help":
-			this.help();
-			break;
-		case "register":
-			this.register();
-			break;
-		case "quit":
-			return this.quit();
-		default:
-			unknown();
+		if (arguments[0] != "") {
+			switch (arguments[0].toLowerCase()) {
+			case "login":
+				this.login(arguments);
+				break;
+			case "logout":
+				this.logout();
+				break;
+			case "registerrestaurant":
+				this.registerRestaurant(arguments);
+				break;
+			case "registermanager":
+				this.registerManager(arguments);
+				break;
+			case "registercustomer":
+				this.registerCustomer(arguments);
+				break;
+			case "registercourier":
+				this.registerCourier(arguments);
+				break;
+			case "adddishrestaurantmenu":
+				this.addDishRestaurantMenu(arguments);
+				break;
+			case "createmeal":
+				this.createMeal(arguments);
+				break;
+			case "adddish2meal":
+				this.addDish2Meal(arguments);
+				break;
+			case "showmeal":
+				this.showMeal(arguments);
+				break;
+			case "savemeal":
+				this.createMeal(arguments);
+				break;
+			case "setspecialoffer":
+				this.setSpecialOffer(arguments);
+				break;
+			case "removefromspecialoffer":
+				this.removeFromSpecialOffer(arguments);
+				break;
+			case "createorder":
+				this.createOrder(arguments);
+				break;
+			case "additem2order":
+				this.addItem2Order(arguments);
+				break;
+			case "endorder":
+				this.endOrder(arguments);
+				break;
+			case "onduty":
+				this.onDuty(arguments);
+				break;
+			case "offduty":
+				this.offDuty(arguments);
+				break;
+			case "finddeliverer":
+				this.findDeliverer(arguments);
+				break;
+			case "setdeliverypolicy":
+				this.setDeliveryPolicy(arguments);
+				break;
+			case "setProfitPolicy":
+				this.setProfitPolicy(arguments);
+				break;
+			case "associatecard":
+				this.associateCard(arguments);
+				break;
+			case "showcourierdeliveries":
+				this.showCourierDeliveries();
+				break;
+			case "showrestauranttop":
+				this.showRestaurantTop();
+				break;
+			case "showcustomers":
+				this.showCustomers();
+				break;
+			case "showMenuItem":
+				this.showMenuItem(arguments);
+				break;
+			case "showtotalprofit":
+				this.showTotalProfit(arguments);
+				break;
+			case "runtest":
+				this.runTest(arguments);
+				break;
+			case "help":
+				this.help();
+				break;
+			case "register":
+				this.register();
+				break;
+			case "quit":
+				return this.quit();
+			default:
+				unknown();
+			}
 		}
+		
 		if (!init) {
 			System.out.print(">> ");
 		}

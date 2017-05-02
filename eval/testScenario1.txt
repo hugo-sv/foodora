@@ -1,13 +1,78 @@
-automatically loaded at start-
-ing of the system
+login ceo 123456789
 
-An initial configuration file must ensure that, at startup (after loading this file) the
-system contains at least: 2 managers (the CEO, and his deputy), 5 restaurants and, per
-restaurant, 4 full-meals, 2 couriers, 7 customers... This my foodora.ini’s file can be seen
-as a scenario file containing only user registration, meal creation and dishes adding, ...’s’
-commands.
+• adding commands to show/print all items (user, meals, ...) in the initial
+configuration
+
+registerRestaurant RU 1,7.9 ru password
+registerRestaurant Resto 185.32,14.9 resto password
+
+registercustomer Alban Deloin ali 27,-28 password
+registercustomer Michel Deprès mimi 222,-14 password
+
+registercourier Alice Dubon ad -0.1,107 password
+registercourier Fanny Firot ff 52,17 password
+
+• display the list of restaurant
+• display the list of customers
+
+logout
+
+login ru password
+createmeal half
+createmeal full
+
+adddishrestaurantmenu Burger main standard 5
+adddishrestaurantmenu Soda starter vegetarian 1
+adddishrestaurantmenu Ice dessert vegetarian 2
+
+adddish2meal Burger half
+adddish2meal Soda half
 
 
+adddish2meal Burger full
+adddish2meal Soda full
+adddish2meal Ice full
+
+setSpecialOffer full
+• display the menu
+
+
+login resto password
+createmeal half
+createmeal half2
+createmeal full
+
+adddishrestaurantmenu Entrecote main gluten-free 5
+adddishrestaurantmenu Champagne starter vegetarian 1
+adddishrestaurantmenu Citron dessert vegetarian 2
+
+adddish2meal Entrecote half1
+adddish2meal Champagne half1
+
+adddish2meal Entrecote half2
+adddish2meal Citron half2
+
+adddish2meal Entrecote full
+adddish2meal Champagne full
+adddish2meal Citron full
+
+setSpecialOffer half1
+• display the menu
+
+login ali password
+createOrder Resto order1
+addItem2Order order1 Champagne
+addItem2Order order1 half2
+endOrder order1 17/05/2017
+createOrder RU order2
+createOrder RU order3
+addItem2Order order2 Burger
+addItem2Order order2 Burger
+endOrder order2 17/05/2017
+endOrder order3 18/05/2017
+logout
+
+		
 A test-scenario file contains a number of CLUI commands whose execution allows for re-
 producing a given test scenario, typically setting up a given configuration of the myFoodora
 system (i.e. creation of some resraurants, each with its one menu and meals offers, cre-
@@ -31,8 +96,6 @@ configuration
 • display the list of restaurant
 • display the list of customers
 • logout manager
-Page 14IS1220 - Object Oriented Software Design
-Project March-April 2017
 • logon as restaurant (for each new restaurant)
 • add (and populate) a menu to each restaurant (this requires login as restaurant
 manager)
@@ -40,6 +103,7 @@ manager)
 meal-of-the-week meal deal
 • display the menu of each restaurant
 • logout restaurant
+
 • logon as customer (for few customers)
 • simulate placing of a few orders by few customers (concerning a few restaurants)
 • logout

@@ -53,7 +53,7 @@ public abstract class Item implements Orderable {
 
 	@Override
 	public String toString() {
-		return "Item [name=" + name + "]";
+		return getName();
 	}
 
 	public Menu getMenu() {

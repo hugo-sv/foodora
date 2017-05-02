@@ -745,7 +745,7 @@ public class Interpreter {
 		} else if (arguments.length < 2) {
 			tooFewArguments();
 		} else {
-			if (!(user instanceof Manager)) {
+			if (!(user instanceof Manager) && !(user instanceof Customer)) {
 				forbidden();
 			} else {
 				Restaurant restaurant = null;
@@ -795,6 +795,25 @@ public class Interpreter {
 			}
 		}
 	}
+	
+	private void listRestaurant(String[] arguments) {
+		if (arguments.length > 1) {
+			tooManyArguments();
+		} else if (arguments.length < 1) {
+			tooFewArguments();
+		} else {
+			if (!(user != null)) {
+				forbidden();
+			} else {
+				for (Restaurant restaurantiter : foodora.getRestaurantList()) {
+					System.out.println(restaurantiter.getName());
+				}
+			}
+		}
+	}
+	
+	
+
 
 	private void runTest(String[] arguments) {
 		if (arguments.length > 2) {
@@ -826,6 +845,8 @@ public class Interpreter {
 			System.out.println(
 					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
 			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
+			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
+			System.out.println("listRestaurant <> : to display the restaurants available");
 		} else if (user instanceof Manager) {
 			// If user is Manager
 			System.out.println(
@@ -1135,7 +1156,7 @@ public class Interpreter {
 			case "showcustomers":
 				this.showCustomers();
 				break;
-			case "showMenuItem":
+			case "showmenuitem":
 				this.showMenuItem(arguments);
 				break;
 			case "showtotalprofit":
@@ -1149,6 +1170,9 @@ public class Interpreter {
 				break;
 			case "register":
 				this.register();
+				break;
+			case "listrestaurant":
+				this.listRestaurant(arguments);;
 				break;
 			case "quit":
 				return this.quit();

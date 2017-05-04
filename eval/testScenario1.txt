@@ -1,7 +1,6 @@
 login ceo 123456789
 
-• adding commands to show/print all items (user, meals, ...) in the initial
-configuration
+printSystem
 
 registerRestaurant RU 1,7.9 ru password
 registerRestaurant Resto 185.32,14.9 resto password
@@ -12,8 +11,8 @@ registercustomer Michel Deprès mimi 222,-14 password
 registercourier Alice Dubon ad -0.1,107 password
 registercourier Fanny Firot ff 52,17 password
 
-• display the list of restaurant
-• display the list of customers
+showRestaurantTop
+showCustomers
 
 logout
 
@@ -34,7 +33,7 @@ adddish2meal Soda full
 adddish2meal Ice full
 
 setSpecialOffer full
-• display the menu
+showMenuItem
 
 
 login resto password
@@ -57,7 +56,7 @@ adddish2meal Champagne full
 adddish2meal Citron full
 
 setSpecialOffer half1
-• display the menu
+showMenuItem
 
 login ali password
 createOrder Resto order1
@@ -71,6 +70,11 @@ addItem2Order order2 Burger
 endOrder order2 17/05/2017
 endOrder order3 18/05/2017
 logout
+
+login deputy password
+
+
+quit
 
 		
 A test-scenario file contains a number of CLUI commands whose execution allows for re-
@@ -103,10 +107,10 @@ manager)
 meal-of-the-week meal deal
 • display the menu of each restaurant
 • logout restaurant
-
 • logon as customer (for few customers)
 • simulate placing of a few orders by few customers (concerning a few restaurants)
 • logout
+
 • logon as manager
 • compute/display the total profit of the system (since creation and over a given time-
 interval)

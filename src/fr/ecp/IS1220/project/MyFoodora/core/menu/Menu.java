@@ -88,9 +88,7 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return items +"\n"+ meals;
+		return items + "\n" + meals;
 	}
-	
-	
 
 }

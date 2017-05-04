@@ -128,7 +128,7 @@ public abstract class Meal implements Orderable {
 		if (dessert != null) {
 			dessertName = dessert.getName();
 		}
-		return name+" :\n - "+entryName+"\n - "+mainName+"\n - "+dessertName;
+		return "\n" + name + " :\n - " + entryName + "\n - " + mainName + "\n - " + dessertName;
 	}
 
 }

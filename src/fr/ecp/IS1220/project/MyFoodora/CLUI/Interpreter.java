@@ -44,7 +44,7 @@ public class Interpreter {
 		this.user = null;
 		this.foodora = foodora;
 	}
-	
+
 	public Interpreter(Scanner sc, MyFoodora foodora, boolean init) {
 		super();
 		this.sc = sc;
@@ -86,13 +86,13 @@ public class Interpreter {
 			System.out.println("Permission denied");
 		}
 	}
-	
+
 	private void tooFewArguments() {
 		if (!init) {
 			System.out.println("Too few arguments");
 		}
 	}
-	
+
 	private void tooManyArguments() {
 		if (!init) {
 			System.out.println("Too many arguments");
@@ -514,7 +514,7 @@ public class Interpreter {
 			}
 		}
 	}
-	
+
 	private void registerManager(String[] arguments) {
 		if (arguments.length > 5) {
 			tooManyArguments();
@@ -524,9 +524,9 @@ public class Interpreter {
 			if (!init) {
 				forbidden();
 			} else {
-					Manager manager = new Manager(arguments[1], arguments[2], arguments[3]);
-					manager.setPassword(arguments[4]);
-					foodora.addUser(manager);
+				Manager manager = new Manager(arguments[1], arguments[2], arguments[3]);
+				manager.setPassword(arguments[4]);
+				foodora.addUser(manager);
 			}
 		}
 	}
@@ -727,7 +727,8 @@ public class Interpreter {
 							dishNumber++;
 						}
 						if (dishNumber == 3) {
-							FullMeal meal0 = new FullMeal(meal.getName(), meal.getEntry(), meal.getMain(), meal.getDessert());
+							FullMeal meal0 = new FullMeal(meal.getName(), meal.getEntry(), meal.getMain(),
+									meal.getDessert());
 							meal0.setMenu(meal.getMenu());
 							meal = meal0;
 						}
@@ -742,6 +743,13 @@ public class Interpreter {
 	private void showMenuItem(String[] arguments) {
 		if (arguments.length > 2) {
 			tooManyArguments();
+		} else if (user instanceof Restaurant) {
+			for (Meal meal : ((Restaurant) user).getMenu().getMeals()) {
+				System.out.println(meal.toString());
+			}
+			for (Item item : ((Restaurant) user).getMenu().getItems()) {
+				System.out.println(item.toString());
+			}
 		} else if (arguments.length < 2) {
 			tooFewArguments();
 		} else {
@@ -757,12 +765,7 @@ public class Interpreter {
 				if (restaurant == null) {
 					System.out.println("No restaurant named " + arguments[1]);
 				} else {
-					for (Meal meal : restaurant.getMenu().getMeals()) {
-						System.out.println(meal.toString());
-					}
-					for (Item item : restaurant.getMenu().getItems()) {
-						System.out.println(item.toString());
-					}
+					
 				}
 			}
 		}
@@ -795,7 +798,7 @@ public class Interpreter {
 			}
 		}
 	}
-	
+
 	private void listRestaurant(String[] arguments) {
 		if (arguments.length > 1) {
 			tooManyArguments();
@@ -811,7 +814,7 @@ public class Interpreter {
 			}
 		}
 	}
-	
+
 	private void printSystem(String[] arguments) {
 		if (arguments.length > 1) {
 			tooManyArguments();
@@ -822,24 +825,21 @@ public class Interpreter {
 				forbidden();
 			} else {
 				for (Manager manager : foodora.getManagerList()) {
-					System.out.println("Manager : "+manager.toString());
+					System.out.println("Manager : " + manager.toString());
 				}
-				for (Courier courier: foodora.getCourierList()) {
-					System.out.println("Courier : "+courier.toString());
+				for (Courier courier : foodora.getCourierList()) {
+					System.out.println("Courier : " + courier.toString());
 				}
 				for (Customer customer : foodora.getCustomerList()) {
-					System.out.println("Customer : "+customer.toString());
+					System.out.println("Customer : " + customer.toString());
 				}
 				for (Restaurant restaurant : foodora.getRestaurantList()) {
-					System.out.println("Restaurant : "+restaurant.toString());
+					System.out.println("Restaurant : " + restaurant.toString());
 					System.out.println(restaurant.getMenu().toString());
 				}
 			}
 		}
 	}
-	
-	
-
 
 	private void runTest(String[] arguments) {
 		if (arguments.length > 2) {
@@ -848,11 +848,12 @@ public class Interpreter {
 			tooFewArguments();
 		} else {
 			try {
-				Scanner fileScanner = new Scanner(new FileInputStream("eval/"+arguments[1]));
+				Scanner fileScanner = new Scanner(new FileInputStream("eval/" + arguments[1]));
 				Interpreter fileInterpreter = new Interpreter(fileScanner, foodora);
-				while (fileInterpreter.executeCommand(fileScanner.nextLine())){}
+				while (fileInterpreter.executeCommand(fileScanner.nextLine())) {
+				}
 			} catch (FileNotFoundException e) {
-				System.out.println("file \""+arguments[1]+"\" not found");
+				System.out.println("file \"" + arguments[1] + "\" not found");
 			}
 		}
 
@@ -907,6 +908,7 @@ public class Interpreter {
 					"addDishRestaurantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
 			System.out.println("createMeal <mealName> : to create a meal with a given name");
 			System.out.println("addDish2Meal <dishName> <mealName> : to add a dish to a meal");
+			System.out.println("showMenuItem : to display the menu");
 			System.out.println("showMeal <mealName> : to show the dishes in a meal with given name");
 			System.out.println("saveMeal <mealName> : to save a meal with given name");
 			System.out.println("setSpecialOffer <mealName> : to add a meal in meal-of-the-week special offer");
@@ -1199,7 +1201,8 @@ public class Interpreter {
 				this.register();
 				break;
 			case "listrestaurant":
-				this.listRestaurant(arguments);;
+				this.listRestaurant(arguments);
+				;
 				break;
 			case "quit":
 				return this.quit();
@@ -1207,7 +1210,7 @@ public class Interpreter {
 				unknown();
 			}
 		}
-		
+
 		if (!init) {
 			System.out.print(">> ");
 		}

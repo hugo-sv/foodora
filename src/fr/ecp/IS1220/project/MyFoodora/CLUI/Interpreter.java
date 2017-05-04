@@ -765,7 +765,7 @@ public class Interpreter {
 				if (restaurant == null) {
 					System.out.println("No restaurant named " + arguments[1]);
 				} else {
-					
+
 				}
 			}
 		}
@@ -1202,7 +1202,11 @@ public class Interpreter {
 				break;
 			case "listrestaurant":
 				this.listRestaurant(arguments);
-				;
+				break;
+			case "printsystem":
+				this.printSystem(arguments);
+				break;
+			case "":
 				break;
 			case "quit":
 				return this.quit();

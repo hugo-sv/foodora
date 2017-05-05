@@ -59,6 +59,9 @@ setSpecialOffer half1
 showMenuItem
 
 login ali password
+
+getnotified phone
+
 createOrder Resto order1
 addItem2Order order1 Champagne
 addItem2Order order1 half2
@@ -85,12 +88,15 @@ showTotalProfit
 showTotalProfit 23/05/2017 12/06/2017
 
 showCourierDeliveries
+
+notifyCustomers A new meal of the day is available !
+
 logout
 quit
 
+
 • adding commands to completely simulate special offer and its notification
 for:
-– meal of the day/week
 – birthday celebration
 This scenario requires you to manage explicitly time advancement (day
 change with a dedicated Thread ?)

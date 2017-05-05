@@ -481,6 +481,40 @@ public class Interpreter {
 		}
 	}
 
+	private void getNotified(String[] arguments) {
+		if (!(user instanceof Customer)) {
+			forbidden();
+		} else if (arguments.length > 2) {
+			tooManyArguments();
+		} else {
+			if (arguments[1].equals("none") || arguments.length > 2) {
+				((Customer) user).setNotifyMean(null);
+				((Customer) user).unregister();
+			} else if (arguments[1].equals("phone")) {
+				((Customer) user).setNotifyMean("phone");
+				((Customer) user).register();
+			} else if (arguments[1].equals("email")) {
+				((Customer) user).setNotifyMean("email");
+				((Customer) user).register();
+			} else {
+				this.incorrect();
+			}
+		}
+
+	}
+
+	private void notifyCustomers(String[] arguments) {
+		if (!(user instanceof Manager)) {
+			forbidden();
+		} else {
+			String message = new String("");
+			for (int i = 1; i < arguments.length; i++) {
+				message = message + arguments[i] + " ";
+			}
+			foodora.notifyObservers(message);
+		}
+	}
+
 	private void logout() {
 		if (user == null) {
 			System.out.println("Not logged in");
@@ -873,9 +907,12 @@ public class Interpreter {
 			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
 			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
 			System.out.println("listRestaurant <> : to display the restaurants available");
+			System.out.println("getNotified <none/phone/email> : to notified for special offers by the selected mean");
 		} else if (user instanceof Manager) {
 			// If user is Manager
 			System.out.println("printSystem <> : show all the information about the system");
+			System.out.println(
+					"notifyCustomers <message> : Send a message to all Customer who accepted to be notified for new offers");
 			System.out.println(
 					"registerRestaurant <name> <address> <username> <password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.");
 			System.out.println(
@@ -1201,6 +1238,12 @@ public class Interpreter {
 				break;
 			case "listrestaurant":
 				this.listRestaurant(arguments);
+				break;
+			case "notifycustomers":
+				this.notifyCustomers(arguments);
+				break;
+			case "getnotified":
+				this.getNotified(arguments);
 				break;
 			case "printsystem":
 				this.printSystem(arguments);

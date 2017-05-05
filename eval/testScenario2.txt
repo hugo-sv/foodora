@@ -1,0 +1,9 @@
+login a password
+getnotified phone
+logout
+login ceo 123456789
+notifycustomers A new offer is available !
+logout
+quit
+
+

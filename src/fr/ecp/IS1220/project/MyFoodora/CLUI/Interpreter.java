@@ -785,7 +785,6 @@ public class Interpreter {
 				} else {
 					String beginDate = arguments[1];
 					String endDate = arguments[2];
-					// TODO gérer le temps
 					if (beginDate.matches("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$")
 							&& endDate.matches("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$")) {
 						Time begin = new Time(beginDate);

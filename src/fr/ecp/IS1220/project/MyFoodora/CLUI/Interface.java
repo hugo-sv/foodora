@@ -1,12 +1,8 @@
 package fr.ecp.IS1220.project.MyFoodora.CLUI;
 
 import java.util.Scanner;
-import java.io.FileReader;
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import fr.ecp.IS1220.project.MyFoodora.core.MyFoodora;
 
 public class Interface {

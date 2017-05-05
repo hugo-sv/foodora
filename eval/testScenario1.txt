@@ -35,7 +35,7 @@ adddish2meal Ice full
 setSpecialOffer full
 showMenuItem
 
-
+####Problèmes à partir d'ici : This name is already used
 login resto password
 createmeal half
 createmeal half2
@@ -68,14 +68,34 @@ createOrder RU order3
 addItem2Order order2 Burger
 addItem2Order order2 Burger
 endOrder order2 17/05/2017
-endOrder order3 18/05/2017
+endOrder order3 25/05/2017
 logout
 
 login deputy password
 
+showTotalProfit
+showTotalProfit 23/05/2017 12/06/2017
 
+setProfitPolicy markup
+showTotalProfit
+showTotalProfit 23/05/2017 12/06/2017
+
+setProfitPolicy servicefee
+showTotalProfit
+showTotalProfit 23/05/2017 12/06/2017
+
+showCourierDeliveries
+logout
 quit
 
+• adding commands to completely simulate special offer and its notification
+for:
+– meal of the day/week
+– birthday celebration
+This scenario requires you to manage explicitly time advancement (day
+change with a dedicated Thread ?)
+
+####
 		
 A test-scenario file contains a number of CLUI commands whose execution allows for re-
 producing a given test scenario, typically setting up a given configuration of the myFoodora

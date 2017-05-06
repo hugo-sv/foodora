@@ -182,13 +182,13 @@ public class Interpreter {
 					} else {
 						if (arguments[1].equalsIgnoreCase("basic")) {
 							customer.setFidelityCard(new BasicFidelityCard());
-							System.out.println("Associated basic fidelity card to "+customer.getName());
+							System.out.println("Associated basic fidelity card to " + customer.getName());
 						} else if (arguments[1].equalsIgnoreCase("point")) {
 							customer.setFidelityCard(new PointFidelityCard());
-							System.out.println("Associated point fidelity card to "+customer.getName());
+							System.out.println("Associated point fidelity card to " + customer.getName());
 						} else {
 							customer.setFidelityCard(new LotteryFidelityCard());
-							System.out.println("Associated lottery fidelity card to "+customer.getName());
+							System.out.println("Associated lottery fidelity card to " + customer.getName());
 						}
 					}
 				}
@@ -294,9 +294,9 @@ public class Interpreter {
 	}
 
 	private void endOrder(String[] arguments) {
-		if (arguments.length > 3) {
+		if (arguments.length > 2) {
 			tooManyArguments();
-		} else if (arguments.length < 3) {
+		} else if (arguments.length < 2) {
 			tooFewArguments();
 		} else {
 			if (!(user instanceof Customer)) {
@@ -312,7 +312,6 @@ public class Interpreter {
 					System.out.println("No order named " + arguments[1]);
 				} else {
 					((Customer) user).payOrder(order);
-					// TODO implement time
 				}
 			}
 		}
@@ -456,7 +455,7 @@ public class Interpreter {
 			}
 		}
 	}
-	
+
 	private void showOrders(String[] arguments) {
 		if (arguments.length > 1) {
 			tooManyArguments();
@@ -890,8 +889,8 @@ public class Interpreter {
 					String endDate = arguments[2];
 					if (beginDate.matches("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$")
 							&& endDate.matches("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$")) {
-						Time begin = new Time(beginDate);
-						Time end = new Time(endDate);
+						Time begin = new Time(beginDate + " 12:00:00");
+						Time end = new Time(endDate + " 12:00:00");
 						System.out.println("Total profit : " + foodora.computeTotalProfit(begin, end) + " €");
 					} else {
 						System.out.println("Incorrect date format, please use day/month/year (example : 08/07/2017)");
@@ -1154,7 +1153,7 @@ public class Interpreter {
 			System.out.println("showOrders <> : to show current orders");
 			System.out.println(
 					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
-			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
+			System.out.println("endOrder <orderName> : to finalise an order at current date and pay it");
 			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
 			System.out.println("listRestaurant <> : to display the restaurants available");
 			System.out.println("getNotified <none/phone/email> : to notified for special offers by the selected mean");
@@ -1183,14 +1182,15 @@ public class Interpreter {
 			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
 			System.out.println("showTotalProfit<> : to show the total profit of the system since creation");
 			System.out.println(
-					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval");
+					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval (for instance : 07/05/2017)");
 		} else if (user instanceof Courier) {
 			// If user is Courier
 			System.out.println("onDuty <username> : to set your state as on-duty");
 			System.out.println("offDuty <username> : to set your state as off-duty");
 			System.out.println("currentOrder <> : to see your current order");
 			System.out.println("deliverOrder <> : to deliver order and notify that you delivered the current order");
-			System.out.println("refuseOrder <> : to refuse order and notify that you refused to deliver the current order");
+			System.out.println(
+					"refuseOrder <> : to refuse order and notify that you refused to deliver the current order");
 		} else if (user instanceof Restaurant) {
 			// If user is Restaurant
 			System.out.println(
@@ -1209,10 +1209,12 @@ public class Interpreter {
 		System.out.println("logout <> : to logout");
 		System.out.println("quit <> : to quit");
 		System.out.println("help <> : For help");
+		System.out.println("");
 		System.out.println("The following commands are only available to evaluate the project");
 		System.out.println(
 				"runTest <testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument");
-		
+		System.out.println("addTime <days> <hours> <minutes> : to increment simulated time");
+		System.out.println("getTime : to print simulated current time");
 	}
 
 	public boolean executeCommand(String command) {
@@ -1220,13 +1222,13 @@ public class Interpreter {
 		// Split the arguments
 		if (runFile) {
 			if (command.length() != 0) {
-				System.out.println(">> "+command);
+				System.out.println(">> " + command);
 			}
 		}
-		
+
 		String[] arguments = command.split(" ");
-		//If non-empty command or non-comment
-		if (arguments[0] != "" ) {
+		// If non-empty command or non-comment
+		if (arguments[0] != "") {
 			switch (arguments[0].toLowerCase()) {
 			case "currentorder":
 				this.currentOrder(arguments);
@@ -1318,9 +1320,6 @@ public class Interpreter {
 			case "showtotalprofit":
 				this.showTotalProfit(arguments);
 				break;
-			case "runtest":
-				this.runTest(arguments);
-				break;
 			case "help":
 				this.help();
 				break;
@@ -1348,14 +1347,48 @@ public class Interpreter {
 				break;
 			case "quit":
 				return this.quit();
+			case "runtest":
+				this.runTest(arguments);
+				break;
+			case "addtime":
+				this.addTime(arguments);
+				break;
+			case "gettime":
+				this.getTime();
+				break;
 			default:
 				unknown();
 			}
-		}		
+		}
 		if (!init && !runFile) {
 			System.out.print(">> ");
 		}
 		return true;
+	}
+
+	private void getTime() {
+		// To display current simulated time
+		System.out.println(Time.getTime());
+	}
+
+	private void addTime(String[] arguments) {
+		// To add time to the current simulated time
+		if (arguments.length > 4) {
+			tooManyArguments();
+		} else if (arguments.length < 4) {
+			tooFewArguments();
+		} else {
+			//Checking if the inputs are correct
+			if (arguments[1].matches("^-?[0-9]+$") && arguments[2].matches("^-?[0-9]+$")
+					&& arguments[3].matches("^-?[0-9]+$")) {
+				Time.addDays(Integer.parseInt(arguments[1]));
+				Time.addHours(Integer.parseInt(arguments[2]));
+				Time.addMinutes(Integer.parseInt(arguments[3]));
+			} else {
+				incorrect();
+			}
+		}
+
 	}
 
 }

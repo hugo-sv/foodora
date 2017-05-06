@@ -68,7 +68,7 @@ getnotified phone
 createOrder Resto order1
 addItem2Order order1 Champagne
 addItem2Order order1 half3
-endOrder order1 17/05/2017
+endOrder order1
 logout
 
 login ff password
@@ -78,15 +78,18 @@ logout
 login coco password
 currentorder
 deliverorder
+currentorder
 logout
 
 login ali password
 createOrder RU order2
 createOrder RU order3
 addItem2Order order2 Burger
-addItem2Order order2 Burger
-endOrder order2 17/05/2017
-endOrder order3 25/05/2017
+addItem2Order order3 Burger
+endOrder order2
+# The customer make an other order 2 hours later
+addTime 0 2 0
+endOrder order3
 logout
 
 login fred password

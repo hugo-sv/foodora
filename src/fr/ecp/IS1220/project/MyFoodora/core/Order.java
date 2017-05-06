@@ -91,7 +91,7 @@ public class Order {
 	public Time getOrderDate() {
 		return orderDate;
 	}
-	
+
 	public void setOrderDate() {
 		this.orderDate = Time.getTime();
 	}

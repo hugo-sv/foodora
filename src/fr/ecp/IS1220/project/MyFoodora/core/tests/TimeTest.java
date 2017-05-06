@@ -67,17 +67,21 @@ public class TimeTest {
 	}
 	@Test
 	public void testDate() {
-		Time t7 = new Time("01/01/2017");
+		//Simulate as if the current actual time was "07/05/2017 15:54:12"
+		Time current=new Time("07/05/2017 15:54:12");
+		Time.addTime(-Time.getTime().getSeconds()+current.getSeconds());
+		Time.setAuto(false);
+		Time t7 = new Time("01/01/1970 01:00:00");
 		assertTrue(t7.getSeconds()==0);
-		Time t8 = new Time("19/11/2015");
+		Time t8 = new Time("19/11/2015 00:00:00");
 		assertTrue(!t8.isLessThanOneMonth());
+		Time t9 = new Time("25/04/2017 00:00:00");
+		assertTrue(t9.isLessThanOneMonth());
+		Time t10 = new Time("23/04/2017 00:00:00");
+		assertTrue(t10.getSeconds()-1492898400==0);
 		Time.addTime(-Time.getTime().getSeconds());
 		assertTrue(Time.getTime().getSeconds()==0);
-		assertTrue(!t8.isLessThanOneMonth());
-		Time t9 = new Time("19/12/2016");
-		assertTrue(t9.isLessThanOneMonth());
-		Time t10 = new Time("23/04/2017");
-		assertTrue(t10.getSeconds()-new Long(30*3*24*3600+22*24*3600)==0);
+		System.out.println(Time.getTime().getSeconds());
 	}
 	
 	@Test

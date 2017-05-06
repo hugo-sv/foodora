@@ -72,11 +72,11 @@ logout
 
 login ff password
 currentorder
-orderRefused
+refuseorder
 logout
-login ad password
+login coco password
 currentorder
-orderDelivered
+deliverorder
 logout
 
 login ali password
@@ -88,17 +88,21 @@ endOrder order2 17/05/2017
 endOrder order3 25/05/2017
 logout
 
+login fred password
+currentorder
+logout
+
 login ff password
 currentorder
-orderDelivered
+deliverorder
 logout
-login ad password
+login coco password
 currentorder
-orderDelivered
+deliverorder
 logout
 login ff password
 currentorder
-orderDelivered
+deliverorder
 logout
 
 

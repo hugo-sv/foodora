@@ -12,7 +12,7 @@ public class FairOccupationPolicy implements DeliveryPolicy {
 	public Courier chooseCourier(MyFoodora myFoodora, Order order) {
 		HashMap<Long, Integer> activeCourier = new HashMap<Long, Integer>();
 		for (Courier courier : myFoodora.getCourierList()) {
-			if (courier.isOnDuty()) {
+			if (courier.isOnDuty() && courier.getCurrentOrder() == null) {
 				activeCourier.put(courier.getiD(), 0);
 			}
 		}

@@ -21,7 +21,7 @@ public class FastestPolicy implements DeliveryPolicy {
 					+ Math.pow(courier.getAddressY() - restaurant.getAddressY(), 2);
 			double distance2 = Math.pow(restaurant.getAddressX() - customer.getAddressX(), 2)
 					+ Math.pow(restaurant.getAddressY() - customer.getAddressY(), 2);
-			if (distance < 0 || (distance > distance1 + distance2 && courier.isOnDuty())) {
+			if ((courier.getCurrentOrder() == null && courier.isOnDuty()) && (distance < 0 || (distance > distance1 + distance2))) {
 				distance = distance1 + distance2;
 				bestCourier = courier;
 			}

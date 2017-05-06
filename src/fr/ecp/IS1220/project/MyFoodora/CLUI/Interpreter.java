@@ -324,7 +324,7 @@ public class Interpreter {
 		}
 	}
 
-	private void orderRefused(String[] arguments) {
+	private void refuseOrder(String[] arguments) {
 		if (arguments.length > 1) {
 			tooManyArguments();
 		} else {
@@ -336,7 +336,7 @@ public class Interpreter {
 		}
 	}
 
-	private void orderDelivered(String[] arguments) {
+	private void deliverOrder(String[] arguments) {
 		if (arguments.length > 1) {
 			tooManyArguments();
 		} else {
@@ -1139,6 +1139,7 @@ public class Interpreter {
 		} else if (user instanceof Customer) {
 			// If user is Customer
 			System.out.println("createOrder <restaurantName> <orderName> : to create an order from a given restaurant");
+			System.out.println("showOrders <> : to show current orders");
 			System.out.println(
 					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
 			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
@@ -1176,8 +1177,8 @@ public class Interpreter {
 			System.out.println("onDuty <username> : to set your state as on-duty");
 			System.out.println("offDuty <username> : to set your state as off-duty");
 			System.out.println("currentOrder <> : to see your current order");
-			System.out.println("orderDelivered <> : to notify that your current order has been delivered");
-			System.out.println("orderRefused <> : to notify that your refused to deliver the current order");
+			System.out.println("deliverOrder <> : to deliver order and notify that you delivered the current order");
+			System.out.println("refuseOrder <> : to refuse order and notify that you refused to deliver the current order");
 		} else if (user instanceof Restaurant) {
 			// If user is Restaurant
 			System.out.println(
@@ -1209,11 +1210,11 @@ public class Interpreter {
 			case "currentorder":
 				this.currentOrder(arguments);
 				break;
-			case "orderdelivered":
-				this.orderDelivered(arguments);
+			case "deliverorder":
+				this.deliverOrder(arguments);
 				break;
-			case "orderrefused":
-				this.orderRefused(arguments);
+			case "refuseorder":
+				this.refuseOrder(arguments);
 				break;
 			case "login":
 				this.login(arguments);

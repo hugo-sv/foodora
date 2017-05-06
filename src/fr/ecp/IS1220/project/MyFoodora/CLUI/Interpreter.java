@@ -27,6 +27,7 @@ import fr.ecp.IS1220.project.MyFoodora.core.menu.Starter;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.DeliveryCostPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.FairOccupationPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.FastestPolicy;
+import fr.ecp.IS1220.project.MyFoodora.core.policy.MarkupPolicy;
 import fr.ecp.IS1220.project.MyFoodora.core.policy.ServiceFeePolicy;
 
 public class Interpreter {
@@ -37,6 +38,7 @@ public class Interpreter {
 	private User user;
 	private MyFoodora foodora;
 	boolean init = false;
+	boolean runFile = false;
 
 	public Interpreter(Scanner sc, MyFoodora foodora) {
 		super();
@@ -45,12 +47,13 @@ public class Interpreter {
 		this.foodora = foodora;
 	}
 
-	public Interpreter(Scanner sc, MyFoodora foodora, boolean init) {
+	public Interpreter(Scanner sc, MyFoodora foodora, boolean init, boolean runFile) {
 		super();
 		this.sc = sc;
 		this.user = null;
 		this.foodora = foodora;
 		this.init = init;
+		this.runFile = runFile;
 	}
 
 	public void open() {
@@ -127,7 +130,7 @@ public class Interpreter {
 			ArrayList<Courier> courierList = foodora.getCourierList();
 			courierList.sort(new CourierComparator(foodora, true));
 			for (Courier courier : courierList) {
-				System.out.println("id : " + courier.getiD() + ", username : " + courier.getUsername());
+				System.out.println(courier.getName());
 			}
 		}
 	}
@@ -139,7 +142,7 @@ public class Interpreter {
 			ArrayList<Restaurant> restaurantList = foodora.getRestaurantList();
 			restaurantList.sort(new RestaurantComparator(foodora, true));
 			for (Restaurant restaurant : restaurantList) {
-				System.out.println("id : " + restaurant.getiD() + ", username : " + restaurant.getUsername());
+				System.out.println(restaurant.getName());
 			}
 		}
 	}
@@ -149,7 +152,7 @@ public class Interpreter {
 			forbidden();
 		} else {
 			for (Customer customer : foodora.getCustomerList()) {
-				System.out.println("id : " + customer.getiD() + ", username : " + customer.getUsername());
+				System.out.println(customer.getName());
 			}
 		}
 	}
@@ -179,10 +182,13 @@ public class Interpreter {
 					} else {
 						if (arguments[1].equalsIgnoreCase("basic")) {
 							customer.setFidelityCard(new BasicFidelityCard());
+							System.out.println("Associated basic fidelity card to "+customer.getName());
 						} else if (arguments[1].equalsIgnoreCase("point")) {
 							customer.setFidelityCard(new PointFidelityCard());
+							System.out.println("Associated point fidelity card to "+customer.getName());
 						} else {
 							customer.setFidelityCard(new LotteryFidelityCard());
+							System.out.println("Associated lottery fidelity card to "+customer.getName());
 						}
 					}
 				}
@@ -205,8 +211,10 @@ public class Interpreter {
 				} else {
 					if (arguments[1].equalsIgnoreCase("fastest")) {
 						((Manager) user).setDeliveryPolicy(new FastestPolicy());
+						System.out.println("Set fastest delivery policy as delivery policy");
 					} else {
 						((Manager) user).setDeliveryPolicy(new FairOccupationPolicy());
+						System.out.println("Set fair occupation policy as delivery policy");
 					}
 				}
 			}
@@ -229,10 +237,13 @@ public class Interpreter {
 				} else {
 					if (arguments[1].equalsIgnoreCase("deliverycost")) {
 						((Manager) user).setTargetPolicy(new DeliveryCostPolicy());
+						System.out.println("Set delivery cost policy as target policy");
 					} else if (arguments[1].equalsIgnoreCase("servicefee")) {
 						((Manager) user).setTargetPolicy(new ServiceFeePolicy());
+						System.out.println("Set service fee policy as target policy");
 					} else {
-						((Manager) user).setTargetPolicy(new ServiceFeePolicy());
+						((Manager) user).setTargetPolicy(new MarkupPolicy());
+						System.out.println("Set markup policy as target policy");
 					}
 				}
 			}
@@ -276,6 +287,7 @@ public class Interpreter {
 					System.out.println("Wrong username");
 				} else {
 					((Courier) user).setOnDuty(false);
+					System.out.println();
 				}
 			}
 		}
@@ -939,7 +951,7 @@ public class Interpreter {
 		} else {
 			try {
 				Scanner fileScanner = new Scanner(new FileInputStream("eval/" + arguments[1]));
-				Interpreter fileInterpreter = new Interpreter(fileScanner, foodora);
+				Interpreter fileInterpreter = new Interpreter(fileScanner, foodora, false, true);
 				while (fileInterpreter.executeCommand(fileScanner.nextLine())) {
 				}
 			} catch (FileNotFoundException e) {
@@ -1204,6 +1216,12 @@ public class Interpreter {
 	public boolean executeCommand(String command) {
 		// Execute the given command
 		// Split the arguments
+		if (runFile) {
+			if (command.length() != 0) {
+				System.out.println(">> "+command);
+			}
+		}
+		
 		String[] arguments = command.split(" ");
 		if (arguments[0] != "") {
 			switch (arguments[0].toLowerCase()) {
@@ -1276,7 +1294,7 @@ public class Interpreter {
 			case "setdeliverypolicy":
 				this.setDeliveryPolicy(arguments);
 				break;
-			case "setProfitPolicy":
+			case "setprofitpolicy":
 				this.setProfitPolicy(arguments);
 				break;
 			case "associatecard":
@@ -1328,9 +1346,8 @@ public class Interpreter {
 			default:
 				unknown();
 			}
-		}
-
-		if (!init) {
+		}		
+		if (!init && !runFile) {
 			System.out.print(">> ");
 		}
 		return true;

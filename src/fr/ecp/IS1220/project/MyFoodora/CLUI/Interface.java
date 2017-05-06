@@ -18,7 +18,7 @@ public class Interface {
 		try {
 			FileInputStream initFile = new FileInputStream("eval/my_foodora.ini");
 			Scanner initsc = new Scanner(initFile);
-			Interpreter initInterpreter = new Interpreter(initsc , foodora, true);
+			Interpreter initInterpreter = new Interpreter(initsc , foodora, true, false);
 			while (initInterpreter.executeCommand(initsc.nextLine())){}
 		} catch (FileNotFoundException e) {
 			System.out.println("Init file not found, system not initialized");

@@ -89,17 +89,9 @@ logout
 
 login fred password
 currentorder
-logout
-
-login ff password
-currentorder
 deliverorder
 logout
 login coco password
-currentorder
-deliverorder
-logout
-login ff password
 currentorder
 deliverorder
 logout

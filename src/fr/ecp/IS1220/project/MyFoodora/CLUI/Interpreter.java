@@ -1223,7 +1223,8 @@ public class Interpreter {
 		}
 		
 		String[] arguments = command.split(" ");
-		if (arguments[0] != "") {
+		//If non-empty command or non-comment
+		if (arguments[0] != "" ) {
 			switch (arguments[0].toLowerCase()) {
 			case "currentorder":
 				this.currentOrder(arguments);
@@ -1340,6 +1341,8 @@ public class Interpreter {
 				this.showOrders(arguments);
 				break;
 			case "":
+				break;
+			case "#":
 				break;
 			case "quit":
 				return this.quit();

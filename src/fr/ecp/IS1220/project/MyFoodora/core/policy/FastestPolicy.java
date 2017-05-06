@@ -12,6 +12,7 @@ public class FastestPolicy implements DeliveryPolicy {
 	public Courier chooseCourier(MyFoodora myFoodora, Order order) {
 		Courier bestCourier = null;
 		double distance = -1;
+		System.out.println(order);
 		Restaurant restaurant = order.getRestaurant();
 		Customer customer = order.getCustomer();
 

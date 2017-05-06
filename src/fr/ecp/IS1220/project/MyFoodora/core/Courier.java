@@ -69,13 +69,16 @@ public class Courier extends User{
 	
 	public void refuse() {
 		if (currentOrder != null) {
-			currentOrder = null;
 			//The courrier doesn't want to receive other order
 			setOnDuty(false);
 			myFoodora.give(currentOrder);
+			currentOrder = null;
 		} else {
 			System.out.println("No current order proposed");
 		}
+	}
+	public Order getCurrentOrder(){
+		return currentOrder;
 	}
 	
 	@Override

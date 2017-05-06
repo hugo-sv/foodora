@@ -67,6 +67,19 @@ createOrder Resto order1
 addItem2Order order1 Champagne
 addItem2Order order1 half3
 endOrder order1 17/05/2017
+
+logout
+
+login ff password
+currentorder
+orderRefused
+logout
+login ad password
+currentorder
+orderDelivered
+logout
+
+login ali password
 createOrder RU order2
 createOrder RU order3
 addItem2Order order2 Burger
@@ -74,6 +87,20 @@ addItem2Order order2 Burger
 endOrder order2 17/05/2017
 endOrder order3 25/05/2017
 logout
+
+login ff password
+currentorder
+orderDelivered
+logout
+login ad password
+currentorder
+orderDelivered
+logout
+login ff password
+currentorder
+orderDelivered
+logout
+
 
 login deputy password
 

@@ -14,7 +14,7 @@ public class Interface {
 
 	public static void main(String[] args) {
 		//Load .ini file
-		MyFoodora foodora = new MyFoodora(0, 0, 0);
+		MyFoodora foodora = new MyFoodora(1, 0.2, 2);
 		try {
 			FileInputStream initFile = new FileInputStream("eval/my_foodora.ini");
 			Scanner initsc = new Scanner(initFile);

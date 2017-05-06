@@ -324,6 +324,47 @@ public class Interpreter {
 		}
 	}
 
+	private void orderRefused(String[] arguments) {
+		if (arguments.length > 1) {
+			tooManyArguments();
+		} else {
+			if (!(user instanceof Courier)) {
+				forbidden();
+			} else {
+				((Courier) user).refuse();
+			}
+		}
+	}
+
+	private void orderDelivered(String[] arguments) {
+		if (arguments.length > 1) {
+			tooManyArguments();
+		} else {
+			if (!(user instanceof Courier)) {
+				forbidden();
+			} else {
+				((Courier) user).accept();
+			}
+		}
+	}
+
+	private void currentOrder(String[] arguments) {
+		if (arguments.length > 1) {
+			tooManyArguments();
+		} else {
+			if (!(user instanceof Courier)) {
+				forbidden();
+			} else {
+				Order current = ((Courier) user).getCurrentOrder();
+				if (current == null) {
+					System.out.println("You have no current orders.");
+				} else {
+					System.out.println(((Courier) user).getCurrentOrder().toString());
+				}
+			}
+		}
+	}
+
 	private void addItem2Order(String[] arguments) {
 		if (arguments.length > 3) {
 			tooManyArguments();
@@ -335,7 +376,7 @@ public class Interpreter {
 			} else {
 				Order order = null;
 				for (Order orderiter : ((Customer) user).getCurrentOrders()) {
-					if (orderiter.equals(arguments[1])) {
+					if (orderiter.getName().equals(arguments[1])) {
 						order = orderiter;
 					}
 				}
@@ -345,12 +386,12 @@ public class Interpreter {
 					Item item = null;
 					Meal meal = null;
 					for (Item itemiter : order.getRestaurant().getMenu().getItems()) {
-						if (itemiter.equals(arguments[2])) {
+						if (itemiter.getName().equals(arguments[2])) {
 							item = itemiter;
 						}
 					}
 					for (Meal mealiter : order.getRestaurant().getMenu().getMeals()) {
-						if (mealiter.equals(arguments[2])) {
+						if (mealiter.getName().equals(arguments[2])) {
 							meal = mealiter;
 						}
 					}
@@ -392,7 +433,7 @@ public class Interpreter {
 					if (restaurant == null) {
 						System.out.println("No restaurant named " + arguments[1]);
 					} else {
-						Order order = new Order(arguments[2],(Customer) user, restaurant, foodora.getServiceFee(),
+						Order order = new Order(arguments[2], (Customer) user, restaurant, foodora.getServiceFee(),
 								foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
 						((Customer) user).addOrder(order);
 					}
@@ -892,74 +933,6 @@ public class Interpreter {
 
 	}
 
-	private void help() {
-		// Depending on the user, Help propose different commands
-		System.out.println("Here are the commands you can make :");
-		if (user == null) {
-			// If user has not logged in
-			System.out.println("login <username> <password> : to login");
-			System.out.println("register <> : to register as a customer or courier");
-		} else if (user instanceof Customer) {
-			// If user is Customer
-			System.out.println("createOrder <restaurantName> <orderName> : to create an order from a given restaurant");
-			System.out.println(
-					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
-			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
-			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
-			System.out.println("listRestaurant <> : to display the restaurants available");
-			System.out.println("getNotified <none/phone/email> : to notified for special offers by the selected mean");
-		} else if (user instanceof Manager) {
-			// If user is Manager
-			System.out.println("printSystem <> : show all the information about the system");
-			System.out.println(
-					"notifyCustomers <message> : Send a message to all Customer who accepted to be notified for new offers");
-			System.out.println(
-					"registerRestaurant <name> <address> <username> <password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.");
-			System.out.println(
-					"registerCustomer <firstName> <lastName> <username> <address> <password> : to add a client to the system");
-			System.out.println(
-					"registerCourier <firstName> <lastName> <username> <position> <password> : to add a courier to the system (by default each newly registered courier is on-duty).");
-			System.out.println(
-					"setDeliveryPolicy <delPolicyName> : to set the delivery policy of the system to that passed as argument");
-			System.out.println(
-					"setProfitPolicy <ProfitPolicyName> : to set the profit policy of the system to that passed as argument");
-			System.out.println(
-					"associateCard <userName> <cardType> : to associate a fidelity card to a user with given name");
-			System.out.println(
-					"showCourierDeliveries <> : to display the list of couriers sorted in decreasing order w.r.t. the number of completed deliveries");
-			System.out.println(
-					"showRestaurantTop <> : to display the list of restaurant sorted in decreasing order w.r.t. the number of delivered orders");
-			System.out.println("showCustomers <> : to display the list of customers");
-			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
-			System.out.println("showTotalProfit<> : to show the total profit of the system since creation");
-			System.out.println(
-					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval");
-		} else if (user instanceof Courier) {
-			// If user is Courier
-			System.out.println("onDuty <username> : to set your state as on-duty");
-			System.out.println("offDuty <username> : to set your state as off-duty");
-		} else if (user instanceof Restaurant) {
-			// If user is Restaurant
-			System.out.println(
-					"addDishRestaurantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
-			System.out.println("createMeal <mealName> : to create a meal with a given name");
-			System.out.println("addDish2Meal <dishName> <mealName> : to add a dish to a meal");
-			System.out.println("showMenuItem : to display the menu");
-			System.out.println("showMeal <mealName> : to show the dishes in a meal with given name");
-			System.out.println("saveMeal <mealName> : to save a meal with given name");
-			System.out.println("setSpecialOffer <mealName> : to add a meal in meal-of-the-week special offer");
-			System.out.println("removeFromSpecialOffer <mealName> : to reset a special offer");
-			System.out.println(
-					"findDeliverer <orderName> : to allocate an order to a deliverer by application of the current delivery policy");
-		}
-		// For any users
-		System.out.println(
-				"runTest <testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument");
-		System.out.println("logout <> : to logout");
-		System.out.println("quit <> : to quit");
-		System.out.println("help <> : For help");
-	}
-
 	private boolean quit() {
 		// To quit the interface
 		if (!init) {
@@ -1140,12 +1113,92 @@ public class Interpreter {
 		}
 	}
 
+	private void help() {
+		// Depending on the user, Help propose different commands
+		System.out.println("Here are the commands you can make :");
+		if (user == null) {
+			// If user has not logged in
+			System.out.println("login <username> <password> : to login");
+			System.out.println("register <> : to register as a customer or courier");
+		} else if (user instanceof Customer) {
+			// If user is Customer
+			System.out.println("createOrder <restaurantName> <orderName> : to create an order from a given restaurant");
+			System.out.println(
+					"addItem2Order <orderName> <itemName> : to add an item (either a menu item or a meal-deal) to an existing order");
+			System.out.println("endOrder <orderName> < date> : to finalise an order at a given date and pay it");
+			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
+			System.out.println("listRestaurant <> : to display the restaurants available");
+			System.out.println("getNotified <none/phone/email> : to notified for special offers by the selected mean");
+		} else if (user instanceof Manager) {
+			// If user is Manager
+			System.out.println("printSystem <> : show all the information about the system");
+			System.out.println(
+					"notifyCustomers <message> : Send a message to all Customer who accepted to be notified for new offers");
+			System.out.println(
+					"registerRestaurant <name> <address> <username> <password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.");
+			System.out.println(
+					"registerCustomer <firstName> <lastName> <username> <address> <password> : to add a client to the system");
+			System.out.println(
+					"registerCourier <firstName> <lastName> <username> <position> <password> : to add a courier to the system (by default each newly registered courier is on-duty).");
+			System.out.println(
+					"setDeliveryPolicy <delPolicyName> : to set the delivery policy of the system to that passed as argument");
+			System.out.println(
+					"setProfitPolicy <ProfitPolicyName> : to set the profit policy of the system to that passed as argument");
+			System.out.println(
+					"associateCard <userName> <cardType> : to associate a fidelity card to a user with given name");
+			System.out.println(
+					"showCourierDeliveries <> : to display the list of couriers sorted in decreasing order w.r.t. the number of completed deliveries");
+			System.out.println(
+					"showRestaurantTop <> : to display the list of restaurant sorted in decreasing order w.r.t. the number of delivered orders");
+			System.out.println("showCustomers <> : to display the list of customers");
+			System.out.println("showMenuItem <restaurant-name> : to display the menu of a given restaurant");
+			System.out.println("showTotalProfit<> : to show the total profit of the system since creation");
+			System.out.println(
+					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval");
+		} else if (user instanceof Courier) {
+			// If user is Courier
+			System.out.println("onDuty <username> : to set your state as on-duty");
+			System.out.println("offDuty <username> : to set your state as off-duty");
+			System.out.println("currentOrder <> : to see your current order");
+			System.out.println("orderDelivered <> : to notify that your current order has been delivered");
+			System.out.println("orderRefused <> : to notify that your refused to deliver the current order");
+		} else if (user instanceof Restaurant) {
+			// If user is Restaurant
+			System.out.println(
+					"addDishRestaurantMenu <dishName> <dishCategory> <foodCategory> <unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name");
+			System.out.println("createMeal <mealName> : to create a meal with a given name");
+			System.out.println("addDish2Meal <dishName> <mealName> : to add a dish to a meal");
+			System.out.println("showMenuItem : to display the menu");
+			System.out.println("showMeal <mealName> : to show the dishes in a meal with given name");
+			System.out.println("saveMeal <mealName> : to save a meal with given name");
+			System.out.println("setSpecialOffer <mealName> : to add a meal in meal-of-the-week special offer");
+			System.out.println("removeFromSpecialOffer <mealName> : to reset a special offer");
+			System.out.println(
+					"findDeliverer <orderName> : to allocate an order to a deliverer by application of the current delivery policy");
+		}
+		// For any users
+		System.out.println(
+				"runTest <testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument");
+		System.out.println("logout <> : to logout");
+		System.out.println("quit <> : to quit");
+		System.out.println("help <> : For help");
+	}
+
 	public boolean executeCommand(String command) {
 		// Execute the given command
 		// Split the arguments
 		String[] arguments = command.split(" ");
 		if (arguments[0] != "") {
 			switch (arguments[0].toLowerCase()) {
+			case "currentorder":
+				this.currentOrder(arguments);
+				break;
+			case "orderdelivered":
+				this.orderDelivered(arguments);
+				break;
+			case "orderrefused":
+				this.orderRefused(arguments);
+				break;
 			case "login":
 				this.login(arguments);
 				break;

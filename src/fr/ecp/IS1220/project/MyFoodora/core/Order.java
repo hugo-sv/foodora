@@ -120,4 +120,12 @@ public class Order {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [name=" + name + ", restaurant=" + restaurant.getName() + " ( " + restaurant.getAddressX() + " , "
+				+ restaurant.getAddressY() + " )" + ", customer=" + customer.getName() + " ( " + customer.getAddressX()
+				+ " , " + customer.getAddressY() + " )" + ", orderables=" + orderables + ", orderDate="
+				+ orderDate.toString() + "]";
+	}
+
 }

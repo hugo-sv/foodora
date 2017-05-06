@@ -356,8 +356,8 @@ public class UseCase {
 					i++;
 				}
 				int answer = 0;
-				Order order = new Order(user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(),
-						foodora.getDeliveryCost());
+				Order order = new Order("Order 1", user, restaurant, foodora.getServiceFee(),
+						foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
 				do {
 					System.out.println("What do you want to add to the order ?");
 					System.out.println("1 - Item");

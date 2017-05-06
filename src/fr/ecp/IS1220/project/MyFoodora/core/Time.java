@@ -5,6 +5,7 @@ public class Time {
 	private Long seconds;
 	// If the time is automatically updated
 	static boolean auto = new Boolean(true);
+	// In order to add time to an automatically updated time
 	static long lastUnixTime=System.currentTimeMillis() / 1000;
 
 	public Time(Long seconds) {

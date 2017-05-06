@@ -1206,11 +1206,13 @@ public class Interpreter {
 					"findDeliverer <orderName> : to allocate an order to a deliverer by application of the current delivery policy");
 		}
 		// For any users
-		System.out.println(
-				"runTest <testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument");
 		System.out.println("logout <> : to logout");
 		System.out.println("quit <> : to quit");
 		System.out.println("help <> : For help");
+		System.out.println("The following commands are only available to evaluate the project");
+		System.out.println(
+				"runTest <testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument");
+		
 	}
 
 	public boolean executeCommand(String command) {

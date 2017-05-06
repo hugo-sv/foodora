@@ -110,7 +110,7 @@ public class LotteryFidelityCardTest {
 	@Test
 	public void testGetOffer() {
 		A.setFidelityCard(new LotteryFidelityCard());
-		Order order = new Order(A, Macdo, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
+		Order order = new Order("order",A, Macdo, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
 		Courier courier = foodora.getDeliveryPolicy().chooseCourier(foodora, order);
 		order.setCourier(courier);
 		int i = 0;

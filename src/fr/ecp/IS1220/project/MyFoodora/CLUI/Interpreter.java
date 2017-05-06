@@ -444,6 +444,22 @@ public class Interpreter {
 			}
 		}
 	}
+	
+	private void showOrders(String[] arguments) {
+		if (arguments.length > 1) {
+			tooManyArguments();
+		} else if (arguments.length < 1) {
+			tooFewArguments();
+		} else {
+			if (!(user instanceof Customer)) {
+				forbidden();
+			} else {
+				for (Order order : ((Customer) user).getCurrentOrders()) {
+					System.out.println(order.toString());
+				}
+			}
+		}
+	}
 
 	private void removeFromSpecialOffer(String[] arguments) {
 		if (arguments.length > 2) {
@@ -1300,6 +1316,9 @@ public class Interpreter {
 				break;
 			case "printsystem":
 				this.printSystem(arguments);
+				break;
+			case "showorders":
+				this.showOrders(arguments);
 				break;
 			case "":
 				break;

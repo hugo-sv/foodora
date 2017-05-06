@@ -47,6 +47,7 @@ public class Courier extends User{
 	
 	public void propose(Order order) {
 		this.currentOrder = order;
+		System.out.println("Order "+order.getName()+" proposed to "+this.getName());
 		//to prevent him from receiving other orders while accepting or refusing
 		setOnDuty(false);
 		
@@ -69,7 +70,7 @@ public class Courier extends User{
 	public void refuse() {
 		if (currentOrder != null) {
 			currentOrder = null;
-			//The courrier doesn't to receive other order
+			//The courrier doesn't want to receive other order
 			setOnDuty(false);
 			myFoodora.give(currentOrder);
 		} else {

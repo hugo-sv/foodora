@@ -17,8 +17,8 @@ public class Order {
 	private Time orderDate;
 	private Time deliverDate;
 
-	public Order(Customer customer, Restaurant restaurant, Courier courier, double serviceFee,
-			double markupPourcentage, double deliveryCost) {
+	public Order(Customer customer, Restaurant restaurant, Courier courier, double serviceFee, double markupPourcentage,
+			double deliveryCost) {
 		super();
 		this.customer = customer;
 		this.restaurant = restaurant;
@@ -29,10 +29,11 @@ public class Order {
 		this.orderDate = Time.getTime();
 
 	}
-	
-	public Order(Customer customer, Restaurant restaurant, double serviceFee,
-			double markupPourcentage, double deliveryCost) {
+
+	public Order(String name, Customer customer, Restaurant restaurant, double serviceFee, double markupPourcentage,
+			double deliveryCost) {
 		super();
+		this.name = name;
 		this.customer = customer;
 		this.restaurant = restaurant;
 		this.courier = null;
@@ -59,10 +60,10 @@ public class Order {
 		double mealPrice = 0;
 		double itemPrice = 0;
 		double mealOfTheWeekPrice = 0;
-		ArrayList<Meal> mealsOfTheWeek=restaurant.getMealsOfTheWeek();
+		ArrayList<Meal> mealsOfTheWeek = restaurant.getMealsOfTheWeek();
 		for (Orderable o : orderables) {
 			if (o instanceof Meal) {
-				if (mealsOfTheWeek.contains(o)){
+				if (mealsOfTheWeek.contains(o)) {
 					mealOfTheWeekPrice += o.getPrice();
 				} else {
 					mealPrice = mealPrice + o.getPrice();
@@ -118,6 +119,5 @@ public class Order {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 }

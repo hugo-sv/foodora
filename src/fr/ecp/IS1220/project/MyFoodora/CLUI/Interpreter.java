@@ -292,7 +292,7 @@ public class Interpreter {
 			} else {
 				Order order = null;
 				for (Order orderiter : ((Customer) user).getCurrentOrders()) {
-					if (orderiter.equals(arguments[1])) {
+					if (orderiter.getName().equals(arguments[1])) {
 						order = orderiter;
 					}
 				}
@@ -392,9 +392,9 @@ public class Interpreter {
 					if (restaurant == null) {
 						System.out.println("No restaurant named " + arguments[1]);
 					} else {
-						Order order = new Order((Customer) user, restaurant, foodora.getServiceFee(),
+						Order order = new Order(arguments[2],(Customer) user, restaurant, foodora.getServiceFee(),
 								foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
-						((Customer) user).getOrders().add(order);
+						((Customer) user).addOrder(order);
 					}
 				} else {
 					System.out.println("This name is already used");

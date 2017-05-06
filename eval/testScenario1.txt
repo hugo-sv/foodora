@@ -9,7 +9,7 @@ registercustomer Alban Deloin ali 27,-28 password
 registercustomer Michel Deprès mimi 222,-14 password
 
 registercourier Alice Dubon ad -0.1,107 password
-registercourier Fanny Firot ff 52,17 password
+registercourier Fanny Firot ff 51,16 password
 
 showRestaurantTop
 showCustomers
@@ -67,7 +67,6 @@ createOrder Resto order1
 addItem2Order order1 Champagne
 addItem2Order order1 half3
 endOrder order1 17/05/2017
-
 logout
 
 login ff password

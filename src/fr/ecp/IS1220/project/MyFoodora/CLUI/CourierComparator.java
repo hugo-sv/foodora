@@ -30,6 +30,7 @@ public class CourierComparator implements Comparator<Courier> {
 		int orderNumber0 = 0;
 		int orderNumber1 = 0;
 		for (Order order : foodora.getCompletedOrder_List()) {
+			System.out.println(order.getCourier());
 			if (arg0.getiD() == order.getCourier().getiD()) {
 				orderNumber0++;
 			} else if (arg1.getiD() == order.getCourier().getiD()) {

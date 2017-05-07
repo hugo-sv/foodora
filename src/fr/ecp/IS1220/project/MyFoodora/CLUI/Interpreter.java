@@ -1221,7 +1221,7 @@ public class Interpreter {
 		// Execute the given command
 		// Split the arguments
 		if (runFile) {
-			if (command.length() != 0) {
+			if (command.length() != 0 && command.charAt(0) != '#') {
 				System.out.println(">> " + command);
 			}
 		}

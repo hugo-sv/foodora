@@ -60,6 +60,9 @@ public class Courier extends User{
 			currentOrder.getRestaurant().setMoney(currentOrder.getRestaurant().getMoney()+currentOrder.getPrice()*(1-currentOrder.getMarkupPourcentage()));
 			setMoney(getMoney()+currentOrder.getDeliveryCost());
 			currentOrder.setDeliverDate();
+			currentOrder.setCourier(this);
+			myFoodora.getCurrentOrder_List().remove(currentOrder);
+			myFoodora.getCompletedOrder_List().add(currentOrder);
 			currentOrder = null;
 			setOnDuty(true);
 		} else {

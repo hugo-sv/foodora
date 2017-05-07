@@ -3480,6 +3480,1811 @@
                   </packagedElement>
                   <packagedElement xmi:type="uml:Usage" xmi:id="_n2zMYB4aEeeCTKr98N2j2g" client="_9E7T0B4WEeeCTKr98N2j2g" supplier="_9GW3MB4WEeeCTKr98N2j2g"/>
                 </packagedElement>
+                <packagedElement xmi:type="uml:Package" xmi:id="_U_5NIDMpEeeRK6-cnH9NBQ" name="CLUI">
+                  <packagedElement xmi:type="uml:Class" xmi:id="_U__60DMpEeeRK6-cnH9NBQ" name="Interpreter" visibility="public">
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VBpgoTMpEeeRK6-cnH9NBQ" name="sc" visibility="private" type="_U__60TMpEeeRK6-cnH9NBQ" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VBquwTMpEeeRK6-cnH9NBQ" name="user" visibility="private" type="_9GAR4B4WEeeCTKr98N2j2g" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VBrV0DMpEeeRK6-cnH9NBQ" name="foodora" visibility="private" type="_9CayYB4WEeeCTKr98N2j2g" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VBrV0TMpEeeRK6-cnH9NBQ" name="init" visibility="private" isUnique="false">
+                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VBrV0jMpEeeRK6-cnH9NBQ" name="defaultValue">
+                        <language>JAVA</language>
+                        <body>false</body>
+                      </defaultValue>
+                    </ownedAttribute>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VBr84DMpEeeRK6-cnH9NBQ" name="runFile" visibility="private" isUnique="false">
+                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VBr84TMpEeeRK6-cnH9NBQ" name="defaultValue">
+                        <language>JAVA</language>
+                        <body>false</body>
+                      </defaultValue>
+                    </ownedAttribute>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBtyEjMpEeeRK6-cnH9NBQ" name="Interpreter" specification="_VBr84jMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    super();
+    this.sc = sc;
+    this.user = null;
+    this.foodora = foodora;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBwOUzMpEeeRK6-cnH9NBQ" name="Interpreter" specification="_VBuZIDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    super();
+    this.sc = sc;
+    this.user = null;
+    this.foodora = foodora;
+    this.init = init;
+    this.runFile = runFile;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBw1YTMpEeeRK6-cnH9NBQ" name="open" specification="_VBw1YDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Generic message
+    if (!init) {
+        System.out.println(&quot;Hello, welcome on MyFoodora.\n&quot;);
+        System.out.println(&quot;To login, type login &lt;username> &lt;password>&quot;);
+        System.out.println(&quot;For any help, type help.&quot;);
+        System.out.print(&quot;>> &quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBw1YzMpEeeRK6-cnH9NBQ" name="close" specification="_VBw1YjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Generic message
+    if (!init) {
+        System.out.println(&quot;GoodBye !&quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBw1ZTMpEeeRK6-cnH9NBQ" name="incorrect" specification="_VBw1ZDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Generic message
+    if (!init) {
+        System.out.println(&quot;Incorrect input, please try again.&quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBxccDMpEeeRK6-cnH9NBQ" name="forbidden" specification="_VBw1ZjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Generic message
+    if (!init) {
+        System.out.println(&quot;Permission denied&quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBxccjMpEeeRK6-cnH9NBQ" name="tooFewArguments" specification="_VBxccTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!init) {
+        System.out.println(&quot;Too few arguments&quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBxcdDMpEeeRK6-cnH9NBQ" name="tooManyArguments" specification="_VBxcczMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!init) {
+        System.out.println(&quot;Too many arguments&quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBxcdjMpEeeRK6-cnH9NBQ" name="unknown" specification="_VBxcdTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Generic message
+    if (!init) {
+        System.out.println(&quot;Unknow command, please use the help command.&quot;);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VByDhDMpEeeRK6-cnH9NBQ" name="askFor" specification="_VBxcdzMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Ask to the user for one of the proposed arguments
+    String answer = sc.nextLine();
+    while (true) {
+        for (int i = 0; i &lt; expected.length; i++) {
+            if (expected[i].equals(answer)) {
+                return answer;
+            }
+        }
+        incorrect();
+        answer = sc.nextLine();
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VByqkTMpEeeRK6-cnH9NBQ" name="showCourierDeliveries" specification="_VByqkDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!(user instanceof Manager)) {
+        forbidden();
+    } else {
+        ArrayList&lt;Courier> courierList = foodora.getCourierList();
+        courierList.sort(new CourierComparator(foodora, true));
+        for (Courier courier : courierList) {
+            System.out.println(courier.getName());
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VByqkzMpEeeRK6-cnH9NBQ" name="showRestaurantTop" specification="_VByqkjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!(user instanceof Manager)) {
+        forbidden();
+    } else {
+        ArrayList&lt;Restaurant> restaurantList = foodora.getRestaurantList();
+        restaurantList.sort(new RestaurantComparator(foodora, true));
+        for (Restaurant restaurant : restaurantList) {
+            System.out.println(restaurant.getName());
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VByqlTMpEeeRK6-cnH9NBQ" name="showCustomers" specification="_VByqlDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!(user instanceof Manager)) {
+        forbidden();
+    } else {
+        for (Customer customer : foodora.getCustomerList()) {
+            System.out.println(customer.getName());
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VBzRpDMpEeeRK6-cnH9NBQ" name="associateCard" specification="_VBzRoDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 3) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 3) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            Customer customer = null;
+            for (Customer customeriter : foodora.getCustomerList()) {
+                if (customeriter.getName().equals(arguments[1])) {
+                    customer = customeriter;
+                }
+            }
+            if (customer == null) {
+                System.out.println(&quot;No customer named &quot; + arguments[1]);
+            } else {
+                if (!arguments[1].equalsIgnoreCase(&quot;basic&quot;) &amp;&amp; !arguments[1].equalsIgnoreCase(&quot;point&quot;) &amp;&amp; !arguments[1].equalsIgnoreCase(&quot;lottery&quot;)) {
+                    System.out.println(&quot;Wrong policy name&quot;);
+                    System.out.println(&quot;Policy is either basic, point or lottery&quot;);
+                } else {
+                    if (arguments[1].equalsIgnoreCase(&quot;basic&quot;)) {
+                        customer.setFidelityCard(new BasicFidelityCard());
+                        System.out.println(&quot;Associated basic fidelity card to &quot; + customer.getName());
+                    } else if (arguments[1].equalsIgnoreCase(&quot;point&quot;)) {
+                        customer.setFidelityCard(new PointFidelityCard());
+                        System.out.println(&quot;Associated point fidelity card to &quot; + customer.getName());
+                    } else {
+                        customer.setFidelityCard(new LotteryFidelityCard());
+                        System.out.println(&quot;Associated lottery fidelity card to &quot; + customer.getName());
+                    }
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB0fwDMpEeeRK6-cnH9NBQ" name="setDeliveryPolicy" specification="_VBz4sDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            if (!arguments[1].equalsIgnoreCase(&quot;fastest&quot;) &amp;&amp; !arguments[1].equalsIgnoreCase(&quot;fair-occupation&quot;)) {
+                System.out.println(&quot;Wrong policy name&quot;);
+                System.out.println(&quot;Policy is either fastest or fair-occupation&quot;);
+            } else {
+                if (arguments[1].equalsIgnoreCase(&quot;fastest&quot;)) {
+                    ((Manager) user).setDeliveryPolicy(new FastestPolicy());
+                    System.out.println(&quot;Set fastest delivery policy as delivery policy&quot;);
+                } else {
+                    ((Manager) user).setDeliveryPolicy(new FairOccupationPolicy());
+                    System.out.println(&quot;Set fair occupation policy as delivery policy&quot;);
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB1G0TMpEeeRK6-cnH9NBQ" name="setProfitPolicy" specification="_VB0fwTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            if (!arguments[1].equalsIgnoreCase(&quot;deliverycost&quot;) &amp;&amp; !arguments[1].equalsIgnoreCase(&quot;servicefee&quot;) &amp;&amp; !arguments[1].equalsIgnoreCase(&quot;markup&quot;)) {
+                System.out.println(&quot;Wrong policy name&quot;);
+                System.out.println(&quot;Policy is either deliveryCost, serviceFee or markup&quot;);
+            } else {
+                if (arguments[1].equalsIgnoreCase(&quot;deliverycost&quot;)) {
+                    ((Manager) user).setTargetPolicy(new DeliveryCostPolicy());
+                    System.out.println(&quot;Set delivery cost policy as target policy&quot;);
+                } else if (arguments[1].equalsIgnoreCase(&quot;servicefee&quot;)) {
+                    ((Manager) user).setTargetPolicy(new ServiceFeePolicy());
+                    System.out.println(&quot;Set service fee policy as target policy&quot;);
+                } else {
+                    ((Manager) user).setTargetPolicy(new MarkupPolicy());
+                    System.out.println(&quot;Set markup policy as target policy&quot;);
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB1t4TMpEeeRK6-cnH9NBQ" name="findDeliverer" specification="_VB1G0jMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            Order order = null;
+            for (Order orderiter : foodora.getCurrentOrder_List()) {
+                if (orderiter.equals(arguments[1])) {
+                    order = orderiter;
+                }
+            }
+            if (order == null) {
+                System.out.println(&quot;No order named &quot; + arguments[1]);
+            } else {
+                foodora.getDeliveryPolicy().chooseCourier(foodora, order).propose(order);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB2U8jMpEeeRK6-cnH9NBQ" name="offDuty" specification="_VB1t4jMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Courier)) {
+            forbidden();
+        } else {
+            if (!user.getUsername().equals(arguments[1])) {
+                System.out.println(&quot;Wrong username&quot;);
+            } else {
+                ((Courier) user).setOnDuty(false);
+                System.out.println();
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB28AzMpEeeRK6-cnH9NBQ" name="endOrder" specification="_VB2U8zMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Customer)) {
+            forbidden();
+        } else {
+            Order order = null;
+            for (Order orderiter : ((Customer) user).getCurrentOrders()) {
+                if (orderiter.getName().equals(arguments[1])) {
+                    order = orderiter;
+                }
+            }
+            if (order == null) {
+                System.out.println(&quot;No order named &quot; + arguments[1]);
+            } else {
+                ((Customer) user).payOrder(order);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB3jEzMpEeeRK6-cnH9NBQ" name="onDuty" specification="_VB28BDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Courier)) {
+            forbidden();
+        } else {
+            if (!user.getUsername().equals(arguments[1])) {
+                System.out.println(&quot;Wrong username&quot;);
+            } else {
+                ((Courier) user).setOnDuty(true);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB4KIzMpEeeRK6-cnH9NBQ" name="refuseOrder" specification="_VB3jFDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 1) {
+        tooManyArguments();
+    } else {
+        if (!(user instanceof Courier)) {
+            forbidden();
+        } else {
+            ((Courier) user).refuse();
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB4xMjMpEeeRK6-cnH9NBQ" name="deliverOrder" specification="_VB4KJDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 1) {
+        tooManyArguments();
+    } else {
+        if (!(user instanceof Courier)) {
+            forbidden();
+        } else {
+            ((Courier) user).accept();
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB5YQTMpEeeRK6-cnH9NBQ" name="currentOrder" specification="_VB4xMzMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 1) {
+        tooManyArguments();
+    } else {
+        if (!(user instanceof Courier)) {
+            forbidden();
+        } else {
+            Order current = ((Courier) user).getCurrentOrder();
+            if (current == null) {
+                System.out.println(&quot;You have no current orders.&quot;);
+            } else {
+                System.out.println(((Courier) user).getCurrentOrder().toString());
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB5_UDMpEeeRK6-cnH9NBQ" name="addItem2Order" specification="_VB5YQjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 3) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 3) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Customer)) {
+            forbidden();
+        } else {
+            Order order = null;
+            for (Order orderiter : ((Customer) user).getCurrentOrders()) {
+                if (orderiter.getName().equals(arguments[1])) {
+                    order = orderiter;
+                }
+            }
+            if (order == null) {
+                System.out.println(&quot;No order named &quot; + arguments[1]);
+            } else {
+                Item item = null;
+                Meal meal = null;
+                for (Item itemiter : order.getRestaurant().getMenu().getItems()) {
+                    if (itemiter.getName().equals(arguments[2])) {
+                        item = itemiter;
+                    }
+                }
+                for (Meal mealiter : order.getRestaurant().getMenu().getMeals()) {
+                    if (mealiter.getName().equals(arguments[2])) {
+                        meal = mealiter;
+                    }
+                }
+                if (meal == null &amp;&amp; item == null) {
+                    System.out.println(&quot;Nothing found&quot;);
+                } else {
+                    if (item != null) {
+                        order.addOrderable((Orderable) item);
+                    } else {
+                        order.addOrderable((Orderable) meal);
+                    }
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB6mYDMpEeeRK6-cnH9NBQ" name="createOrder" specification="_VB5_UTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 3) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 3) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Customer)) {
+            forbidden();
+        } else {
+            boolean t = true;
+            for (Order order : ((Customer) user).getOrders()) {
+                t = t &amp;&amp; !order.getName().equals(arguments[1]);
+            }
+            if (t) {
+                Restaurant restaurant = null;
+                for (Restaurant restaurantiter : foodora.getRestaurantList()) {
+                    if (restaurantiter.getName().equals(arguments[1])) {
+                        restaurant = restaurantiter;
+                    }
+                }
+                if (restaurant == null) {
+                    System.out.println(&quot;No restaurant named &quot; + arguments[1]);
+                } else {
+                    Order order = new Order(arguments[2], (Customer) user, restaurant, foodora.getServiceFee(), foodora.getMarkupPourcentage(), foodora.getDeliveryCost());
+                    ((Customer) user).addOrder(order);
+                }
+            } else {
+                System.out.println(&quot;This name is already used&quot;);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB6mZTMpEeeRK6-cnH9NBQ" name="showOrders" specification="_VB6mYTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 1) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 1) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Customer)) {
+            forbidden();
+        } else {
+            for (Order order : ((Customer) user).getCurrentOrders()) {
+                System.out.println(order.toString());
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB7NdDMpEeeRK6-cnH9NBQ" name="removeFromSpecialOffer" specification="_VB7NcDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            Meal meal = null;
+            for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+                if (mealiter.getName().equals(arguments[1])) {
+                    meal = mealiter;
+                }
+            }
+            if (meal == null) {
+                System.out.println(&quot;No meal named &quot; + arguments[1]);
+            } else {
+                if (((Restaurant) user).getMealsOfTheWeek().contains(meal)) {
+                    ((Restaurant) user).removeMealOfTheWeek(meal);
+                } else {
+                    System.out.println(&quot;This is not a meal of the week&quot;);
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB70hDMpEeeRK6-cnH9NBQ" name="setSpecialOffer" specification="_VB70gDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            Meal meal = null;
+            for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+                if (mealiter.getName().equals(arguments[1])) {
+                    meal = mealiter;
+                }
+            }
+            if (meal == null) {
+                System.out.println(&quot;No meal named &quot; + arguments[1]);
+            } else {
+                ((Restaurant) user).addMealOfTheWeek(meal);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB8bkzMpEeeRK6-cnH9NBQ" name="login" specification="_VB70hTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 3) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 3) {
+        tooFewArguments();
+    } else {
+        if (user == null) {
+            for (User user : foodora.getUserList().values()) {
+                if (user.getUsername().contentEquals(arguments[1])) {
+                    if (user.getPassword().contentEquals(arguments[2])) {
+                        this.user = user;
+                        if (!init) {
+                            System.out.println(&quot;Hello &quot; + user.getName() + &quot; !&quot;);
+                        }
+                    }
+                }
+            }
+            if (user == null) {
+                System.out.println(&quot;Wrong username or password.&quot;);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB9CozMpEeeRK6-cnH9NBQ" name="getNotified" specification="_VB8blDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!(user instanceof Customer)) {
+        forbidden();
+    } else if (arguments.length > 2) {
+        tooManyArguments();
+    } else {
+        if (arguments[1].equals(&quot;none&quot;) || arguments.length > 2) {
+            ((Customer) user).setNotifyMean(null);
+            ((Customer) user).unregister();
+        } else if (arguments[1].equals(&quot;phone&quot;)) {
+            ((Customer) user).setNotifyMean(&quot;phone&quot;);
+            ((Customer) user).register();
+        } else if (arguments[1].equals(&quot;email&quot;)) {
+            ((Customer) user).setNotifyMean(&quot;email&quot;);
+            ((Customer) user).register();
+        } else {
+            this.incorrect();
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB9pszMpEeeRK6-cnH9NBQ" name="notifyCustomers" specification="_VB9CpDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (!(user instanceof Manager)) {
+        forbidden();
+    } else {
+        String message = new String(&quot;&quot;);
+        for (int i = 1; i &lt; arguments.length; i++) {
+            message = message + arguments[i] + &quot; &quot;;
+        }
+        foodora.notifyObservers(message);
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB9ptTMpEeeRK6-cnH9NBQ" name="logout" specification="_VB9ptDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (user == null) {
+        System.out.println(&quot;Not logged in&quot;);
+    } else {
+        if (!init) {
+            System.out.println(&quot;Good bye &quot; + user.getName());
+        }
+        user = null;
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB-QwzMpEeeRK6-cnH9NBQ" name="registerRestaurant" specification="_VB9ptjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 5) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 5) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            String[] address = arguments[2].split(&quot;,&quot;);
+            if (address.length != 2) {
+                System.out.println(&quot;Wrong address&quot;);
+            } else {
+                double addressX = Double.parseDouble(address[0]);
+                double addressY = Double.parseDouble(address[1]);
+                Restaurant restaurant = new Restaurant(arguments[1], arguments[3], addressX, addressY);
+                restaurant.setPassword(arguments[4]);
+                ((Manager) user).addUser(restaurant);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB-30zMpEeeRK6-cnH9NBQ" name="registerManager" specification="_VB-QxDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 5) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 5) {
+        tooFewArguments();
+    } else {
+        if (!init) {
+            forbidden();
+        } else {
+            Manager manager = new Manager(arguments[1], arguments[2], arguments[3]);
+            manager.setPassword(arguments[4]);
+            foodora.addUser(manager);
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VB_e4jMpEeeRK6-cnH9NBQ" name="registerCustomer" specification="_VB-31DMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 6) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 6) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            String[] address = arguments[4].split(&quot;,&quot;);
+            if (address.length != 2) {
+                System.out.println(&quot;Wrong address&quot;);
+            } else {
+                double addressX = Double.parseDouble(address[0]);
+                double addressY = Double.parseDouble(address[1]);
+                Customer customer = new Customer(arguments[1], arguments[2], arguments[3], addressX, addressY);
+                customer.setPassword(arguments[5]);
+                ((Manager) user).addUser(customer);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCAF8TMpEeeRK6-cnH9NBQ" name="registerCourier" specification="_VB_e4zMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 6) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 6) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            String[] address = arguments[4].split(&quot;,&quot;);
+            if (address.length != 2) {
+                System.out.println(&quot;Wrong address&quot;);
+            } else {
+                double addressX = Double.parseDouble(address[0]);
+                double addressY = Double.parseDouble(address[1]);
+                Courier courier = new Courier(arguments[1], arguments[2], arguments[3], addressX, addressY);
+                courier.setPassword(arguments[5]);
+                courier.setOnDuty(true);
+                ((Manager) user).addUser(courier);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCAtADMpEeeRK6-cnH9NBQ" name="addDishRestaurantMenu" specification="_VCAF8jMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 5) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 5) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            if (!arguments[2].equalsIgnoreCase(&quot;starter&quot;) &amp;&amp; !arguments[2].equalsIgnoreCase(&quot;main&quot;) &amp;&amp; !arguments[2].equalsIgnoreCase(&quot;dessert&quot;)) {
+                System.out.println(&quot;Wrong dish category&quot;);
+            } else if (!arguments[3].equalsIgnoreCase(&quot;standard&quot;) &amp;&amp; !arguments[3].equalsIgnoreCase(&quot;vegetarian&quot;) &amp;&amp; !arguments[3].equalsIgnoreCase(&quot;gluten-free&quot;)) {
+                System.out.println(&quot;Wrong food type&quot;);
+            } else {
+                Item item = null;
+                if (arguments[2].equalsIgnoreCase(&quot;starter&quot;)) {
+                    item = new Starter(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase(&quot;vegetarian&quot;), arguments[3].equalsIgnoreCase(&quot;gluten-free&quot;));
+                } else if (arguments[2].equalsIgnoreCase(&quot;main&quot;)) {
+                    item = new MainDish(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase(&quot;vegetarian&quot;), arguments[3].equalsIgnoreCase(&quot;gluten-free&quot;));
+                } else {
+                    item = new Dessert(arguments[1], Double.parseDouble(arguments[4]), arguments[3].equalsIgnoreCase(&quot;vegetarian&quot;), arguments[3].equalsIgnoreCase(&quot;gluten-free&quot;));
+                }
+                boolean t = true;
+                for (Item item2 : ((Restaurant) user).getMenu().getItems()) {
+                    t = t &amp;&amp; !item2.getName().equals(arguments[1]);
+                }
+                if (t) {
+                    ((Restaurant) user).getMenu().addItem(item);
+                } else {
+                    System.out.println(&quot;This name is already used&quot;);
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCBUEDMpEeeRK6-cnH9NBQ" name="createMeal" specification="_VCAtATMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            boolean t = true;
+            for (Meal meal : ((Restaurant) user).getMenu().getMeals()) {
+                t = t &amp;&amp; !meal.getName().equals(arguments[1]);
+            }
+            if (t) {
+                HalfMeal halfMeal = new HalfMeal(arguments[1], (Starter) null, null);
+                ((Restaurant) user).getMenu().addMeal(halfMeal);
+            } else {
+                System.out.println(&quot;This name is already used&quot;);
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCBUFTMpEeeRK6-cnH9NBQ" name="showMeal" specification="_VCBUETMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            Meal meal = null;
+            for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+                if (mealiter.getName().equals(arguments[1])) {
+                    meal = mealiter;
+                }
+            }
+            if (meal == null) {
+                System.out.println(&quot;No meal named &quot; + arguments[1]);
+            } else {
+                System.out.println(meal.toString());
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCB7JDMpEeeRK6-cnH9NBQ" name="addDish2Meal" specification="_VCB7IDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 3) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 3) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Restaurant)) {
+            forbidden();
+        } else {
+            Meal meal = null;
+            for (Meal mealiter : ((Restaurant) user).getMenu().getMeals()) {
+                if (mealiter.getName().equals(arguments[2])) {
+                    meal = mealiter;
+                }
+            }
+            if (meal == null) {
+                System.out.println(&quot;No meal named &quot; + arguments[2]);
+            } else {
+                Item item = null;
+                for (Item itemiter : ((Restaurant) user).getMenu().getItems()) {
+                    if (itemiter.getName().equals(arguments[1])) {
+                        item = itemiter;
+                    }
+                }
+                if (item == null) {
+                    System.out.println(&quot;No dish named &quot; + arguments[1]);
+                } else {
+                    if (item instanceof Starter) {
+                        if (meal.getEntry() != null) {
+                            System.out.println(&quot;This meal already contains a starter&quot;);
+                        } else {
+                            meal.setEntry((Starter) item);
+                        }
+                    } else if (item instanceof MainDish) {
+                        if (meal.getMain() != null) {
+                            System.out.println(&quot;This meal already contains a main dish&quot;);
+                        } else {
+                            meal.setMain((MainDish) item);
+                        }
+                    } else {
+                        if (meal.getDessert() != null) {
+                            System.out.println(&quot;This meal already contains a dessert&quot;);
+                        } else {
+                            meal.setDessert((Dessert) item);
+                        }
+                    }
+                    int dishNumber = 0;
+                    if (meal.getEntry() != null) {
+                        dishNumber++;
+                    }
+                    if (meal.getMain() != null) {
+                        dishNumber++;
+                    }
+                    if (meal.getDessert() != null) {
+                        dishNumber++;
+                    }
+                    if (dishNumber == 3) {
+                        FullMeal meal0 = new FullMeal(meal.getName(), meal.getEntry(), meal.getMain(), meal.getDessert());
+                        meal0.setMenu(meal.getMenu());
+                        meal = meal0;
+                    }
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCCiNDMpEeeRK6-cnH9NBQ" name="showMenuItem" specification="_VCCiMDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (user instanceof Restaurant) {
+        for (Meal meal : ((Restaurant) user).getMenu().getMeals()) {
+            System.out.println(meal.toString());
+        }
+        for (Item item : ((Restaurant) user).getMenu().getItems()) {
+            System.out.println(item.toString());
+        }
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager) &amp;&amp; !(user instanceof Customer)) {
+            forbidden();
+        } else {
+            Restaurant restaurant = null;
+            for (Restaurant restaurantiter : foodora.getRestaurantList()) {
+                if (restaurantiter.getName().equals(arguments[1])) {
+                    restaurant = restaurantiter;
+                }
+            }
+            if (restaurant == null) {
+                System.out.println(&quot;No restaurant named &quot; + arguments[1]);
+            } else {
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCDJQzMpEeeRK6-cnH9NBQ" name="showTotalProfit" specification="_VCCiNTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 3) {
+        tooManyArguments();
+    } else if (arguments.length == 2) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            if (arguments.length == 1) {
+                System.out.println(&quot;Total profit : &quot; + foodora.computeTotalProfit() + &quot; €&quot;);
+            } else {
+                String beginDate = arguments[1];
+                String endDate = arguments[2];
+                if (beginDate.matches(&quot;^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$&quot;) &amp;&amp; endDate.matches(&quot;^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{1,}$&quot;)) {
+                    Time begin = new Time(beginDate + &quot; 12:00:00&quot;);
+                    Time end = new Time(endDate + &quot; 12:00:00&quot;);
+                    System.out.println(&quot;Total profit : &quot; + foodora.computeTotalProfit(begin, end) + &quot; €&quot;);
+                } else {
+                    System.out.println(&quot;Incorrect date format, please use day/month/year (example : 08/07/2017)&quot;);
+                }
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCDwUzMpEeeRK6-cnH9NBQ" name="listRestaurant" specification="_VCDJRDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 1) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 1) {
+        tooFewArguments();
+    } else {
+        if (!(user != null)) {
+            forbidden();
+        } else {
+            for (Restaurant restaurantiter : foodora.getRestaurantList()) {
+                System.out.println(restaurantiter.getName());
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCE-czMpEeeRK6-cnH9NBQ" name="printSystem" specification="_VCEXYDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 1) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 1) {
+        tooFewArguments();
+    } else {
+        if (!(user instanceof Manager)) {
+            forbidden();
+        } else {
+            for (Manager manager : foodora.getManagerList()) {
+                System.out.println(&quot;Manager : &quot; + manager.toString());
+            }
+            for (Courier courier : foodora.getCourierList()) {
+                System.out.println(&quot;Courier : &quot; + courier.toString());
+            }
+            for (Customer customer : foodora.getCustomerList()) {
+                System.out.println(&quot;Customer : &quot; + customer.toString());
+            }
+            for (Restaurant restaurant : foodora.getRestaurantList()) {
+                System.out.println(&quot;Restaurant : &quot; + restaurant.toString());
+                System.out.println(restaurant.getMenu().toString());
+            }
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCFlgjMpEeeRK6-cnH9NBQ" name="runTest" specification="_VCE-dDMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    if (arguments.length > 2) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 2) {
+        tooFewArguments();
+    } else {
+        try {
+            Scanner fileScanner = new Scanner(new FileInputStream(&quot;eval/&quot; + arguments[1]));
+            Interpreter fileInterpreter = new Interpreter(fileScanner, foodora, false, true);
+            while (fileInterpreter.executeCommand(fileScanner.nextLine())) {
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(&quot;file \&quot;&quot; + arguments[1] + &quot;\&quot; not found&quot;);
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCFlhTMpEeeRK6-cnH9NBQ" name="quit" specification="_VCFlgzMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // To quit the interface
+    if (!init) {
+        System.out.println(&quot;Are you sure you want to quit ? (Y/n)&quot;);
+    }
+    String answer = this.askFor(new String[] { &quot;y&quot;, &quot;Y&quot;, &quot;n&quot;, &quot;&quot; });
+    if (answer == &quot;n&quot;) {
+        return true;
+    }
+    if (user != null) {
+        logout();
+    }
+    return false;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCGMkDMpEeeRK6-cnH9NBQ" name="register" specification="_VCFlhjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // To register as a courrier or as a customer
+    if (user == null) {
+        System.out.println(&quot;Registering process...&quot;);
+        String name;
+        String surname;
+        String username;
+        String password;
+        double addressX;
+        double addressY;
+        System.out.println(&quot;Enter name :&quot;);
+        name = sc.nextLine();
+        System.out.println(&quot;Enter surname :&quot;);
+        surname = sc.nextLine();
+        System.out.println(&quot;Enter username :&quot;);
+        username = sc.nextLine();
+        System.out.println(&quot;Enter password :&quot;);
+        password = sc.nextLine();
+        System.out.println(&quot;Enter address X (double):&quot;);
+        String input = sc.nextLine();
+        while (!input.matches(&quot;^-?[0-9]+(.)?([0-9])*$&quot;)) {
+            incorrect();
+            input = sc.nextLine();
+        }
+        addressX = Double.parseDouble(input);
+        System.out.println(&quot;Enter address Y (double):&quot;);
+        input = sc.nextLine();
+        while (!input.matches(&quot;^-?[0-9]+(.)?([0-9])*$&quot;)) {
+            incorrect();
+            input = sc.nextLine();
+        }
+        addressY = Double.parseDouble(input);
+        int type;
+        User c;
+        System.out.println(&quot;Enter type of user : (1/2)&quot;);
+        System.out.println(&quot;1 - Customer&quot;);
+        System.out.println(&quot;2 - Courier&quot;);
+        input = sc.nextLine();
+        while (!input.matches(&quot;^[1-2]$&quot;)) {
+            incorrect();
+            input = sc.nextLine();
+        }
+        type = Integer.parseInt(input);
+        if (type == 1) {
+            c = (Customer) new Customer(name, surname, username, addressX, addressY);
+        } else {
+            c = (Courier) new Courier(name, surname, username, addressX, addressY);
+        }
+        c.setPassword(password);
+        foodora.addUser(c);
+        System.out.println(&quot;You have been registered.&quot;);
+        // 3. the user starts inserting a contact info with the type and
+        // the
+        // value (e.g. email, phone)
+        // • the user repeats step 3 since he ends to inserts his
+        // contact
+        // info
+        int contact;
+        do {
+            System.out.println(&quot;Inserting contact info : (1/2/3)&quot;);
+            System.out.println(&quot;1 - email&quot;);
+            System.out.println(&quot;2 - phone&quot;);
+            System.out.println(&quot;3 - stop&quot;);
+            input = sc.nextLine();
+            while (!input.matches(&quot;^[1-3]$&quot;)) {
+                incorrect();
+                input = sc.nextLine();
+            }
+            contact = Integer.parseInt(input);
+            if (contact == 1) {
+                System.out.println(&quot;Adding email address&quot;);
+                c.setEmail(sc.nextLine());
+            }
+            if (contact == 2) {
+                System.out.println(&quot;Adding phone number&quot;);
+                c.setPhoneNumber(sc.nextLine());
+            }
+        } while (contact != 3);
+        if (c instanceof Customer) {
+            String answer;
+            System.out.println(&quot;Do you want to be informed of special offers ? (y/N)&quot;);
+            input = sc.nextLine();
+            while (!input.matches(&quot;^(y|Y|n|N)?$&quot;)) {
+                incorrect();
+                input = sc.nextLine();
+            }
+            answer = input;
+            if (answer.equalsIgnoreCase(&quot;y&quot;)) {
+                System.out.println(&quot;You will be informed of special offers&quot;);
+                ((Customer) c).register();
+            }
+        }
+        // is the e-mail if exists)
+        if (c instanceof Customer) {
+            int answer;
+            System.out.println(&quot;Select contact method for offers : (1/2)&quot;);
+            System.out.println(&quot;1 - email (default)&quot;);
+            System.out.println(&quot;2 - phone number&quot;);
+            input = sc.nextLine();
+            while (!input.matches(&quot;^[1-2]?$&quot;)) {
+                incorrect();
+                input = sc.nextLine();
+            }
+            answer = Integer.parseInt(input);
+            if (answer == 2) {
+                System.out.println(&quot;You will be notified by phone.&quot;);
+                ((Customer) c).setNotifyMean(c.getPhoneNumber());
+            } else {
+                System.out.println(&quot;You will be notified by Email.&quot;);
+                ((Customer) c).setNotifyMean(c.getEmail());
+            }
+        }
+        if (c instanceof Courier) {
+            String answer;
+            System.out.println(&quot;Do you want to be seen as on-duty ? (y/N)&quot;);
+            input = sc.nextLine();
+            while (!input.matches(&quot;^(y|Y|n|N)?$&quot;)) {
+                incorrect();
+                input = sc.nextLine();
+            }
+            answer = input;
+            if (answer.equalsIgnoreCase(&quot;y&quot;)) {
+                System.out.println(&quot;You are seen on-duty.&quot;);
+                ((Courier) c).setOnDuty(true);
+            } else {
+                System.out.println(&quot;You are seen off-duty.&quot;);
+                ((Courier) c).setOnDuty(false);
+            }
+        }
+        // 7. the user specify to save the account
+        String answer;
+        System.out.println(&quot;Do you wish to save your account ? (Y/n)&quot;);
+        input = sc.nextLine();
+        while (!input.matches(&quot;^(y|Y|n|N)?$&quot;)) {
+            incorrect();
+            input = sc.nextLine();
+        }
+        answer = input;
+        if (answer.equalsIgnoreCase(&quot;n&quot;)) {
+            System.out.println(&quot;You have been unregistered&quot;);
+            foodora.removeUser(c);
+        } else {
+            System.out.println(&quot;You have been registered.&quot;);
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCGMkjMpEeeRK6-cnH9NBQ" name="help" specification="_VCGMkTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Depending on the user, Help propose different commands
+    System.out.println(&quot;Here are the commands you can make :&quot;);
+    if (user == null) {
+        // If user has not logged in
+        System.out.println(&quot;login &lt;username> &lt;password> : to login&quot;);
+        System.out.println(&quot;register &lt;> : to register as a customer or courier&quot;);
+    } else if (user instanceof Customer) {
+        // If user is Customer
+        System.out.println(&quot;createOrder &lt;restaurantName> &lt;orderName> : to create an order from a given restaurant&quot;);
+        System.out.println(&quot;showOrders &lt;> : to show current orders&quot;);
+        System.out.println(&quot;addItem2Order &lt;orderName> &lt;itemName> : to add an item (either a menu item or a meal-deal) to an existing order&quot;);
+        System.out.println(&quot;endOrder &lt;orderName> : to finalise an order at current date and pay it&quot;);
+        System.out.println(&quot;showMenuItem &lt;restaurant-name> : to display the menu of a given restaurant&quot;);
+        System.out.println(&quot;listRestaurant &lt;> : to display the restaurants available&quot;);
+        System.out.println(&quot;getNotified &lt;none/phone/email> : to notified for special offers by the selected mean&quot;);
+    } else if (user instanceof Manager) {
+        // If user is Manager
+        System.out.println(&quot;printSystem &lt;> : show all the information about the system&quot;);
+        System.out.println(&quot;notifyCustomers &lt;message> : Send a message to all Customer who accepted to be notified for new offers&quot;);
+        System.out.println(&quot;registerRestaurant &lt;name> &lt;address> &lt;username> &lt;password> : to add a restaurant of given name, address (i.e. address should be a bi-dimensional co-ordinate), username and password to the system.&quot;);
+        System.out.println(&quot;registerCustomer &lt;firstName> &lt;lastName> &lt;username> &lt;address> &lt;password> : to add a client to the system&quot;);
+        System.out.println(&quot;registerCourier &lt;firstName> &lt;lastName> &lt;username> &lt;position> &lt;password> : to add a courier to the system (by default each newly registered courier is on-duty).&quot;);
+        System.out.println(&quot;setDeliveryPolicy &lt;delPolicyName> : to set the delivery policy of the system to that passed as argument&quot;);
+        System.out.println(&quot;setProfitPolicy &lt;ProfitPolicyName> : to set the profit policy of the system to that passed as argument&quot;);
+        System.out.println(&quot;associateCard &lt;userName> &lt;cardType> : to associate a fidelity card to a user with given name&quot;);
+        System.out.println(&quot;showCourierDeliveries &lt;> : to display the list of couriers sorted in decreasing order w.r.t. the number of completed deliveries&quot;);
+        System.out.println(&quot;showRestaurantTop &lt;> : to display the list of restaurant sorted in decreasing order w.r.t. the number of delivered orders&quot;);
+        System.out.println(&quot;showCustomers &lt;> : to display the list of customers&quot;);
+        System.out.println(&quot;showMenuItem &lt;restaurant-name> : to display the menu of a given restaurant&quot;);
+        System.out.println(&quot;showTotalProfit&lt;> : to show the total profit of the system since creation&quot;);
+        System.out.println(&quot;showTotalProfit &lt;startDate> &lt;endDate> : to show the total profit of the system within a time interval (for instance : 07/05/2017)&quot;);
+    } else if (user instanceof Courier) {
+        // If user is Courier
+        System.out.println(&quot;onDuty &lt;username> : to set your state as on-duty&quot;);
+        System.out.println(&quot;offDuty &lt;username> : to set your state as off-duty&quot;);
+        System.out.println(&quot;currentOrder &lt;> : to see your current order&quot;);
+        System.out.println(&quot;deliverOrder &lt;> : to deliver order and notify that you delivered the current order&quot;);
+        System.out.println(&quot;refuseOrder &lt;> : to refuse order and notify that you refused to deliver the current order&quot;);
+    } else if (user instanceof Restaurant) {
+        // If user is Restaurant
+        System.out.println(&quot;addDishRestaurantMenu &lt;dishName> &lt;dishCategory> &lt;foodCategory> &lt;unitPrice> : to add a dish with given name, given category (starter,main,dessert), food type (standard,vegetarian, gluten-free) and price to the menu of a restaurant with given name&quot;);
+        System.out.println(&quot;createMeal &lt;mealName> : to create a meal with a given name&quot;);
+        System.out.println(&quot;addDish2Meal &lt;dishName> &lt;mealName> : to add a dish to a meal&quot;);
+        System.out.println(&quot;showMenuItem : to display the menu&quot;);
+        System.out.println(&quot;showMeal &lt;mealName> : to show the dishes in a meal with given name&quot;);
+        System.out.println(&quot;saveMeal &lt;mealName> : to save a meal with given name&quot;);
+        System.out.println(&quot;setSpecialOffer &lt;mealName> : to add a meal in meal-of-the-week special offer&quot;);
+        System.out.println(&quot;removeFromSpecialOffer &lt;mealName> : to reset a special offer&quot;);
+        System.out.println(&quot;findDeliverer &lt;orderName> : to allocate an order to a deliverer by application of the current delivery policy&quot;);
+    }
+    // For any users
+    System.out.println(&quot;logout &lt;> : to logout&quot;);
+    System.out.println(&quot;quit &lt;> : to quit&quot;);
+    System.out.println(&quot;help &lt;> : For help&quot;);
+    System.out.println(&quot;&quot;);
+    System.out.println(&quot;The following commands are only available to evaluate the project&quot;);
+    System.out.println(&quot;runTest &lt;testScenario-file> : to execute the list of CLUI commands contained in the testScenario file passed as argument&quot;);
+    System.out.println(&quot;addTime &lt;days> &lt;hours> &lt;minutes> : to increment simulated time&quot;);
+    System.out.println(&quot;getTime : to print simulated current time&quot;);
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCGzojMpEeeRK6-cnH9NBQ" name="executeCommand" specification="_VCGMkzMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // Split the arguments
+    if (runFile) {
+        if (command.length() != 0) {
+            System.out.println(&quot;>> &quot; + command);
+        }
+    }
+    String[] arguments = command.split(&quot; &quot;);
+    // If non-empty command or non-comment
+    if (arguments[0] != &quot;&quot;) {
+        switch(arguments[0].toLowerCase()) {
+            case &quot;currentorder&quot;:
+                this.currentOrder(arguments);
+                break;
+            case &quot;deliverorder&quot;:
+                this.deliverOrder(arguments);
+                break;
+            case &quot;refuseorder&quot;:
+                this.refuseOrder(arguments);
+                break;
+            case &quot;login&quot;:
+                this.login(arguments);
+                break;
+            case &quot;logout&quot;:
+                this.logout();
+                break;
+            case &quot;registerrestaurant&quot;:
+                this.registerRestaurant(arguments);
+                break;
+            case &quot;registermanager&quot;:
+                this.registerManager(arguments);
+                break;
+            case &quot;registercustomer&quot;:
+                this.registerCustomer(arguments);
+                break;
+            case &quot;registercourier&quot;:
+                this.registerCourier(arguments);
+                break;
+            case &quot;adddishrestaurantmenu&quot;:
+                this.addDishRestaurantMenu(arguments);
+                break;
+            case &quot;createmeal&quot;:
+                this.createMeal(arguments);
+                break;
+            case &quot;adddish2meal&quot;:
+                this.addDish2Meal(arguments);
+                break;
+            case &quot;showmeal&quot;:
+                this.showMeal(arguments);
+                break;
+            case &quot;savemeal&quot;:
+                this.createMeal(arguments);
+                break;
+            case &quot;setspecialoffer&quot;:
+                this.setSpecialOffer(arguments);
+                break;
+            case &quot;removefromspecialoffer&quot;:
+                this.removeFromSpecialOffer(arguments);
+                break;
+            case &quot;createorder&quot;:
+                this.createOrder(arguments);
+                break;
+            case &quot;additem2order&quot;:
+                this.addItem2Order(arguments);
+                break;
+            case &quot;endorder&quot;:
+                this.endOrder(arguments);
+                break;
+            case &quot;onduty&quot;:
+                this.onDuty(arguments);
+                break;
+            case &quot;offduty&quot;:
+                this.offDuty(arguments);
+                break;
+            case &quot;finddeliverer&quot;:
+                this.findDeliverer(arguments);
+                break;
+            case &quot;setdeliverypolicy&quot;:
+                this.setDeliveryPolicy(arguments);
+                break;
+            case &quot;setprofitpolicy&quot;:
+                this.setProfitPolicy(arguments);
+                break;
+            case &quot;associatecard&quot;:
+                this.associateCard(arguments);
+                break;
+            case &quot;showcourierdeliveries&quot;:
+                this.showCourierDeliveries();
+                break;
+            case &quot;showrestauranttop&quot;:
+                this.showRestaurantTop();
+                break;
+            case &quot;showcustomers&quot;:
+                this.showCustomers();
+                break;
+            case &quot;showmenuitem&quot;:
+                this.showMenuItem(arguments);
+                break;
+            case &quot;showtotalprofit&quot;:
+                this.showTotalProfit(arguments);
+                break;
+            case &quot;help&quot;:
+                this.help();
+                break;
+            case &quot;register&quot;:
+                this.register();
+                break;
+            case &quot;listrestaurant&quot;:
+                this.listRestaurant(arguments);
+                break;
+            case &quot;notifycustomers&quot;:
+                this.notifyCustomers(arguments);
+                break;
+            case &quot;getnotified&quot;:
+                this.getNotified(arguments);
+                break;
+            case &quot;printsystem&quot;:
+                this.printSystem(arguments);
+                break;
+            case &quot;showorders&quot;:
+                this.showOrders(arguments);
+                break;
+            case &quot;&quot;:
+                break;
+            case &quot;#&quot;:
+                break;
+            case &quot;quit&quot;:
+                return this.quit();
+            case &quot;runtest&quot;:
+                this.runTest(arguments);
+                break;
+            case &quot;addtime&quot;:
+                this.addTime(arguments);
+                break;
+            case &quot;gettime&quot;:
+                this.getTime();
+                break;
+            default:
+                unknown();
+        }
+    }
+    if (!init &amp;&amp; !runFile) {
+        System.out.print(&quot;>> &quot;);
+    }
+    return true;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCHasDMpEeeRK6-cnH9NBQ" name="getTime" specification="_VCGzozMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // To display current simulated time
+    System.out.println(Time.getTime());
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCHatTMpEeeRK6-cnH9NBQ" name="addTime" specification="_VCHasTMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    // To add time to the current simulated time
+    if (arguments.length > 4) {
+        tooManyArguments();
+    } else if (arguments.length &lt; 4) {
+        tooFewArguments();
+    } else {
+        //Checking if the inputs are correct
+        if (arguments[1].matches(&quot;^-?[0-9]+$&quot;) &amp;&amp; arguments[2].matches(&quot;^-?[0-9]+$&quot;) &amp;&amp; arguments[3].matches(&quot;^-?[0-9]+$&quot;)) {
+            Time.addDays(Integer.parseInt(arguments[1]));
+            Time.addHours(Integer.parseInt(arguments[2]));
+            Time.addMinutes(Integer.parseInt(arguments[3]));
+        } else {
+            incorrect();
+        }
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBr84jMpEeeRK6-cnH9NBQ" name="Interpreter" visibility="public" method="_VBtyEjMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBtyEDMpEeeRK6-cnH9NBQ" name="sc" type="_U__60TMpEeeRK6-cnH9NBQ"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBtyETMpEeeRK6-cnH9NBQ" name="foodora" type="_9CayYB4WEeeCTKr98N2j2g"/>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBuZIDMpEeeRK6-cnH9NBQ" name="Interpreter" visibility="public" method="_VBwOUzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBvnQTMpEeeRK6-cnH9NBQ" name="sc" type="_U__60TMpEeeRK6-cnH9NBQ"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBwOUDMpEeeRK6-cnH9NBQ" name="foodora" type="_9CayYB4WEeeCTKr98N2j2g"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBwOUTMpEeeRK6-cnH9NBQ" name="init">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      </ownedParameter>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBwOUjMpEeeRK6-cnH9NBQ" name="runFile">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBw1YDMpEeeRK6-cnH9NBQ" name="open" visibility="public" method="_VBw1YTMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBw1YjMpEeeRK6-cnH9NBQ" name="close" visibility="public" method="_VBw1YzMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBw1ZDMpEeeRK6-cnH9NBQ" name="incorrect" visibility="private" method="_VBw1ZTMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBw1ZjMpEeeRK6-cnH9NBQ" name="forbidden" visibility="private" method="_VBxccDMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBxccTMpEeeRK6-cnH9NBQ" name="tooFewArguments" visibility="private" method="_VBxccjMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBxcczMpEeeRK6-cnH9NBQ" name="tooManyArguments" visibility="private" method="_VBxcdDMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBxcdTMpEeeRK6-cnH9NBQ" name="unknown" visibility="private" method="_VBxcdjMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBxcdzMpEeeRK6-cnH9NBQ" name="askFor" visibility="private" method="_VByDhDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VByDgDMpEeeRK6-cnH9NBQ" type="_9F7ZYB4WEeeCTKr98N2j2g" direction="return"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VByDgTMpEeeRK6-cnH9NBQ" name="expected" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VByDgjMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VByDgzMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VByqkDMpEeeRK6-cnH9NBQ" name="showCourierDeliveries" visibility="private" method="_VByqkTMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VByqkjMpEeeRK6-cnH9NBQ" name="showRestaurantTop" visibility="private" method="_VByqkzMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VByqlDMpEeeRK6-cnH9NBQ" name="showCustomers" visibility="private" method="_VByqlTMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBzRoDMpEeeRK6-cnH9NBQ" name="associateCard" visibility="private" method="_VBzRpDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBzRoTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VBzRojMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VBzRozMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VBz4sDMpEeeRK6-cnH9NBQ" name="setDeliveryPolicy" visibility="private" method="_VB0fwDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VBz4sTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VBz4sjMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VBz4szMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB0fwTMpEeeRK6-cnH9NBQ" name="setProfitPolicy" visibility="private" method="_VB1G0TMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB0fwjMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB0fwzMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB1G0DMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB1G0jMpEeeRK6-cnH9NBQ" name="findDeliverer" visibility="private" method="_VB1t4TMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB1G0zMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB1G1DMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB1t4DMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB1t4jMpEeeRK6-cnH9NBQ" name="offDuty" visibility="private" method="_VB2U8jMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB1t4zMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB2U8DMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB2U8TMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB2U8zMpEeeRK6-cnH9NBQ" name="endOrder" visibility="private" method="_VB28AzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB28ADMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB28ATMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB28AjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB28BDMpEeeRK6-cnH9NBQ" name="onDuty" visibility="private" method="_VB3jEzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB3jEDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB3jETMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB3jEjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB3jFDMpEeeRK6-cnH9NBQ" name="refuseOrder" visibility="private" method="_VB4KIzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB4KIDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB4KITMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB4KIjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB4KJDMpEeeRK6-cnH9NBQ" name="deliverOrder" visibility="private" method="_VB4xMjMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB4KJTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB4xMDMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB4xMTMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB4xMzMpEeeRK6-cnH9NBQ" name="currentOrder" visibility="private" method="_VB5YQTMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB4xNDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB4xNTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB5YQDMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB5YQjMpEeeRK6-cnH9NBQ" name="addItem2Order" visibility="private" method="_VB5_UDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB5YQzMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB5YRDMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB5YRTMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB5_UTMpEeeRK6-cnH9NBQ" name="createOrder" visibility="private" method="_VB6mYDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB5_UjMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB5_UzMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB5_VDMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB6mYTMpEeeRK6-cnH9NBQ" name="showOrders" visibility="private" method="_VB6mZTMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB6mYjMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB6mYzMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB6mZDMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB7NcDMpEeeRK6-cnH9NBQ" name="removeFromSpecialOffer" visibility="private" method="_VB7NdDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB7NcTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB7NcjMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB7NczMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB70gDMpEeeRK6-cnH9NBQ" name="setSpecialOffer" visibility="private" method="_VB70hDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB70gTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB70gjMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB70gzMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB70hTMpEeeRK6-cnH9NBQ" name="login" visibility="private" method="_VB8bkzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB8bkDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB8bkTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB8bkjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB8blDMpEeeRK6-cnH9NBQ" name="getNotified" visibility="private" method="_VB9CozMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB9CoDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB9CoTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB9CojMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB9CpDMpEeeRK6-cnH9NBQ" name="notifyCustomers" visibility="private" method="_VB9pszMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB9psDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB9psTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB9psjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB9ptDMpEeeRK6-cnH9NBQ" name="logout" visibility="private" method="_VB9ptTMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB9ptjMpEeeRK6-cnH9NBQ" name="registerRestaurant" visibility="private" method="_VB-QwzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB-QwDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB-QwTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB-QwjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB-QxDMpEeeRK6-cnH9NBQ" name="registerManager" visibility="private" method="_VB-30zMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB-30DMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB-30TMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB-30jMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB-31DMpEeeRK6-cnH9NBQ" name="registerCustomer" visibility="private" method="_VB_e4jMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB-31TMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB_e4DMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VB_e4TMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VB_e4zMpEeeRK6-cnH9NBQ" name="registerCourier" visibility="private" method="_VCAF8TMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VB_e5DMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VB_e5TMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCAF8DMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCAF8jMpEeeRK6-cnH9NBQ" name="addDishRestaurantMenu" visibility="private" method="_VCAtADMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCAF8zMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCAF9DMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCAF9TMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCAtATMpEeeRK6-cnH9NBQ" name="createMeal" visibility="private" method="_VCBUEDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCAtAjMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCAtAzMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCAtBDMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCBUETMpEeeRK6-cnH9NBQ" name="showMeal" visibility="private" method="_VCBUFTMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCBUEjMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCBUEzMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCBUFDMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCB7IDMpEeeRK6-cnH9NBQ" name="addDish2Meal" visibility="private" method="_VCB7JDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCB7ITMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCB7IjMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCB7IzMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCCiMDMpEeeRK6-cnH9NBQ" name="showMenuItem" visibility="private" method="_VCCiNDMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCCiMTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCCiMjMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCCiMzMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCCiNTMpEeeRK6-cnH9NBQ" name="showTotalProfit" visibility="private" method="_VCDJQzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCDJQDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCDJQTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCDJQjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCDJRDMpEeeRK6-cnH9NBQ" name="listRestaurant" visibility="private" method="_VCDwUzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCDwUDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCDwUTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCDwUjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCEXYDMpEeeRK6-cnH9NBQ" name="printSystem" visibility="private" method="_VCE-czMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCE-cDMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCE-cTMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCE-cjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCE-dDMpEeeRK6-cnH9NBQ" name="runTest" visibility="private" method="_VCFlgjMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCE-dTMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCFlgDMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCFlgTMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCFlgzMpEeeRK6-cnH9NBQ" name="quit" visibility="private" method="_VCFlhTMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCFlhDMpEeeRK6-cnH9NBQ" direction="return">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCFlhjMpEeeRK6-cnH9NBQ" name="register" visibility="private" method="_VCGMkDMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCGMkTMpEeeRK6-cnH9NBQ" name="help" visibility="private" method="_VCGMkjMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCGMkzMpEeeRK6-cnH9NBQ" name="executeCommand" visibility="public" method="_VCGzojMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCGzoDMpEeeRK6-cnH9NBQ" direction="return">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      </ownedParameter>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCGzoTMpEeeRK6-cnH9NBQ" name="command" type="_9F7ZYB4WEeeCTKr98N2j2g"/>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCGzozMpEeeRK6-cnH9NBQ" name="getTime" visibility="private" method="_VCHasDMpEeeRK6-cnH9NBQ"/>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCHasTMpEeeRK6-cnH9NBQ" name="addTime" visibility="private" method="_VCHatTMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCHasjMpEeeRK6-cnH9NBQ" name="arguments" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCHaszMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCHatDMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                  </packagedElement>
+                  <packagedElement xmi:type="uml:Class" xmi:id="_VCJ28DMpEeeRK6-cnH9NBQ" name="Interface" visibility="public">
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VCJ28TMpEeeRK6-cnH9NBQ" name="sc" visibility="private" isStatic="true" type="_U__60TMpEeeRK6-cnH9NBQ" isUnique="false">
+                      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VCJ28jMpEeeRK6-cnH9NBQ" name="defaultValue">
+                        <language>JAVA</language>
+                        <body>new Scanner(System.in)</body>
+                      </defaultValue>
+                    </ownedAttribute>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCKeAzMpEeeRK6-cnH9NBQ" name="main" specification="_VCJ28zMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    //Load .ini file
+    MyFoodora foodora = new MyFoodora(1, 0.2, 2);
+    try {
+        FileInputStream initFile = new FileInputStream(&quot;eval/my_foodora.ini&quot;);
+        Scanner initsc = new Scanner(initFile);
+        Interpreter initInterpreter = new Interpreter(initsc, foodora, true, false);
+        while (initInterpreter.executeCommand(initsc.nextLine())) {
+        }
+    } catch (FileNotFoundException e) {
+        System.out.println(&quot;Init file not found, system not initialized&quot;);
+    }
+    //The interpreter might ask things and need Myfoodora environment
+    Interpreter interpreter = new Interpreter(sc, foodora);
+    //Open message
+    interpreter.open();
+    //Commands are permanently executed
+    while (interpreter.executeCommand(sc.nextLine())) {
+    }
+    //Exit message
+    interpreter.close();
+</body>
+                    </ownedBehavior>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCJ28zMpEeeRK6-cnH9NBQ" name="main" visibility="public" isStatic="true" method="_VCKeAzMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCKeADMpEeeRK6-cnH9NBQ" name="args" type="_9F7ZYB4WEeeCTKr98N2j2g">
+                        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VCKeATMpEeeRK6-cnH9NBQ"/>
+                        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VCKeAjMpEeeRK6-cnH9NBQ" value="*"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                  </packagedElement>
+                  <packagedElement xmi:type="uml:Class" xmi:id="_VCMTMDMpEeeRK6-cnH9NBQ" name="CourierComparator" visibility="public">
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VCM6QTMpEeeRK6-cnH9NBQ" name="foodora" visibility="private" type="_9CayYB4WEeeCTKr98N2j2g" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VCM6QjMpEeeRK6-cnH9NBQ" name="reverse" visibility="private" isUnique="false">
+                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                    </ownedAttribute>
+                    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_VCM6QDMpEeeRK6-cnH9NBQ" name="CourierComparator implements Comparator" client="_VCMTMDMpEeeRK6-cnH9NBQ" supplier="_-oXcgB4WEeeCTKr98N2j2g" contract="_-oXcgB4WEeeCTKr98N2j2g"/>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCOvcTMpEeeRK6-cnH9NBQ" name="CourierComparator" specification="_VCM6QzMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    super();
+    this.foodora = foodora;
+    reverse = false;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCQkojMpEeeRK6-cnH9NBQ" name="CourierComparator" specification="_VCOvcjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    super();
+    this.foodora = foodora;
+    this.reverse = reverse;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCRLsjMpEeeRK6-cnH9NBQ" name="compare" specification="_VCQkozMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    int orderNumber0 = 0;
+    int orderNumber1 = 0;
+    for (Order order : foodora.getCompletedOrder_List()) {
+        if (arg0.getiD() == order.getCourier().getiD()) {
+            orderNumber0++;
+        } else if (arg1.getiD() == order.getCourier().getiD()) {
+            orderNumber1++;
+        }
+    }
+    if (reverse) {
+        return orderNumber1 - orderNumber0;
+    } else {
+        return orderNumber0 - orderNumber1;
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCM6QzMpEeeRK6-cnH9NBQ" name="CourierComparator" visibility="public" method="_VCOvcTMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCOvcDMpEeeRK6-cnH9NBQ" name="foodora" type="_9CayYB4WEeeCTKr98N2j2g"/>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCOvcjMpEeeRK6-cnH9NBQ" name="CourierComparator" visibility="public" method="_VCQkojMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCQkoDMpEeeRK6-cnH9NBQ" name="foodora" type="_9CayYB4WEeeCTKr98N2j2g"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCQkoTMpEeeRK6-cnH9NBQ" name="reverse">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCQkozMpEeeRK6-cnH9NBQ" name="compare" visibility="public" method="_VCRLsjMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCQkpDMpEeeRK6-cnH9NBQ" direction="return">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+                      </ownedParameter>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCRLsDMpEeeRK6-cnH9NBQ" name="arg0" type="_9GJb0B4WEeeCTKr98N2j2g"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCRLsTMpEeeRK6-cnH9NBQ" name="arg1" type="_9GJb0B4WEeeCTKr98N2j2g"/>
+                    </ownedOperation>
+                  </packagedElement>
+                  <packagedElement xmi:type="uml:Class" xmi:id="_VCTA4DMpEeeRK6-cnH9NBQ" name="RestaurantComparator" visibility="public">
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VCTn8TMpEeeRK6-cnH9NBQ" name="foodora" visibility="private" type="_9CayYB4WEeeCTKr98N2j2g" isUnique="false"/>
+                    <ownedAttribute xmi:type="uml:Property" xmi:id="_VCTn8jMpEeeRK6-cnH9NBQ" name="reverse" visibility="private" isUnique="false">
+                      <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                    </ownedAttribute>
+                    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_VCTn8DMpEeeRK6-cnH9NBQ" name="RestaurantComparator implements Comparator" client="_VCTA4DMpEeeRK6-cnH9NBQ" supplier="_-oXcgB4WEeeCTKr98N2j2g" contract="_-oXcgB4WEeeCTKr98N2j2g"/>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCVdITMpEeeRK6-cnH9NBQ" name="RestaurantComparator" specification="_VCTn8zMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    super();
+    this.foodora = foodora;
+    reverse = false;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCXSUjMpEeeRK6-cnH9NBQ" name="RestaurantComparator" specification="_VCVdIjMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    super();
+    this.foodora = foodora;
+    this.reverse = reverse;
+</body>
+                    </ownedBehavior>
+                    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VCX5YjMpEeeRK6-cnH9NBQ" name="compare" specification="_VCXSUzMpEeeRK6-cnH9NBQ">
+                      <language>JAVA</language>
+                      <body>
+    int orderNumber0 = 0;
+    int orderNumber1 = 0;
+    for (Order order : foodora.getCompletedOrder_List()) {
+        if (arg0.getiD() == order.getRestaurant().getiD()) {
+            orderNumber0++;
+        } else if (arg1.getiD() == order.getRestaurant().getiD()) {
+            orderNumber1++;
+        }
+    }
+    if (reverse) {
+        return orderNumber1 - orderNumber0;
+    } else {
+        return orderNumber0 - orderNumber1;
+    }
+</body>
+                    </ownedBehavior>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCTn8zMpEeeRK6-cnH9NBQ" name="RestaurantComparator" visibility="public" method="_VCVdITMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCVdIDMpEeeRK6-cnH9NBQ" name="foodora" type="_9CayYB4WEeeCTKr98N2j2g"/>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCVdIjMpEeeRK6-cnH9NBQ" name="RestaurantComparator" visibility="public" method="_VCXSUjMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCXSUDMpEeeRK6-cnH9NBQ" name="foodora" type="_9CayYB4WEeeCTKr98N2j2g"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCXSUTMpEeeRK6-cnH9NBQ" name="reverse">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                      </ownedParameter>
+                    </ownedOperation>
+                    <ownedOperation xmi:type="uml:Operation" xmi:id="_VCXSUzMpEeeRK6-cnH9NBQ" name="compare" visibility="public" method="_VCX5YjMpEeeRK6-cnH9NBQ">
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCXSVDMpEeeRK6-cnH9NBQ" direction="return">
+                        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+                      </ownedParameter>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCX5YDMpEeeRK6-cnH9NBQ" name="arg0" type="_9GZ6gR4WEeeCTKr98N2j2g"/>
+                      <ownedParameter xmi:type="uml:Parameter" xmi:id="_VCX5YTMpEeeRK6-cnH9NBQ" name="arg1" type="_9GZ6gR4WEeeCTKr98N2j2g"/>
+                    </ownedOperation>
+                  </packagedElement>
+                </packagedElement>
               </packagedElement>
             </packagedElement>
           </packagedElement>
@@ -3492,6 +5297,7 @@
           <packagedElement xmi:type="uml:Class" xmi:id="_9CcnkR4WEeeCTKr98N2j2g" name="HashMap"/>
           <packagedElement xmi:type="uml:Class" xmi:id="_-JgWQB4WEeeCTKr98N2j2g" name="Set"/>
           <packagedElement xmi:type="uml:Interface" xmi:id="_-oXcgB4WEeeCTKr98N2j2g" name="Comparator"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_U__60TMpEeeRK6-cnH9NBQ" name="Scanner"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_9F6yUB4WEeeCTKr98N2j2g" name="lang">
           <packagedElement xmi:type="uml:Class" xmi:id="_9F7ZYB4WEeeCTKr98N2j2g" name="String"/>
@@ -3643,4 +5449,12 @@
   <standard:Create xmi:id="_-o0vgB4WEeeCTKr98N2j2g" base_BehavioralFeature="_-oyTQh4WEeeCTKr98N2j2g"/>
   <standard:Create xmi:id="_-o4Z4B4WEeeCTKr98N2j2g" base_BehavioralFeature="_-o3LwB4WEeeCTKr98N2j2g"/>
   <PapyrusJava:External xmi:id="_-o6PEB4WEeeCTKr98N2j2g" name="fr.ecp.IS1220.project.MyFoodora.core.menu.Item" base_Classifier="_-JPQgB4WEeeCTKr98N2j2g"/>
+  <PapyrusJava:External xmi:id="_VBpgoDMpEeeRK6-cnH9NBQ" name="java.util.Scanner" base_Classifier="_U__60TMpEeeRK6-cnH9NBQ"/>
+  <PapyrusJava:External xmi:id="_VBquwDMpEeeRK6-cnH9NBQ" name="fr.ecp.IS1220.project.MyFoodora.core.User" base_Classifier="_9GAR4B4WEeeCTKr98N2j2g"/>
+  <standard:Create xmi:id="_VBtLADMpEeeRK6-cnH9NBQ" base_BehavioralFeature="_VBr84jMpEeeRK6-cnH9NBQ"/>
+  <standard:Create xmi:id="_VBvnQDMpEeeRK6-cnH9NBQ" base_BehavioralFeature="_VBuZIDMpEeeRK6-cnH9NBQ"/>
+  <standard:Create xmi:id="_VCOIYDMpEeeRK6-cnH9NBQ" base_BehavioralFeature="_VCM6QzMpEeeRK6-cnH9NBQ"/>
+  <standard:Create xmi:id="_VCP9kDMpEeeRK6-cnH9NBQ" base_BehavioralFeature="_VCOvcjMpEeeRK6-cnH9NBQ"/>
+  <standard:Create xmi:id="_VCU2EDMpEeeRK6-cnH9NBQ" base_BehavioralFeature="_VCTn8zMpEeeRK6-cnH9NBQ"/>
+  <standard:Create xmi:id="_VCWrQDMpEeeRK6-cnH9NBQ" base_BehavioralFeature="_VCVdIjMpEeeRK6-cnH9NBQ"/>
 </xmi:XMI>

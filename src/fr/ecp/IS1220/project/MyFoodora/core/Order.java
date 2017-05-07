@@ -126,10 +126,10 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [name=" + name + ", restaurant=" + restaurant.getName() + " ( " + restaurant.getAddressX() + " , "
-				+ restaurant.getAddressY() + " )" + ", customer=" + customer.getName() + " ( " + customer.getAddressX()
-				+ " , " + customer.getAddressY() + " )" + ", orderables=" + orderables + ", orderDate="
-				+ orderDate.toString() + "]";
+		return name + " :\nrestaurant : " + restaurant.getName() + " ( " + restaurant.getAddressX() + " , "
+				+ restaurant.getAddressY() + " )" + "\ncustomer : " + customer.getName() + " ( " + customer.getAddressX()
+				+ " , " + customer.getAddressY() + " )" + "\norderables :\n" + orderables + "\norderDate : "
+				+ orderDate.toString();
 	}
 
 }

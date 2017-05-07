@@ -47,7 +47,6 @@ public class Courier extends User{
 	
 	public void propose(Order order) {
 		this.currentOrder = order;
-		System.out.println("Order "+order.getName()+" proposed to "+this.getName());
 		//to prevent him from receiving other orders while accepting or refusing
 		setOnDuty(false);
 		
@@ -78,6 +77,7 @@ public class Courier extends User{
 			System.out.println("No current order proposed");
 		}
 	}
+	
 	public Order getCurrentOrder(){
 		return currentOrder;
 	}

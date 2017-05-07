@@ -860,7 +860,12 @@ public class Interpreter {
 				if (restaurant == null) {
 					System.out.println("No restaurant named " + arguments[1]);
 				} else {
-
+					for (Meal meal : restaurant.getMenu().getMeals()) {
+						System.out.println(meal.toString());
+					}
+					for (Item item : restaurant.getMenu().getItems()) {
+						System.out.println(item.toString());
+					}
 				}
 			}
 		}

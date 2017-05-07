@@ -1,9 +1,45 @@
-login a password
-getnotified phone
+# TestScenario2
+
+# A customer registers
+register
+mike
+doe
+miki
+password
+47.65
+-78.4522
+1
+2
+0645785544445
+3
+y
+2
+y
+
+login miki password
 logout
+
+# A courrier Registers
+register
+bob
+Square
+bobi
+password
+0
+-15
+2
+1
+jhf@kjnf
+3
+y
+y
+
+login bobi password
+logout
+
 login ceo 123456789
-notifycustomers A new offer is available !
+showCustomers
+printSystem
 logout
 quit
-
 

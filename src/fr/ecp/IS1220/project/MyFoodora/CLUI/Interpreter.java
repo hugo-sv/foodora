@@ -275,20 +275,15 @@ public class Interpreter {
 	}
 
 	private void offDuty(String[] arguments) {
-		if (arguments.length > 2) {
+		if (arguments.length > 1) {
 			tooManyArguments();
-		} else if (arguments.length < 2) {
+		} else if (arguments.length < 1) {
 			tooFewArguments();
 		} else {
 			if (!(user instanceof Courier)) {
 				forbidden();
 			} else {
-				if (!user.getUsername().equals(arguments[1])) {
-					System.out.println("Wrong username");
-				} else {
-					((Courier) user).setOnDuty(false);
-					System.out.println();
-				}
+				((Courier) user).setOnDuty(false);
 			}
 		}
 	}
@@ -318,19 +313,17 @@ public class Interpreter {
 	}
 
 	private void onDuty(String[] arguments) {
-		if (arguments.length > 2) {
+		if (arguments.length > 1) {
 			tooManyArguments();
-		} else if (arguments.length < 2) {
+		} else if (arguments.length < 1) {
 			tooFewArguments();
 		} else {
 			if (!(user instanceof Courier)) {
 				forbidden();
 			} else {
-				if (!user.getUsername().equals(arguments[1])) {
-					System.out.println("Wrong username");
-				} else {
-					((Courier) user).setOnDuty(true);
-				}
+
+				((Courier) user).setOnDuty(true);
+
 			}
 		}
 	}
@@ -1185,8 +1178,8 @@ public class Interpreter {
 					"showTotalProfit <startDate> <endDate> : to show the total profit of the system within a time interval (for instance : 07/05/2017)");
 		} else if (user instanceof Courier) {
 			// If user is Courier
-			System.out.println("onDuty <username> : to set your state as on-duty");
-			System.out.println("offDuty <username> : to set your state as off-duty");
+			System.out.println("onDuty : to set your state as on-duty");
+			System.out.println("offDuty : to set your state as off-duty");
 			System.out.println("currentOrder <> : to see your current order");
 			System.out.println("deliverOrder <> : to deliver order and notify that you delivered the current order");
 			System.out.println(
@@ -1378,7 +1371,7 @@ public class Interpreter {
 		} else if (arguments.length < 4) {
 			tooFewArguments();
 		} else {
-			//Checking if the inputs are correct
+			// Checking if the inputs are correct
 			if (arguments[1].matches("^-?[0-9]+$") && arguments[2].matches("^-?[0-9]+$")
 					&& arguments[3].matches("^-?[0-9]+$")) {
 				Time.addDays(Integer.parseInt(arguments[1]));

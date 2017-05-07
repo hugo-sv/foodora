@@ -4,11 +4,15 @@ login ceo 123456789
 
 printSystem
 
+registerManager Jane Doe associate password
+
 registerRestaurant RU 1,7.9 ru password
 registerRestaurant Resto 185.32,14.9 resto password
 
 registercustomer Alban Deloin ali 27,-28 password
 registercustomer Michel Deprès mimi 222,-14 password
+
+associateCard ali lottery
 
 registercourier Alice Dubon ad -0.1,107 password
 registercourier Fanny Firot ff 51,16 password
@@ -36,6 +40,7 @@ adddish2meal Ice full1
 
 setSpecialOffer full1
 showMenuItem
+showMeal full1
 logout
 
 login resto password
@@ -57,14 +62,16 @@ adddish2meal Entrecote full2
 adddish2meal Champagne full2
 adddish2meal Citron full2
 
+setSpecialOffer half3
+removeFromSpecialOffer half3
 setSpecialOffer half2
 showMenuItem
 logout
 
 login ali password
-
+help
 getnotified phone
-
+listRestaurant
 createOrder Resto order1
 addItem2Order order1 Champagne
 addItem2Order order1 half3
@@ -88,17 +95,24 @@ addItem2Order order2 Burger
 addItem2Order order3 Burger
 endOrder order2
 # The customer make an other order 2 hours later
+getTime
 addTime 0 2 0
+getTime
 endOrder order3
+showOrders
 logout
 
 login fred password
 currentorder
 deliverorder
+offDuty
 logout
 login coco password
 currentorder
 deliverorder
+offDuty
+addTime 2 0 0
+onDuty
 logout
 
 
@@ -115,68 +129,13 @@ setProfitPolicy servicefee
 showTotalProfit
 showTotalProfit 23/05/2017 12/06/2017
 
+setDeliveryPolicy fair-occupation
 showCourierDeliveries
 
 notifyCustomers A new meal of the day is available !
 
 logout
+
 quit
 
 
-• adding commands to completely simulate special offer and its notification
-for:
-– birthday celebration
-This scenario requires you to manage explicitly time advancement (day
-change with a dedicated Thread ?)
-
-####
-		
-A test-scenario file contains a number of CLUI commands whose execution allows for re-
-producing a given test scenario, typically setting up a given configuration of the myFoodora
-system (i.e. creation of some resraurants, each with its one menu and meals offers, cre-
-ation of some customers, as well as some courriers, simulation of some usage of the system
-with creation of orders by customers and delivery of orders, calculation of profits for my-
-Foodora, etc.). You may include several test-scenario files (e.g. testScenario1.txt,
-testScenario2.txt, ...). For each test-scenario file you provide us with you MUST in-
-clude a description of its content (what does it test?) in the report. We are going to run
-each test-scenario file through the runtest command of the CLUI (see CLUI commands
-above):
-runtest testScenario1.txt
-The mandatory testScenario1.txt must test each and every command of the CLUI
-(except obviously runtest). Furthermore it should develop a meaningful scenario like that
-depicted in the following example:
-• logon as manager
-• adding commands to show/print all items (user, meals, ...) in the initial
-configuration
-• register a few restaurants to the system
-• register a few customers
-• register a few couriers
-• display the list of restaurant
-• display the list of customers
-• logout manager
-• logon as restaurant (for each new restaurant)
-• add (and populate) a menu to each restaurant (this requires login as restaurant
-manager)
-• add (half and/or full) meal to each restaurant’s menu, setting some special-offer and
-meal-of-the-week meal deal
-• display the menu of each restaurant
-• logout restaurant
-• logon as customer (for few customers)
-• simulate placing of a few orders by few customers (concerning a few restaurants)
-• logout
-
-• logon as manager
-• compute/display the total profit of the system (since creation and over a given time-
-interval)
-• change the profit policy of the system and re-compute the total profit of the system
-(since creation and over the same time-interval as before)
-• display the list of courriers sorted according to their operativity (num. of completed
-delivery)
-• adding commands to completely simulate special offer and its notification
-for:
-– meal of the day/week
-– birthday celebration
-This scenario requires you to manage explicitly time advancement (day
-change with a dedicated Thread ?)
-• logout
-• ...

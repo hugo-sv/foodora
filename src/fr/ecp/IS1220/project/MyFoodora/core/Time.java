@@ -84,8 +84,8 @@ public class Time {
 	 * Set auto parameter. If True, current simulated time is updated following
 	 * actual current time.
 	 *
-	 * @param boolean
-	 *            required parameter
+	 * @param auto
+	 *            boolean required parameter
 	 */
 	public static void setAuto(boolean auto) {
 		Time.auto = auto;
@@ -94,8 +94,8 @@ public class Time {
 	/**
 	 * Add secconds to the current simulated time
 	 *
-	 * @param Long
-	 *            seconds to be added
+	 * @param seconds
+	 *            Seconds (Long) to be added
 	 */
 	static public void addTime(Long seconds) {
 		currentTime += seconds;
@@ -104,8 +104,8 @@ public class Time {
 	/**
 	 * Add minutes to the current simulated time
 	 *
-	 * @param int
-	 *            minutes to be added
+	 * @param minutes
+	 *            Minutes (int) to be added
 	 */
 	static public void addMinutes(int minutes) {
 		Time.addTime((long) minutes * 60);
@@ -114,8 +114,8 @@ public class Time {
 	/**
 	 * Add hours to the current simulated time
 	 *
-	 * @param int
-	 *            hours to be added
+	 * @param hours
+	 *            Hours (int) to be added
 	 */
 	static public void addHours(int hours) {
 		Time.addTime((long) hours * 60 * 60);
@@ -124,8 +124,8 @@ public class Time {
 	/**
 	 * Add days to the current simulated time
 	 *
-	 * @param int
-	 *            days to be added
+	 * @param days
+	 *            Days (int) to be added
 	 */
 	static public void addDays(int days) {
 		Time.addTime((long) days * 24 * 60 * 60);
@@ -145,6 +145,8 @@ public class Time {
 	/**
 	 * Compares the time instance to another one
 	 *
+	 * @param time
+	 *            Time instance to compare
 	 * @return Long seconds Difference between the two instances second
 	 *         parameter
 	 */
@@ -166,18 +168,18 @@ public class Time {
 	}
 
 	/**
-	 * Return true if the time instance is less than one month (30 days) before the current
-	 * simulated instance
+	 * Return true if the time instance is less than one month (30 days) before
+	 * the current simulated instance
 	 *
-	 * @return boolean true if the time instance is less than one month before the
-	 *         current simulated instance
+	 * @return boolean true if the time instance is less than one month before
+	 *         the current simulated instance
 	 *
 	 */
 	public boolean isLessThanOneMonth() {
 		long difference = getCurrentSeconds() - seconds;
 		return difference < 30 * 24 * 60 * 60 && difference > 0;
 	}
-	
+
 	/**
 	 * Return String representation of Time instance
 	 *
